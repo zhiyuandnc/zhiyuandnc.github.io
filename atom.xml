@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhiyuandnc.github.io</id>
     <title>絷缘的博客</title>
-    <updated>2021-01-02T10:12:56.945Z</updated>
+    <updated>2021-01-02T10:32:47.910Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhiyuandnc.github.io"/>
     <link rel="self" href="https://zhiyuandnc.github.io/atom.xml"/>
@@ -12,11 +12,15 @@
     <rights>All rights reserved 2021, 絷缘的博客</rights>
     <entry>
         <title type="html"><![CDATA[C3P0数据库连接技术]]></title>
-        <id>https://zhiyuandnc.github.io/post/c3p0-shu-ju-ku-lian-jie-ji-zhu/</id>
-        <link href="https://zhiyuandnc.github.io/post/c3p0-shu-ju-ku-lian-jie-ji-zhu/">
+        <id>https://zhiyuandnc.github.io/c3p0/</id>
+        <link href="https://zhiyuandnc.github.io/c3p0/">
         </link>
         <updated>2021-01-02T09:32:26.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="一-在pomxml中加入c3p0依赖文件">一、在pom.xml中加入C3P0依赖文件</h2>
+        <content type="html"><![CDATA[<blockquote>
+<p>本教程仅限于 <code>c3p0v0.9.5.2</code> + <code>mysql8.0</code> + <code>jdk1.8</code></p>
+</blockquote>
+<h2 id="一-在pomxml中加入c3p0依赖文件">一、在pom.xml中加入C3P0依赖文件</h2>
+<p><code>如果是普通项目，需要解决依赖问题，c3p0的jar包依赖于mchange-common的jar包</code></p>
 <pre><code class="language-xml">&lt;!-- https://mvnrepository.com/artifact/com.mchange/c3p0 --&gt;
 &lt;dependency&gt;
     &lt;groupId&gt;com.mchange&lt;/groupId&gt;
