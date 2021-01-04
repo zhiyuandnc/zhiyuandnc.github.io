@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhiyuandnc.github.io</id>
     <title>无他，唯手熟尔</title>
-    <updated>2021-01-04T05:51:07.346Z</updated>
+    <updated>2021-01-04T05:56:19.665Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhiyuandnc.github.io"/>
     <link rel="self" href="https://zhiyuandnc.github.io/atom.xml"/>
@@ -93,13 +93,11 @@ com.mysql.cj.jdbc.ConnectionImpl@49070868
 <p>注意：在第四步的时候，我做了一个额外操作，将jdbcUrl中的&amp;amp;转义字符全部转换为&amp;，否则url是错误的，是不上数据库的！</p>
 </blockquote>
 <blockquote>
-<blockquote>
 <p>本人写博客，喜欢纯手打，以上配置文件或代码均不是复制粘贴，所以可能会有错误，如果发现，请指正！多谢！🤝<br>
 原文作者：絷缘<br>
 作者邮箱：zhiyuandnc666@88.com<br>
 原文地址：<a href="https://zhiyuandnc.github.io/UBe69VI0p/">https://zhiyuandnc.github.io/UBe69VI0p/</a><br>
 版权声明：本文为博主原创文章，转载请注明原文链接作者信息</p>
-</blockquote>
 </blockquote>
 ]]></content>
     </entry>
