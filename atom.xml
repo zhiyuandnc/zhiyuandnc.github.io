@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhiyuandnc.github.io</id>
     <title>无他，唯手熟尔</title>
-    <updated>2021-01-04T05:56:19.665Z</updated>
+    <updated>2021-01-06T09:41:28.142Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhiyuandnc.github.io"/>
     <link rel="self" href="https://zhiyuandnc.github.io/atom.xml"/>
@@ -10,6 +10,96 @@
     <logo>https://zhiyuandnc.github.io/images/avatar.png</logo>
     <icon>https://zhiyuandnc.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 无他，唯手熟尔</rights>
+    <entry>
+        <title type="html"><![CDATA[Graphics绘制LowB验证码]]></title>
+        <id>https://zhiyuandnc.github.io/zEKFZIKMH/</id>
+        <link href="https://zhiyuandnc.github.io/zEKFZIKMH/">
+        </link>
+        <updated>2021-01-06T09:20:17.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="一-创建servletdemo继承httpservlet实现doget和dopost方法">一、创建ServletDemo继承HttpServlet，实现doGet和doPost方法</h2>
+<pre><code class="language-java">public class ServletDemo extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //画布宽度
+        int width = 300;
+        //画布高度
+        int height = 100;
+        //验证码长度
+        int codeNum = 6;
+        //干扰线数量
+        int lineNum = 10;
+        //验证码字符串
+        String code = &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789&quot;;
+        //用于从验证码字符串中随机选取字符的验证码对象
+        Random random = new Random();
+
+        //创建RGB类型的内存画布
+        BufferedImage bufferedImage = new BufferedImage(width,height,BufferedImage.TYPE_INT_RGB);
+        //创建画笔
+        Graphics graphics = bufferedImage.createGraphics();
+        //设置画笔颜色
+        graphics.setColor(Color.white);
+        //填充背景色
+        graphics.fillRect(0,0,width,height);
+        //重设画笔颜色
+        graphics.setColor(Color.red);
+        //绘制边框
+        graphics.drawRect(0,0,width-1,height-1);
+        //设置画笔字体
+        //通过字节码文件的相对路径取得字体文件的绝对路径，这里的字体文件是我ttf字体，你应该替换成你自己的
+        String path = ServletDemo.class.getClassLoader().getResource(&quot;W03.ttf&quot;).getPath();
+        Font font = null;
+        if(new File(path).exists()){
+            try {
+                //从文件流中创建字体并设置字体大小为35和字体风格未加粗
+                font = Font.createFont(Font.TRUETYPE_FONT, new FileInputStream(path)).deriveFont(35.0f).deriveFont(Font.BOLD);
+            } catch (FontFormatException e) {
+                e.printStackTrace();
+            }
+        }
+        if(font!=null){
+            graphics.setFont(font);
+            //绘制文字
+            for (int i = 0; i &lt; codeNum; i++) {
+                int pos = random.nextInt(62);
+                int flag = 1;
+                if(i%2!=0){
+                    flag = -flag;
+                }
+                graphics.drawString(String.valueOf(code.charAt(pos)),i*50+5,height/2+flag*(10-i-1));
+            }
+        }
+        //绘制干扰线
+        graphics.setColor(Color.GRAY);
+        for (int i = 0; i &lt; lineNum; i++) {
+            graphics.drawLine(width/(i+2)+20,(i+1)*10,width-i*10,height-i*10);
+        }
+        //绘制干扰点
+        graphics.setColor(Color.BLUE);
+        //输出图片到页面
+        ImageIO.write(bufferedImage,&quot;jpg&quot;,resp.getOutputStream());
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.doGet(req, resp);
+    }
+}
+</code></pre>
+<h2 id="二-实际效果如下">二、实际效果如下</h2>
+<figure data-type="image" tabindex="1"><img src="https://zhiyuandnc.github.io/post-images/1609925784186.png" alt="效果图" loading="lazy"></figure>
+<blockquote>
+<p>干扰线画跑偏了，读者可以自行发挥，还可以绘制干扰点和旋转文字</p>
+</blockquote>
+<blockquote>
+<p>本人写博客，喜欢纯手打，以上配置文件或代码均不是复制粘贴，所以可能会有错误，如果发现，请指正！多谢！🤝<br>
+原文作者：絷缘<br>
+作者邮箱：zhiyuandnc666@88.com<br>
+原文地址：<a href="https://zhiyuandnc.github.io/zEKFZIKMH/">https://zhiyuandnc.github.io/zEKFZIKMH/</a><br>
+版权声明：本文为博主原创文章，转载请注明原文链接作者信息</p>
+</blockquote>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[正则表达式模拟实现C3P0读取配置文件创建Connection对象]]></title>
         <id>https://zhiyuandnc.github.io/UBe69VI0p/</id>
