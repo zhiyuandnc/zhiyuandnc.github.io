@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhiyuandnc.github.io</id>
     <title>无他，唯手熟尔</title>
-    <updated>2021-01-06T09:46:41.074Z</updated>
+    <updated>2021-01-06T09:49:23.894Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhiyuandnc.github.io"/>
     <link rel="self" href="https://zhiyuandnc.github.io/atom.xml"/>
@@ -66,7 +66,7 @@
                 if(i%2!=0){
                     flag = -flag;
                 }
-                graphics.drawString(String.valueOf(code.charAt(pos)),i*50+5,height/2+flag*(10-i-1));
+                graphics.drawString(String.valueOf(code.charAt(pos)),i*50+5,height/2+flag*(10-i));
             }
         }
         //绘制干扰线
