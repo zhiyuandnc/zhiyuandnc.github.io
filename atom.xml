@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhiyuandnc.github.io</id>
     <title>无他，唯手熟尔</title>
-    <updated>2021-01-07T03:01:26.393Z</updated>
+    <updated>2021-01-07T03:03:42.864Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhiyuandnc.github.io"/>
     <link rel="self" href="https://zhiyuandnc.github.io/atom.xml"/>
@@ -28,7 +28,7 @@
 </thead>
 <tbody>
 <tr>
-<td>.*（ 二进制流，不知道下载文件类型）</td>
+<td>.*（ 字节流，未知下载文件类型时使用）</td>
 <td>application/octet-stream</td>
 <td>.tif</td>
 <td>image/tiff</td>
