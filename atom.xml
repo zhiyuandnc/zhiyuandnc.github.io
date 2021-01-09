@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhiyuandnc.github.io</id>
     <title>无他，唯手熟尔</title>
-    <updated>2021-01-09T15:02:45.503Z</updated>
+    <updated>2021-01-09T15:05:48.638Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhiyuandnc.github.io"/>
     <link rel="self" href="https://zhiyuandnc.github.io/atom.xml"/>
@@ -24,57 +24,57 @@
 </code></pre>
 <h2 id="二-不同尺寸的图片">二、不同尺寸的图片</h2>
 <pre><code class="language-html">&lt;!-- 迷你图片 --&gt;
-			&lt;div class=&quot;ui block header&quot;&gt;ui-mini-image&lt;/div&gt;
-			&lt;div class=&quot;ui mini image&quot;&gt;
-				&lt;img src=&quot;./img/image.png&quot; alt=&quot;&quot;&gt;
-			&lt;/div&gt;
+&lt;div class=&quot;ui block header&quot;&gt;ui-mini-image&lt;/div&gt;
+&lt;div class=&quot;ui mini image&quot;&gt;
+    &lt;img src=&quot;./img/image.png&quot; alt=&quot;&quot;&gt;
+&lt;/div&gt;
 &lt;!-- 较小图片 --&gt;
-			&lt;div class=&quot;ui block header&quot;&gt;ui-tiny-image&lt;/div&gt;
-			&lt;div class=&quot;ui tiny image&quot;&gt;
-				&lt;img src=&quot;./img/image.png&quot; alt=&quot;&quot;&gt;
-			&lt;/div&gt;
+&lt;div class=&quot;ui block header&quot;&gt;ui-tiny-image&lt;/div&gt;
+&lt;div class=&quot;ui tiny image&quot;&gt;
+    &lt;img src=&quot;./img/image.png&quot; alt=&quot;&quot;&gt;
+&lt;/div&gt;
 &lt;!-- 小图片 --&gt;
-			&lt;div class=&quot;ui block header&quot;&gt;ui-small-image&lt;/div&gt;
-			&lt;div class=&quot;ui small image&quot;&gt;
-				&lt;img src=&quot;./img/image.png&quot; alt=&quot;&quot; title=&quot;小图片&quot;&gt;
-			&lt;/div&gt;
+&lt;div class=&quot;ui block header&quot;&gt;ui-small-image&lt;/div&gt;
+&lt;div class=&quot;ui small image&quot;&gt;
+    &lt;img src=&quot;./img/image.png&quot; alt=&quot;&quot; title=&quot;小图片&quot;&gt;
+&lt;/div&gt;
 &lt;!-- 中等图片 --&gt;
-			&lt;div class=&quot;ui block header&quot;&gt;ui-medium-image&lt;/div&gt;
-			&lt;div class=&quot;ui medium image&quot;&gt;
-				&lt;img src=&quot;./img/image.png&quot; alt=&quot;&quot; title=&quot;中等图片&quot;&gt;
-			&lt;/div&gt;
+&lt;div class=&quot;ui block header&quot;&gt;ui-medium-image&lt;/div&gt;
+&lt;div class=&quot;ui medium image&quot;&gt;
+    &lt;img src=&quot;./img/image.png&quot; alt=&quot;&quot; title=&quot;中等图片&quot;&gt;
+&lt;/div&gt;
 &lt;!-- 大图片 --&gt;
-			&lt;div class=&quot;ui block header&quot;&gt;ui-large-image&lt;/div&gt;
-			&lt;div class=&quot;ui large image&quot;&gt;
-				&lt;img src=&quot;./img/image.png&quot; alt=&quot;&quot;&gt;
-			&lt;/div&gt;
+&lt;div class=&quot;ui block header&quot;&gt;ui-large-image&lt;/div&gt;
+&lt;div class=&quot;ui large image&quot;&gt;
+    &lt;img src=&quot;./img/image.png&quot; alt=&quot;&quot;&gt;
+&lt;/div&gt;
 &lt;!-- 较大图片 --&gt;
-			&lt;div class=&quot;ui block header&quot;&gt;ui-big-image&lt;/div&gt;
-			&lt;div class=&quot;ui big image&quot;&gt;
-				&lt;img src=&quot;./img/image.png&quot; alt=&quot;&quot;&gt;
-			&lt;/div&gt;
+&lt;div class=&quot;ui block header&quot;&gt;ui-big-image&lt;/div&gt;
+&lt;div class=&quot;ui big image&quot;&gt;
+    &lt;img src=&quot;./img/image.png&quot; alt=&quot;&quot;&gt;
+&lt;/div&gt;
 &lt;!-- 巨大图片 --&gt;
-			&lt;div class=&quot;ui block header&quot;&gt;ui-huge-image&lt;/div&gt;
-			&lt;div class=&quot;ui huge image&quot;&gt;
-				&lt;img src=&quot;./img/image.png&quot; alt=&quot;&quot;&gt;
-			&lt;/div&gt;
+&lt;div class=&quot;ui block header&quot;&gt;ui-huge-image&lt;/div&gt;
+&lt;div class=&quot;ui huge image&quot;&gt;
+    &lt;img src=&quot;./img/image.png&quot; alt=&quot;&quot;&gt;
+&lt;/div&gt;
 &lt;!-- 最大图片 --&gt;
-			&lt;div class=&quot;ui block header&quot;&gt;ui-massive-image&lt;/div&gt;
-			&lt;div class=&quot;ui massive image&quot;&gt;
-				&lt;img src=&quot;./img/image.png&quot; alt=&quot;&quot;&gt;
-			&lt;/div&gt;            
+&lt;div class=&quot;ui block header&quot;&gt;ui-massive-image&lt;/div&gt;
+&lt;div class=&quot;ui massive image&quot;&gt;
+    &lt;img src=&quot;./img/image.png&quot; alt=&quot;&quot;&gt;
+&lt;/div&gt;            
 </code></pre>
 <h2 id="三-不同状态的图片">三、不同状态的图片</h2>
 <pre><code class="language-html">&lt;!-- 隐藏的图片 --&gt;
-			&lt;div class=&quot;ui block header&quot;&gt;ui-hidden-image&lt;/div&gt;
-			&lt;div class=&quot;ui hidden image&quot;&gt;
-				&lt;img src=&quot;./img/image.png&quot; alt=&quot;&quot;&gt;
-			&lt;/div&gt;
+&lt;div class=&quot;ui block header&quot;&gt;ui-hidden-image&lt;/div&gt;
+&lt;div class=&quot;ui hidden image&quot;&gt;
+    &lt;img src=&quot;./img/image.png&quot; alt=&quot;&quot;&gt;
+&lt;/div&gt;
 &lt;!-- 禁止的图片 --&gt;
-			&lt;div class=&quot;ui block header&quot;&gt;ui-disabled-image&lt;/div&gt;
-			&lt;div class=&quot;ui disabled small image&quot;&gt;
-				&lt;img src=&quot;./img/image.png&quot; alt=&quot;&quot;&gt;
-            &lt;/div&gt;
+&lt;div class=&quot;ui block header&quot;&gt;ui-disabled-image&lt;/div&gt;
+&lt;div class=&quot;ui disabled small image&quot;&gt;
+    &lt;img src=&quot;./img/image.png&quot; alt=&quot;&quot;&gt;
+&lt;/div&gt;
 </code></pre>
 <h2 id="四-有边框的图片">四、有边框的图片</h2>
 <pre><code class="language-html">&lt;img src=&quot;./img/white-image.png&quot; alt=&quot;&quot; class=&quot;ui bordered small image&quot;&gt;
