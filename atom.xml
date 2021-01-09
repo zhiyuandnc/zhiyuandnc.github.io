@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhiyuandnc.github.io</id>
     <title>无他，唯手熟尔</title>
-    <updated>2021-01-09T15:05:48.638Z</updated>
+    <updated>2021-01-09T15:27:24.036Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhiyuandnc.github.io"/>
     <link rel="self" href="https://zhiyuandnc.github.io/atom.xml"/>
@@ -10,6 +10,167 @@
     <logo>https://zhiyuandnc.github.io/images/avatar.png</logo>
     <icon>https://zhiyuandnc.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 无他，唯手熟尔</rights>
+    <entry>
+        <title type="html"><![CDATA[SemanticUI学习（5）输入框]]></title>
+        <id>https://zhiyuandnc.github.io/T1juUwu3S/</id>
+        <link href="https://zhiyuandnc.github.io/T1juUwu3S/">
+        </link>
+        <updated>2021-01-09T15:11:51.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="一-引入资源文件">一、引入资源文件</h2>
+<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css&quot;/&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.bootcss.com/font-awesome/5.13.0/css/all.css&quot; /&gt;
+&lt;script src=&quot;https://code.jquery.com/jquery-3.1.1.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<h2 id="二-标准输入框">二、标准输入框</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui input&quot;&gt;
+    &lt;input type=&quot;text&quot; placeholder=&quot;标准输入框&quot;&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="三-聚焦输入框">三、聚焦输入框</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui focus input&quot;&gt;
+    &lt;input type=&quot;text&quot; placeholder=&quot;聚焦输入框&quot;&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="四-加载图标输入框">四、加载图标输入框</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui left icon loading input&quot;&gt;
+    &lt;input type=&quot;text&quot; placeholder=&quot;加载图标输入框&quot;&gt;
+    &lt;i class=&quot;search icon&quot;&gt;&lt;/i&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ui right icon loading input&quot;&gt;
+    &lt;input type=&quot;text&quot; placeholder=&quot;加载图标输入框&quot;&gt;
+    &lt;i class=&quot;search icon&quot;&gt;&lt;/i&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="五-不同状态输入框">五、不同状态输入框</h2>
+<pre><code class="language-html">&lt;!--禁止输入框--&gt;
+&lt;div class=&quot;ui disabled input&quot;&gt;
+    &lt;input type=&quot;text&quot; placeholder=&quot;禁止输入框&quot;&gt;
+&lt;/div&gt;
+&lt;!--错误输入框--&gt;
+&lt;div class=&quot;ui error input&quot;&gt;
+    &lt;input type=&quot;text&quot; placeholder=&quot;错误输入框&quot;&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="六-带标签输入框">六、带标签输入框</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui labeled input&quot;&gt;
+    &lt;div class=&quot;ui orange label&quot;&gt;https://&lt;/div&gt;
+    &lt;input type=&quot;text&quot; placeholder=&quot;带标签输入框&quot;&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="七-带图标输入框">七、带图标输入框</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui right icon input&quot;&gt;
+    &lt;input type=&quot;text&quot; placeholder=&quot;带图标输入框&quot;&gt;
+    &lt;i class=&quot;search icon&quot;&gt;&lt;/i&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ui left icon input&quot;&gt;
+    &lt;input type=&quot;text&quot; placeholder=&quot;带图标输入框&quot;&gt;
+    &lt;i class=&quot;user add icon&quot;&gt;&lt;/i&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ui right icon input&quot;&gt;
+    &lt;input type=&quot;text&quot; placeholder=&quot;带图标输入框&quot;&gt;
+    &lt;i class=&quot;circular search link icon&quot;&gt;&lt;/i&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ui right icon input&quot;&gt;
+    &lt;input type=&quot;text&quot; placeholder=&quot;带图标输入框&quot;&gt;
+    &lt;i class=&quot;circular search inverted link icon&quot;&gt;&lt;/i&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="八-带下拉列表输入框">八、带下拉列表输入框</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui right labeled input&quot;&gt;
+    &lt;input type=&quot;text&quot; placeholder=&quot;带下拉列表输入框&quot;&gt;
+    &lt;div class=&quot;ui dropdown label&quot;&gt;
+        &lt;div class=&quot;text&quot;&gt;.com&lt;/div&gt;
+        &lt;i class=&quot;dropdown icon&quot;&gt;&lt;/i&gt;
+        &lt;div class=&quot;menu&quot;&gt;
+            &lt;div class=&quot;item&quot;&gt;.com&lt;/div&gt;
+            &lt;div class=&quot;item&quot;&gt;.cn&lt;/div&gt;
+            &lt;div class=&quot;item&quot;&gt;.org&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="九-图标标签输入框">九、图标+标签输入框</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui right labeled left icon input&quot;&gt;
+    &lt;i class=&quot;tags icon&quot;&gt;&lt;/i&gt;
+    &lt;input type=&quot;text&quot; placeholder=&quot;图标标签组合&quot;&gt;
+    &lt;div class=&quot;ui tag green label&quot;&gt;添加标签&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="十-角落图标输入框">十、角落图标输入框</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui left corner labeled input&quot;&gt;
+    &lt;input type=&quot;text&quot; placeholder=&quot;搜索...&quot;&gt;
+    &lt;div class=&quot;ui left corner red label&quot;&gt;
+        &lt;i class=&quot;search icon&quot;&gt;&lt;/i&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;ui right corner labeled input&quot;&gt;
+    &lt;input type=&quot;text&quot; placeholder=&quot;搜索...&quot;&gt;
+        &lt;div class=&quot;ui right corner red label&quot;&gt;
+            &lt;i class=&quot;search icon&quot;&gt;&lt;/i&gt;
+        &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="十一-带按钮的输入框">十一、带按钮的输入框</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui action input&quot;&gt;
+    &lt;input type=&quot;text&quot; placeholder=&quot;搜索...&quot;&gt;
+    &lt;button class=&quot;ui icon button&quot;&gt;
+        &lt;i class=&quot;search icon&quot;&gt;&lt;/i&gt;
+    &lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="十二-透明输入框">十二、透明输入框</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui transparent input&quot;&gt;
+    &lt;input type=&quot;text&quot; placeholder=&quot;搜索...&quot;&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;ui transparent right icon input&quot;&gt;
+    &lt;input type=&quot;text&quot; placeholder=&quot;搜索...&quot;&gt; 
+    &lt;i class=&quot;search icon&quot;&gt;&lt;/i&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;ui transparent left icon input&quot;&gt;
+    &lt;input type=&quot;text&quot; placeholder=&quot;搜索&quot;&gt;
+    &lt;i class=&quot;search icon&quot;&gt;&lt;/i&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="十三-适应容器输入框">十三、适应容器输入框</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui fluid right icon input&quot;&gt;
+    &lt;input type=&quot;text&quot; placeholder=&quot;搜索&quot;&gt;
+    &lt;i class=&quot;search icon&quot;&gt;&lt;/i&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="十四-不同尺寸输入框">十四、不同尺寸输入框</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui mini input&quot;&gt;
+    &lt;input type=&quot;text&quot; placeholder=&quot;mini输入框&quot;&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ui tiny input&quot;&gt;
+    &lt;input type=&quot;text&quot; placeholder=&quot;tiny输入框&quot;&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ui small input&quot;&gt;
+    &lt;input type=&quot;text&quot; placeholder=&quot;small输入框&quot;&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ui medium input&quot;&gt;
+    &lt;input type=&quot;text&quot; placeholder=&quot;medium输入框&quot;&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ui large input&quot;&gt;
+    &lt;input type=&quot;text&quot; placeholder=&quot;large输入框&quot;&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ui big input&quot;&gt;
+    &lt;input type=&quot;text&quot; placeholder=&quot;big输入框&quot;&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ui huge input&quot;&gt;
+    &lt;input type=&quot;text&quot; placeholder=&quot;huge输入框&quot;&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ui massive input&quot;&gt;
+    &lt;input type=&quot;text&quot; placeholder=&quot;massive输入框&quot;&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="十五-实际效果">十五、实际效果</h2>
+<figure data-type="image" tabindex="1"><img src="https://zhiyuandnc.github.io/post-images/1610206026222.png" alt="" loading="lazy"></figure>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[SemanticUI学习（4）图片]]></title>
         <id>https://zhiyuandnc.github.io/6S9G53Ktp/</id>
@@ -2039,170 +2200,6 @@ root
 原文作者：絷缘<br>
 作者邮箱：zhiyuandnc666@88.com<br>
 原文地址：<a href="https://zhiyuandnc.github.io/XXV7UsHKh/">https://zhiyuandnc.github.io/XXV7UsHKh/</a><br>
-版权声明：本文为博主原创文章，转载请注明原文链接作者信息</p>
-</blockquote>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[使用org.json创建/解析json格式文件]]></title>
-        <id>https://zhiyuandnc.github.io/4riCXnG78/</id>
-        <link href="https://zhiyuandnc.github.io/4riCXnG78/">
-        </link>
-        <updated>2021-01-03T05:29:19.000Z</updated>
-        <content type="html"><![CDATA[<blockquote>
-<p>本教程仅限于  <code>org.jsonv20201115</code> + <code>jdk1.8</code></p>
-</blockquote>
-<h2 id="一-在pomxml中加入orgjson的依赖文件">一、在pom.xml中加入org.json的依赖文件</h2>
-<pre><code class="language-xml">&lt;!-- https://mvnrepository.com/artifact/org.json/json --&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;org.json&lt;/groupId&gt;
-    &lt;artifactId&gt;json&lt;/artifactId&gt;
-    &lt;version&gt;20201115&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
-<h2 id="二-书写代码使用无参构造创建json格式文本">二、书写代码，使用无参构造创建Json格式文本</h2>
-<pre><code class="language-java">public static String createJsonText(){
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put(&quot;name&quot;,&quot;絷缘&quot;);
-        jsonObject.put(&quot;age&quot;,23);
-        jsonObject.put(&quot;gender&quot;,&quot;male&quot;);
-        jsonObject.put(&quot;now_time&quot;,new SimpleDateFormat(&quot;yyyy-MM-dd kk:mm:ss&quot;).format(new Date(System.currentTimeMillis())));
-        jsonObject.put(&quot;skills&quot;,new String[]{&quot;Java&quot;,&quot;Linux&quot;,&quot;JavaScript&quot;,&quot;Vue&quot;,&quot;SemanticUI&quot;,&quot;NodeJS&quot;});
-        jsonObject.put(&quot;has_house&quot;,false);
-        jsonObject.put(&quot;has_car&quot;,false);
-        return jsonObject.toString();
-}
-</code></pre>
-<h2 id="三-书写代码使用有参构造传入hashmap对象创建json格式文本">三、书写代码，使用有参构造传入HashMap对象创建Json格式文本</h2>
-<pre><code class="language-java">public static String createJsonByMap(){
-        HashMap&lt;String, Object&gt; hashMap = new HashMap&lt;String, Object&gt;();
-        hashMap.put(&quot;name&quot;,&quot;絷缘&quot;);
-        hashMap.put(&quot;age&quot;,23);
-        hashMap.put(&quot;gender&quot;,&quot;male&quot;);
-        hashMap.put(&quot;now_time&quot;,new SimpleDateFormat(&quot;yyyy-MM-dd kk:mm:ss&quot;).format(new Date(System.currentTimeMillis())));
-        hashMap.put(&quot;skills&quot;,new String[]{&quot;Java&quot;,&quot;Linux&quot;,&quot;JavaScript&quot;,&quot;Vue&quot;,&quot;SemanticUI&quot;,&quot;NodeJS&quot;});
-        hashMap.put(&quot;has_house&quot;,false);
-        hashMap.put(&quot;has_car&quot;,false);
-        JSONObject jsonObject = new JSONObject(hashMap);
-        return jsonObject.toString();
-    }
-</code></pre>
-<h2 id="四-书写代码封装javabean实现创建json格式文本">四、书写代码，封装JavaBean实现创建Json格式文本</h2>
-<pre><code class="language-java">import java.util.Arrays;
-
-public class Person {
-    private String name;
-    private int age;
-    private String gender;
-    private boolean has_house;
-    private boolean has_car;
-    private String [] skills;
-    public Person(){}
-    public Person(String name, int age, String gender, boolean has_house, boolean has_car, String[] skills) {
-        this.name = name;
-        this.age = age;
-        this.gender = gender;
-        this.has_house = has_house;
-        this.has_car = has_car;
-        this.skills = skills;
-    }
-    public String getName() {
-        return name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public boolean isHas_house() {
-        return has_house;
-    }
-
-    public boolean isHas_car() {
-        return has_car;
-    }
-
-    public String[] getSkills() {
-        return skills;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public void setHas_house(boolean has_house) {
-        this.has_house = has_house;
-    }
-
-    public void setHas_car(boolean has_car) {
-        this.has_car = has_car;
-    }
-
-    public void setSkills(String[] skills) {
-        this.skills = skills;
-    }
-}
-</code></pre>
-<pre><code class="language-java">public static String createJsonByBean(){
-        Person person = new Person(&quot;絷缘&quot;, 23, &quot;male&quot;, false, false, new String[]{&quot;Java&quot;, &quot;Linux&quot;, &quot;JavaScript&quot;, &quot;Vue&quot;, &quot;SemanticUI&quot;, &quot;NodeJS&quot;});
-        JSONObject jsonObject = new JSONObject(person);
-        return jsonObject.toString();
-    }
-</code></pre>
-<h2 id="书写代码实现解析json文本">书写代码，实现解析Json文本</h2>
-<p><code>需要自己创建文件person.json置于src目录（普通项目）或resources目录下（Maven项目）</code></p>
-<pre><code class="language-json">{
-  &quot;skills&quot;: [
-    &quot;Java&quot;,
-    &quot;Linux&quot;,
-    &quot;JavaScript&quot;,
-    &quot;Vue&quot;,
-    &quot;SemanticUI&quot;,
-    &quot;NodeJS&quot;
-  ],
-  &quot;has_car&quot;: false,
-  &quot;gender&quot;: &quot;male&quot;,
-  &quot;name&quot;: &quot;絷缘&quot;,
-  &quot;has_house&quot;: false,
-  &quot;age&quot;: 23
-}
-</code></pre>
-<p><code>为了方便看代码，文章中出现的异常我都会抛出</code></p>
-<pre><code class="language-java">public static void parseJson() throws IOException {
-        InputStream is = JsonDemo1.class.getClassLoader().getResourceAsStream(&quot;person.json&quot;);
-        BufferedReader br = new BufferedReader(new InputStreamReader(is, &quot;UTF-8&quot;));
-        StringBuilder sb = new StringBuilder();
-        String content;
-        while((content=br.readLine())!=null){
-            sb.append(content);
-        }
-        System.out.println(sb.toString());
-        JSONObject jsonObject = new JSONObject(sb.toString());
-        System.out.println(jsonObject.getString(&quot;name&quot;));
-        System.out.println(jsonObject.getJSONArray(&quot;skills&quot;));
-        System.out.println(jsonObject.getString(&quot;gender&quot;));
-        System.out.println(jsonObject.getInt(&quot;age&quot;));
-        System.out.println(jsonObject.getBoolean(&quot;has_house&quot;));
-        System.out.println(jsonObject.getBoolean(&quot;has_car&quot;));
-    }
-</code></pre>
-<blockquote>
-<p>本人写博客，喜欢纯手打，以上配置文件或代码均不是复制粘贴，所以可能会有错误，如果发现，请指正！多谢！🤝<br>
-原文作者：絷缘<br>
-作者邮箱：zhiyuandnc666@88.com<br>
-原文地址：<a href="https://zhiyuandnc.github.io/4riCXnG78/">https://zhiyuandnc.github.io/4riCXnG78/</a><br>
 版权声明：本文为博主原创文章，转载请注明原文链接作者信息</p>
 </blockquote>
 ]]></content>
