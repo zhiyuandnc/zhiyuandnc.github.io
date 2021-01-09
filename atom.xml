@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhiyuandnc.github.io</id>
     <title>无他，唯手熟尔</title>
-    <updated>2021-01-09T13:38:37.774Z</updated>
+    <updated>2021-01-09T13:47:46.349Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhiyuandnc.github.io"/>
     <link rel="self" href="https://zhiyuandnc.github.io/atom.xml"/>
@@ -37,6 +37,16 @@
 		<div class="ui big button">较大按钮</div>
 		<div class="ui huge button">巨大按钮</div>
 		<div class="ui massive button">最大按钮</div>		
+        <pre>
+        		<div class="ui button">默认大小</div>
+		        <div class="ui mini button">迷你按钮</div>
+		        <div class="ui tiny button">较小按钮</div>
+                <div class="ui small button">小按钮</div>
+                <div class="ui large button">大按钮</div>
+                <div class="ui big button">较大按钮</div>
+                <div class="ui huge button">巨大按钮</div>
+                <div class="ui massive button">最大按钮</div>		
+        </pre>
 		<hr>
 		<p>按钮（不同级别的颜色）</p>
 		<hr>
