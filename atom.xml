@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhiyuandnc.github.io</id>
     <title>无他，唯手熟尔</title>
-    <updated>2021-01-11T12:34:15.267Z</updated>
+    <updated>2021-01-11T12:51:29.371Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhiyuandnc.github.io"/>
     <link rel="self" href="https://zhiyuandnc.github.io/atom.xml"/>
@@ -10,6 +10,216 @@
     <logo>https://zhiyuandnc.github.io/images/avatar.png</logo>
     <icon>https://zhiyuandnc.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 无他，唯手熟尔</rights>
+    <entry>
+        <title type="html"><![CDATA[SemanticUI学习（12）段落]]></title>
+        <id>https://zhiyuandnc.github.io/06BP2pOk4/</id>
+        <link href="https://zhiyuandnc.github.io/06BP2pOk4/">
+        </link>
+        <updated>2021-01-11T12:50:26.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="一-引入资源文件">一、引入资源文件</h2>
+<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css&quot;/&gt;
+&lt;script src=&quot;https://code.jquery.com/jquery-3.1.1.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src = &quot;https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<h2 id="二-普通段落">二、普通段落</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui segment&quot;&gt;
+	&lt;div class=&quot;ui placeholder&quot;&gt;
+		&lt;div class=&quot;image header&quot;&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;paragraph&quot;&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="三-占位符段落">三、占位符段落</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui placeholder segment&quot;&gt;
+	&lt;div class=&quot;ui icon header&quot;&gt;
+		&lt;i class=&quot;pdf file outline icon&quot;&gt;&lt;/i&gt;No documents are listened for this customer
+	&lt;/div&gt;
+	&lt;div class=&quot;ui primary button&quot;&gt;Add Document&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="四-阴影段落">四、阴影段落</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui raised segment&quot;&gt;
+	&lt;div class=&quot;ui placeholder&quot;&gt;
+		&lt;div class=&quot;image header&quot;&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;paragraph&quot;&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="五-堆叠段落">五、堆叠段落</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui stacked segment&quot;&gt;
+	&lt;div class=&quot;ui placeholder&quot;&gt;
+		&lt;div class=&quot;image header&quot;&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;paragraph&quot;&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="language-html">&lt;div class=&quot;ui tall stacked segment&quot;&gt;
+	&lt;div class=&quot;ui placeholder&quot;&gt;
+		&lt;div class=&quot;image header&quot;&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;paragraph&quot;&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="language-html">&lt;div class=&quot;ui piled segment&quot;&gt;
+	&lt;div class=&quot;ui placeholder&quot;&gt;
+		&lt;div class=&quot;image header&quot;&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;paragraph&quot;&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="六-多彩段落">六、多彩段落</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui vertical raised segments&quot;&gt;
+	&lt;div class=&quot;ui orange segment&quot;&gt;
+		&lt;p&gt;top&lt;/p&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;ui red segment&quot;&gt;
+		&lt;p&gt;center&lt;/p&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;ui green segment&quot;&gt;
+		&lt;p&gt;center&lt;/p&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;ui violet segment&quot;&gt;
+		&lt;p&gt;center&lt;/p&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;ui blue segment&quot;&gt;
+		&lt;p&gt;bottom&lt;/p&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="language-html">&lt;div class=&quot;ui horizontal raised segments&quot;&gt;
+	&lt;div class=&quot;ui orange segment&quot;&gt;
+		&lt;p&gt;top&lt;/p&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;ui red segment&quot;&gt;
+		&lt;p&gt;center&lt;/p&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;ui green segment&quot;&gt;
+		&lt;p&gt;center&lt;/p&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;ui violet segment&quot;&gt;
+		&lt;p&gt;center&lt;/p&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;ui blue segment&quot;&gt;
+		&lt;p&gt;bottom&lt;/p&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="七-带加载器段落">七、带加载器段落</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui loading segment&quot;&gt;
+	&lt;div class=&quot;ui placeholder&quot;&gt;
+		&lt;div class=&quot;image header&quot;&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;paragraph&quot;&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="八-反转段落">八、反转段落</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui inverted segment&quot;&gt;
+	&lt;div class=&quot;ui inverted placeholder&quot;&gt;
+		&lt;div class=&quot;image header&quot;&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;paragraph&quot;&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="九-垂直附加段落">九、垂直附加段落</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui top attached segment&quot;&gt;
+	&lt;div class=&quot;ui header&quot;&gt;top&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ui inverted attached segment&quot;&gt;
+	&lt;div class=&quot;ui inverted placeholder&quot;&gt;
+		&lt;div class=&quot;image header&quot;&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;paragraph&quot;&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ui bottom attached segment&quot;&gt;
+	&lt;div class=&quot;ui header&quot;&gt;bottom&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="十-分级内容段落">十、分级内容段落</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui secondary inverted green segment&quot;&gt;
+	&lt;p&gt;二级分级颜色展示&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ui tertiary inverted green segment&quot;&gt;
+	&lt;p&gt;三级分级颜色展示&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ui inverted green segment&quot;&gt;
+	&lt;p&gt;默认分级颜色展示&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="十一-圆形段落">十一、圆形段落</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui red inverted circular segment&quot;&gt;
+	&lt;div class=&quot;ui inverted header&quot;&gt;
+		现在购买&lt;div class=&quot;sub header&quot;&gt;只要$998&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="十二-实际效果">十二、实际效果</h2>
+<figure data-type="image" tabindex="1"><img src="https://zhiyuandnc.github.io/post-images/1610369464880.png" alt="" loading="lazy"></figure>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[SemanticUI学习（10）揭示效果]]></title>
         <id>https://zhiyuandnc.github.io/6TaBTojkN/</id>
@@ -3304,30 +3514,6 @@
 </code></pre>
 <h2 id="九-实际效果">九、实际效果</h2>
 <figure data-type="image" tabindex="1"><img src="https://zhiyuandnc.github.io/post-images/1610203481276.png" alt="" loading="lazy"></figure>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[SemanticUI学习（2）分割线]]></title>
-        <id>https://zhiyuandnc.github.io/P7fMkbvf8/</id>
-        <link href="https://zhiyuandnc.github.io/P7fMkbvf8/">
-        </link>
-        <updated>2021-01-09T14:27:29.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="一-导入资源文件">一、导入资源文件</h2>
-<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css&quot;/&gt;
-&lt;script src=&quot;https://code.jquery.com/jquery-3.1.1.min.js&quot;&gt;&lt;/script&gt;
-&lt;script src = &quot;https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js&quot;&gt;&lt;/script&gt;
-</code></pre>
-<h2 id="二-普通分割线">二、普通分割线</h2>
-<pre><code class="language-html">&lt;div class=&quot;ui divider&quot;&gt;普通分割线&lt;/div&gt;
-</code></pre>
-<h2 id="三-纵向分割线">三、纵向分割线</h2>
-<pre><code class="language-html">&lt;div class=&quot;ui vertical divider&quot;&gt;纵向分割线&lt;/div&gt;
-</code></pre>
-<h2 id="四-横向分割线">四、横向分割线</h2>
-<pre><code class="language-html">&lt;div class=&quot;ui horizontal divider&quot;&gt;横向分割线&lt;/div&gt;
-</code></pre>
-<h2 id="五-实际效果">五、实际效果</h2>
-<figure data-type="image" tabindex="1"><img src="https://zhiyuandnc.github.io/post-images/1610203238461.png" alt="" loading="lazy"></figure>
 ]]></content>
     </entry>
 </feed>
