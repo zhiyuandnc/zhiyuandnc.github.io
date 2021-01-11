@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhiyuandnc.github.io</id>
     <title>无他，唯手熟尔</title>
-    <updated>2021-01-11T12:51:29.371Z</updated>
+    <updated>2021-01-11T12:52:07.034Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhiyuandnc.github.io"/>
     <link rel="self" href="https://zhiyuandnc.github.io/atom.xml"/>
@@ -11,7 +11,7 @@
     <icon>https://zhiyuandnc.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 无他，唯手熟尔</rights>
     <entry>
-        <title type="html"><![CDATA[SemanticUI学习（12）段落]]></title>
+        <title type="html"><![CDATA[SemanticUI学习（11）段落]]></title>
         <id>https://zhiyuandnc.github.io/06BP2pOk4/</id>
         <link href="https://zhiyuandnc.github.io/06BP2pOk4/">
         </link>
