@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhiyuandnc.github.io</id>
     <title>无他，唯手熟尔</title>
-    <updated>2021-01-10T12:38:01.932Z</updated>
+    <updated>2021-01-11T11:51:25.320Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhiyuandnc.github.io"/>
     <link rel="self" href="https://zhiyuandnc.github.io/atom.xml"/>
@@ -10,6 +10,124 @@
     <logo>https://zhiyuandnc.github.io/images/avatar.png</logo>
     <icon>https://zhiyuandnc.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 无他，唯手熟尔</rights>
+    <entry>
+        <title type="html"><![CDATA[SemanticUI学习（8）加载器]]></title>
+        <id>https://zhiyuandnc.github.io/QDJU1dBj2/</id>
+        <link href="https://zhiyuandnc.github.io/QDJU1dBj2/">
+        </link>
+        <updated>2021-01-11T11:46:47.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="一-引入资源文件">一、引入资源文件</h2>
+<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css&quot;/&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.bootcss.com/font-awesome/5.13.0/css/all.css&quot; /&gt;
+&lt;script src=&quot;https://code.jquery.com/jquery-3.1.1.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<h2 id="二-普通加载器">二、普通加载器</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui block header&quot;&gt;普通加载器样式&lt;/div&gt;
+&lt;div class=&quot;ui raised segment&quot;&gt;
+	&lt;img src=&quot;./img/paragraph.png&quot; alt=&quot;&quot;&gt;
+	&lt;div class=&quot;ui active dimmer&quot;&gt;
+		&lt;div class=&quot;ui loader&quot;&gt;&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="三-加载器反转">三、加载器反转</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui block header&quot;&gt;加载器反转效果&lt;/div&gt;
+&lt;div class=&quot;ui raised segment&quot;&gt;
+	&lt;img src=&quot;./img/paragraph.png&quot; alt=&quot;&quot;&gt;
+	&lt;div class=&quot;ui active inverted dimmer&quot;&gt;
+		&lt;div class=&quot;ui loader&quot;&gt;&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="四-带文字描述的加载器">四、带文字描述的加载器</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui block header&quot;&gt;带文字的加载器&lt;/div&gt;
+&lt;div class=&quot;ui raised segment&quot;&gt;
+	&lt;img src=&quot;./img/paragraph.png&quot; alt=&quot;&quot;&gt;
+	&lt;div class=&quot;ui active dimmer&quot;&gt;
+		&lt;div class=&quot;ui text loader&quot;&gt;加载中&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="五-不同状态的加载器">五、不同状态的加载器</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui block header&quot;&gt;不同状态的加载器&lt;/div&gt;
+&lt;div class=&quot;ui raised segment&quot;&gt;
+	&lt;img src=&quot;./img/paragraph.png&quot; alt=&quot;&quot;&gt;
+	&lt;div class=&quot;ui active dimmer&quot;&gt;
+		&lt;div class=&quot;ui indeterminate text loader&quot;&gt;正在准备文件&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="六-加载器的显示与隐藏">六、加载器的显示与隐藏</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui block header&quot;&gt;加载器的显示与隐藏&lt;/div&gt;
+&lt;div class=&quot;ui raised segment&quot;&gt;
+	&lt;img src=&quot;./img/paragraph.png&quot; alt=&quot;&quot;&gt;
+	&lt;div class=&quot;ui active loader&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ui raised segment&quot;&gt;
+	&lt;img src=&quot;./img/paragraph.png&quot; alt=&quot;&quot;&gt;
+	&lt;div class=&quot;ui disabled loader&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="七-内联样式加载器">七、内联样式加载器</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui block header&quot;&gt;内联样式加载器&lt;/div&gt;
+&lt;div class=&quot;ui active text inline loader&quot;&gt;加载中&lt;/div&gt;
+</code></pre>
+<h2 id="八-不同尺寸加载器">八、不同尺寸加载器</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui block header&quot;&gt;不同尺寸加载器&lt;/div&gt;
+&lt;div class=&quot;ui raised segment&quot;&gt;
+	&lt;img src=&quot;./img/paragraph.png&quot; alt=&quot;&quot;&gt;
+	&lt;div class=&quot;ui active dimmer&quot;&gt;
+		&lt;div class=&quot;ui mini text loader&quot;&gt;加载中&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ui raised segment&quot;&gt;
+	&lt;img src=&quot;./img/paragraph.png&quot; alt=&quot;&quot;&gt;
+	&lt;div class=&quot;ui active dimmer&quot;&gt;
+		&lt;div class=&quot;ui tiny text loader&quot;&gt;加载中&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ui raised segment&quot;&gt;
+	&lt;img src=&quot;./img/paragraph.png&quot; alt=&quot;&quot;&gt;
+	&lt;div class=&quot;ui active dimmer&quot;&gt;
+		&lt;div class=&quot;ui small text loader&quot;&gt;加载中&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ui raised segment&quot;&gt;
+	&lt;img src=&quot;./img/paragraph.png&quot; alt=&quot;&quot;&gt;
+	&lt;div class=&quot;ui active dimmer&quot;&gt;
+		&lt;div class=&quot;ui medium text loader&quot;&gt;加载中&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ui raised segment&quot;&gt;
+	&lt;img src=&quot;./img/paragraph.png&quot; alt=&quot;&quot;&gt;
+	&lt;div class=&quot;ui active dimmer&quot;&gt;
+		&lt;div class=&quot;ui large text loader&quot;&gt;加载中&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ui raised segment&quot;&gt;
+	&lt;img src=&quot;./img/paragraph.png&quot; alt=&quot;&quot;&gt;
+	&lt;div class=&quot;ui active dimmer&quot;&gt;
+		&lt;div class=&quot;ui big text loader&quot;&gt;加载中&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ui raised segment&quot;&gt;
+	&lt;img src=&quot;./img/paragraph.png&quot; alt=&quot;&quot;&gt;
+	&lt;div class=&quot;ui active dimmer&quot;&gt;
+		&lt;div class=&quot;ui huge text loader&quot;&gt;加载中&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ui raised segment&quot;&gt;
+	&lt;img src=&quot;./img/paragraph.png&quot; alt=&quot;&quot;&gt;
+	&lt;div class=&quot;ui active dimmer&quot;&gt;
+		&lt;div class=&quot;ui massive text loader&quot;&gt;加载中&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="九-实际效果">九、实际效果</h2>
+<figure data-type="image" tabindex="1"><img src="https://zhiyuandnc.github.io/post-images/1610365740630.png" alt="" loading="lazy"></figure>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Java中所有TimeZoneID]]></title>
         <id>https://zhiyuandnc.github.io/QwkVexFfD/</id>
@@ -4399,93 +4517,6 @@
 <blockquote>
 <p>菜鸟教程链接：<a href="https://www.runoob.com/http/http-content-type.html">https://www.runoob.com/http/http-content-type.html</a><br>
 本表格为转载菜鸟教程表格内容，非本人收集，转载请注明原文链接</p>
-</blockquote>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Graphics绘制普通验证码]]></title>
-        <id>https://zhiyuandnc.github.io/zEKFZIKMH/</id>
-        <link href="https://zhiyuandnc.github.io/zEKFZIKMH/">
-        </link>
-        <updated>2021-01-06T09:20:17.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="一-创建servletdemo继承httpservlet实现doget和dopost方法">一、创建ServletDemo继承HttpServlet，实现doGet和doPost方法</h2>
-<pre><code class="language-java">@WebServlet(urlPatterns = &quot;/checkCodeServlet&quot;)
-public class CheckServlet extends HttpServlet {
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        this.doGet(request, response);
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int width = 100;
-        int height = 30;
-        String checkCodes = &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789&quot;;
-        int codeLen = 4;
-        int lineCount = 20;
-        int pointCount = 100;
-        int spacing = width/codeLen;
-        Random ran = new Random();
-        StringBuilder sb = new StringBuilder();
-        //创建画布
-        BufferedImage bufferedImage = new BufferedImage(width,height, BufferedImage.TYPE_INT_RGB);
-        //创建画笔
-        Graphics graphics = bufferedImage.createGraphics();
-        //设置画笔颜色
-        graphics.setColor(new Color(238,238,238));
-        //填充背景
-        graphics.fillRect(0,0,width,height);
-        //设置字体
-        Font font  = new Font(&quot;微软雅黑&quot;,Font.BOLD,20);
-        if(font!=null){
-            graphics.setFont(font);
-        }
-        //重设颜色
-        graphics.setColor(new Color(162,162,162));
-        //绘制干扰点
-        for (int i = 0; i &lt; pointCount; i++) {
-            int x = MyUtils.getRanNum(0,width);
-            int y = MyUtils.getRanNum(0,height);
-            graphics.drawLine(x,y,x+1,y+1);
-        }
-        //重设颜色
-        graphics.setColor(new Color(38,190,133));
-        //绘制验证码
-        for (int i = 0; i &lt; codeLen; i++) {
-            String code = String.valueOf(checkCodes.charAt(MyUtils.getRanNum(0,checkCodes.length())));
-            int x = MyUtils.getRanNum(i*spacing,Math.abs((i+1)*spacing-font.getSize()/2));
-            int y = MyUtils.getRanNum(font.getSize(),height);
-            graphics.drawString(code, x,y);
-            sb.append(code);
-            System.out.println(&quot;x:&quot;+x+&quot;\ty:&quot;+y);
-        }
-        //重设颜色
-        graphics.setColor(new Color(148,218,248));
-        //绘制干扰线
-        for (int i = 0; i &lt; lineCount; i++) {
-            int x1 = MyUtils.getRanNum(0,width);
-            int y1 = MyUtils.getRanNum(0,height);
-            int x2 = MyUtils.getRanNum(x1,width);
-            int y2 = MyUtils.getRanNum(y1,height);
-            graphics.drawLine(x1,y1,x2,y2);
-        }
-        System.out.println(sb);
-        request.getSession().setAttribute(&quot;checkCodeSession&quot;,sb.toString());
-        ImageIO.write(bufferedImage,&quot;png&quot;,response.getOutputStream());
-    }
-}
-</code></pre>
-<h2 id="二-实际效果如下">二、实际效果如下</h2>
-<figure data-type="image" tabindex="1"><img src="https://zhiyuandnc.github.io/post-images/1610245282251.png" alt="" loading="lazy"></figure>
-<blockquote>
-<p>这种验证码还是比较古老了，早已经不再安全了，写这篇文章就是为了记录一下验证码的简单绘制，不适合用于项目中的验证</p>
-</blockquote>
-<blockquote>
-<p>本人写博客，喜欢纯手打，以上配置文件或代码均不是复制粘贴，所以可能会有错误，如果发现，请指正！多谢！🤝<br>
-原文作者：絷缘<br>
-作者邮箱：zhiyuandnc666@88.com<br>
-原文地址：<a href="https://zhiyuandnc.github.io/zEKFZIKMH/">https://zhiyuandnc.github.io/zEKFZIKMH/</a><br>
-版权声明：本文为博主原创文章，转载请注明原文链接作者信息</p>
 </blockquote>
 ]]></content>
     </entry>
