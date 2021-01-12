@@ -4,7 +4,7 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>SemanticUI学习（3）标题 | 无他，唯手熟尔</title>
+<title>常用注册表自定义功能 | 无他，唯手熟尔</title>
 
 <link rel="shortcut icon" href="https://zhiyuandnc.github.io/favicon.ico?v=1610459383097">
 
@@ -98,68 +98,125 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    SemanticUI学习（3）标题
+                    常用注册表自定义功能
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2021-01-09 ·
+                        · 2021-01-12 ·
                     </time>
                     
-                        <a href="https://zhiyuandnc.github.io/semanticui/" class="post-tags">
-                            # SemanticUI
-                        </a>
-                    
-                        <a href="https://zhiyuandnc.github.io/qjuNtQyCB/" class="post-tags">
-                            # 自学
-                        </a>
-                    
-                        <a href="https://zhiyuandnc.github.io/2WP8Q3KZTb/" class="post-tags">
-                            # 前端
+                        <a href="https://zhiyuandnc.github.io/XolcFMCqP/" class="post-tags">
+                            # 注册表
                         </a>
                     
                 </div>
                 <div class="post-content">
-                    <h2 id="一-导入资源文件">一、导入资源文件</h2>
-<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css&quot;/&gt;
-&lt;script src=&quot;https://code.jquery.com/jquery-3.1.1.min.js&quot;&gt;&lt;/script&gt;
-&lt;script src = &quot;https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js&quot;&gt;&lt;/script&gt;
+                    <h2 id="一-右键创建文本文件">一、右键创建文本文件</h2>
+<pre><code class="language-shell">Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\.txt]
+
+@=&quot;txtfile&quot;
+
+&quot;Content Type&quot;=&quot;text/plain&quot;
+
+[HKEY_CLASSES_ROOT\.txt\ShellNew]
+
+&quot;NullFile&quot;=&quot;&quot; [HKEY_CLASSES_ROOT\txtfile]
+
+@=&quot;文本文档&quot;
+
+[HKEY_CLASSES_ROOT\txtfile\shell]
+
+[HKEY_CLASSES_ROOT\txtfile\shell\open]
+
+[HKEY_CLASSES_ROOT\txtfile\shell\open\command]
+
+@=&quot;NOTEPAD.EXE %1&quot;
 </code></pre>
-<h2 id="二-六级标题">二、六级标题</h2>
-<pre><code class="language-html">&lt;h1 class=&quot;ui header&quot;&gt;一级标题&lt;/h1&gt;
-&lt;h2 class=&quot;ui header&quot;&gt;二级标题&lt;/h2&gt;
-&lt;h3 class=&quot;ui header&quot;&gt;三级标题&lt;/h3&gt;
-&lt;h4 class=&quot;ui header&quot;&gt;四级标题&lt;/h4&gt;
-&lt;h5 class=&quot;ui header&quot;&gt;五级标题&lt;/h5&gt;
-&lt;h6 class=&quot;ui header&quot;&gt;六级标题&lt;/h6&gt;
+<h2 id="二-右键记事本打开">二、右键记事本打开</h2>
+<pre><code class="language-shell">Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shell\notepad]
+
+@=&quot;用记事本打开 &quot;
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shell\notepad\command]
+
+@=&quot;notepad %1&quot;
 </code></pre>
-<h2 id="三-不同尺寸标题">三、不同尺寸标题</h2>
-<pre><code class="language-html">&lt;div class=&quot;ui huge header&quot;&gt;巨型标题&lt;/div&gt;
-&lt;div class=&quot;ui large header&quot;&gt;大型标题&lt;/div&gt;
-&lt;div class=&quot;ui medium header&quot;&gt;中型标题&lt;/div&gt;
-&lt;div class=&quot;ui small header&quot;&gt;小型标题&lt;/div&gt;
-&lt;div class=&quot;ui tiny header&quot;&gt;超小标题&lt;/div&gt;
+<h2 id="三-右键查看文件hash值">三、右键查看文件Hash值</h2>
+<pre><code class="language-shell">Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\*\shell\hash]
+&quot;MUIVerb&quot;=&quot;Hash&quot;
+&quot;SubCommands&quot;=&quot;&quot;
+
+
+; SHA1
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\01menu]
+&quot;MUIVerb&quot;=&quot;SHA1&quot;
+
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\01menu\command]
+@=&quot;powershell -noexit get-filehash -literalpath '%1' -algorithm SHA1 | format-list&quot;
+
+
+; SHA256
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\02menu]
+&quot;MUIVerb&quot;=&quot;SHA256&quot;
+
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\02menu\command]
+@=&quot;powershell -noexit get-filehash -literalpath '%1' -algorithm SHA256 | format-list&quot;
+
+
+; SHA384
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\03menu]
+&quot;MUIVerb&quot;=&quot;SHA384&quot;
+
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\03menu\command]
+@=&quot;powershell -noexit get-filehash -literalpath '%1' -algorithm SHA384 | format-list&quot;
+
+
+; SHA512
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\04menu]
+&quot;MUIVerb&quot;=&quot;SHA512&quot;
+
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\04menu\command]
+@=&quot;powershell -noexit get-filehash -literalpath '%1' -algorithm SHA512 | format-list&quot;
+
+
+; MACTripleDES
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\05menu]
+&quot;MUIVerb&quot;=&quot;MACTripleDES&quot;
+
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\05menu\command]
+@=&quot;powershell -noexit get-filehash -literalpath '%1' -algorithm MACTripleDES | format-list&quot;
+
+
+; MD5
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\06menu]
+&quot;MUIVerb&quot;=&quot;MD5&quot;
+
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\06menu\command]
+@=&quot;powershell -noexit get-filehash -literalpath '%1' -algorithm MD5 | format-list&quot;
+
+
+; RIPEMD160
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\07menu]
+&quot;MUIVerb&quot;=&quot;RIPEMD160&quot;
+
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\07menu\command]
+@=&quot;powershell -noexit get-filehash -literalpath '%1' -algorithm RIPEMD160 | format-list&quot;
+
+
+; Allget-filehash -literalpath '%1' -algorithm RIPEMD160 | format-list
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\08menu]
+&quot;CommandFlags&quot;=dword:00000020
+&quot;MUIVerb&quot;=&quot;显示全部&quot;
+
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\08menu\command]
+@=&quot;powershell -noexit get-filehash -literalpath '%1' -algorithm SHA1 | format-list;get-filehash -literalpath '%1' -algorithm SHA256 | format-list;get-filehash -literalpath '%1' -algorithm SHA384 | format-list;get-filehash -literalpath '%1' -algorithm SHA512 | format-list;get-filehash -literalpath '%1' -algorithm MACTripleDES | format-list;get-filehash -literalpath '%1' -algorithm MD5 | format-list;get-filehash -literalpath '%1' -algorithm RIPEMD160 | format-list&quot;
 </code></pre>
-<h2 id="四-语义化标题">四、语义化标题</h2>
-<pre><code class="language-html">&lt;div class=&quot;ui header&quot;&gt;标题&lt;/div&gt;
-&lt;div class=&quot;sub header&quot;&gt;副标题内容&lt;/div&gt;
-</code></pre>
-<h2 id="五-带图标标题">五、带图标标题</h2>
-<pre><code class="language-html">&lt;div class=&quot;ui header&quot;&gt;
-    &lt;img src=&quot;./img/school.png&quot; alt=&quot;&quot; class=&quot;ui image&quot;&gt;
-    &lt;div class=&quot;content&quot;&gt;了解更多&lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
-<h2 id="六-块标题">六、块标题</h2>
-<pre><code class="language-html">&lt;div class=&quot;ui block header&quot;&gt;BlockHeader&lt;/div&gt;
-</code></pre>
-<h2 id="七-顶部垂直附加标题">七、顶部垂直附加标题</h2>
-<pre><code class="language-html">&lt;div class=&quot;ui top attached header&quot;&gt;顶部&lt;/div&gt;
-</code></pre>
-<h2 id="八-底部垂直附加标题">八、底部垂直附加标题</h2>
-<pre><code class="language-html">&lt;div class=&quot;ui bottom attached header&quot;&gt;底部&lt;/div&gt;
-</code></pre>
-<h2 id="九-实际效果">九、实际效果</h2>
-<figure data-type="image" tabindex="1"><img src="https://zhiyuandnc.github.io/post-images/1610203481276.png" alt="" loading="lazy"></figure>
 
                 </div>
             </article>
@@ -168,14 +225,14 @@
         
             <div class="next-post">
                 <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://zhiyuandnc.github.io/P7fMkbvf8/" class="post-title gt-a-link">
-                    SemanticUI学习（2）分割线
+                <a href="https://zhiyuandnc.github.io/SHhX20vPx/" class="post-title gt-a-link">
+                    自定义注解简单模拟Junit实现测试
                 </a>
             </div>
         
 
         
-            <span id="/wVXYh7sFa//" class="leancloud_visitors" data-flag-title="SemanticUI学习（3）标题">
+            <span id="/hab_ZN2hO//" class="leancloud_visitors" data-flag-title="常用注册表自定义功能">
                 <em class="post-meta-item-text">阅读量 </em>
                 <i class="leancloud-visitors-count">0</i>
             </span>
