@@ -4,7 +4,7 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>使用Gson创建/解析json格式文件 | 无他，唯手熟尔</title>
+<title>JS正则实现Json文本压缩去除空格效果 | 无他，唯手熟尔</title>
 
 <link rel="shortcut icon" href="https://zhiyuandnc.github.io/favicon.ico?v=1611323959878">
 
@@ -98,79 +98,129 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    使用Gson创建/解析json格式文件
+                    JS正则实现Json文本压缩去除空格效果
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2021-01-03 ·
+                        · 2021-01-22 ·
                     </time>
                     
-                        <a href="https://zhiyuandnc.github.io/05a5Tboj4/" class="post-tags">
-                            # Gson
+                        <a href="https://zhiyuandnc.github.io/js/" class="post-tags">
+                            # JS
                         </a>
                     
-                        <a href="https://zhiyuandnc.github.io/EU-phZhGZ/" class="post-tags">
-                            # JSON
+                        <a href="https://zhiyuandnc.github.io/NQ4hTFbHKX/" class="post-tags">
+                            # Regex
                         </a>
                     
-                        <a href="https://zhiyuandnc.github.io/java/" class="post-tags">
-                            # Java
+                        <a href="https://zhiyuandnc.github.io/RTDPTZadb2/" class="post-tags">
+                            # 正则表达式
                         </a>
                     
                 </div>
                 <div class="post-content">
-                    <blockquote>
-<p>本教程仅限于 <code>gsonv2.8.5</code> + <code>jdk1.8</code></p>
-</blockquote>
-<h2 id="一-在pomxml中加入gson的依赖文件">一、在pom.xml中加入gson的依赖文件</h2>
-<pre><code class="language-xml">&lt;!-- https://mvnrepository.com/artifact/com.google.code.gson/gson --&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;com.google.code.gson&lt;/groupId&gt;
-    &lt;artifactId&gt;gson&lt;/artifactId&gt;
-    &lt;version&gt;2.8.5&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
-<h2 id="二-书写代码使用无参构造创建json格式文本">二、书写代码，使用无参构造创建Json格式文本</h2>
-<p><code>此处的Person同上次的org.json一样，是一个JavaBean对象</code></p>
-<pre><code class="language-java">public static String createJsonText(){
-        Person person = new Person(&quot;絷缘&quot;, 23, &quot;male&quot;, false, false, new String[]{&quot;Java&quot;, &quot;Linux&quot;, &quot;JavaScript&quot;, &quot;Vue&quot;, &quot;SemanticUI&quot;, &quot;NodeJS&quot;});
-        Gson gson = new Gson();
-        return gson.toJson(person);
+                    <h2 id="一-准备一段测试用的json文本">一、准备一段测试用的Json文本</h2>
+<pre><code class="language-json">{
+    &quot;age&quot; : 12,
+    &quot;name&quot; : &quot;zhiyuan&quot;,
+    &quot;gender&quot; : &quot;male&quot;,
+    &quot;skill&quot; : [&quot;J a v a&quot;,&quot;C&quot;,&quot;J S&quot;,&quot;Py th on&quot;]
 }
 </code></pre>
-<h2 id="三-书写代码使用gsonbuilder在创建json之前设置高级属性">三、书写代码，使用GsonBuilder在创建Json之前设置高级属性</h2>
-<pre><code class="language-java">public static String createJsonText(){
-        Person person = new Person(&quot;絷缘&quot;, 23, &quot;male&quot;, false, false, new String[]{&quot;Java&quot;, &quot;Linux&quot;, &quot;JavaScript&quot;, &quot;Vue&quot;, &quot;SemanticUI&quot;, &quot;NodeJS&quot;});
-        GsonBuilder gson = new GsonBuilder();
-        //设置Json美化显示
-        gson.setPrettyPrinting();
-        //设置Json中key的首字母全部大写
-        gson.setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE);
-        Gson gs = gson.create();
-        return gs.toJson(person);
+<h2 id="二-去除除value值中的空白字符之外的所有空白字符">二、去除除value值中的空白字符之外的所有空白字符</h2>
+<pre><code class="language-js">function clearEmpty(){
+    var json = document.getElementById(&quot;content&quot;).value;
+    console.log(json);
+    let str = json.replace(&quot;\r\n&quot;,&quot;&quot;);
+    let newStr = str.trim().replace(/\s*\[\s*/g,&quot;\[&quot;).replace(/\s*\]\s*/g,&quot;\]&quot;).replace(/\s*\{\s*/g,&quot;\{&quot;).replace(/\s*\}\s*/g,&quot;\}&quot;).replace(/&quot;\s*:\s*&quot;/g,'&quot;:&quot;').replace(/&quot;\s*:\s*/g,'&quot;:').replace(/&quot;\s*,\s*/g,'&quot;,').replace(/,\s*&quot;/g,',&quot;').replace(/]\s*,\s*/g,&quot;],&quot;);
+    console.log(newStr);
+    document.getElementById(&quot;new-content&quot;).innerText = newStr;
 }
 </code></pre>
-<h2 id="四-书写代码使用gsonbuilder在创建json之前拥有格式化日期时间的功能">四、书写代码，使用GsonBuilder在创建Json之前拥有格式化日期时间的功能</h2>
-<pre><code class="language-java">public static String createJsonText(){
-        PersonWithBir person = new PersonWithBir(&quot;絷缘&quot;, 23, &quot;male&quot;, false, false, new String[]{&quot;Java&quot;, &quot;Linux&quot;, &quot;JavaScript&quot;, &quot;Vue&quot;, &quot;SemanticUI&quot;, &quot;NodeJS&quot;},new Date(System.currentTimeMillis()));
-        Gson gson = new GsonBuilder().setDateFormat(&quot;yyyy-MM-dd&quot;).setPrettyPrinting().create();
-        return gson.toJson(person);
-}
+<h2 id="三-写一个难看的页面">三、写一个难看的页面</h2>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Json文本格式压缩&lt;/title&gt;
+&lt;/head&gt;
+&lt;style&gt;
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family:微软雅黑,sans-serif;
+    }
+    .container{
+        width: 100%;
+        height:auto;
+        background-color:#f8f8f8;
+        padding:20px;
+        position: relative;
+    }
+    #content,#new-content{
+        width: 100%;
+        height:300px;
+        background-color: #ffffff;
+        color:#666;
+        font-size:14px;
+        outline:none;
+        border:1px solid #1DB69A;
+        border-radius:10px;
+        padding:20px;
+    }
+    button{
+        background-color:#FFFFFF;
+        color: #1DB69A;
+        height: 50px;
+        width: 150px;
+        font-size: 18px;
+        outline:none;
+        border:1px solid #1DB69A;
+        cursor: pointer;
+        border-radius:50px;
+        margin:20px;
+        position: absolute;
+        right:20px;
+        top:250px;
+    }
+    button:hover{
+        background-color:#1DB69A;
+        color: #FFFFFF;
+    }
+    button:focus{
+        background-color:#009688;
+        color:#FFFFFF;
+    }
+    .line{
+        width:980px;
+        margin:20px auto;
+        font-size:20px;
+        font-weight:bold;
+        border-left:300px solid #1DB69A;
+        border-right:300px solid #1DB69A;
+        line-height: 2px;
+        text-align: center;
+        color: #1DB69A;
+    }
+&lt;/style&gt;
+&lt;body&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;div class=&quot;line&quot;&gt;请将json格式文本粘贴到文本框中&lt;/div&gt;
+        &lt;textarea name=&quot;content&quot; cols=&quot;50&quot; rows=&quot;20&quot; id=&quot;content&quot;&gt;&lt;/textarea&gt;
+        &lt;button onclick=&quot;clearEmpty()&quot;&gt;去除所有空格&lt;/button&gt;
+        &lt;div class=&quot;line&quot;&gt;下面将生成去除空格的Json文本&lt;/div&gt;
+        &lt;textarea name=&quot;new-content&quot; id=&quot;new-content&quot; cols=&quot;50&quot; rows=&quot;20&quot; disabled&gt;&lt;/textarea&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 </code></pre>
-<h2 id="五-书写代码实现解析json格式文本">五、书写代码，实现解析Json格式文本</h2>
-<p><code>person.json需要自己创建置于src目录（普通项目）或resources目录下（Maven项目）</code></p>
-<pre><code class="language-java">public static void parseJson() throws IOException {
-        InputStream is = GsonDemo1.class.getClassLoader().getResourceAsStream(&quot;person.json&quot;);
-        BufferedReader br = new BufferedReader(new InputStreamReader(is, &quot;UTF-8&quot;));
-        Gson gson = new Gson();
-        Person person = gson.fromJson(br, Person.class);
-        System.out.println(person);
-}
-</code></pre>
+<h2 id="四-测试一下效果">四、测试一下效果</h2>
+<figure data-type="image" tabindex="1"><img src="https://zhiyuandnc.github.io/post-images/1611323854003.png" alt="" loading="lazy"></figure>
 <blockquote>
 <p>原文作者：絷缘<br>
 作者邮箱：zhiyuandnc666@88.com<br>
-原文地址：<a href="https://zhiyuandnc.github.io/XXV7UsHKh/">https://zhiyuandnc.github.io/XXV7UsHKh/</a><br>
+原文地址：<a href="https://zhiyuandnc.github.io/ZeuH4X3iy/">https://zhiyuandnc.github.io/ZeuH4X3iy/</a><br>
 版权声明：本文为博主原创文章，转载请注明原文链接作者信息</p>
 </blockquote>
 
@@ -181,14 +231,14 @@
         
             <div class="next-post">
                 <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://zhiyuandnc.github.io/4riCXnG78/" class="post-title gt-a-link">
-                    使用org.json创建/解析json格式文件
+                <a href="https://zhiyuandnc.github.io/ORutvrQMw/" class="post-title gt-a-link">
+                    CSS3新增选择器记录
                 </a>
             </div>
         
 
         
-            <span id="/XXV7UsHKh//" class="leancloud_visitors" data-flag-title="使用Gson创建/解析json格式文件">
+            <span id="/ZeuH4X3iy//" class="leancloud_visitors" data-flag-title="JS正则实现Json文本压缩去除空格效果">
                 <em class="post-meta-item-text">阅读量 </em>
                 <i class="leancloud-visitors-count">0</i>
             </span>
