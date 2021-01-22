@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhiyuandnc.github.io</id>
     <title>无他，唯手熟尔</title>
-    <updated>2021-01-22T15:10:54.646Z</updated>
+    <updated>2021-01-22T15:16:00.483Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhiyuandnc.github.io"/>
     <link rel="self" href="https://zhiyuandnc.github.io/atom.xml"/>
@@ -20,16 +20,16 @@
 <pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;layui-v2.5.7/layui/css/layui.css&quot;&gt;
 &lt;script src=&quot;layui-v2.5.7/layui/layui.js&quot;&gt;&lt;/script&gt;
 </code></pre>
-<h2 id="二-栅格系统的布局容器">二、栅格系统的布局容器</h2>
+<h2 id="二-栅格系统的布局容器-layui-container">二、栅格系统的布局容器 <code>layui-container</code></h2>
 <blockquote>
 <p>建议使用<code>layui-container</code> 作为包裹栅格系统的容器，这样可以让列在不同尺寸屏幕下可控</p>
 </blockquote>
 <pre><code class="language-html">&lt;div class=&quot;layui-container&quot;&gt;&lt;/div&gt;
 </code></pre>
-<h2 id="三-栅格系统的行容器">三、栅格系统的行容器</h2>
+<h2 id="三-栅格系统的行容器-layui-row">三、栅格系统的行容器 <code>layui-row</code></h2>
 <pre><code class="language-html">&lt;div class=&quot;layui-row&quot;&gt;&lt;/div&gt;
 </code></pre>
-<h2 id="四-栅格系统的行内空间分配">四、栅格系统的行内空间分配</h2>
+<h2 id="四-栅格系统的行内空间分配-layui-col-md列数">四、栅格系统的行内空间分配 <code>layui-col-md列数</code></h2>
 <blockquote>
 <p>在LayUI中将栅格系统分为12格，也就是说每一行会有12列的空间供我们调节内容布局，超过12列自动换行，栅格系统中的内容会根据所在屏幕尺寸完成自适应<br>
 列可以同时出现最多四种不同的组合，分别是：xs（超小屏幕，如手机）、sm（小屏幕，如平板）、md（桌面中等屏幕）、lg（桌面大型屏幕），以呈现更加动态灵活的布局。<br>
@@ -47,7 +47,7 @@
 <blockquote>
 <p>我们通过 <code>layui-col-md列数</code> 的格式可以为指定div分配指定列数的空间</p>
 </blockquote>
-<h2 id="五-为栅格系统设置列间距">五、为栅格系统设置列间距</h2>
+<h2 id="五-为栅格系统设置列间距-layui-col-space像素">五、为栅格系统设置列间距 <code>layui-col-space像素</code></h2>
 <blockquote>
 <p>LayUI的<code>layui-col-space像素</code>像素支持范围为1px~30px</p>
 </blockquote>
@@ -63,7 +63,7 @@
   &lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
-<h2 id="六-为栅格系统设置列偏移">六、为栅格系统设置列偏移</h2>
+<h2 id="六-为栅格系统设置列偏移-layui-col-md-offset列数">六、为栅格系统设置列偏移 <code>layui-col-md-offset列数</code></h2>
 <pre><code class="language-html">&lt;div class=&quot;layui-row&quot;&gt;
   &lt;div class=&quot;layui-col-md4&quot;&gt;
     占宽度的十二分之四
