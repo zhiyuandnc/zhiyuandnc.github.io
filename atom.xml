@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhiyuandnc.github.io</id>
     <title>无他，唯手熟尔</title>
-    <updated>2021-01-22T14:01:35.145Z</updated>
+    <updated>2021-01-22T15:10:54.646Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhiyuandnc.github.io"/>
     <link rel="self" href="https://zhiyuandnc.github.io/atom.xml"/>
@@ -10,6 +10,96 @@
     <logo>https://zhiyuandnc.github.io/images/avatar.png</logo>
     <icon>https://zhiyuandnc.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 无他，唯手熟尔</rights>
+    <entry>
+        <title type="html"><![CDATA[LayUI学习（2）栅格系统]]></title>
+        <id>https://zhiyuandnc.github.io/Dw2rPiHYV/</id>
+        <link href="https://zhiyuandnc.github.io/Dw2rPiHYV/">
+        </link>
+        <updated>2021-01-22T14:21:31.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="一-引入资源文件">一、引入资源文件</h2>
+<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;layui-v2.5.7/layui/css/layui.css&quot;&gt;
+&lt;script src=&quot;layui-v2.5.7/layui/layui.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<h2 id="二-栅格系统的布局容器">二、栅格系统的布局容器</h2>
+<blockquote>
+<p>建议使用<code>layui-container</code> 作为包裹栅格系统的容器，这样可以让列在不同尺寸屏幕下可控</p>
+</blockquote>
+<pre><code class="language-html">&lt;div class=&quot;layui-container&quot;&gt;&lt;/div&gt;
+</code></pre>
+<h2 id="三-栅格系统的行容器">三、栅格系统的行容器</h2>
+<pre><code class="language-html">&lt;div class=&quot;layui-row&quot;&gt;&lt;/div&gt;
+</code></pre>
+<h2 id="四-栅格系统的行内空间分配">四、栅格系统的行内空间分配</h2>
+<blockquote>
+<p>在LayUI中将栅格系统分为12格，也就是说每一行会有12列的空间供我们调节内容布局，超过12列自动换行，栅格系统中的内容会根据所在屏幕尺寸完成自适应<br>
+列可以同时出现最多四种不同的组合，分别是：xs（超小屏幕，如手机）、sm（小屏幕，如平板）、md（桌面中等屏幕）、lg（桌面大型屏幕），以呈现更加动态灵活的布局。<br>
+本教程仅以中等屏幕（md）为例展示栅格系统用法</p>
+</blockquote>
+<pre><code class="language-html">&lt;div class=&quot;layui-row&quot;&gt;
+    &lt;div class=&quot;layui-col-md5&quot;&gt;
+        占宽度的十二分之五
+    &lt;/div&gt;
+    &lt;div class=&quot;layui-col-md7&quot;&gt;
+        占宽度的十二分之七
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<blockquote>
+<p>我们通过 <code>layui-col-md列数</code> 的格式可以为指定div分配指定列数的空间</p>
+</blockquote>
+<h2 id="五-为栅格系统设置列间距">五、为栅格系统设置列间距</h2>
+<blockquote>
+<p>LayUI的<code>layui-col-space像素</code>像素支持范围为1px~30px</p>
+</blockquote>
+<pre><code class="language-html">&lt;div class=&quot;layui-row layui-col-space10&quot;&gt;
+  &lt;div class=&quot;layui-col-md4&quot;&gt;
+    占宽度的十二分之四
+  &lt;/div&gt;
+  &lt;div class=&quot;layui-col-md4&quot;&gt;
+    占宽度的十二分之四
+  &lt;/div&gt;
+  &lt;div class=&quot;layui-col-md4&quot;&gt;
+    占宽度的十二分之四
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="六-为栅格系统设置列偏移">六、为栅格系统设置列偏移</h2>
+<pre><code class="language-html">&lt;div class=&quot;layui-row&quot;&gt;
+  &lt;div class=&quot;layui-col-md4&quot;&gt;
+    占宽度的十二分之四
+  &lt;/div&gt;
+  &lt;div class=&quot;layui-col-md4 layui-col-md-offset4&quot;&gt;
+    占宽度的十二分之四，但是栅格偏移四列，所以当前div会偏移到最右侧
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="七-栅格嵌套">七、栅格嵌套</h2>
+<pre><code class="language-html">&lt;div class=&quot;layui-container&quot;&gt;
+    &lt;div class=&quot;layui-row layui-col-space10&quot;&gt;
+        &lt;div class=&quot;layui-col-md6&quot;&gt;
+            &lt;div class=&quot;layui-col-md4&quot; style=&quot;background-color:#3ace72;&quot;&gt;十二分之四&lt;/div&gt;
+            &lt;div class=&quot;layui-col-md8&quot; style=&quot;background-color:#00aae7;&quot;&gt;十二分之八&lt;/div&gt;
+            &lt;div class=&quot;layui-col-md8&quot; style=&quot;background-color:#666666;&quot;&gt;十二分之八&lt;/div&gt;
+            &lt;div class=&quot;layui-col-md4&quot; style=&quot;background-color:#00F7DE;&quot;&gt;十二分之四&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;layui-col-md6&quot;&gt;
+            &lt;div class=&quot;layui-col-md2&quot; style=&quot;background-color:#2E2D3C;&quot;&gt;十二分之二&lt;/div&gt;
+            &lt;div class=&quot;layui-col-md10&quot; style=&quot;background-color:#3c4f6b;&quot;&gt;十二分之十&lt;/div&gt;
+            &lt;div class=&quot;layui-col-md10&quot; style=&quot;background-color:#4DD89E;&quot;&gt;十二分之十&lt;/div&gt;
+            &lt;div class=&quot;layui-col-md2&quot; style=&quot;background-color:#009f95;&quot;&gt;十二分之二&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://zhiyuandnc.github.io/post-images/1611328080646.png" alt="" loading="lazy"></figure>
+<blockquote>
+<p>原文作者：絷缘<br>
+作者邮箱：zhiyuandnc666@88.com<br>
+原文地址：<a href="https://zhiyuandnc.github.io/Dw2rPiHYV/">https://zhiyuandnc.github.io/Dw2rPiHYV/</a><br>
+版权声明：本文为博主原创文章，转载请注明原文链接作者信息</p>
+</blockquote>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[JS正则实现Json文本压缩去除空格效果]]></title>
         <id>https://zhiyuandnc.github.io/ZeuH4X3iy/</id>
@@ -944,100 +1034,6 @@ public @interface MyTest {}
 </code></pre>
 <h2 id="五-实际效果">五、实际效果</h2>
 <figure data-type="image" tabindex="1"><img src="https://zhiyuandnc.github.io/post-images/1610367532989.gif" alt="" loading="lazy"></figure>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[SemanticUI学习（9）占位符]]></title>
-        <id>https://zhiyuandnc.github.io/9njMczwwO/</id>
-        <link href="https://zhiyuandnc.github.io/9njMczwwO/">
-        </link>
-        <updated>2021-01-11T12:03:04.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="一-引入资源文件">一、引入资源文件</h2>
-<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css&quot;/&gt;
-&lt;script src=&quot;https://code.jquery.com/jquery-3.1.1.min.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js&quot;&gt;&lt;/script&gt;
-</code></pre>
-<h2 id="二-普通占位符">二、普通占位符</h2>
-<pre><code class="language-html">&lt;div class=&quot;ui placeholder&quot;&gt;
-	&lt;div class=&quot;image header&quot;&gt;
-		&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-		&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-	&lt;/div&gt;
-	&lt;div class=&quot;paragraph&quot;&gt;
-		&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-		&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-		&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-		&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-		&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
-<h2 id="三-segment占位符">三、segment占位符</h2>
-<pre><code class="language-html">&lt;div class=&quot;ui raised segment&quot;&gt;
-	&lt;div class=&quot;ui placeholder&quot;&gt;
-		&lt;div class=&quot;image header&quot;&gt;
-			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-		&lt;/div&gt;
-		&lt;div class=&quot;paragraph&quot;&gt;
-			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
-<h2 id="四-不同长度占位符">四、不同长度占位符</h2>
-<pre><code class="language-html">&lt;div class=&quot;ui raised segment&quot;&gt;
-	&lt;div class=&quot;ui placeholder&quot;&gt;
-		&lt;div class=&quot;very short line&quot;&gt;&lt;/div&gt;
-		&lt;div class=&quot;short line&quot;&gt;&lt;/div&gt;
-		&lt;div class=&quot;medium line&quot;&gt;&lt;/div&gt;
-		&lt;div class=&quot;long line&quot;&gt;&lt;/div&gt;
-		&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-		&lt;div class=&quot;very long line&quot;&gt;&lt;/div&gt;
-		&lt;div class=&quot;full line&quot;&gt;&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
-<h2 id="五-适应容器占位符">五、适应容器占位符</h2>
-<pre><code class="language-html">&lt;div class=&quot;ui raised segment&quot;&gt;
-	&lt;div class=&quot;ui fluid placeholder&quot;&gt;
-		&lt;div class=&quot;image header&quot;&gt;
-			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-		&lt;/div&gt;
-		&lt;div class=&quot;paragraph&quot;&gt;
-			&lt;div class=&quot;very long line&quot;&gt;&lt;/div&gt;
-			&lt;div class=&quot;full line&quot;&gt;&lt;/div&gt;
-			&lt;div class=&quot;medium line&quot;&gt;&lt;/div&gt;
-			&lt;div class=&quot;short line&quot;&gt;&lt;/div&gt;
-			&lt;div class=&quot;long line&quot;&gt;&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
-<h2 id="六-反转占位符">六、反转占位符</h2>
-<pre><code class="language-html">&lt;div class=&quot;ui raised inverted segment&quot;&gt;
-	&lt;div class=&quot;ui inverted placeholder&quot;&gt;
-		&lt;div class=&quot;image header&quot;&gt;
-			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-		&lt;/div&gt;
-		&lt;div class=&quot;paragraph&quot;&gt;
-			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
-<h2 id="七-实际效果">七、实际效果</h2>
-<figure data-type="image" tabindex="1"><img src="https://zhiyuandnc.github.io/post-images/1610366621670.png" alt="" loading="lazy"></figure>
 ]]></content>
     </entry>
 </feed>
