@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhiyuandnc.github.io</id>
     <title>无他，唯手熟尔</title>
-    <updated>2021-01-28T11:04:40.488Z</updated>
+    <updated>2021-01-28T11:06:31.250Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhiyuandnc.github.io"/>
     <link rel="self" href="https://zhiyuandnc.github.io/atom.xml"/>
@@ -437,14 +437,13 @@ public class StaticProxyDemo implements Person{
 <ul>
 <li>依赖的类：<code>java.lang.reflect.Proxy</code></li>
 <li>使用的方法：<code>static Object newProxyInstance(ClassLoader loader,Class&lt;?&gt;[] interfaces,InvocationHandler h)</code></li>
-<li>方法参数讲解：</li>
-</ul>
-<blockquote>
-<p><code>ClassLoader loader</code>：提供被代理类的类加载器<br>
-<code>Class&lt;?&gt;[] interfaces</code>：提供被代理类实现的接口<br>
-<code>InvocationHandler h</code>：提供增强对象的功能，它是一个接口，我们需要使用匿名内部类或者lambda表达式去实现它的 invoke 方法，来达到增强对象的目的</p>
-</blockquote>
+<li>方法参数讲解：
 <ul>
+<li><code>ClassLoader loader</code>：提供被代理类的类加载器</li>
+<li><code>Class&lt;?&gt;[] interfaces</code>：提供被代理类实现的接口</li>
+<li><code>InvocationHandler h</code>：提供增强对象的功能，它是一个接口，我们需要使用匿名内部类或者lambda表达式去实现它的 invoke 方法，来达到增强对象的目的</li>
+</ul>
+</li>
 <li>invoke方法参数详解
 <ul>
 <li>Object invoke(Object proxy, Method method, Object[] args)
@@ -501,27 +500,30 @@ public class DynamicDemo {
 &lt;/dependency&gt;
 </code></pre>
 <ul>
-<li>使用的类：<code>net.sf.cglib.proxy.Enhancer</code></li>
-<li>使用的方法：<code>static Object create(Class type, Callback callback)</code></li>
-<li>方法参数详解：</li>
-</ul>
-<blockquote>
-<p><code>Class type</code>：提供被代理类的字节码文件对象<br>
-<code>Callback callback</code>：提供增强对象的功能，它是一个顶层接口，我们需要通过多态去实现它的子接口<br>
-<code>MethodInterceptor</code>并重写其中的<code>intercept</code>方法</p>
-</blockquote>
-<ul>
-<li>intercept方法参数详解</li>
 <li>
+<p>使用的类：<code>net.sf.cglib.proxy.Enhancer</code></p>
+</li>
+<li>
+<p>使用的方法：<code>static Object create(Class type, Callback callback)</code></p>
+</li>
+<li>
+<p>方法参数详解：</p>
 <ul>
-<li><code>Object intercept(Object obj, java.lang.reflect.Method method, Object[] args, MethodProxy proxy)</code>
+<li><code>Class type</code>：提供被代理类的字节码文件对象</li>
+<li><code>Callback callback</code>：提供增强对象的功能，它是一个顶层接口，我们需要通过多态去实现它的子接口</li>
+<li><code>MethodInterceptor</code>并重写其中的<code>intercept</code>方法</li>
+</ul>
+</li>
+<li>
+<p>intercept方法参数详解</p>
+</li>
+<li>
+<p><code>Object intercept(Object obj, java.lang.reflect.Method method, Object[] args, MethodProxy proxy)</code></p>
 <ul>
 <li><code>Object obj</code>：与JDK代理相同，都是代理对象的引用，一般不使用</li>
 <li><code>Method method</code>：代理类调用接口中方法时触发的方法对象</li>
 <li><code>Object[] args</code>：代理类调用接口中方法时传递的参数列表</li>
 <li><code>MethodProxy proxy</code>：方法的代理对象引用，一般不使用</li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
