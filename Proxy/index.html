@@ -6,7 +6,7 @@
 
 <title>Java的代理模式实现 | 无他，唯手熟尔</title>
 
-<link rel="shortcut icon" href="https://zhiyuandnc.github.io/favicon.ico?v=1611831988321">
+<link rel="shortcut icon" href="https://zhiyuandnc.github.io/favicon.ico?v=1611832139900">
 
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://zhiyuandnc.github.io/styles/main.css">
@@ -86,7 +86,7 @@
             
         </div>
         <div style="text-align: center">
-            <form id="gridea-search-form" style="position: relative" data-update="1611831988321" action="/search/index.html">
+            <form id="gridea-search-form" style="position: relative" data-update="1611832139900" action="/search/index.html">
                 <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
                 <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
             </form>
@@ -267,14 +267,15 @@ public class DynamicDemo {
 </li>
 <li>
 <p>intercept方法参数详解</p>
-</li>
-<li>
-<p><code>Object intercept(Object obj, java.lang.reflect.Method method, Object[] args, MethodProxy proxy)</code></p>
+<ul>
+<li><code>Object intercept(Object obj, java.lang.reflect.Method method, Object[] args, MethodProxy proxy)</code>
 <ul>
 <li><code>Object obj</code>：与JDK代理相同，都是代理对象的引用，一般不使用</li>
 <li><code>Method method</code>：代理类调用接口中方法时触发的方法对象</li>
 <li><code>Object[] args</code>：代理类调用接口中方法时传递的参数列表</li>
 <li><code>MethodProxy proxy</code>：方法的代理对象引用，一般不使用</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
