@@ -6,7 +6,7 @@
 
 <title>Java的代理模式实现 | 无他，唯手熟尔</title>
 
-<link rel="shortcut icon" href="https://zhiyuandnc.github.io/favicon.ico?v=1611831392542">
+<link rel="shortcut icon" href="https://zhiyuandnc.github.io/favicon.ico?v=1611831833766">
 
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://zhiyuandnc.github.io/styles/main.css">
@@ -86,7 +86,7 @@
             
         </div>
         <div style="text-align: center">
-            <form id="gridea-search-form" style="position: relative" data-update="1611831392542" action="/search/index.html">
+            <form id="gridea-search-form" style="position: relative" data-update="1611831833766" action="/search/index.html">
                 <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
                 <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
             </form>
@@ -193,8 +193,21 @@ public class StaticProxyDemo implements Person{
 <blockquote>
 <p><code>ClassLoader loader</code>：提供被代理类的类加载器<br>
 <code>Class&lt;?&gt;[] interfaces</code>：提供被代理类实现的接口<br>
-<code>InvocationHandler h</code>：提供增强对象的功能，它是一个接口，我们需要使用匿名内部类或者lambda表达式去实现它的 <code>invoke</code>方法，来达到增强对象的目的</p>
+<code>InvocationHandler h</code>：提供增强对象的功能，它是一个接口，我们需要使用匿名内部类或者lambda表达式去实现它的 invoke 方法，来达到增强对象的目的</p>
 </blockquote>
+<ul>
+<li>invoke方法参数详解
+<ul>
+<li>Object invoke(Object proxy, Method method, Object[] args)
+<ul>
+<li><code>Object proxy</code>：代理对象的引用，一般不使用</li>
+<li><code>Method method</code>：代理对象调用接口中方法触发的方法对象</li>
+<li><code>Object[] args</code>：代理对象调用接口中方法传递的参数列表</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <pre><code class="language-java">//创建一个接口Person
 public interface Person {
     public abstract String buy(String name);
@@ -249,12 +262,19 @@ public class DynamicDemo {
 <code>MethodInterceptor</code>并重写其中的<code>intercept</code>方法</p>
 </blockquote>
 <ul>
-<li><code>Object intercept(Object obj, java.lang.reflect.Method method, Object[] args, MethodProxy proxy)</code></li>
 <li>intercept方法参数详解</li>
+<li>
+<ul>
+<li><code>Object intercept(Object obj, java.lang.reflect.Method method, Object[] args, MethodProxy proxy)</code>
+<ul>
 <li><code>Object obj</code>：与JDK代理相同，都是代理对象的引用，一般不使用</li>
 <li><code>Method method</code>：代理类调用接口中方法时触发的方法对象</li>
 <li><code>Object[] args</code>：代理类调用接口中方法时传递的参数列表</li>
 <li><code>MethodProxy proxy</code>：方法的代理对象引用，一般不使用</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <pre><code class="language-java">//定义一个类
 public class Customer {
