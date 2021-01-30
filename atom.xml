@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhiyuandnc.github.io</id>
     <title>无他，唯手熟尔</title>
-    <updated>2021-01-30T01:06:54.756Z</updated>
+    <updated>2021-01-30T01:10:23.481Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhiyuandnc.github.io"/>
     <link rel="self" href="https://zhiyuandnc.github.io/atom.xml"/>
@@ -29,7 +29,7 @@
 &lt;/dependency&gt;
 </code></pre>
 <blockquote>
-<p>maven管理的项目我这里是不需要导入这两个依赖的，因为这两个是Tomcat自带的，但是为了防止意外情况，我还是发出来，如果你们创建的不是maven项目，那么可能需要自己去tomcat的lib目录下去找这两个JAR包，然后导入到项目中</p>
+<p>如果你们创建的不是maven项目，那么可能需要自己去tomcat的lib目录下去找这两个JAR包，然后导入到项目中</p>
 </blockquote>
 <h2 id="二-改进之前的jsp页面">二、改进之前的JSP页面</h2>
 <pre><code class="language-html">&lt;%@ page import=&quot;com.zhiyuan.utils.HttpUtils&quot; %&gt;
