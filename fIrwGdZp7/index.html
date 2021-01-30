@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
     <meta charset="utf-8"/>
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>搜索 - 无他，唯手熟尔</title>
+<title>Java原生实现DOM树解析XML文件 | 无他，唯手熟尔</title>
 
 <link rel="shortcut icon" href="https://zhiyuandnc.github.io/favicon.ico?v=1612002125763">
 
@@ -27,21 +25,12 @@
 
 
 
-    <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.0/dist/fuse.basic.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/ejs@3.1.3/ejs.min.js"></script>
-    <script src="https://zhiyuandnc.github.io/media/gridea-search/gridea-search.js"></script>
-    <script src="https://zhiyuandnc.github.io/media/gridea-search/result-template.ejs" type="text/ejs"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+ <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
 </head>
-
 <body>
-    <style>
-        .searched-keyword {
-            background-color: yellow;
-            color: red;
-        }
-    </style>
-    <div class="main gt-bg-theme-color-first">
-        <nav class="navbar navbar-expand-lg">
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
     <div class="navbar-brand">
         <img class="user-avatar" src="/images/avatar.png" alt="头像">
         <div class="site-name gt-c-content-color-first">
@@ -105,16 +94,154 @@
     </div>
 </nav>
 
-        <div id="gridea-search-result" data-update="1612002125763">
-            <div class="searching" style="font-size: 18px; margin-top: 50px;">
-                <i class="fa fa-sync-alt fa-spin"></i>&nbsp;&nbsp;搜索中......
-                <br><br>
-                <span style="font-size: 65%; color: #aaa">第一次搜索可能需要耗费较长时间构建索引，请耐心等待...</span>
-            </div>
-            <div class="no-result" style="display:none; font-size: 20px; margin-top: 50px;">
-                <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;未搜索到相关文章，请更换关键词
-            </div>
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Java原生实现DOM树解析XML文件
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2021-01-30 ·
+                    </time>
+                    
+                        <a href="https://zhiyuandnc.github.io/mDjn3cvfIJ/" class="post-tags">
+                            # XML
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="一-测试用的xml文件">一、测试用的XML文件</h2>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;bookstore&gt;
+    &lt;book id=&quot;1&quot;&gt;
+        &lt;name&gt;书1&lt;/name&gt;
+        &lt;author&gt;作者1&lt;/author&gt;
+        &lt;price&gt;￥998&lt;/price&gt;
+    &lt;/book&gt;
+    &lt;book id=&quot;2&quot;&gt;
+        &lt;name&gt;书2&lt;/name&gt;
+        &lt;author&gt;作者2&lt;/author&gt;
+        &lt;price&gt;￥998&lt;/price&gt;
+    &lt;/book&gt;
+    &lt;book id=&quot;3&quot;&gt;
+        &lt;name&gt;书3&lt;/name&gt;
+        &lt;author&gt;作者3&lt;/author&gt;
+        &lt;price&gt;￥998&lt;/price&gt;
+    &lt;/book&gt;
+&lt;/bookstore&gt;
+</code></pre>
+<h2 id="二-解析xml文件">二、解析XML文件</h2>
+<pre><code class="language-java">public class DomDemo {
+    public static void main(String[] args) {
+        InputStream inputStream = DomDemo.class.getClassLoader().getResourceAsStream(&quot;test.xml&quot;);
+        DocumentBuilderFactory dom = DocumentBuilderFactory.newInstance();
+        try {
+            DocumentBuilder domBuilder = dom.newDocumentBuilder();
+            Document document = domBuilder.parse(inputStream);
+            Element bookstore = document.getDocumentElement();
+            System.out.println(bookstore.getTagName());
+            NodeList bookList = bookstore.getElementsByTagName(&quot;book&quot;);
+            for (int i = 0; i &lt; bookList.getLength() ; i++) {
+                Node book = bookList.item(i);
+                NamedNodeMap bookAttributes = book.getAttributes();
+                for (int j = 0; j &lt; bookAttributes.getLength(); j++) {
+                    Node node = bookAttributes.item(j);
+                    if (node.getNodeType() == Node.ATTRIBUTE_NODE){
+                        System.out.println(node.getNodeName()+&quot;:&quot;+node.getNodeValue());
+                    }
+                }
+                NodeList bookChildList = book.getChildNodes();
+                for (int j = 0; j &lt; bookChildList.getLength(); j++) {
+                    Node childItem = bookChildList.item(j);
+                    if (childItem.getNodeType() == Node.ELEMENT_NODE){
+                        System.out.println(childItem.getNodeName()+&quot;:&quot;+childItem.getTextContent());
+                    }
+                }
+                System.out.println(&quot;=======================&quot;);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+<h2 id="三-太麻烦了果然jsoup太香了">三、太麻烦了，果然Jsoup太香了</h2>
+<pre><code class="language-java">bookstore
+id:1
+name:书1
+author:作者1
+price:￥998
+=======================
+id:2
+name:书2
+author:作者2
+price:￥998
+=======================
+id:3
+name:书3
+author:作者3
+price:￥998
+=======================
+</code></pre>
+<blockquote>
+<p>原文作者：絷缘<br>
+作者邮箱：zhiyuandnc666@88.com<br>
+原文地址：<a href="https://zhiyuandnc.github.io/fIrwGdZp7/">https://zhiyuandnc.github.io/fIrwGdZp7/</a><br>
+版权声明：本文为博主原创文章，转载请注明原文链接作者信息</p>
+</blockquote>
+
+                </div>
+            </article>
         </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://zhiyuandnc.github.io/AqFeWp4vE/" class="post-title gt-a-link">
+                    JSTL标签+EL表达式改进360影视采集练习案例
+                </a>
+            </div>
+        
+
+        
+            <span id="/fIrwGdZp7//" class="leancloud_visitors" data-flag-title="Java原生实现DOM树解析XML文件">
+                <em class="post-meta-item-text">阅读量 </em>
+                <i class="leancloud-visitors-count">0</i>
+            </span>
+        
+
+        
+
+        
+            <script src='https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'></script>
+
+<style>
+	div#vcomments{
+		width:100%;
+		max-width: 1000px;
+		padding: 2.5%
+	}
+</style>
+
+
+	<div id="vcomments"></div>
+
+<script>
+	new Valine({
+		el: '#vcomments',
+		appId: 'a9RyDdnO2ukMp0rFliauYwMp-gzGzoHsz',
+		appKey: 'pmOTBfC3pxhWeynVQqiFIErP',
+		avatar: '',
+		pageSize: 5,
+		recordIp: true,
+		placeholder: '来发评论吧~',
+		visitor: true,
+	});
+</script>
+
+        
+
         <div class="site-footer gt-c-content-color-first">
     <div class="slogan gt-c-content-color-first">我亦无他，唯手熟尔</div>
     <div class="social-container">
@@ -170,6 +297,6 @@
 </script>
 
     </div>
+</div>
 </body>
-
 </html>
