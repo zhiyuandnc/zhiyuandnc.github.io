@@ -4,7 +4,7 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>SemanticUI学习（9）占位符 | 无他，唯手熟尔</title>
+<title>JSTL标签+EL表达式改进360影视采集练习案例 | 无他，唯手熟尔</title>
 
 <link rel="shortcut icon" href="https://zhiyuandnc.github.io/favicon.ico?v=1611968797090">
 
@@ -98,113 +98,109 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    SemanticUI学习（9）占位符
+                    JSTL标签+EL表达式改进360影视采集练习案例
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2021-01-11 ·
+                        · 2021-01-30 ·
                     </time>
                     
-                        <a href="https://zhiyuandnc.github.io/semanticui/" class="post-tags">
-                            # SemanticUI
+                        <a href="https://zhiyuandnc.github.io/NhmdSaNuN/" class="post-tags">
+                            # 练习
                         </a>
                     
-                        <a href="https://zhiyuandnc.github.io/qjuNtQyCB/" class="post-tags">
-                            # 自学
-                        </a>
-                    
-                        <a href="https://zhiyuandnc.github.io/2WP8Q3KZTb/" class="post-tags">
-                            # 前端
+                        <a href="https://zhiyuandnc.github.io/oPMSWE43i/" class="post-tags">
+                            # 360影视
                         </a>
                     
                 </div>
                 <div class="post-content">
-                    <h2 id="一-引入资源文件">一、引入资源文件</h2>
-<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css&quot;/&gt;
-&lt;script src=&quot;https://code.jquery.com/jquery-3.1.1.min.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js&quot;&gt;&lt;/script&gt;
+                    <h2 id="一-导入jstl标签库和el表达式的依赖">一、导入JSTL标签库和EL表达式的依赖</h2>
+<pre><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;javax.servlet.jsp.jstl&lt;/groupId&gt;
+    &lt;artifactId&gt;jstl&lt;/artifactId&gt;
+    &lt;version&gt;1.2&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;javax.el&lt;/groupId&gt;
+    &lt;artifactId&gt;javax.el-api&lt;/artifactId&gt;
+    &lt;version&gt;3.0.0&lt;/version&gt;
+&lt;/dependency&gt;
 </code></pre>
-<h2 id="二-普通占位符">二、普通占位符</h2>
-<pre><code class="language-html">&lt;div class=&quot;ui placeholder&quot;&gt;
-	&lt;div class=&quot;image header&quot;&gt;
-		&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-		&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-	&lt;/div&gt;
-	&lt;div class=&quot;paragraph&quot;&gt;
-		&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-		&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-		&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-		&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-		&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-	&lt;/div&gt;
+<blockquote>
+<p>maven管理的项目我这里是不需要导入这两个依赖的，因为这两个是Tomcat自带的，但是为了防止意外情况，我还是发出来，如果你们创建的不是maven项目，那么可能需要自己去tomcat的lib目录下去找这两个JAR包，然后导入到项目中</p>
+</blockquote>
+<h2 id="二-改进之前的jsp页面">二、改进之前的JSP页面</h2>
+<pre><code class="language-html">&lt;%@ page import=&quot;com.zhiyuan.utils.HttpUtils&quot; %&gt;
+&lt;%@ page import=&quot;com.google.gson.JsonArray&quot; %&gt;
+&lt;%@ page import=&quot;com.google.gson.JsonParser&quot; %&gt;
+&lt;%@ page import=&quot;com.zhiyuan.bean.FilmInfo&quot; %&gt;
+&lt;%@ page import=&quot;java.util.ArrayList&quot; %&gt;
+&lt;%@ page import=&quot;com.google.gson.Gson&quot; %&gt;
+&lt;%@ page import=&quot;com.google.gson.JsonElement&quot; %&gt;
+&lt;%@ page contentType=&quot;text/html;charset=UTF-8&quot; language=&quot;java&quot; pageEncoding=&quot;UTF-8&quot; isELIgnored=&quot;false&quot; %&gt;
+&lt;%@ taglib prefix=&quot;c&quot; uri=&quot;http://java.sun.com/jsp/jstl/core&quot; %&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;360Video&lt;/title&gt;
+    &lt;link rel=&quot;icon&quot; href=&quot;https://www.360kan.com/favicon.ico&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;./css/style.css?v=&lt;%=Math.random()%&gt;&quot;&gt;
+    &lt;script src=&quot;./js/jquery-3.1.1.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;header&quot;&gt;
+    &lt;div class=&quot;nav&quot;&gt;360影视采集&lt;/div&gt;
 &lt;/div&gt;
-</code></pre>
-<h2 id="三-segment占位符">三、segment占位符</h2>
-<pre><code class="language-html">&lt;div class=&quot;ui raised segment&quot;&gt;
-	&lt;div class=&quot;ui placeholder&quot;&gt;
-		&lt;div class=&quot;image header&quot;&gt;
-			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-		&lt;/div&gt;
-		&lt;div class=&quot;paragraph&quot;&gt;
-			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
+&lt;div class=&quot;container&quot;&gt;
+    &lt;ul class=&quot;list&quot;&gt;
+    &lt;%
+        String data = HttpUtils.getData(&quot;https://www.360kan.com/dianying/list.php?rank=rankhot&amp;cat=all&amp;area=all&amp;act=all&amp;year=all&amp;pageno=2&amp;from=dianying_list&quot;);
+        JsonArray jsonElements = new JsonParser().parse(data).getAsJsonArray();
+        ArrayList&lt;FilmInfo&gt; filmInfos = new ArrayList&lt;&gt;();
+        Gson gson = new Gson();
+        for (JsonElement filmInfo : jsonElements) {
+            filmInfos.add(gson.fromJson(filmInfo,FilmInfo.class));
+        }
+        request.setAttribute(&quot;data&quot;,filmInfos);
+    %&gt;
+        &lt;c:forEach items=&quot;${requestScope.data}&quot; var=&quot;film&quot;&gt;
+            &lt;li&gt;
+                &lt;div class=&quot;poster&quot;&gt;
+                    &lt;img src=&quot;${film.poster}&quot;&gt;
+                    &lt;c:if test=&quot;${'付费'.equals(film.paid)}&quot;&gt;
+                        &lt;div class=&quot;paid&quot;&gt;付费&lt;/div&gt;
+                    &lt;/c:if&gt;
+                    &lt;div class=&quot;info&quot;&gt;
+                        &lt;div class=&quot;year&quot;&gt;${film.year}&lt;/div&gt;
+                        &lt;c:if test=&quot;${film.score!=null}&quot;&gt;
+                            &lt;div class=&quot;score&quot;&gt;${film.score}&lt;/div&gt;
+                        &lt;/c:if&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;detail&quot;&gt;
+                    &lt;div class=&quot;name&quot;&gt;${film.name}&lt;/div&gt;
+                    &lt;div class=&quot;star&quot;&gt;${film.star.length()&gt;12?film.star.substring(0,12).concat(&quot;...&quot;):film.star}&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/li&gt;
+        &lt;/c:forEach&gt;
+    &lt;/ul&gt;
 &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 </code></pre>
-<h2 id="四-不同长度占位符">四、不同长度占位符</h2>
-<pre><code class="language-html">&lt;div class=&quot;ui raised segment&quot;&gt;
-	&lt;div class=&quot;ui placeholder&quot;&gt;
-		&lt;div class=&quot;very short line&quot;&gt;&lt;/div&gt;
-		&lt;div class=&quot;short line&quot;&gt;&lt;/div&gt;
-		&lt;div class=&quot;medium line&quot;&gt;&lt;/div&gt;
-		&lt;div class=&quot;long line&quot;&gt;&lt;/div&gt;
-		&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-		&lt;div class=&quot;very long line&quot;&gt;&lt;/div&gt;
-		&lt;div class=&quot;full line&quot;&gt;&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
-<h2 id="五-适应容器占位符">五、适应容器占位符</h2>
-<pre><code class="language-html">&lt;div class=&quot;ui raised segment&quot;&gt;
-	&lt;div class=&quot;ui fluid placeholder&quot;&gt;
-		&lt;div class=&quot;image header&quot;&gt;
-			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-		&lt;/div&gt;
-		&lt;div class=&quot;paragraph&quot;&gt;
-			&lt;div class=&quot;very long line&quot;&gt;&lt;/div&gt;
-			&lt;div class=&quot;full line&quot;&gt;&lt;/div&gt;
-			&lt;div class=&quot;medium line&quot;&gt;&lt;/div&gt;
-			&lt;div class=&quot;short line&quot;&gt;&lt;/div&gt;
-			&lt;div class=&quot;long line&quot;&gt;&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
-<h2 id="六-反转占位符">六、反转占位符</h2>
-<pre><code class="language-html">&lt;div class=&quot;ui raised inverted segment&quot;&gt;
-	&lt;div class=&quot;ui inverted placeholder&quot;&gt;
-		&lt;div class=&quot;image header&quot;&gt;
-			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-		&lt;/div&gt;
-		&lt;div class=&quot;paragraph&quot;&gt;
-			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-			&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
-<h2 id="七-实际效果">七、实际效果</h2>
-<figure data-type="image" tabindex="1"><img src="https://zhiyuandnc.github.io/post-images/1610366621670.png" alt="" loading="lazy"></figure>
+<blockquote>
+<p>注意：在页面中若想使用JSTL标签，必须要引入JSTL标签库，EL表达式不需要引入，可以直接使用<br>
+&lt;%@ taglib prefix=&quot;c&quot; uri=&quot;http://java.sun.com/jsp/jstl/core&quot; %&gt;</p>
+</blockquote>
+<h2 id="三-实际效果和原来还是一模一样的">三、实际效果和原来还是一模一样的</h2>
+<figure data-type="image" tabindex="1"><img src="https://zhiyuandnc.github.io/post-images/1611968722793.png" alt="" loading="lazy"></figure>
+<blockquote>
+<p>原文作者：絷缘<br>
+作者邮箱：zhiyuandnc666@88.com<br>
+原文地址：<a href="https://zhiyuandnc.github.io/AqFeWp4vE/">https://zhiyuandnc.github.io/AqFeWp4vE/</a><br>
+版权声明：本文为博主原创文章，转载请注明原文链接作者信息</p>
+</blockquote>
 
                 </div>
             </article>
@@ -213,14 +209,14 @@
         
             <div class="next-post">
                 <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://zhiyuandnc.github.io/QDJU1dBj2/" class="post-title gt-a-link">
-                    SemanticUI学习（8）加载器
+                <a href="https://zhiyuandnc.github.io/360Video/" class="post-title gt-a-link">
+                    JavaWeb阶段练习：360影视数据采集
                 </a>
             </div>
         
 
         
-            <span id="/9njMczwwO//" class="leancloud_visitors" data-flag-title="SemanticUI学习（9）占位符">
+            <span id="/AqFeWp4vE//" class="leancloud_visitors" data-flag-title="JSTL标签+EL表达式改进360影视采集练习案例">
                 <em class="post-meta-item-text">阅读量 </em>
                 <i class="leancloud-visitors-count">0</i>
             </span>
