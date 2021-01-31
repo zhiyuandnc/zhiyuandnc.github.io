@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhiyuandnc.github.io</id>
-    <title>无他，唯手熟尔</title>
-    <updated>2021-01-31T10:50:36.893Z</updated>
+    <title>絷缘的博客</title>
+    <updated>2021-01-31T11:58:52.978Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhiyuandnc.github.io"/>
     <link rel="self" href="https://zhiyuandnc.github.io/atom.xml"/>
     <subtitle>我亦无他，唯手熟尔</subtitle>
     <logo>https://zhiyuandnc.github.io/images/avatar.png</logo>
     <icon>https://zhiyuandnc.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2021, 无他，唯手熟尔</rights>
+    <rights>All rights reserved 2021, 絷缘的博客</rights>
     <entry>
         <title type="html"><![CDATA[Redis数据库简单学习]]></title>
         <id>https://zhiyuandnc.github.io/WvJdcATYk/</id>
