@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhiyuandnc.github.io</id>
     <title>无他，唯手熟尔</title>
-    <updated>2021-01-31T10:34:22.533Z</updated>
+    <updated>2021-01-31T10:50:36.893Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhiyuandnc.github.io"/>
     <link rel="self" href="https://zhiyuandnc.github.io/atom.xml"/>
@@ -61,11 +61,11 @@
 <ul>
 <li>双击<code>redis-server.exe</code>运行服务端</li>
 </ul>
-<figure data-type="image" tabindex="1"><img src="http://pic.zyblog.xyz/img/typora/20210131144216.png" alt="image-20210131144208925" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="https://zhiyuandnc.github.io/post-images/1612089913395.jpg" alt="" loading="lazy"></figure>
 <ul>
 <li>双击<code>redis-cli.exe</code>运行客户端</li>
 </ul>
-<figure data-type="image" tabindex="2"><img src="http://pic.zyblog.xyz/img/typora/20210131144255.png" alt="image-20210131144255021" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://zhiyuandnc.github.io/post-images/1612089943909.jpg" alt="" loading="lazy"></figure>
 <h3 id="5-redis的学习">5. Redis的学习</h3>
 <ul>
 <li>Redis数据结构
@@ -93,14 +93,14 @@
 <li>获取：<code>get key</code></li>
 <li>删除：<code>del key</code></li>
 </ul>
-<figure data-type="image" tabindex="3"><img src="http://pic.zyblog.xyz/img/typora/20210131150333.png" alt="image-20210131150332958" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://zhiyuandnc.github.io/post-images/1612089960903.jpg" alt="" loading="lazy"></figure>
 <h3 id="7-哈希类型">7. 哈希类型</h3>
 <ul>
 <li>存储：<code>hset key field value</code></li>
 <li>获取：<code>hget key field</code> <code>hgetall key</code></li>
 <li>删除：<code>hdel key field</code></li>
 </ul>
-<figure data-type="image" tabindex="4"><img src="http://pic.zyblog.xyz/img/typora/20210131150202.png" alt="image-20210131150202407" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="https://zhiyuandnc.github.io/post-images/1612089979154.jpg" alt="" loading="lazy"></figure>
 <h3 id="8-列表类型可重复">8. 列表类型（可重复）</h3>
 <ul>
 <li>可以添加一个元素到列表的头部或者尾部</li>
@@ -123,14 +123,14 @@
 </ul>
 </li>
 </ul>
-<figure data-type="image" tabindex="5"><img src="http://pic.zyblog.xyz/img/typora/20210131152344.png" alt="image-20210131152343950" loading="lazy"></figure>
+<figure data-type="image" tabindex="5"><img src="https://zhiyuandnc.github.io/post-images/1612089997534.jpg" alt="" loading="lazy"></figure>
 <h3 id="9-集合类型无重复">9. 集合类型（无重复）</h3>
 <ul>
 <li>存储：<code>sadd key value</code></li>
 <li>获取：<code>smembers key</code>：获取set集合中所有元素</li>
 <li>删除：<code>srem key value</code>：删除set集合中的某个元素</li>
 </ul>
-<figure data-type="image" tabindex="6"><img src="http://pic.zyblog.xyz/img/typora/20210131152741.png" alt="image-20210131152741701" loading="lazy"></figure>
+<figure data-type="image" tabindex="6"><img src="https://zhiyuandnc.github.io/post-images/1612090019457.jpg" alt="" loading="lazy"></figure>
 <h3 id="10-有序集合类型有序无重复">10. 有序集合类型（有序无重复）</h3>
 <ul>
 <li>
@@ -149,14 +149,14 @@
 <p>删除：<code>zrem key value</code></p>
 </li>
 </ul>
-<figure data-type="image" tabindex="7"><img src="http://pic.zyblog.xyz/img/typora/20210131153757.png" alt="image-20210131153757495" loading="lazy"></figure>
+<figure data-type="image" tabindex="7"><img src="https://zhiyuandnc.github.io/post-images/1612090036401.jpg" alt="" loading="lazy"></figure>
 <h3 id="11-通用命令">11. 通用命令</h3>
 <ul>
 <li>查询所有的键：<code>key *</code></li>
 <li>查询指定键对应value的类型：<code>type key</code></li>
 <li>删除指定的key-value：<code>del key</code></li>
 </ul>
-<figure data-type="image" tabindex="8"><img src="http://pic.zyblog.xyz/img/typora/20210131154418.png" alt="image-20210131154418505" loading="lazy"></figure>
+<figure data-type="image" tabindex="8"><img src="https://zhiyuandnc.github.io/post-images/1612090053842.jpg" alt="" loading="lazy"></figure>
 <h3 id="12-持久化">12. 持久化</h3>
 <ul>
 <li>
@@ -201,18 +201,18 @@ save 60 10000
 # 关闭AOF
 appendonly yes
 # 开启AOF
+appendfsync always
+# 每一次操作都进行持久化
+appendfsync everysec
+# 每隔一秒进行一次持久化
+appendfsync no
+# 不进行持久化
 </code></pre>
+<ul>
+<li>重新启动Redis，并指定配置文件： <code>redis-server.exe redis.windows.conf</code></li>
+</ul>
 </li>
 </ul>
-<p>appendfsync always</p>
-<h1 id="每一次操作都进行持久化">每一次操作都进行持久化</h1>
-<p>appendfsync everysec</p>
-<h1 id="每隔一秒进行一次持久化">每隔一秒进行一次持久化</h1>
-<p>appendfsync no</p>
-<h1 id="不进行持久化">不进行持久化</h1>
-<pre><code>* 重新启动Redis，并指定配置文件： `redis-server.exe redis.windows.conf`
-
-</code></pre>
 </li>
 </ul>
 <h2 id="三-java操作redis">三、Java操作Redis</h2>
@@ -241,7 +241,7 @@ appendonly yes
 <ul>
 <li>前往客户端查看 <code>keys *</code>，可以看到password的key和值</li>
 </ul>
-<figure data-type="image" tabindex="9"><img src="http://pic.zyblog.xyz/img/typora/20210131161625.png" alt="image-20210131161624983" loading="lazy"></figure>
+<figure data-type="image" tabindex="9"><img src="https://zhiyuandnc.github.io/post-images/1612090073044.jpg" alt="" loading="lazy"></figure>
 <h3 id="2-jedis操作5种redis数据结构">2. Jedis操作5种Redis数据结构</h3>
 <ul>
 <li>操作String类型</li>
@@ -272,7 +272,7 @@ appendonly yes
     }
 }
 </code></pre>
-<figure data-type="image" tabindex="10"><img src="http://pic.zyblog.xyz/img/typora/20210131164016.png" alt="image-20210131164016158" loading="lazy"></figure>
+<figure data-type="image" tabindex="10"><img src="https://zhiyuandnc.github.io/post-images/1612090095314.jpg" alt="" loading="lazy"></figure>
 <h3 id="3-string类型常用方法">3. String类型常用方法</h3>
 <ul>
 <li><code>setex(String key,int second,String value)</code>：增加字符串数据项并指定过期时间</li>
