@@ -4,7 +4,7 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>Druid数据库连接池技术 | 絷缘的博客</title>
+<title>数组模拟实现队列 | 絷缘的博客</title>
 
 <link rel="shortcut icon" href="https://zhiyuandnc.github.io/favicon.ico?v=1612184774609">
 
@@ -98,84 +98,167 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    Druid数据库连接池技术
+                    数组模拟实现队列
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2021-01-02 ·
+                        · 2021-02-01 ·
                     </time>
                     
-                        <a href="https://zhiyuandnc.github.io/D0jYG3ohU/" class="post-tags">
-                            # Druid
+                        <a href="https://zhiyuandnc.github.io/rSXZQNF6u/" class="post-tags">
+                            # 队列
+                        </a>
+                    
+                        <a href="https://zhiyuandnc.github.io/Jmoa1nmmcE/" class="post-tags">
+                            # Queue
+                        </a>
+                    
+                        <a href="https://zhiyuandnc.github.io/datastructure/" class="post-tags">
+                            # 数据结构
                         </a>
                     
                         <a href="https://zhiyuandnc.github.io/java/" class="post-tags">
                             # Java
                         </a>
                     
-                        <a href="https://zhiyuandnc.github.io/mysql/" class="post-tags">
-                            # MySQL
-                        </a>
-                    
                 </div>
                 <div class="post-content">
-                    <blockquote>
-<p>本教程仅限于 <code>druidv1.2.4</code> + <code>mysql8.0</code> + <code>jdk1.8</code></p>
-</blockquote>
-<h2 id="一-在pomxml中加入druid依赖文件">一、在pom.xml中加入druid依赖文件</h2>
-<pre><code class="language-xml">&lt;!-- https://mvnrepository.com/artifact/com.alibaba/druid --&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
-    &lt;artifactId&gt;druid&lt;/artifactId&gt;
-    &lt;version&gt;1.2.4&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
-<h2 id="二-书写配置文件">二、书写配置文件</h2>
-<h3 id="1-druid数据库连接池技术对配置文件的命名没有要求因为它需要我们自己拿到配置文件的io流然后将io流作为参数传递创建数据库连接池对象">1. druid数据库连接池技术对配置文件的命名没有要求，因为它需要我们自己拿到配置文件的IO流，然后将IO流作为参数传递，创建数据库连接池对象</h3>
-<h3 id="2-我就以-druidproperties-配置文件为例继续讲解">2. 我就以 druid.properties 配置文件为例，继续讲解</h3>
-<pre><code class="language-properties">driverClassName=com.mysql.cj.jdbc.Driver
-url=jdbc:mysql://localhost:3306/数据库名?useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=GMT
-username=root
-password=123456
-#初始化连接数
-initialSize=5
-#最大连接数
-maxActive=10
-#超时时间
-maxWait=3000
-</code></pre>
-<h2 id="三-书写代码测试正常的数据库连接对象的获取">三、书写代码，测试正常的数据库连接对象的获取</h2>
-<p><code>为了方便看代码，我不去捕获异常，直接将异常抛出</code></p>
-<pre><code class="language-java">public class DruidDemo{
-    public static void main(String[] args) throws Exception{
-        Properties pros = new Properties();
-        pros.load(new BufferedReader(new InputStreamReader(DruidDemo.class.getClassLoader().getResourceAsStream(&quot;druid.properties&quot;),&quot;UTF-8&quot;)));
-        DataSource ds = DruidDataSourceFactory.createDataSource(pros);
-        Connection conn = ds.getConnection();
-        System.out.println(conn);
+                    <h2 id="一-队列">一、队列</h2>
+<ul>
+<li>特点：先入先出</li>
+<li>分析：因为队列队首队尾都可以操作，所以需要两个变量模拟指针 <code>front</code> 和 <code>rear</code> 分别指向首元素的前一个位置和尾元素，使用数组实现队列</li>
+<li>入队列：rear后移，元素入队</li>
+<li>出队列：front后移，元素出队</li>
+</ul>
+<h2 id="二-代码实现">二、代码实现</h2>
+<pre><code class="language-java">public class ArrayQueue{
+    /**
+     * 队列最大容量
+     */
+    private int maxSize;
+    /**
+     * 队列头指针（指向首元素的前一个位置）
+     */
+    private int front;
+    /**
+     * 队列尾指针（指向尾元素）
+     */
+    private int rear;
+    /**
+     * 数组模拟队列容器
+     */
+    private int[] arr;
+
+    /**
+     * 初始化队列
+     * @param maxSize int
+     */
+    public ArrayQueue(int maxSize){
+        this.maxSize = maxSize;
+        arr = new int[maxSize];
+        //初始化状态下头指针与尾指针相同，均为-1
+        front = rear = -1;
     }
-}
-</code></pre>
-<h2 id="四-进行一些crud操作">四、进行一些CRUD操作</h2>
-<pre><code class="language-java">public class DruidDemo{
-    public static void main(String[] args){
-        Properties pros = new Properties();
-        pros.load(new BufferedReader(new InputStreamReader(DruidDemo.class.getClassLoader().getResourceAsStream(&quot;druid.properties&quot;),&quot;UTF-8&quot;)));
-        DataSource ds = DruidDataSourceFactory.createDataSource(pros);
-        Connection conn = ds.getConnection();
-        String sql = &quot;select * from user&quot;;
-        PreparedStatement pstat = conn.prepareStatement(sql);
-        ResultSet rs = pstat.executeQuery();
-        while(rs.next()){
-            System.out.println(rs.getInt(&quot;id&quot;)+&quot;\t&quot;+rs.getString(&quot;name&quot;)+&quot;\t&quot;+rs.getInt(&quot;age&quot;)+&quot;\t&quot;+rs.getString(&quot;gender&quot;)+&quot;\t&quot;);
+
+    /**
+     * 判断队列是否已满
+     * @return boolean
+     */
+    public boolean isFull(){
+        return rear == maxSize - 1;
+    }
+
+    /**
+     * 判断队列是否为空
+     * @return boolean
+     */
+    public boolean isEmpty(){
+        return rear == front;
+    }
+
+    /**
+     * 入队列
+     * @param data int
+     */
+    public void addQueue(int data){
+        //队满不能入队
+        if(isFull()){
+            throw new RuntimeException(&quot;队列已满，无法加入数据！&quot;);
+        }
+        //rear后移，元素入队列
+        arr[++rear] = data;
+    }
+
+    /**
+     * 出队列
+     * @return int
+     */
+    public int getQueue(){
+        //队空不能出队
+        if(isEmpty()){
+            throw new RuntimeException(&quot;队列已空，无法取得数据！&quot;);
+        }
+        //front后移，元素出队列
+        return arr[++front];
+    }
+
+    /**
+     * 遍历队列所有元素
+     */
+    public void showQueue(){
+        //队空无需遍历
+        if(isEmpty()){
+            System.out.println(&quot;队列为空！&quot;);
+            return ;
+        }
+        for (int i = 0; i &lt; arr.length; i++) {
+            System.out.print(arr[i] + &quot;\t&quot;);
         }
     }
+
+    /**
+     * 获取队首元素
+     * @return int
+     */
+    public int headQueue(){
+        //队空不返回
+        if(isEmpty()){
+            throw new RuntimeException(&quot;队列为空！&quot;);
+        }
+        return arr[front+1];
+    }
 }
+</code></pre>
+<h2 id="三-测试队列功能">三、测试队列功能</h2>
+<pre><code class="language-java">public class ArrayQueueDemo {
+    public static void main(String[] args) {
+        ArrayQueue arrayQueue = new ArrayQueue(10);
+        for (int i = 0; i &lt; 10; i++) {
+            arrayQueue.addQueue(10);
+        }
+        arrayQueue.showQueue();
+        // arrayQueue.addQueue(10);
+        for (int i = 0; i &lt; 10; i++) { 
+            arrayQueue.getQueue();
+        }
+        // arrayQueue.getQueue();
+        System.out.println(arrayQueue.isEmpty());
+        System.out.println(arrayQueue.isFull());
+        System.out.println(arrayQueue.headQueue());
+    }
+}
+</code></pre>
+<h2 id="四-控制台结果">四、控制台结果</h2>
+<pre><code class="language-java">10	10	10	10	10	10	10	10	10	10	true
+true
+Exception in thread &quot;main&quot; java.lang.RuntimeException: 队列为空！
+	at com.zhiyuan.datastructure.queue.array.ArrayQueue.headQueue(ArrayQueue.java:100)
+	at com.zhiyuan.datastructure.queue.array.ArrayQueueDemo.main(ArrayQueueDemo.java:22)
 </code></pre>
 <blockquote>
 <p>原文作者：絷缘<br>
 作者邮箱：zhiyuandnc666@88.com<br>
-原文地址：<a href="https://zhiyuandnc.github.io/-gGSoZP8v/">https://zhiyuandnc.github.io/-gGSoZP8v/</a><br>
+原文地址：<a href="https://zhiyuandnc.github.io/IjOXWGTmT/">https://zhiyuandnc.github.io/IjOXWGTmT/</a><br>
 版权声明：本文为博主原创文章，转载请注明原文链接作者信息</p>
 </blockquote>
 
@@ -186,14 +269,14 @@ maxWait=3000
         
             <div class="next-post">
                 <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://zhiyuandnc.github.io/c3p0/" class="post-title gt-a-link">
-                    C3P0数据库连接池技术
+                <a href="https://zhiyuandnc.github.io/ZZGM9B12P/" class="post-title gt-a-link">
+                    稀疏数组实现棋盘存储与恢复
                 </a>
             </div>
         
 
         
-            <span id="/-gGSoZP8v//" class="leancloud_visitors" data-flag-title="Druid数据库连接池技术">
+            <span id="/IjOXWGTmT//" class="leancloud_visitors" data-flag-title="数组模拟实现队列">
                 <em class="post-meta-item-text">阅读量 </em>
                 <i class="leancloud-visitors-count">0</i>
             </span>
