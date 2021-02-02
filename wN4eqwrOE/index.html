@@ -4,7 +4,7 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>get | 絷缘的博客</title>
+<title>数组模拟实现循环队列 | 絷缘的博客</title>
 
 <link rel="shortcut icon" href="https://zhiyuandnc.github.io/favicon.ico?v=1612272056543">
 
@@ -25,11 +25,12 @@
 
 
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+ <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
 </head>
 <body>
 <div class="main gt-bg-theme-color-first">
-    <div class="main-content">
-        <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg">
     <div class="navbar-brand">
         <img class="user-avatar" src="/images/avatar.png" alt="头像">
         <div class="site-name gt-c-content-color-first">
@@ -93,61 +94,196 @@
     </div>
 </nav>
 
-        <div class="current-tag-container">
-            <h2 class="title gt-c-content-color-first">
-                #get
-            </h2>
-        </div>
-        <div class="post-list-container">
-    <div class="post-inner">
-        
-            <div class="post gt-bg-theme-color-second">
-                <div class="post-left">
-                    <div>
-                        
-                        <a href="https://zhiyuandnc.github.io/JavaHttp/">
-                            <span class="post-title gt-c-content-color-first">Java原生实现HTTP的GET和POST请求</span>
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    数组模拟实现循环队列
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2021-02-02 ·
+                    </time>
+                    
+                        <a href="https://zhiyuandnc.github.io/rSXZQNF6u/" class="post-tags">
+                            # 队列
                         </a>
-                    </div>
-                    <div class="gt-post-content post-abstract gt-c-content-color-second">
-                        
-                    </div>
-                    <div class="post-info">
-                        <time class="post-time gt-c-content-color-first">
-                            发布于 · 2021-01-15 ·
-                        </time>
-                        
-                            <a href="https://zhiyuandnc.github.io/8OyQWVfwC/" class="post-tag">
-                                # get
-                            </a>
-                        
-                            <a href="https://zhiyuandnc.github.io/WNsFqIvlCU/" class="post-tag">
-                                # post
-                            </a>
-                        
-                            <a href="https://zhiyuandnc.github.io/http/" class="post-tag">
-                                # HTTP
-                            </a>
-                        
-                            <a href="https://zhiyuandnc.github.io/java/" class="post-tag">
-                                # Java
-                            </a>
-                        
-                    </div>
+                    
+                        <a href="https://zhiyuandnc.github.io/Jmoa1nmmcE/" class="post-tags">
+                            # Queue
+                        </a>
+                    
+                        <a href="https://zhiyuandnc.github.io/datastructure/" class="post-tags">
+                            # 数据结构
+                        </a>
+                    
+                        <a href="https://zhiyuandnc.github.io/java/" class="post-tags">
+                            # Java
+                        </a>
+                    
                 </div>
-                
-                    <a href="https://zhiyuandnc.github.io/JavaHttp/" class="post-feature-image"
-                       style="background-image: url('https://zhiyuandnc.github.io/post-images/JavaHttp.jpg')">
-                    </a>
-                
+                <div class="post-content">
+                    <h2 id="一-代码实现">一、代码实现</h2>
+<pre><code class="language-java">public class CircularArrayQueue {
+    /**
+     * 队列最大容量
+     */
+    private int maxSize;
+    /**
+     * 队列头指针（指向首元素)
+     */
+    private int front;
+    /**
+     * 队列尾指针（指向尾元素的后一个位置）
+     */
+    private int rear;
+    /**
+     * 数组模拟队列容器
+     */
+    private int[] arr;
+
+    /**
+     * 初始化循环队列
+     * @param maxSize int
+     */
+    public CircularArrayQueue(int maxSize){
+        this.maxSize = maxSize;
+        arr = new int[maxSize];
+        rear = front = 0;
+    }
+
+    /**
+     * 判断队列是否已满
+     * @return isFull boolean
+     */
+    public boolean isFull(){
+        return (rear+1)%maxSize==front;
+    }
+
+    /**
+     * 判断队列是否为空
+     * @return isEmpty boolean
+     */
+    public boolean isEmpty(){
+        return rear==front;
+    }
+
+    /**
+     * 入队列
+     * @param n 元素值
+     */
+    public void addQueue(int n){
+        //队满不能入队
+        if(isFull()){
+            throw new RuntimeException(&quot;队列已满，无法加入数据！&quot;);
+        }
+        arr[rear] = n;
+        rear = (rear+1)%maxSize;
+    }
+
+    /**
+     * 出队列
+     * @return int
+     */
+    public int getQueue(){
+        //队空不能出队
+        if(isEmpty()){
+            throw new RuntimeException(&quot;队列已空，无法取得数据！&quot;);
+        }
+        int value = arr[front];
+        front = (front+1)%maxSize;
+        return value;
+    }
+
+    /**
+     * 遍历队列所有元素
+     */
+    public void showQueue(){
+        if(isEmpty()){
+            System.out.println(&quot;队列为空！&quot;);
+        }
+        for (int i = front; i &lt; front + size(); i++) {
+            System.out.println(arr[i%maxSize] + &quot;\t&quot;);
+        }
+    }
+
+    /**
+     * 获取当前队列元素个数
+     * @return size int
+     */
+    public int size(){
+        return (rear-front+maxSize)%maxSize;
+    }
+
+    /**
+     * 获取队首元素
+     * @return
+     */
+    public int headQueue(){
+        if(isEmpty()){
+            throw new RuntimeException(&quot;队列已空，无法取得数据！&quot;);
+        }
+        return arr[front];
+    }
+}
+</code></pre>
+<blockquote>
+<p>原文作者：絷缘<br>
+作者邮箱：zhiyuandnc666@88.com<br>
+原文地址：<a href="https://zhiyuandnc.github.io/wN4eqwrOE/">https://zhiyuandnc.github.io/wN4eqwrOE/</a><br>
+版权声明：本文为博主原创文章，转载请注明原文链接作者信息</p>
+</blockquote>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://zhiyuandnc.github.io/IjOXWGTmT/" class="post-title gt-a-link">
+                    数组模拟实现队列
+                </a>
             </div>
         
-    </div>
-</div>
-        <div class="pagination-container">
-    
-    
-</div>
+
+        
+            <span id="/wN4eqwrOE//" class="leancloud_visitors" data-flag-title="数组模拟实现循环队列">
+                <em class="post-meta-item-text">阅读量 </em>
+                <i class="leancloud-visitors-count">0</i>
+            </span>
+        
+
+        
+
+        
+            <script src='https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'></script>
+
+<style>
+	div#vcomments{
+		width:100%;
+		max-width: 1000px;
+		padding: 2.5%
+	}
+</style>
+
+
+	<div id="vcomments"></div>
+
+<script>
+	new Valine({
+		el: '#vcomments',
+		appId: 'a9RyDdnO2ukMp0rFliauYwMp-gzGzoHsz',
+		appKey: 'pmOTBfC3pxhWeynVQqiFIErP',
+		avatar: '',
+		pageSize: 5,
+		recordIp: true,
+		placeholder: '来发评论吧~',
+		visitor: true,
+	});
+</script>
+
+        
 
         <div class="site-footer gt-c-content-color-first">
     <div class="slogan gt-c-content-color-first">我亦无他，唯手熟尔</div>
