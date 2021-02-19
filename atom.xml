@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhiyuandnc.github.io</id>
     <title>絷缘的博客</title>
-    <updated>2021-02-06T04:27:38.653Z</updated>
+    <updated>2021-02-19T07:57:11.167Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhiyuandnc.github.io"/>
     <link rel="self" href="https://zhiyuandnc.github.io/atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://zhiyuandnc.github.io/images/avatar.png</logo>
     <icon>https://zhiyuandnc.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 絷缘的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[常用API收集（第一期：2020.2.19）]]></title>
+        <id>https://zhiyuandnc.github.io/IW8mQ0Bvy/</id>
+        <link href="https://zhiyuandnc.github.io/IW8mQ0Bvy/">
+        </link>
+        <updated>2021-02-19T07:46:23.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[数组模拟实现循环队列]]></title>
         <id>https://zhiyuandnc.github.io/wN4eqwrOE/</id>
@@ -72,12 +79,5 @@
         <link href="https://zhiyuandnc.github.io/Dw2rPiHYV/">
         </link>
         <updated>2021-01-22T14:21:31.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[JS正则实现Json文本压缩去除空格效果]]></title>
-        <id>https://zhiyuandnc.github.io/ZeuH4X3iy/</id>
-        <link href="https://zhiyuandnc.github.io/ZeuH4X3iy/">
-        </link>
-        <updated>2021-01-22T13:41:33.000Z</updated>
     </entry>
 </feed>
