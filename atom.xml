@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://zhiyuandnc.github.io</id>
+    <title>絷缘的博客</title>
+    <updated>2024-02-03T08:24:53.657Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://zhiyuandnc.github.io"/>
+    <link rel="self" href="https://zhiyuandnc.github.io/atom.xml"/>
+    <subtitle>事实不以人的意志为转移</subtitle>
+    <logo>https://zhiyuandnc.github.io/images/avatar.png</logo>
+    <icon>https://zhiyuandnc.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2024, 絷缘的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[ADB工具简单学习（一）]]></title>
+        <id>https://zhiyuandnc.github.io/gipeLHNM2/</id>
+        <link href="https://zhiyuandnc.github.io/gipeLHNM2/">
+        </link>
+        <updated>2023-05-14T14:00:10.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[CRON表达式学习]]></title>
+        <id>https://zhiyuandnc.github.io/RGEfzFph6/</id>
+        <link href="https://zhiyuandnc.github.io/RGEfzFph6/">
+        </link>
+        <updated>2023-03-07T07:57:27.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[SpringSecurity学习]]></title>
+        <id>https://zhiyuandnc.github.io/fgzXm9vap/</id>
+        <link href="https://zhiyuandnc.github.io/fgzXm9vap/">
+        </link>
+        <updated>2023-02-24T14:07:33.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Vue2复习&Vue3学习]]></title>
+        <id>https://zhiyuandnc.github.io/Vr0OXGyK8/</id>
+        <link href="https://zhiyuandnc.github.io/Vr0OXGyK8/">
+        </link>
+        <updated>2023-01-26T13:01:38.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[微服务学习]]></title>
+        <id>https://zhiyuandnc.github.io/DZ1f24lyN/</id>
+        <link href="https://zhiyuandnc.github.io/DZ1f24lyN/">
+        </link>
+        <updated>2023-01-08T13:42:07.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Docker学习（一）]]></title>
+        <id>https://zhiyuandnc.github.io/doBPQq_Z4/</id>
+        <link href="https://zhiyuandnc.github.io/doBPQq_Z4/">
+        </link>
+        <updated>2022-03-25T04:09:19.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Linux命令学习（十一）]]></title>
+        <id>https://zhiyuandnc.github.io/HTHKqujWe/</id>
+        <link href="https://zhiyuandnc.github.io/HTHKqujWe/">
+        </link>
+        <updated>2022-03-05T05:47:17.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Linux命令学习（十）]]></title>
+        <id>https://zhiyuandnc.github.io/RptKbpSRd/</id>
+        <link href="https://zhiyuandnc.github.io/RptKbpSRd/">
+        </link>
+        <updated>2022-03-02T05:44:29.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Linux命令学习（九）]]></title>
+        <id>https://zhiyuandnc.github.io/7dxxE7ipp/</id>
+        <link href="https://zhiyuandnc.github.io/7dxxE7ipp/">
+        </link>
+        <updated>2022-02-28T05:41:28.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Linux命令学习（八）]]></title>
+        <id>https://zhiyuandnc.github.io/m9qF680b6/</id>
+        <link href="https://zhiyuandnc.github.io/m9qF680b6/">
+        </link>
+        <updated>2022-02-26T05:38:52.000Z</updated>
+    </entry>
+</feed>
