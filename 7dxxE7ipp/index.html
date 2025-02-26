@@ -1,0 +1,294 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Linux命令学习（九） | 絷缘的博客</title>
+
+<link rel="shortcut icon" href="https://zhiyuandnc.github.io/favicon.ico?v=1740567139208">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zhiyuandnc.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+ <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            絷缘的博客
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/friends" class="menu gt-a-link">
+                            友链
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1740567139208" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Linux命令学习（九）
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2022-02-28 ·
+                    </time>
+                    
+                        <a href="https://zhiyuandnc.github.io/linux/" class="post-tags">
+                            # Linux
+                        </a>
+                    
+                        <a href="https://zhiyuandnc.github.io/Z3qSG8exS/" class="post-tags">
+                            # 命令
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="部署静态网站">部署静态网站</h2>
+<h3 id="1-web网站组成">1. web网站组成</h3>
+<ul>
+<li>网站服务程序：Apache、Nginx、IIS7</li>
+<li>服务器或云存储空间</li>
+<li>Web页面</li>
+</ul>
+<h3 id="2-快速安装apache服务程序">2. 快速安装Apache服务程序</h3>
+<ul>
+<li>安装Apache：yum  install  -y   httpd</li>
+<li>关闭SELinux：setenforce   0</li>
+<li>关闭防火墙：systemctl   stop   firewalld（将httpd加入到防火墙白名单）</li>
+<li>启动httpd服务：systemctl  start  httpd</li>
+<li>设置开机启动：systemctl enable httpd</li>
+</ul>
+<h3 id="3-apache配置文件分析">3. Apache配置文件分析</h3>
+<ul>
+<li>位置：
+<ul>
+<li>配置文件路径：/etc/httpd/conf/httpd.conf</li>
+<li>服务目录：/etc/httpd</li>
+<li>默认访问网站的存储目录：/var/www/html</li>
+<li>网站访问日志路径：/var/log/httpd/access_log</li>
+<li>错误日志：/var/log/httpd/error.log</li>
+</ul>
+</li>
+<li>主配置文件分析
+<ul>
+<li>分类：
+<ul>
+<li>注释内容</li>
+<li>全局配置</li>
+<li>区域配置</li>
+</ul>
+</li>
+<li>需要关注的关键参数
+<ul>
+<li>ServerRoot：服务程序主目录</li>
+<li>ServerAdmin：管理员邮箱</li>
+<li>User：运行服务的用户</li>
+<li>Group：运行服务的工作组</li>
+<li>ServerName：网站域名</li>
+<li>DocumentRoot：网站数据目录</li>
+<li>Listen：监听IP地址与端口号</li>
+<li>Include：需要加载的其他文件</li>
+<li>Timeout：网页超时时间，单位毫秒ms</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-快速部署个人网站">4. 快速部署个人网站</h3>
+<ul>
+<li>安装配置服务
+<ul>
+<li>安装Apache：yum  install  -y   httpd</li>
+<li>关闭SELinux：setenforce   0</li>
+<li>关闭防火墙：systemctl   stop   firewalld（将httpd加入到防火墙白名单）</li>
+<li>启动httpd服务：systemctl  start  httpd</li>
+<li>设置开机启动：systemctl enable httpd</li>
+</ul>
+</li>
+<li>创建存储网页的源文件的目录：mkdir   /web1</li>
+<li>将网页源文件上传到该目录winscp
+<ul>
+<li>启动winscp</li>
+<li>站点输入linux系统的IP地址</li>
+<li>用户输入root及密码</li>
+<li>保存站点并登录，第一次需要验证密钥，点击是即可</li>
+<li>登录成功后左侧为Window，右侧为Linux</li>
+<li>通过鼠标拖拽文件即可</li>
+</ul>
+</li>
+<li>修改httpd配置文件
+<ul>
+<li>编辑主配置文件：vim   /etc/httpd/conf/httpd.conf
+<ul>
+<li>定位第119行将 /var/www/html 修改为 /web1/网页目录名</li>
+<li>定位第124行将 /var/www 修改为 /web1/网页目录名</li>
+<li>保存并退出</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>重启服务：systemctl   restart   httpd</li>
+<li>测试：在Windows端打开浏览器输入Linux系统的IP地址</li>
+</ul>
+<blockquote>
+<p>原文作者：絷缘<br>
+作者邮箱：zhiyuanworkemail@163.com<br>
+原文地址：<a href="https://zhiyuandnc.github.io/7dxxE7ipp/">https://zhiyuandnc.github.io/7dxxE7ipp/</a><br>
+版权声明：本文为博主原创文章，转载请注明原文链接作者信息</p>
+</blockquote>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://zhiyuandnc.github.io/m9qF680b6/" class="post-title gt-a-link">
+                    Linux命令学习（八）
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">事实不以人的意志为转移</div>
+    <div class="social-container">
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-telegram gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-qq gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-bilibili gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Copyright&ensp;&copy;&ensp;絷缘的博客<br/><a href="https://beian.miit.gov.cn/" target="_blank">晋ICP备20001723号-1</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://zhiyuandnc.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

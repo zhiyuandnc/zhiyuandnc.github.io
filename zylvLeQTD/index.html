@@ -1,0 +1,498 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>SemanticUI学习（1）按钮 | 絷缘的博客</title>
+
+<link rel="shortcut icon" href="https://zhiyuandnc.github.io/favicon.ico?v=1740567139208">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zhiyuandnc.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+ <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            絷缘的博客
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/friends" class="menu gt-a-link">
+                            友链
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1740567139208" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    SemanticUI学习（1）按钮
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2021-01-09 ·
+                    </time>
+                    
+                        <a href="https://zhiyuandnc.github.io/semanticui/" class="post-tags">
+                            # SemanticUI
+                        </a>
+                    
+                        <a href="https://zhiyuandnc.github.io/qjuNtQyCB/" class="post-tags">
+                            # 自学
+                        </a>
+                    
+                        <a href="https://zhiyuandnc.github.io/2WP8Q3KZTb/" class="post-tags">
+                            # 前端
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="一-导入资源文件">一、导入资源文件</h2>
+<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css&quot;/&gt;
+&lt;script src=&quot;https://code.jquery.com/jquery-3.1.1.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src = &quot;https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<h2 id="二-不同尺寸按钮">二、不同尺寸按钮</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui button&quot;&gt;默认大小&lt;/div&gt;
+&lt;div class=&quot;ui mini button&quot;&gt;迷你按钮&lt;/div&gt;
+&lt;div class=&quot;ui tiny button&quot;&gt;较小按钮&lt;/div&gt;
+&lt;div class=&quot;ui small button&quot;&gt;小按钮&lt;/div&gt;
+&lt;div class=&quot;ui large button&quot;&gt;大按钮&lt;/div&gt;
+&lt;div class=&quot;ui big button&quot;&gt;较大按钮&lt;/div&gt;
+&lt;div class=&quot;ui huge button&quot;&gt;巨大按钮&lt;/div&gt;
+&lt;div class=&quot;ui massive button&quot;&gt;最大按钮&lt;/div&gt;		
+</code></pre>
+<h2 id="三-不同颜色的按钮按级别分">三、不同颜色的按钮，按级别分</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui primary button&quot;&gt;primary&lt;/div&gt;
+&lt;div class=&quot;ui secondary button&quot;&gt;secondary&lt;/div&gt;
+&lt;div class=&quot;ui positive button&quot;&gt;positive&lt;/div&gt;
+&lt;div class=&quot;ui negative button&quot;&gt;negative&lt;/div&gt;
+&lt;hr&gt;
+&lt;div class=&quot;ui primary basic button&quot;&gt;primary&lt;/div&gt;
+&lt;div class=&quot;ui secondary basic button&quot;&gt;secondary&lt;/div&gt;
+&lt;div class=&quot;ui positive basic button&quot;&gt;positive&lt;/div&gt;
+&lt;div class=&quot;ui negative basic button&quot;&gt;negative&lt;/div&gt;
+&lt;hr&gt;
+&lt;div class=&quot;ui primary inverted button&quot;&gt;primary&lt;/div&gt;
+&lt;div class=&quot;ui secondary inverted button&quot;&gt;secondary&lt;/div&gt;
+&lt;div class=&quot;ui positive inverted button&quot;&gt;positive&lt;/div&gt;
+&lt;div class=&quot;ui negative inverted button&quot;&gt;negative&lt;/div&gt;
+</code></pre>
+<h2 id="四-不同颜色的按钮">四、不同颜色的按钮</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui teal button&quot;&gt;teal&lt;/div&gt;
+&lt;div class=&quot;ui red button&quot;&gt;red&lt;/div&gt;
+&lt;div class=&quot;ui orange button&quot;&gt;orange&lt;/div&gt;
+&lt;div class=&quot;ui yellow button&quot;&gt;yellow&lt;/div&gt;
+&lt;div class=&quot;ui olive button&quot;&gt;olive&lt;/div&gt;
+&lt;div class=&quot;ui green button&quot;&gt;green&lt;/div&gt;
+&lt;div class=&quot;ui blue button&quot;&gt;blue&lt;/div&gt;
+&lt;div class=&quot;ui violet button&quot;&gt;violet&lt;/div&gt;
+&lt;div class=&quot;ui purple button&quot;&gt;purple&lt;/div&gt;
+&lt;div class=&quot;ui pink button&quot;&gt;pink&lt;/div&gt;
+&lt;div class=&quot;ui brown button&quot;&gt;brown&lt;/div&gt;
+&lt;div class=&quot;ui grey button&quot;&gt;grey&lt;/div&gt;
+&lt;div class=&quot;ui black button&quot;&gt;black&lt;/div&gt;
+&lt;hr&gt;
+&lt;div class=&quot;ui teal basic button&quot;&gt;teal&lt;/div&gt;
+&lt;div class=&quot;ui red basic button&quot;&gt;red&lt;/div&gt;
+&lt;div class=&quot;ui orange basic button&quot;&gt;orange&lt;/div&gt;
+&lt;div class=&quot;ui yellow basic button&quot;&gt;yellow&lt;/div&gt;
+&lt;div class=&quot;ui olive basic button&quot;&gt;olive&lt;/div&gt;
+&lt;div class=&quot;ui green basic button&quot;&gt;green&lt;/div&gt;
+&lt;div class=&quot;ui blue basic button&quot;&gt;blue&lt;/div&gt;
+&lt;div class=&quot;ui violet basic button&quot;&gt;violet&lt;/div&gt;
+&lt;div class=&quot;ui purple basic button&quot;&gt;purple&lt;/div&gt;
+&lt;div class=&quot;ui pink basic button&quot;&gt;pink&lt;/div&gt;
+&lt;div class=&quot;ui brown basic button&quot;&gt;brown&lt;/div&gt;
+&lt;div class=&quot;ui grey basic button&quot;&gt;grey&lt;/div&gt;
+&lt;div class=&quot;ui black basic button&quot;&gt;black&lt;/div&gt;
+&lt;hr&gt;
+&lt;div class=&quot;ui teal inverted button&quot;&gt;teal&lt;/div&gt;
+&lt;div class=&quot;ui red inverted button&quot;&gt;red&lt;/div&gt;
+&lt;div class=&quot;ui orange inverted button&quot;&gt;orange&lt;/div&gt;
+&lt;div class=&quot;ui yellow inverted button&quot;&gt;yellow&lt;/div&gt;
+&lt;div class=&quot;ui olive inverted button&quot;&gt;olive&lt;/div&gt;
+&lt;div class=&quot;ui green inverted button&quot;&gt;green&lt;/div&gt;
+&lt;div class=&quot;ui blue inverted button&quot;&gt;blue&lt;/div&gt;
+&lt;div class=&quot;ui violet inverted button&quot;&gt;violet&lt;/div&gt;
+&lt;div class=&quot;ui purple inverted button&quot;&gt;purple&lt;/div&gt;
+&lt;div class=&quot;ui pink inverted button&quot;&gt;pink&lt;/div&gt;
+&lt;div class=&quot;ui brown inverted button&quot;&gt;brown&lt;/div&gt;
+&lt;div class=&quot;ui grey inverted button&quot;&gt;grey&lt;/div&gt;
+&lt;div class=&quot;ui black inverted button&quot;&gt;black&lt;/div&gt;
+</code></pre>
+<h2 id="五-有动画效果的按钮">五、有动画效果的按钮</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui animated red button&quot;&gt;
+    &lt;div class=&quot;visible content&quot;&gt;购物&lt;/div&gt;
+    &lt;div class=&quot;hidden content&quot;&gt;
+        &lt;i class=&quot;shop icon&quot;&gt;&lt;/i&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- 修改为垂直动画效果 --&gt;
+&lt;div class=&quot;ui vertical animated green button&quot;&gt;
+    &lt;div class=&quot;visible content&quot;&gt;回到顶部&lt;/div&gt;
+    &lt;div class=&quot;hidden content&quot;&gt;
+        &lt;i class=&quot;arrow up icon&quot;&gt;&lt;/i&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- 修改为渐隐动画效果 --&gt;
+&lt;div class=&quot;ui fade animated orange button&quot;&gt;
+    &lt;div class=&quot;visible content&quot;&gt;只要 ￥9.9&lt;/div&gt;
+    &lt;div class=&quot;hidden content&quot;&gt;只要 $9.9&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="六-带标签按钮">六、带标签按钮</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui labeled button&quot;&gt;
+    &lt;div class=&quot;ui red button&quot;&gt;
+        &lt;i class=&quot;shop icon&quot;&gt;&lt;/i&gt;Total
+    &lt;/div&gt;
+    &lt;div class=&quot;ui red basic label&quot;&gt;￥99999&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;ui right labeled button&quot;&gt;
+    &lt;div class=&quot;ui red button&quot;&gt;
+        &lt;i class=&quot;shop icon&quot;&gt;&lt;/i&gt;Total
+    &lt;/div&gt;
+    &lt;div class=&quot;ui red basic label&quot;&gt;￥99999&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;ui left labeled button&quot;&gt;
+    &lt;div class=&quot;ui red basic right pointing label&quot;&gt;￥99999&lt;/div&gt;
+    &lt;div class=&quot;ui red button&quot;&gt;
+        &lt;i class=&quot;shop icon&quot;&gt;&lt;/i&gt;Total
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;ui left labeled button&quot;&gt;
+    &lt;div class=&quot;ui red basic right pointing label&quot;&gt;￥99999&lt;/div&gt;
+    &lt;div class=&quot;ui red button&quot;&gt;
+        &lt;i class=&quot;shop icon&quot;&gt;&lt;/i&gt;Total
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="七-图标按钮">七、图标按钮</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui icon red button&quot;&gt;
+    &lt;i class=&quot;shop icon&quot;&gt;&lt;/i&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="八-标签按钮">八、标签按钮</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui left labeled icon red button&quot;&gt;
+    &lt;i class=&quot;cart plus icon&quot;&gt;&lt;/i&gt;加入购物车
+&lt;/div&gt;
+&lt;div class=&quot;ui right labeled icon orange button&quot;&gt;
+    &lt;i class=&quot;trash alternate icon&quot;&gt;&lt;/i&gt;清空购物车
+&lt;/div&gt;
+</code></pre>
+<h2 id="九-普通按钮组合">九、普通按钮组合</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui buttons&quot;&gt;
+    &lt;div class=&quot;ui green button&quot;&gt;按钮1&lt;/div&gt;
+    &lt;div class=&quot;ui olive button&quot;&gt;按钮2&lt;/div&gt;
+    &lt;div class=&quot;ui violet button&quot;&gt;按钮3&lt;/div&gt;
+    &lt;div class=&quot;ui yellow button&quot;&gt;按钮4&lt;/div&gt;
+    &lt;div class=&quot;ui orange button&quot;&gt;按钮5&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="十-图标按钮组合">十、图标按钮组合</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui icon buttons&quot;&gt;
+    &lt;div class=&quot;ui icon button&quot;&gt;&lt;i class=&quot;align left icon&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+    &lt;div class=&quot;ui icon button&quot;&gt;&lt;i class=&quot;align center icon&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+    &lt;div class=&quot;ui icon button&quot;&gt;&lt;i class=&quot;align right icon&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+    &lt;div class=&quot;ui icon button&quot;&gt;&lt;i class=&quot;align justify icon&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+    &lt;div class=&quot;ui icon button&quot;&gt;&lt;i class=&quot;bold icon&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+    &lt;div class=&quot;ui icon button&quot;&gt;&lt;i class=&quot;underline icon&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+    &lt;div class=&quot;ui icon button&quot;&gt;&lt;i class=&quot;text width icon&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+    &lt;div class=&quot;ui icon button&quot;&gt;&lt;i class=&quot;eraser icon&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+    &lt;div class=&quot;ui icon button&quot;&gt;&lt;i class=&quot;linkify icon&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+    &lt;div class=&quot;ui icon button&quot;&gt;&lt;i class=&quot;edit icon&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+    &lt;div class=&quot;ui icon button&quot;&gt;&lt;i class=&quot;italic icon&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+    &lt;div class=&quot;ui icon button&quot;&gt;&lt;i class=&quot;font icon&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+    &lt;div class=&quot;ui icon button&quot;&gt;&lt;i class=&quot;share icon&quot;&gt;&lt;/i&gt;&lt;/div&gt;			
+&lt;/div&gt;
+</code></pre>
+<h2 id="十一-条件选择按钮">十一、条件选择按钮</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui buttons&quot;&gt;
+    &lt;div class=&quot;ui green button&quot;&gt;Confirm&lt;/div&gt;
+    &lt;div class=&quot;or&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;ui red button&quot;&gt;Cancle&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;ui buttons&quot;&gt;
+    &lt;div class=&quot;ui green button&quot;&gt;Save&lt;/div&gt;
+    &lt;div class=&quot;or&quot; data-text=&quot;&amp;&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;ui red button&quot;&gt;Quit&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="十二-不同状态的按钮">十二、不同状态的按钮</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui red button&quot;&gt;默认状态&lt;/div&gt;
+&lt;div class=&quot;ui red active button&quot;&gt;激活状态&lt;/div&gt;
+&lt;div class=&quot;ui red disabled button&quot;&gt;禁止状态&lt;/div&gt;
+</code></pre>
+<h2 id="十三-加载按钮">十三、加载按钮</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui primary loading button&quot;&gt;加载按钮&lt;/div&gt;
+</code></pre>
+<h2 id="十四-个别平台配色按钮">十四、个别平台配色按钮</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui facebook button&quot;&gt;
+    &lt;i class=&quot;facebook icon&quot;&gt;&lt;/i&gt;Facebook
+&lt;/div&gt;
+&lt;div class=&quot;ui twitter button&quot;&gt;
+    &lt;i class=&quot;twitter icon&quot;&gt;&lt;/i&gt;Facebook
+&lt;/div&gt;
+&lt;div class=&quot;ui button&quot;&gt;
+    &lt;i class=&quot;qq icon&quot;&gt;&lt;/i&gt;QQ
+&lt;/div&gt;
+&lt;div class=&quot;ui google button&quot;&gt;
+    &lt;i class=&quot;google icon&quot;&gt;&lt;/i&gt;Google
+&lt;/div&gt;
+&lt;div class=&quot;ui instagram button&quot;&gt;
+    &lt;i class=&quot;instagram icon&quot;&gt;&lt;/i&gt;instagram
+&lt;/div&gt;
+&lt;div class=&quot;ui youtube button&quot;&gt;
+    &lt;i class=&quot;youtube icon&quot;&gt;&lt;/i&gt;Facebook
+&lt;/div&gt;
+</code></pre>
+<h2 id="十五-按钮浮动">十五、按钮浮动</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui left floated button&quot;&gt;左浮按钮&lt;/div&gt;
+&lt;div class=&quot;ui right floated button&quot;&gt;右浮按钮&lt;/div&gt;
+</code></pre>
+<h2 id="十六-开关按钮">十六、开关按钮</h2>
+<pre><code class="language-html">&lt;button class=&quot;ui toggle button&quot;&gt;投票&lt;/button&gt;
+</code></pre>
+<h2 id="十七-适应容器按钮">十七、适应容器按钮</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui fluid button&quot;&gt;适应容器&lt;/div&gt;
+</code></pre>
+<h2 id="十八-圆形按钮">十八、圆形按钮</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui circular icon blue button&quot;&gt;
+    &lt;i class=&quot;setting icon&quot;&gt;&lt;/i&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ui circular icon red button&quot;&gt;
+    &lt;i class=&quot;qq icon&quot;&gt;&lt;/i&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ui circular icon green button&quot;&gt;
+    &lt;i class=&quot;wechat icon&quot;&gt;&lt;/i&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ui circular icon twitter button&quot;&gt;
+    &lt;i class=&quot;twitter icon&quot;&gt;&lt;/i&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ui circular icon youtube button&quot;&gt;
+    &lt;i class=&quot;youtube icon&quot;&gt;&lt;/i&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ui circular icon yellow button&quot;&gt;
+    &lt;i class=&quot;github icon&quot;&gt;&lt;/i&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ui circular icon black button&quot;&gt;
+    &lt;i class=&quot;steam symbol icon&quot;&gt;&lt;/i&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ui circular icon red button&quot;&gt;
+    &lt;i class=&quot;weibo icon&quot;&gt;&lt;/i&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ui circular icon blue button&quot;&gt;
+    &lt;i class=&quot;telegram plane icon&quot;&gt;&lt;/i&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="十九-垂直附加按钮">十九、垂直附加按钮</h2>
+<pre><code class="language-html">&lt;div class=&quot;container&quot; style=&quot;width:800px;margin:0 auto;&quot;&gt;
+    &lt;div class=&quot;ui top attached blue button&quot;&gt;顶部&lt;/div&gt;
+    &lt;div class=&quot;ui attached segment&quot;&gt;
+        &lt;p&gt;&lt;img src=&quot;./img/paragraph.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;ui bottom attached blue button&quot;&gt;底部&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="二十-垂直附加多个按钮">二十、垂直附加多个按钮</h2>
+<pre><code class="language-html">&lt;div class=&quot;container&quot; style=&quot;width:800px;margin:0 auto;&quot;&gt;
+    &lt;div class=&quot;ui top attached buttons&quot;&gt;
+        &lt;div class=&quot;ui button&quot;&gt;左&lt;/div&gt;
+        &lt;div class=&quot;ui button&quot;&gt;右&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;ui attached segment&quot;&gt;
+        &lt;p&gt;&lt;img src=&quot;&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;ui bottom attached buttons&quot;&gt;
+        &lt;div class=&quot;ui button&quot;&gt;左&lt;/div&gt;
+        &lt;div class=&quot;ui button&quot;&gt;右&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="二十一-垂直按钮组合">二十一、垂直按钮组合</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui vertical labeled icon buttons&quot;&gt;
+    &lt;div class=&quot;ui button active&quot;&gt;&lt;i class=&quot;home icon&quot;&gt;&lt;/i&gt;首页&lt;/div&gt;
+    &lt;div class=&quot;ui button&quot;&gt;&lt;i class=&quot;book icon&quot;&gt;&lt;/i&gt;文档&lt;/div&gt;
+    &lt;div class=&quot;ui button&quot;&gt;&lt;i class=&quot;tags icon&quot;&gt;&lt;/i&gt;标签&lt;/div&gt;
+    &lt;div class=&quot;ui button&quot;&gt;&lt;i class=&quot;database icon&quot;&gt;&lt;/i&gt;数据库&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="二十二-限定按钮个数的按钮组">二十二、限定按钮个数的按钮组</h2>
+<pre><code class="language-html">&lt;div class=&quot;container&quot; style=&quot;width:800px;margin:0 auto;&quot;&gt;
+    &lt;div class=&quot;ui five blue buttons&quot;&gt;
+        &lt;div class=&quot;ui button&quot;&gt;按钮1&lt;/div&gt;
+        &lt;div class=&quot;ui button&quot;&gt;按钮2&lt;/div&gt;
+        &lt;div class=&quot;ui button&quot;&gt;按钮3&lt;/div&gt;
+        &lt;div class=&quot;ui button&quot;&gt;按钮4&lt;/div&gt;
+        &lt;div class=&quot;ui button&quot;&gt;按钮5&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="二十三-实际效果">二十三、实际效果</h2>
+<figure data-type="image" tabindex="1"><img src="https://zhiyuandnc.github.io/post-images/1610202200554.png" alt="实际效果" loading="lazy"></figure>
+<blockquote>
+<p>原文作者：絷缘<br>
+作者邮箱：zhiyuanworkemail@163.com<br>
+原文地址：<a href="https://zhiyuandnc.github.io/zylvLeQTD/">https://zhiyuandnc.github.io/zylvLeQTD/</a><br>
+版权声明：本文为博主原创文章，转载请注明原文链接作者信息</p>
+</blockquote>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://zhiyuandnc.github.io/3mpH-6w7/" class="post-title gt-a-link">
+                    常见MimeType记录
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">事实不以人的意志为转移</div>
+    <div class="social-container">
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-telegram gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-qq gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-bilibili gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Copyright&ensp;&copy;&ensp;絷缘的博客<br/><a href="https://beian.miit.gov.cn/" target="_blank">晋ICP备20001723号-1</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://zhiyuandnc.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

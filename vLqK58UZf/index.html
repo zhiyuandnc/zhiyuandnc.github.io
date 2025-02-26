@@ -1,0 +1,547 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Linux命令学习（七） | 絷缘的博客</title>
+
+<link rel="shortcut icon" href="https://zhiyuandnc.github.io/favicon.ico?v=1740567139208">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zhiyuandnc.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+ <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            絷缘的博客
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/friends" class="menu gt-a-link">
+                            友链
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1740567139208" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Linux命令学习（七）
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2022-02-25 ·
+                    </time>
+                    
+                        <a href="https://zhiyuandnc.github.io/linux/" class="post-tags">
+                            # Linux
+                        </a>
+                    
+                        <a href="https://zhiyuandnc.github.io/Z3qSG8exS/" class="post-tags">
+                            # 命令
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="一">一、</h2>
+<h3 id="1-软件下载及安装方式">1. 软件下载及安装方式</h3>
+<ul>
+<li>
+<p>1.1 源码安装</p>
+<ul>
+<li>
+<p>1.1.1 原理：将软件原始代码（C/C++）下载下来，将其编译后安装使用</p>
+</li>
+<li>
+<p>1.1.2 源码文件：编写者使用C或C++等语言编写的原始代码文件</p>
+</li>
+<li>
+<p>1.1.3 源码文件使用.tar.gz或.tar.bz2打包成压缩文件</p>
+</li>
+<li>
+<p>1.1.4 源码安装过程：</p>
+<ul>
+<li>① 下载解压源码压缩包</li>
+<li>② 分析软件安装环境</li>
+<li>③ 编译软件</li>
+<li>④ 安装软件</li>
+</ul>
+</li>
+<li>
+<p>1.1.5 源码安装特点：</p>
+<ul>
+<li>
+<p>① 源码包可移植性好，与待安装软件的工作环境依赖性不大</p>
+</li>
+<li>
+<p>② 由于有编译过程，其代码运行效率高，是对当前使用者工作环境的 “量体裁衣”</p>
+</li>
+<li>
+<p>③ 安装功能可以定制，可以选择需要的功能进行安装使用</p>
+</li>
+<li>
+<p>④ 卸载时，只需删除对应安装目录即可，没有Windows的注册表概念</p>
+</li>
+<li>
+<p>⑤ 安装过程繁琐</p>
+</li>
+</ul>
+</li>
+<li>
+<p>1.1.6 源码下载解压缩分析</p>
+<ul>
+<li>
+<p>① 下载：wget   URL</p>
+</li>
+<li>
+<p>② 解压缩</p>
+<ul>
+<li>
+<p>.tar.gz格式：tar   xzvf   压缩包名称</p>
+</li>
+<li>
+<p>.tar.bz2格式：tar     xjvf    压缩包名称</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>
+<p>1.1.7   <em><strong>例1：下载安装Apache源码包</strong></em></p>
+<ul>
+<li>
+<p>① 必须先安装编译器：yum   install    -y     gcc    gcc-c++</p>
+</li>
+<li>
+<p>② 下载Apache源码包：</p>
+<p>wget https://mirrors.tuna.tsinghua.edu.cn/apache//httpd/httpd-2.4.46.tar.gz</p>
+</li>
+<li>
+<p>③ 解压缩：tar xzvf httpd-2.4.46.tar.gz</p>
+</li>
+<li>
+<p>④ 进入安装目录：cd httpd-2.4.46</p>
+</li>
+<li>
+<p>⑤ 源码包安装文件分析及安装环境分析</p>
+<ul>
+<li>意义：目录中有configure可执行文件，用于对安装环境进行测试、检测所需库文件、工具文件是否存在、检测依赖性关系、编译器和汇编器与连接器检查</li>
+<li>执行方式：./configure</li>
+</ul>
+</li>
+<li>
+<p>⑥ 接上例：</p>
+<ul>
+<li>
+<p>检查环境：./configure</p>
+<figure data-type="image" tabindex="1"><img src="https://pic.zyblog.xyz/img/typora/image-20201013095105891.png?origin=typora" alt="image-20201013095105891" loading="lazy"></figure>
+</li>
+<li>
+<p>提示缺少apr文件，则安装apr依赖文件：yum install -y apr*</p>
+</li>
+<li>
+<p>重新检查：./configure</p>
+</li>
+<li>
+<p>提示缺少pcre文件，在提供的网站下载</p>
+<p>cd ~</p>
+<p>wget https://ftp.pcre.org/pub/pcre/pcre-8.00.tar.gz</p>
+</li>
+<li>
+<p>解压缩pcre后，检查pcre安装环境并安装</p>
+<ul>
+<li>解压缩：tar xzvf pcre-8.00.tar.gz</li>
+<li>进入目录：cd pcre-8.00/</li>
+<li>检查pcre安装环境：./configure</li>
+<li>编译：make</li>
+<li>安装：make   install</li>
+</ul>
+</li>
+<li>
+<p>返回上一级目录：cd  ..</p>
+</li>
+<li>
+<p>进入apache目录：cd httpd-2.4.46/</p>
+</li>
+<li>
+<p>再次检查apache安装环境：./configure</p>
+</li>
+<li>
+<p>编译：make</p>
+</li>
+<li>
+<p>安装：make   install</p>
+</li>
+</ul>
+</li>
+<li>
+<p>⑦ 编译软件</p>
+<ul>
+<li>作用：对./configure命令生成的makefile文件记录的信息进行编译，生成二进制安装文件、</li>
+<li>格式：make</li>
+<li>注意：make过程中若报错，需要查看提示信息，根据信息修改，一般为缺少头文件等问题</li>
+</ul>
+</li>
+<li>
+<p>⑧ 安装软件</p>
+<ul>
+<li>根据make命令生成的二进制安装文件进行安装，默认安装目录：/user/local或/user/local/bin目录</li>
+<li>方法：make install</li>
+</ul>
+</li>
+<li>
+<p>⑨ <em><strong>例2：源码安装python3编译器</strong></em></p>
+<ul>
+<li>wget https://www.python.org/ftp/python/3.9.0/Python-3.9.0.tgz</li>
+<li>解压缩：tar xzvf   Python-3.9.0.tgz</li>
+<li>进入目录：cd Python-3.9.0</li>
+<li>检查安装环境：./configure</li>
+<li>安装：yum install  -y  zlib*</li>
+<li>编译：make</li>
+<li>安装：make  install</li>
+</ul>
+</li>
+<li>
+<p>⑩ 注意：</p>
+<ul>
+<li>可以使用 echo  $? 检查上一步动作是否正常返回，正常返回0</li>
+<li>遇到yum进程被占用：kill 进程ID</li>
+<li>源码包解压缩后一般会有README和INSTALL文件，一般记录安装注意事项及安装方式</li>
+<li>检查安装环境时，可以指定安装目录，格式：./configure -prefilx=目录路径</li>
+<li>检查环境与编译和安装可以使用 “并且运算符”（&amp;&amp;）进行连接，按顺序执行：./configure &amp;&amp; make &amp;&amp; make install</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-rpm安装">2. RPM安装</h3>
+<ul>
+<li>2.1 产生原因：软件制作者在其工作环境下将软件编译完毕后再发布，以此减少安装编译时间，但要求软件环境与编译时环境要相同</li>
+<li>2.2 RPM：红冒软件管理器</li>
+<li>2.3 RPM安装软件的流程
+<ul>
+<li>2.3.1 读取RPM软件包头部数据，进行软件依赖性检查</li>
+<li>2.3.2 若满足条件则安装软件，否则失败要求</li>
+</ul>
+</li>
+<li>2.4 要求
+<ul>
+<li>2.4.1 软件安装环境要与打包软件环境一致</li>
+<li>2.4.2 必须满足软件依赖性</li>
+<li>2.4.3 软件卸载时必须小心，最底层软件不能先卸载</li>
+<li>2.4.4 RPM软件包名称解释：
+<ul>
+<li>例：zip-3.0-11.el7.x86_64.rpm
+<ul>
+<li>软件名 - 版本号  -  编译次数 - 适用平台</li>
+<li>noarch：无平台限制</li>
+<li>I386：32位运行平台</li>
+<li>x86_64 及 AMD64：64位平台</li>
+<li>el7：红帽版本</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>2.4.5 RPM软件安装方式
+<ul>
+<li>格式：rpm  -ivh   软件包名称.rpm</li>
+<li>参数：
+<ul>
+<li>-i：安装软件</li>
+<li>-v：查看安装信息</li>
+<li>-h：查看安装进度</li>
+<li>--nodeps：发生安装依赖时，进行强制安装，但安装后可能无法使用</li>
+<li>--force：安装时提示已安装，则进行覆盖安装</li>
+</ul>
+</li>
+<li>例1：适用RPM方式安装Nginx
+<ul>
+<li>下载：wget http://nginx.org/packages/centos/7/x86_64/RPMS/nginx-1.8.0-1.el7.ngx.x86_64.rpm</li>
+<li>安装：rpm -ivh nginx-1.8.0-1.el7.ngx.x86_64.rpm</li>
+</ul>
+</li>
+<li>例2：手动安装gcc编译器
+<ul>
+<li>rpm  -e  gcc    rpm   -q   gcc</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>2.4.6 RPM查询及其他命令
+<ul>
+<li>rpm  -q  软件包全名：查询指定软件是否安装</li>
+<li>rpm  -qa ：查询所有已安装软件</li>
+<li>rpm  -qi   软件名：显示已安装软件的详细信息</li>
+<li>rpm  -qc  软件名：显示软件的配置文件</li>
+<li>rpm  -qd 软件名：显示软件帮助文件</li>
+<li>rpm  -ql  软件名：列出软件所有文件与目录</li>
+<li>rpm  -e  软件名：卸载软件（卸载时注意依赖性，从最上层软件开始卸载）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-yum软件安装方式">3. yum软件安装方式</h3>
+<ul>
+<li>
+<p>3.1 机制：将编译好的软件放置在yum服务器中，并将这些软件的依赖性信息记录下来形成表格组成数据库，用户安装软件时会向网络中的yum服务器下载对应依赖数据库并与本机rpm数据库进行比较，最后一同下载全部软件进行安装，自动解决依赖性问题</p>
+</li>
+<li>
+<p>3.2 yum软件仓库：记录软件依赖性信息的数据库</p>
+</li>
+<li>
+<p>3.3 修改yum源</p>
+<ul>
+<li>作用：Centos系统默认的yum仓库网址服务器位于国外，下载速度过慢，应将其修改为国内的yum仓库地址</li>
+<li>方法：
+<ul>
+<li>删除yum配置文件目录：rm  -rf  /etc/yum.repos.d</li>
+<li>重新建立该目录：mkdir   /etc/yum.repos.d</li>
+<li>进入目录：cd  /etc/yum.repos.d</li>
+<li>下载网易开源镜像站配置文件：wget  http://mirrors.163.com/.help/CentOS7-Base-163.repo</li>
+<li>清除yum缓存：yum clean all</li>
+<li>重新建立yum缓存：yum makecache</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>3.4 安装软件：yum install -y  软件列表</p>
+</li>
+<li>
+<p>3.5 升级软件：yum update -y  软件列表</p>
+</li>
+<li>
+<p>3.6 卸载软件：yum  remove  软件名</p>
+</li>
+<li>
+<p>3.7 例：yum install http tomcat  -y</p>
+</li>
+<li>
+<p>3.8 安装带有URL的rpm包：</p>
+<p>yum  install  https://wdl1.cache.wps.cn/wps/download/ep/Linux2019/9662/wps-office-11.1.0.9662-1.x86_64.rpm</p>
+</li>
+<li>
+<p>3.9 yum配置文件分析</p>
+<ul>
+<li>
+<p>存储路径：/etc/yum.repos.d/CentOS-Base.repo</p>
+</li>
+<li>
+<p>分析：</p>
+<ul>
+<li>[base]：表示yum软件仓库名，[]不能省略，内容可以自行设置</li>
+<li>name：描述软件仓库的意义，可省略</li>
+<li>baseurl：yum仓库服务器地址，非常重要</li>
+<li>enabled=1：是否启用，1启用，0不启用</li>
+<li>gpgcheck=1：检查数字签名，0不检查</li>
+<li>gpgkey：检查数字签名的公钥，gpgcheck=0时可省略</li>
+</ul>
+</li>
+<li>
+<p>使用本地光盘制作yum仓库</p>
+<ul>
+<li>
+<p>作用：当本地无网络时，安装软件可以使用本地DVD光盘作为软件源</p>
+</li>
+<li>
+<p>步骤：</p>
+<ul>
+<li>
+<p>挂载光盘：mount    /dev/sr0   /media</p>
+<p>​					cd   /etc/yum.repos.d</p>
+<p>​					mv  CentOS7-Base-163.repo   CentOS7-Base-163.repo.back</p>
+</li>
+<li>
+<p>新建文件：vim   DVD.repo</p>
+</li>
+<li>
+<p>输入以下内容</p>
+<figure data-type="image" tabindex="2"><img src="https://pic.zyblog.xyz/img/typora/image-20201013154921520.png?origin=typora" alt="image-20201013154921520" loading="lazy"></figure>
+</li>
+<li>
+<p>保存并退出</p>
+</li>
+<li>
+<p>清除缓存：yum  clean  all</p>
+</li>
+<li>
+<p>新建缓存：yum   makecache</p>
+</li>
+<li>
+<p>查看是否启用：yum  repolist  all</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>原文作者：絷缘<br>
+作者邮箱：zhiyuanworkemail@163.com<br>
+原文地址：<a href="https://zhiyuandnc.github.io/vLqK58UZf/">https://zhiyuandnc.github.io/vLqK58UZf/</a><br>
+版权声明：本文为博主原创文章，转载请注明原文链接作者信息</p>
+</blockquote>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://zhiyuandnc.github.io/bjTsu6fKf/" class="post-title gt-a-link">
+                    Linux命令学习（六）
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">事实不以人的意志为转移</div>
+    <div class="social-container">
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-telegram gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-qq gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-bilibili gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Copyright&ensp;&copy;&ensp;絷缘的博客<br/><a href="https://beian.miit.gov.cn/" target="_blank">晋ICP备20001723号-1</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://zhiyuandnc.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,374 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>JS原生实现简单ajax请求 | 絷缘的博客</title>
+
+<link rel="shortcut icon" href="https://zhiyuandnc.github.io/favicon.ico?v=1740567139208">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zhiyuandnc.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+ <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            絷缘的博客
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/friends" class="menu gt-a-link">
+                            友链
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1740567139208" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    JS原生实现简单ajax请求
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2021-01-31 ·
+                    </time>
+                    
+                        <a href="https://zhiyuandnc.github.io/ajax/" class="post-tags">
+                            # Ajax
+                        </a>
+                    
+                        <a href="https://zhiyuandnc.github.io/js/" class="post-tags">
+                            # JS
+                        </a>
+                    
+                        <a href="https://zhiyuandnc.github.io/http/" class="post-tags">
+                            # HTTP
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="一-写个简单的html页面">一、写个简单的HTML页面</h2>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Ajax请求测试&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;http://at.alicdn.com/t/font_2335994_6js183z4xv2.css&quot;&gt;
+    &lt;script src=&quot;./js/jquery-3.1.1.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;div class=&quot;search&quot;&gt;
+            &lt;input type=&quot;text&quot; placeholder=&quot;请输入关键字查询&quot;&gt;
+            &lt;button&gt;
+                &lt;i class=&quot;iconfont icon-sousuo&quot;&gt;&lt;/i&gt;
+                搜索
+            &lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;search-info&quot;&gt;
+            &lt;ul class=&quot;search-list&quot;&gt;&lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2 id="二-随便写点css">二、随便写点CSS</h2>
+<pre><code class="language-css">&lt;style&gt;
+    *{
+        margin:0;
+        padding:0;
+        box-sizing: border-box;
+    }
+    li{
+        list-style:none;
+    }
+    a{
+        text-decoration:none;
+    }
+    .container{
+        width: 800px;
+        height: auto;
+        background-color:#f2f2f2;
+        margin:50px auto;
+        overflow: hidden;
+    }
+    .search{
+        width: 600px;
+        height: 50px;
+        line-height: 50px;
+        background-color:#228b22;
+        margin:50px auto auto;
+        display: flex;
+        flex-direction:row;
+        justify-content: space-between;
+    }
+    .search input{
+        flex:10;
+        border:1px solid #228b22;
+        border-right:none;
+        outline:none;
+        text-indent:20px;
+    }
+    .search button{
+        flex:2;
+        font-size: 14px;
+        color:#228b22;
+        border:1px solid #228b22;
+        outline:none;
+        background-color: #fff;
+    }
+    .search-info{
+        display:none;
+        width:600px;
+        height:auto;
+        background-color:#fff;
+        margin:0 auto;
+        border:1px solid #228b22;
+        border-top:none;
+    }
+    ul{
+        padding:20px;
+    }
+    ul &gt; li{
+        margin:0 0 10px 0;
+        font-size:14px;
+        line-height: 14px;
+        color:#666666;
+    }
+&lt;/style&gt;
+</code></pre>
+<h2 id="三-js原生实现ajax">三、JS原生实现Ajax</h2>
+<blockquote>
+<p>问：这不是用了JQuery吗，扯什么原生？<br>
+答：DOM元素的处理使用了JQuery，因为更方便，只是为了简化JS操作DOM的步骤，AJAX还是JS原生的</p>
+</blockquote>
+<pre><code class="language-js">&lt;script&gt;
+   //获取页面中的输入框元素并绑定oninput和onpropertychange事件，实现对input内容的实时监控
+    $('input').bind('input propertychange', function(){
+        if(!($('input').val()==&quot;&quot;)){
+            //初始化xhttp对象为null
+            let xhttp = null;
+            if(window.XMLHttpRequest){
+                //现代浏览器的创建XMLHttp对象的方式（IE7+）
+                xhttp = new XMLHttpRequest();
+            }else{
+                //非现代浏览器创建XMLHttp对象的方式（IE7-）
+                xhttp = new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+            }
+            //判断xhttp对象获取成功，执行以下操作
+            if(xhttp!=null){
+                // 监听ajax请求就绪事件
+                xhttp.onreadystatechange = function(){
+                    // 请求就绪，响应正确，就开始解析返回的数据
+                    if(xhttp.readyState===4 &amp;&amp; xhttp.status===200){
+                        // 将返回的字符串数据解析为JSON对象
+                        let responseData = JSON.parse(xhttp.responseText);
+                        // 每次重新请求的同时，移除列表中所有li元素
+                        $('.search-list').find(&quot;li&quot;).remove();
+                        for (const filminfo of responseData) {
+                            // 向ul列表中追加子元素li
+                            $('.search-list').append(&quot;&lt;li class=\&quot;list-item\&quot;&gt;&quot;+filminfo[&quot;name&quot;]+&quot;&lt;/li&gt;&quot;);
+                            console.log(&quot;&lt;li class=\&quot;list-item\&quot;&gt;&quot;+filminfo[&quot;name&quot;]+&quot;&lt;/li&gt;&quot;);
+                        }
+                        // 由上到下展开显示列表
+                        $('.search-info').slideDown(300);
+                    }
+                }
+                // 建立异步请求的链接
+                xhttp.open(&quot;GET&quot;,&quot;/360Video/demo1?keyword=&quot;+$('input').val(),true);
+                // 发送异步请求
+                xhttp.send();
+            }
+        }
+    });
+    // 输入框失焦，隐藏列表
+    $('input').blur(function(){
+        $('.search-info').slideUp(300);
+    });
+&lt;/script&gt;
+</code></pre>
+<h2 id="四-写个简单的servlet去响应ajax请求">四、写个简单的Servlet去响应ajax请求</h2>
+<pre><code class="language-java">@WebServlet(urlPatterns = &quot;/demo1&quot;)
+public class ServletDemo1 extends HttpServlet {
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        this.doGet(request, response);
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String keyword = request.getParameter(&quot;keyword&quot;);
+        System.out.println(keyword);
+        // 这里我使用自己的工具类去拿了360影视的数据，以json格式返回
+        String data = HttpUtils.getData(&quot;https://www.360kan.com/dianying/list.php?rank=rankhot&amp;cat=all&amp;area=all&amp;act=all&amp;year=all&amp;pageno=2&amp;from=dianying_list&quot;);
+        // 这里必须要这么设置Content-Type，不然前端获取到的json里面中文是乱码的
+        response.setContentType(&quot;application/json;charset=UTF-8&quot;);
+        // 将json数据写出到页面
+        response.getWriter().write(data);
+    }
+}
+</code></pre>
+<h2 id="五-最终效果展示">五、最终效果展示</h2>
+<figure data-type="image" tabindex="1"><img src="https://zhiyuandnc.github.io/post-images/1612064368464.gif" alt="" loading="lazy"></figure>
+<blockquote>
+<p>原文作者：絷缘<br>
+作者邮箱：zhiyuanworkemail@163.com<br>
+原文地址：<a href="https://zhiyuandnc.github.io/3g0TLSILu/">https://zhiyuandnc.github.io/3g0TLSILu/</a><br>
+版权声明：本文为博主原创文章，转载请注明原文链接作者信息</p>
+</blockquote>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://zhiyuandnc.github.io/fIrwGdZp7/" class="post-title gt-a-link">
+                    Java原生实现DOM树解析XML文件
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">事实不以人的意志为转移</div>
+    <div class="social-container">
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-telegram gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-qq gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-bilibili gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Copyright&ensp;&copy;&ensp;絷缘的博客<br/><a href="https://beian.miit.gov.cn/" target="_blank">晋ICP备20001723号-1</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://zhiyuandnc.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

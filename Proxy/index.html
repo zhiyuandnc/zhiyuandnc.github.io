@@ -1,0 +1,398 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Java的代理模式实现 | 絷缘的博客</title>
+
+<link rel="shortcut icon" href="https://zhiyuandnc.github.io/favicon.ico?v=1740567139208">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zhiyuandnc.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+ <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            絷缘的博客
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/friends" class="menu gt-a-link">
+                            友链
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1740567139208" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Java的代理模式实现
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2021-01-16 ·
+                    </time>
+                    
+                        <a href="https://zhiyuandnc.github.io/WZ_jj-ey9/" class="post-tags">
+                            # 代理模式
+                        </a>
+                    
+                        <a href="https://zhiyuandnc.github.io/designpatterns/" class="post-tags">
+                            # 设计模式
+                        </a>
+                    
+                        <a href="https://zhiyuandnc.github.io/d4DanwKEpK/" class="post-tags">
+                            # 动态代理
+                        </a>
+                    
+                        <a href="https://zhiyuandnc.github.io/java/" class="post-tags">
+                            # Java
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="一-代理模式">一、代理模式</h2>
+<blockquote>
+<p>简介：用另外的对象处理当前对象的业务逻辑并且不会影响到当前对象的一种增强当前对象功能的开发模式<br>
+作用：临时增强当前对象的功能</p>
+</blockquote>
+<h3 id="1-分类">1. 分类</h3>
+<ul>
+<li>静态代理</li>
+<li>动态代理</li>
+</ul>
+<h3 id="2-静态代理">2. 静态代理</h3>
+<ul>
+<li>问：什么是静态代理？</li>
+<li>答：通俗一点讲，就是我们在代码编写时已经已知了每一步的操作，然后一板一眼的去对指定的对象进行代理增强，这就是静态，当我们有新的需求，之前写的所有的代码都需要被改变</li>
+<li>问：怎么实现？</li>
+<li>答：事实上，我们在SE中所学的 <code>多态</code> 就是静态代理模式的实现</li>
+<li>问：多态？</li>
+<li>答：接口多态和抽象类多态正是我们去实现静态代理的方式</li>
+<li>问：实现一下？</li>
+<li>答：好的，但我只实现接口多态，抽象类多态的写法也是一样的，需要你去思考</li>
+</ul>
+<h4 id="代码实现接口多态实现">代码实现（接口多态实现）</h4>
+<pre><code class="language-java">//1. 创建一个接口Person
+public interface Person {
+    public abstract String buy(String name);
+}
+//2. 定义一个接口实现类实现Person接口
+public class Customer implements Person{
+    @Override
+    public String buy(String name){
+        return name + &quot;购买成功&quot;;
+    }
+}
+//3. 定义代理类实现Person接口，并进行静态代理的实现
+public class StaticProxyDemo implements Person{
+    private Person p;
+    public StaticProxyDemo(Person p){
+        this.p = p;
+    }
+    @Override
+    public String buy(String name) {
+        return p.buy(name)+&quot;我增强了buy方法&quot;;
+    }
+    public static void main(String[] args) {
+        Person p = new Customer();
+        StaticProxyDemo staticProxyDemo = new StaticProxyDemo(p);
+        String result = staticProxyDemo.buy(&quot;橘子&quot;);
+        System.out.println(result);
+    }
+}
+</code></pre>
+<h3 id="3-动态代理">3. 动态代理</h3>
+<ul>
+<li>问：什么是动态代理？</li>
+<li>答：动态代理就是，我们已知要增强的功能，只需书写增强功能部分，然后通过程序运行过程在JVM内存中动态生成代理对象来实现对对象功能的增强</li>
+<li>问：怎么实现？</li>
+<li>答：动态代理目前有两种实现方式，一种是JDK自带的 <code>JDK代理（又叫接口代理）</code> ，一种是使用第三方库 <code>CGLIB</code> 实现的 <code>基于CGLIB的动态代理</code></li>
+<li>问：实现一下？</li>
+<li>答：好的</li>
+</ul>
+<h4 id="jdk代理代码实现">JDK代理代码实现</h4>
+<ul>
+<li>依赖的类：<code>java.lang.reflect.Proxy</code></li>
+<li>使用的方法：<code>static Object newProxyInstance(ClassLoader loader,Class&lt;?&gt;[] interfaces,InvocationHandler h)</code></li>
+<li>方法参数讲解：
+<ul>
+<li><code>ClassLoader loader</code>：提供被代理类的类加载器</li>
+<li><code>Class&lt;?&gt;[] interfaces</code>：提供被代理类实现的接口</li>
+<li><code>InvocationHandler h</code>：提供增强对象的功能，它是一个接口，我们需要使用匿名内部类或者lambda表达式去实现它的 invoke 方法，来达到增强对象的目的</li>
+</ul>
+</li>
+<li>invoke方法参数详解
+<ul>
+<li>Object invoke(Object proxy, Method method, Object[] args)
+<ul>
+<li><code>Object proxy</code>：代理对象的引用，一般不使用</li>
+<li><code>Method method</code>：代理对象调用接口中方法触发的方法对象</li>
+<li><code>Object[] args</code>：代理对象调用接口中方法传递的参数列表</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-java">//创建一个接口Person
+public interface Person {
+    public abstract String buy(String name);
+}
+//创建一个类实现接口Person
+public class Customer implements Person{
+    @Override
+    public String buy(String name){
+        return name + &quot;购买成功&quot;;
+    }
+}
+//创建测试类实现JDK动态代理
+public class DynamicDemo {
+    public static void main(String[] args) {
+        //创建被代理对象
+        final Customer customer = new Customer();
+
+        Person customerProxy = (Person) Proxy.newProxyInstance(customer.getClass().getClassLoader(), customer.getClass().getInterfaces(), new InvocationHandler() {
+            @Override
+            public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+                if (&quot;buy&quot;.equalsIgnoreCase(method.getName())) {
+                    Object result = method.invoke(customer, args);
+                    return result + &quot;，我被加强了&quot;;
+                } else {
+                    return method.invoke(customer, args);
+                }
+            }
+        });
+        String content = customerProxy.buy(&quot;橘子&quot;);
+        System.out.println(content);
+    }
+}
+</code></pre>
+<h4 id="cglib代理代码实现">CGLIB代理代码实现</h4>
+<ul>
+<li>依赖的包：我这里使用maven导入依赖</li>
+</ul>
+<pre><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;cglib&lt;/groupId&gt;
+    &lt;artifactId&gt;cglib&lt;/artifactId&gt;
+    &lt;version&gt;3.3.0&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<ul>
+<li>
+<p>使用的类：<code>net.sf.cglib.proxy.Enhancer</code></p>
+</li>
+<li>
+<p>使用的方法：<code>static Object create(Class type, Callback callback)</code></p>
+</li>
+<li>
+<p>方法参数详解：</p>
+<ul>
+<li><code>Class type</code>：提供被代理类的字节码文件对象</li>
+<li><code>Callback callback</code>：提供增强对象的功能，它是一个顶层接口，我们需要通过多态去实现它的子接口</li>
+<li><code>MethodInterceptor</code>并重写其中的<code>intercept</code>方法</li>
+</ul>
+</li>
+<li>
+<p>intercept方法参数详解</p>
+<ul>
+<li><code>Object intercept(Object obj, java.lang.reflect.Method method, Object[] args, MethodProxy proxy)</code>
+<ul>
+<li><code>Object obj</code>：与JDK代理相同，都是代理对象的引用，一般不使用</li>
+<li><code>Method method</code>：代理类调用接口中方法时触发的方法对象</li>
+<li><code>Object[] args</code>：代理类调用接口中方法时传递的参数列表</li>
+<li><code>MethodProxy proxy</code>：方法的代理对象引用，一般不使用</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-java">//定义一个类
+public class Customer {
+    public String buy(String name){
+        return name+&quot;购买成功&quot;;
+    }
+}
+//实现基于CGLIB的动态代理
+public class CGLIBProxyDemo {
+    public static void main(String[] args) {
+        //创建被代理对象
+        final Customer customer = new Customer();
+        Customer proxyCustomer = (Customer)Enhancer.create(customer.getClass(), new MethodInterceptor() {
+            @Override
+            public Object intercept(Object obj, Method method, Object[] args, MethodProxy proxy) throws Throwable {
+                Object result = null;
+                if(&quot;buy&quot;.equalsIgnoreCase(method.getName())){
+                    result = method.invoke(customer,args)+&quot;,我被加强了&quot;;
+                }else{
+                    result = method.invoke(customer);
+                }
+                return result;
+            }
+        });
+        String content = proxyCustomer.buy(&quot;香蕉&quot;);
+        System.out.println(content);
+    }
+}
+</code></pre>
+<blockquote>
+<p>原文作者：絷缘<br>
+作者邮箱：zhiyuanworkemail@163.com<br>
+原文地址：<a href="https://zhiyuandnc.github.io/Proxy/">https://zhiyuandnc.github.io/Proxy/</a><br>
+版权声明：本文为博主原创文章，转载请注明原文链接作者信息</p>
+</blockquote>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://zhiyuandnc.github.io/JavaHttp/" class="post-title gt-a-link">
+                    Java原生实现HTTP的GET和POST请求
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">事实不以人的意志为转移</div>
+    <div class="social-container">
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-telegram gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-qq gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-bilibili gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Copyright&ensp;&copy;&ensp;絷缘的博客<br/><a href="https://beian.miit.gov.cn/" target="_blank">晋ICP备20001723号-1</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://zhiyuandnc.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

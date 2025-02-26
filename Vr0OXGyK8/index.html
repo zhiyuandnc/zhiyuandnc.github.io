@@ -1,0 +1,3648 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Vue2复习&amp;Vue3学习 | 絷缘的博客</title>
+
+<link rel="shortcut icon" href="https://zhiyuandnc.github.io/favicon.ico?v=1740567139208">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zhiyuandnc.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+ <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            絷缘的博客
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/friends" class="menu gt-a-link">
+                            友链
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1740567139208" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Vue2复习&amp;Vue3学习
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2023-01-26 ·
+                    </time>
+                    
+                        <a href="https://zhiyuandnc.github.io/2TtDJFHeW/" class="post-tags">
+                            # Vue2.0
+                        </a>
+                    
+                        <a href="https://zhiyuandnc.github.io/co7VEnPhv/" class="post-tags">
+                            # Vue3.0
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="一-vue简介">一、Vue简介</h2>
+<h3 id="1-vue特点">1. Vue特点</h3>
+<ul>
+<li>采用组件化模式，提高代码复用率让代码更好维护</li>
+<li>声明式编码，无需操作DOM，提高开发效率</li>
+<li>使用虚拟DOM+Diff算法，尽量复用DOM节点</li>
+</ul>
+<h3 id="2-起步">2. 起步</h3>
+<blockquote>
+<p>初学者不建议使用vue-cli安装，请用script标签引入</p>
+<pre><code class="language-html">&lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>下载地址</p>
+<ul>
+<li>开发版本：https://cn.vuejs.org/js/vue.js</li>
+<li>生产版本：https://cn.vuejs.org/js/vue.min.js</li>
+</ul>
+</blockquote>
+<h3 id="3-初识">3. 初识</h3>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset=&quot;utf-8&quot;&gt;
+		&lt;title&gt;Vue学习&lt;/title&gt;
+		&lt;script src=&quot;./js/vue.js&quot;&gt;&lt;/script&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;div id=&quot;root&quot;&gt;
+			&lt;h2&gt;{{username}}&lt;/h2&gt;
+			&lt;h2&gt;{{nickname}}&lt;/h2&gt;
+			&lt;h2&gt;{{age}}&lt;/h2&gt;
+		&lt;/div&gt;
+		&lt;script type=&quot;text/javascript&quot;&gt;
+			Vue.config.productionTip = false;
+			new Vue({
+				el:&quot;#root&quot; ,//绑定页面DOM
+				data:{
+					username:&quot;zhiyuan&quot;,
+					nickname:&quot;絷缘&quot;,
+					age:26
+				},
+			});
+		&lt;/script&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<blockquote>
+<p>Vue中一个实例对应一个页面DOM容器，一个DOM容器无法对应多个实例，一个实例也不能绑定多个DOM容器</p>
+</blockquote>
+<h3 id="4-模板语法">4. 模板语法</h3>
+<h4 id="41-插值语法插值表达式">4.1 插值语法（插值表达式）</h4>
+<h5 id="1-插值表达式">①. 插值表达式</h5>
+<ul>
+<li>格式：{{ 表达式 }}</li>
+</ul>
+<blockquote>
+<p>注意：插值表达式中必须是JS代码或JS表达式或Vue实例中声明的data属性</p>
+</blockquote>
+<h4 id="42-指令语法属性绑定">4.2 指令语法（属性绑定）</h4>
+<h5 id="2-属性绑定">②. 属性绑定</h5>
+<ul>
+<li>
+<p>格式：<code>v-bind:[attributeName]</code></p>
+<ul>
+<li>
+<p>例</p>
+<pre><code class="language-html">&lt;div id=&quot;root&quot;&gt;
+	&lt;img v-bind:src=&quot;avatar&quot;/&gt;    
+&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+	new Vue({
+       el:&quot;#root&quot;,
+       data:{
+       	   avatar:&quot;https://v1.alapi.cn/api/avatar?email=zhiyuandnc666@gmail.com&amp;size=100&quot;	    
+       } 
+    });
+&lt;/script&gt;
+</code></pre>
+</li>
+<li>
+<p>页面效果</p>
+</li>
+</ul>
+<figure data-type="image" tabindex="1"><img src="https://pic.zyblog.xyz/img/typora/image-20220105104936745.png" alt="页面效果" loading="lazy"></figure>
+</li>
+<li>
+<p>简写：<code>:[attributeName]</code></p>
+<ul>
+<li>
+<p>例</p>
+<pre><code class="language-html">&lt;div id=&quot;root&quot;&gt;
+	&lt;img :src=&quot;avatar&quot;/&gt;
+&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+	new Vue({
+       el:&quot;#root&quot;,
+       data:{
+       	   avatar:&quot;https://v1.alapi.cn/api/avatar?email=zhiyuandnc666@gmail.com&amp;size=100&quot;	    
+       } 
+    });
+&lt;/script&gt;
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="2-双向绑定">②. 双向绑定</h5>
+<ul>
+<li>
+<p>格式：<code>v-model:value</code></p>
+<ul>
+<li>
+<p>例</p>
+<pre><code class="language-html">&lt;div id=&quot;root&quot;&gt;
+	&lt;img :src=&quot;avatar&quot;/&gt;    
+    &lt;input type=&quot;text&quot; v-model:value=&quot;avatar&quot;/&gt;
+&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+	new Vue({
+       el:&quot;#root&quot;,
+       data:{
+       	   avatar:&quot;https://v1.alapi.cn/api/avatar?email=zhiyuandnc666@gmail.com&amp;size=100&quot;	    
+       } 
+    });
+&lt;/script&gt;
+</code></pre>
+</li>
+</ul>
+<blockquote>
+<p>如下代码是错误的，因为v-model只能应用表单类元素上，我们认为只有可以被改变value的元素双向绑定才有意义</p>
+</blockquote>
+</li>
+<li>
+<p>简写：<code>v-model</code></p>
+<ul>
+<li>v-model默认绑定就是value属性</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-容器绑定两种方式">5. 容器绑定两种方式</h3>
+<h4 id="51-方式一el绑定">5.1 方式一：el绑定</h4>
+<pre><code class="language-js">new Vue({
+   	el:&quot;DOM元素标志&quot;,//使用el挂载DOM容器
+    data:{
+    	key:value,
+        ......
+    }
+});
+</code></pre>
+<h4 id="52-方式二mount挂载">5.2 方式二：mount挂载</h4>
+<pre><code class="language-js">const vm = new Vue({
+   data:{
+       key:value,
+       ......
+   } 
+});
+vm.$mount('DOM元素标志');//使用实例对象挂载DOM容器
+</code></pre>
+<h3 id="6-data属性的两种写法">6. data属性的两种写法</h3>
+<h4 id="61-方式一对象形式">6.1 方式一：对象形式</h4>
+<pre><code class="language-js">new Vue({
+   	el:&quot;#container&quot;,
+    data:{
+        key1:value1,
+        key2:value2,
+        key...:value...
+    }
+});
+</code></pre>
+<h4 id="62-方式二函数形式">6.2 方式二：函数形式</h4>
+<pre><code class="language-js">new Vue({
+    el:&quot;#container&quot;,
+    data:function(){
+        return {
+            key1:value1,
+            key2:value2,
+            key...:value...
+        }
+    }
+    //简写
+    data(){
+    	return {
+            key1:value1,
+            key2:value2,
+            key...:value...
+        }
+	}
+});
+</code></pre>
+<blockquote>
+<p>注意：函数方式返回data数据时，不可使用箭头函数，因为箭头函数没有自己的this对象，会向上寻找父类的this，就会拿到window对象，但是我们书写返回函数需要被Vue对象所调用，故而不能使用箭头函数</p>
+<p>应用场景：组件封装时，我们必须使用函数式写法返回data值</p>
+</blockquote>
+<h2 id="二-mvvm简介">二、MVVM简介</h2>
+<h3 id="1-mvvm模型组成">1. MVVM模型组成</h3>
+<h4 id="11-m模型model">1.1 M：模型（Model）</h4>
+<ul>
+<li>对应data中的数据</li>
+</ul>
+<h4 id="12-v视图view">1.2 V：视图（View）</h4>
+<ul>
+<li>对应模板渲染</li>
+</ul>
+<h4 id="13-vm视图模型">1.3 VM：视图模型</h4>
+<ul>
+<li>对应Vue实例对象</li>
+</ul>
+<figure data-type="image" tabindex="2"><img src="https://pic.zyblog.xyz/img/typora/mvvm.png" alt="MVVM模型图" loading="lazy"></figure>
+<h3 id="2-objectdefineproperty">2. Object.defineProperty</h3>
+<h4 id="21-es6为对象添加属性">2.1 ES6为对象添加属性</h4>
+<ul>
+<li>Object.defineProperty（originObject，attributeName，attributeValue）</li>
+</ul>
+<pre><code class="language-js">let person = {
+    name:&quot;zhiyuan&quot;,
+    gender:&quot;male&quot;
+}
+Object.defineProperty(person,'age',{
+    value:18
+});
+</code></pre>
+<blockquote>
+<p>注意：通过defineProperty直接添加的对象属性，是无法进行枚举的，即遍历对象无法取得该值，且我们无法修改或删除这个属性</p>
+<p>如何直观的看到？</p>
+<ul>
+<li>Object.keys（object）
+<ul>
+<li>使用keys函数可以将指定对象的key值抽取为一个数组，我们会发现新加的属性没有出现在数组中</li>
+</ul>
+</li>
+</ul>
+<p>如何解决这个问题？</p>
+<pre><code class="language-js">Object.defineProperty(person,'age',{
+    value:18,
+    enumerable:true, //将enumrable置为true，就可以对其进行枚举了
+    //为了方便使用，我们将writable,configurable属性也置为true，这样就可以对该属性进行修改删除了	
+    writable:true,
+    configurable:true
+});
+</code></pre>
+</blockquote>
+<ul>
+<li>
+<p>为属性增加getter和setter方法</p>
+<pre><code class="language-js">let age = 18;
+let user = {
+    username:&quot;zhiyuan&quot;,
+    nickname:&quot;絷缘&quot;,
+    password:&quot;123456&quot;,
+    gender:&quot;male&quot;
+}
+Object.defineProperty(user,'age',{
+   	get:function(){
+        return age;
+    },
+    set:function(age){
+        this.age = age;
+    }
+});
+</code></pre>
+</li>
+</ul>
+<h4 id="22-数据代理">2.2 数据代理</h4>
+<blockquote>
+<p>概念：指的是在访问或者修改对象的某个属性时，通过一段代码拦截这个行为，进行额外的操作或者修改返回结果。</p>
+<p>Vue实例中的data就是实现了数据代理，data在Vue实例中实际存在的属性名称为_data</p>
+</blockquote>
+<h3 id="3-事件处理">3. 事件处理</h3>
+<h4 id="31-methods">3.1 methods</h4>
+<pre><code class="language-js">const vm = new Vue({
+   el:&quot;#container&quot;,
+   data:{
+       user:{
+           username:&quot;zhiyuan&quot;,
+    		nickname:&quot;絷缘&quot;,
+    		password:&quot;123456&quot;,
+    		gender:&quot;male&quot;,
+           	age:18
+       }
+   },
+   methods:{
+       methodName(event){
+           //methodContent
+    		console.log(this===vm)	//true 此处this为vm实例对象
+       }
+   } 
+}};
+</code></pre>
+<h4 id="32-事件绑定">3.2 事件绑定</h4>
+<ul>
+<li>格式：<code>v-on:[event]</code></li>
+</ul>
+<pre><code class="language-html">&lt;div id=&quot;container&quot;&gt;
+	&lt;button v-on:click=&quot;showInfo($event)&quot;&gt;按钮&lt;/button&gt;
+&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+	const vm = new Vue({
+        el:&quot;#container&quot;,
+        data:{
+            user:{
+                username:&quot;zhiyuan&quot;,
+    			nickname:&quot;絷缘&quot;,
+    			password:&quot;123456&quot;,
+    			gender:&quot;male&quot;,
+           		age:18
+            }
+        },
+        methods:{
+            showInfo(event){
+                alert(&quot;按钮被点击&quot;);
+            }
+        }
+    });
+&lt;/script&gt;
+</code></pre>
+<ul>
+<li>简写：<code>@[event]</code>
+<ul>
+<li>
+<p>例：<code>v-on:click</code>  ==  <code>@click</code></p>
+<pre><code class="language-vue">&lt;button @click=&quot;showMessage($event,传递参数)&quot;&gt;点我提示信息&lt;/button&gt;
+</code></pre>
+<pre><code class="language-js">new Vue({
+	el:&quot;#root&quot;,
+	data:{},
+	methods:{
+		showMessage(event,传递参数){
+            console.log(event.target.innerText,传递参数);
+        }
+	}
+});
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="33-事件修饰符">3.3 事件修饰符</h4>
+<ul>
+<li>阻止默认行为：<code>.prevent</code></li>
+<li>阻止事件冒泡：<code>.stop</code></li>
+<li>事件只触发一次：<code>.once</code></li>
+<li>使用事件捕获模式：<code>.capture</code></li>
+<li>只有event.target是当前操作的元素时才出发事件：<code>.self</code></li>
+<li>立即执行事件默认行为，无需等待事件回调执行完毕：<code>.passive</code>
+<ul>
+<li><code>@wheel</code>：鼠标滚轮滚动事件</li>
+<li><code>@scroll</code>：滚动条滚动事件</li>
+</ul>
+</li>
+</ul>
+<h4 id="34-键盘事件">3.4 键盘事件</h4>
+<ul>
+<li>
+<p>Vue中提供的常用按键别名</p>
+<ul>
+<li><code>enter</code> ：回车键</li>
+<li><code>delete</code> ：退格键和删除键</li>
+<li><code>esc</code> ：ESC键</li>
+<li><code>space</code> ：空格键</li>
+<li><code>tab</code> ：Tab键</li>
+<li><code>up</code> ：方向键上</li>
+<li><code>down</code> ：方向键下</li>
+<li><code>left</code> ：方向键左</li>
+<li><code>right</code> ：方向键右</li>
+</ul>
+<blockquote>
+<p>Vue未提供别名的按键，可以使用原始key值绑定，但要注意转换为短横线命名方式，如：caps-lock</p>
+<p>注意：tab键在@keyup事件中无效，因为tab键默认会切换焦点区域，必须配合@keydown才能正常使用</p>
+</blockquote>
+</li>
+<li>
+<p>系统修饰键</p>
+<ul>
+<li><code>ctrl</code></li>
+<li><code>alt</code></li>
+<li><code>shift</code></li>
+<li><code>win</code>：windows徽标键</li>
+</ul>
+<blockquote>
+<p>注意：系统修饰键配合@keydown才可以正常触发事件，如果是@keyup需要配合其他按键才能正常触发</p>
+</blockquote>
+</li>
+<li>
+<p>Vue中自定义按键别名</p>
+<pre><code class="language-js">Vue.config.keyCodes.huiche = 13;
+</code></pre>
+</li>
+</ul>
+<h3 id="4-计算属性">4. 计算属性</h3>
+<h4 id="41-基本概念">4.1 基本概念</h4>
+<blockquote>
+<p>所谓的计算属性就是用几个data中已有的属性进行处理计算后得到一个全新的属性</p>
+</blockquote>
+<pre><code class="language-js">const vm = new Vue({
+    el:&quot;#container&quot;,
+    data:{
+        firstName:&quot;絷缘&quot;,
+        lastName:&quot;解&quot;
+    },
+    methods:{},
+    computed:{
+        fullName:{
+            get(){
+                return this.firstName + &quot;-&quot; + this.lastName;
+            },
+            set(value){
+                cosnt array = value.split(&quot;-&quot;);
+                this.firstName = array[0];
+                this.lastName = array[1];
+            }
+        }
+    }
+})
+</code></pre>
+<h4 id="42-getter和setter调用时机">4.2 getter和setter调用时机</h4>
+<ul>
+<li>get调用时机
+<ul>
+<li>初次读取计算属性时</li>
+<li>计算属性所依赖的其他属性发生变化时</li>
+</ul>
+</li>
+<li>set调用时机
+<ul>
+<li>当计算属性被修改时</li>
+</ul>
+</li>
+</ul>
+<h4 id="43-简写形式">4.3 简写形式</h4>
+<ul>
+<li>
+<p>简写</p>
+<ul>
+<li>应用场景：计算属性只读不写，默认当做getter使用</li>
+</ul>
+<pre><code class="language-js">const vm = new Vue({
+    el:&quot;#container&quot;,
+    data:{
+        firstName:&quot;絷缘&quot;,
+        lastName:&quot;解&quot;
+    },
+    methods:{},
+    computed:{
+        fullName(){
+        	return this.firstName + &quot;-&quot; + this.lastName;
+        }
+    }
+})
+</code></pre>
+</li>
+</ul>
+<h3 id="5-监视属性">5. 监视属性</h3>
+<h4 id="51-在watch属性中书写监视内容">5.1 在watch属性中书写监视内容</h4>
+<ul>
+<li>监视属性不仅可以监视data中声明的属性，还可以监视计算属性</li>
+</ul>
+<pre><code class="language-js">const vm = new Vue({
+    el:&quot;#container&quot;,
+    data:{
+        isLogin:true,
+    },
+    methods:{},
+    computed:{},
+    watch:{
+        'isLogin':{
+            //初始化时让handler执行一次
+            immediate:true,
+            //当被监视属性改变时会调用handler方法
+            handler(newValue,oldValue){
+                console.log(isLogin==true?&quot;已登录&quot;:&quot;未登录&quot;);
+            }
+        }
+    }
+});
+</code></pre>
+<h4 id="52-vm实例调用watch方法书写监视内容">5.2 vm实例调用$watch方法书写监视内容</h4>
+<pre><code class="language-js">vm.$watch('isLogin',{
+    //初始化时让handler执行一次
+    immediate:true,
+    //当被监视属性改变时会调用handler方法
+    handler(newValue,oldValue){
+        console.log(isLogin==true?&quot;已登录&quot;:&quot;未登录&quot;);
+    }
+})
+</code></pre>
+<h4 id="53-深度监视">5.3 深度监视</h4>
+<ul>
+<li>Vue的watch默认不监视对象内部值的改变，要想让watch可以监视到对象内部属性的变化，需要配置<code>deep:true</code></li>
+</ul>
+<blockquote>
+<p>watch中默认监视外层对象，无法监视多级结构的内容改变，当外层对象改变才会执行handler，内部成员的改变不会触发handler，如果我们想要监视内部成员的改变，需要在watch对应监视属性中添加 <code>deep:true</code></p>
+</blockquote>
+<pre><code class="language-js">const vm = new Vue({
+    el:&quot;#container&quot;,
+    data:{
+        user:{
+            username:&quot;zhiyuan&quot;,
+            gender:&quot;male&quot;
+        }
+    }
+    watch:{
+    	'user':{
+    		deep:true,
+    		handler(){
+    			console.log(&quot;user被改变&quot;);
+			}
+		}
+	}
+})
+</code></pre>
+<p>此时我们改变user中的属性值，handler也会被触发执行。</p>
+<h4 id="54-简写形式">5.4 简写形式</h4>
+<blockquote>
+<p>watch使用简写方式的代价就是无法进行除了handler方法外的配置，比如深度监视，比如初始化执行</p>
+</blockquote>
+<pre><code class="language-js">const vm = new Vue({
+    el:&quot;#container&quot;,
+    data:{
+        isLogin:true
+    }
+    watch:{
+    	isLogin(newValue,oldValue){
+    		console.log('isLogin被修改',newValue,oldValue);
+		}
+	}
+})
+</code></pre>
+<h3 id="6-计算属性与监视属性的区别">6. 计算属性与监视属性的区别</h3>
+<h4 id="61-区别">6.1 区别</h4>
+<blockquote>
+<ol>
+<li>computed可以完成的功能，watch都可以完成</li>
+<li>watch可以完成的功能，computed不一定能够完成，例如watch可以进行异步操作</li>
+</ol>
+</blockquote>
+<h4 id="62-注意事项">6.2 注意事项</h4>
+<blockquote>
+<p>注意：</p>
+<ol>
+<li>被Vue所管理的函数应该写成普通函数，这样this的指向才是vue实例对象</li>
+<li>所有不被Vue管理的函数（定时器回调函数，ajax回调函数，Promise的回调函数等），最好写成箭头函数，这样this的指向才是vue实例对象，否则它们将指向约定的this为window对象</li>
+</ol>
+</blockquote>
+<h3 id="7-绑定样式">7. 绑定样式</h3>
+<h4 id="71-绑定class">7.1 绑定class</h4>
+<h5 id="步骤">步骤</h5>
+<ul>
+<li>先定义好对应选择器的样式</li>
+<li>将选择器的名称声明到data数据中</li>
+<li>将data数据中的选择器名称与class绑定</li>
+</ul>
+<h4 id="72-绑定style">7.2 绑定style</h4>
+<h5 id="1-写法一">①. 写法一</h5>
+<pre><code class="language-html">&lt;div id=&quot;container&quot; :style=&quot;{fontSize:fontSize+'px'}&quot;&gt;
+    内容
+&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    const vm = new Vue({
+        el:&quot;#container&quot;,
+        data:{
+            fontSize:40
+        }
+    });
+&lt;/script&gt;
+</code></pre>
+<h5 id="2-写法二">②. 写法二</h5>
+<pre><code class="language-html">&lt;div id=&quot;container&quot; :style=&quot;styleObj&quot;&gt;
+    内容
+&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    const vm = new Vue({
+        el:&quot;#container&quot;,
+        data:{
+            styleObj:{
+                fontSize:'40px',
+                color:'#666'
+            }
+        }
+    });
+&lt;/script&gt;
+</code></pre>
+<h5 id="3-写法三">③. 写法三</h5>
+<pre><code class="language-html">&lt;div id=&quot;container&quot; :style=&quot;[styleObj1,styleObj2]&quot;&gt;
+    内容
+&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+	const vm = new Vue({
+        el:&quot;#container&quot;,
+        data:{
+            styleObj1:{
+                fontSize:'40px'
+            },
+            styleObj2:{
+                color:'#666'
+            }
+        }
+    });
+&lt;/script&gt;
+</code></pre>
+<h3 id="8-条件渲染">8. 条件渲染</h3>
+<h4 id="81-v-if">8.1 v-if</h4>
+<pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+    &lt;h2 v-if=&quot;isLogin === false&quot;&gt;登录注册&lt;/h2&gt;
+    &lt;h2 v-else&gt;已登录&lt;/h2&gt;
+&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    const vm = new Vue({
+        el:&quot;.container&quot;,
+        data:{
+            isLogin:false
+        }
+    });
+&lt;/script&gt;
+</code></pre>
+<h4 id="82-v-show">8.2 v-show</h4>
+<pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+    &lt;h2 v-show=&quot;isLogin === false&quot;&gt;登录注册&lt;/h2&gt;
+    &lt;h2 v-show=&quot;isLogin&quot;&gt;已登录&lt;/h2&gt;
+&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    const vm = new Vue({
+        el:&quot;.container&quot;,
+        data:{
+            isLogin:false
+        }
+    });
+&lt;/script&gt;
+</code></pre>
+<h4 id="83-v-if与v-show的区别">8.3 v-if与v-show的区别</h4>
+<ul>
+<li>区别
+<ol>
+<li>v-if 适用于切换频率比较低的场景，因为它是通过DOM渲染节点来完成的显示与隐藏，当不满足条件时，页面元素会被移除，满足条件时又会被创建，所以当大量的元素需要频繁切换的时候，v-if不是很好的解决方案</li>
+<li>v-show 适用于切换频率较高的场景，因为它是通过元素的css样式 <code>display:none</code> 属性来实现元素的显示与隐藏的，当满足条件时， <code>display:none</code> 被移除，元素显示，不满足条件时， <code>display:none</code> 被添加，元素隐藏</li>
+</ol>
+</li>
+</ul>
+<h4 id="84-条件相同时条件渲染书写方式">8.4 条件相同时条件渲染书写方式</h4>
+<ul>
+<li>
+<p>例</p>
+<pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+    &lt;h2 v-if=&quot;isLogin === false&quot;&gt;登录&lt;/h2&gt;
+    &lt;h2 v-if=&quot;isLogin === false&quot;&gt;注册&lt;/h2&gt;
+&lt;/div&gt;
+&lt;!--v-if条件相同重复书写，进一步优化--&gt;
+&lt;div class=&quot;container&quot;&gt;
+    &lt;div v-if=&quot;isLogin === false&quot;&gt;
+        &lt;h2&gt;登录&lt;/h2&gt;
+    	&lt;h2&gt;注册&lt;/h2&gt;
+    &lt;/div&gt;   
+&lt;/div&gt;
+</code></pre>
+<blockquote>
+<p>上面的优化虽然实现了效果也避免了条件渲染重复，但是加入了新的没有必要的页面元素，一定程度影响了布局，不是非常合适，那么有没有一种办法解决这个问题呢？</p>
+<p>Vue为我们提供了一个名为 <code>&lt;template&gt;</code> 的标签，这个标签可以与条件渲染 <code>v-if</code> 结合使用而且不影响页面结构，注意只能与 <code>v-if</code> 结合使用</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="9-列表渲染">9. 列表渲染</h3>
+<h4 id="91-基本列表">9.1 基本列表</h4>
+<pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+    &lt;!-- 遍历数组 --&gt;
+    &lt;ul class=&quot;list&quot;&gt;
+        &lt;li class=&quot;list-item&quot; v-for=&quot;(user,index) in userList&quot; :key=&quot;user.uid&quot;&gt;
+            {{ user.uid + &quot;-&quot; + user.username + &quot;-&quot; + user.age}}
+        &lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;!-- 遍历对象 --&gt;
+    &lt;ul class=&quot;list&quot;&gt;
+        &lt;li class=&quot;list-item&quot; v-for=&quot;(value,key) of admin&quot; :key=&quot;key&quot;&gt;
+            {{ key + &quot;-&quot; + value }}
+        &lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;!-- 遍历字符串 --&gt;
+    &lt;ul class=&quot;list&quot;&gt;
+        &lt;li class=&quot;list-item&quot; v-for=&quot;(char,index) of username&quot; :key=&quot;index&quot;&gt;
+            {{ index + &quot;-&quot; + char }}
+        &lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;!-- 遍历指定次数 --&gt;
+    &lt;ul class=&quot;list&quot;&gt;
+        &lt;li class=&quot;list-item&quot; v-for=&quot;(number,index) of 5&quot;&gt;
+            {{ index + &quot;-&quot; + number }}
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    const vm = new Vue({
+        el:'.container',
+        data:{
+            userList:[
+                {uid:'001',username:'zhiyuan001',age:18},
+                {uid:'002',username:'zhiyuan002',age:20},
+                {uid:'003',username:'zhiyuan003',age:23},
+            ],
+            admin:{
+                username:&quot;zhiyuan&quot;,
+                role:&quot;admin&quot;,
+                nickname:&quot;絷缘&quot;,
+                email:&quot;1234567890@gmail.com&quot;
+            },
+            username:&quot;zhiyuan&quot;
+        }
+    });
+&lt;/script&gt;
+</code></pre>
+<h4 id="92-key的作用">9.2 key的作用</h4>
+<blockquote>
+<p>之前代码中，我们使用index作为key，其实这是不正确的，虽然当前我们确实没有发现问题，但是当我们对原有数据进行打乱顺序的操作后，如果继续以index作为key，那么会导致vue对DOM元素的复用错乱，进而导致页面数据错乱的结果。</p>
+<p>比如：当我们往数组的头部追加一项内容时，列表渲染会按索引与之前的DOM进行比较，查看是否可复用，但是我们现在的DOM元素的顺序已经发生了改变，在对其进行比较复用，就会导致元素和数据的错乱。</p>
+<p>那么我们不写怎么样？</p>
+<p>Vue会默认将当前数据的索引值作为当前DOM绑定的key值，所以造成的结果是一样的。</p>
+</blockquote>
+<h5 id="正确的key值绑定">正确的key值绑定</h5>
+<blockquote>
+<p>key值一定是可以唯一标识当前元素的信息，例如数据的ID值，这样无论我们变换顺序或者做其它操作，都不会对最终列表渲染的结果产生影响。</p>
+</blockquote>
+<h5 id="key的作用">key的作用</h5>
+<blockquote>
+<p>key是虚拟DOM对象的标识，当数据发生变化时，Vue会根据新的数据生成新的虚拟DOM，随后与之前的虚拟DOM进行差异比较，比较规则如下：</p>
+<ol>
+<li>旧的虚拟DOM中找到了与新的虚拟DOM相同的key
+<ul>
+<li>若是虚拟DOM的内容没有发生改变，直接使用旧的虚拟DOM所生成的旧的真实DOM元素</li>
+<li>若是虚拟DOM的内容已经发生改变，则由新的虚拟DOM生成新的真实DOM元素</li>
+</ul>
+</li>
+<li>旧的虚拟DOM中未找到与新的虚拟DOM相同的key
+<ul>
+<li>根据新的虚拟DOM创建新的真实DOM元素</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<h3 id="10-列表过滤">10. 列表过滤</h3>
+<h4 id="101-方式一监视属性">10.1 方式一：监视属性</h4>
+<pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+    &lt;input type=&quot;text&quot; v-model=&quot;keyWord&quot; placeholder=&quot;搜索...&quot;&gt;
+    &lt;ul class=&quot;list&quot;&gt;
+        &lt;li class=&quot;list-item&quot; v-for=&quot;(user,index) in tempList&quot; :key=&quot;user.uid&quot;&gt;
+            {{ user.uid + &quot;-&quot; + user.username + &quot;-&quot; + user.age}}
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    const vm = new Vue({
+        el:&quot;.container&quot;,
+        data:{
+            userList:[
+                {uid:'001',username:'胡歌',age:18,gender:'male'},
+                {uid:'002',username:'霍建华',age:20,gender:'male'},
+                {uid:'003',username:'焦恩俊',age:23,gender:'male'},
+                {uid:'004',username:'胡一菲',age:20,gender:'female'},					
+                {uid:'005',username:'胡图图',age:6,gender:'male'},					
+                {uid:'006',username:'刘诗诗',age:21,gender:'female'},					
+                {uid:'007',username:'刘亦菲',age:22,gender:'female'},				
+                {uid:'008',username:'刘德华',age:22,gender:'male'}			
+            ],
+            keyWord:'',
+            tempList:[]
+        },
+        watch:{
+            'keyWord':{
+                immediate:true,
+                handler(newValue,OldValue){
+                    this.tempList = this.userList.filter((user)=&gt;{
+                        return user.username.indexOf(newVlaue) != -1;
+                    })
+                }
+            }
+        }
+
+    });
+&lt;/script&gt;
+</code></pre>
+<h4 id="102-方式二计算属性">10.2 方式二：计算属性</h4>
+<pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+    &lt;input type=&quot;text&quot; v-model=&quot;keyWord&quot; placeholder=&quot;搜索...&quot;&gt;
+    &lt;ul class=&quot;list&quot;&gt;
+        &lt;li class=&quot;list-item&quot; v-for=&quot;(user,index) in tempList&quot; :key=&quot;user.uid&quot;&gt;
+            {{ user.uid + &quot;-&quot; + user.username + &quot;-&quot; + user.age}}
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    const vm = new Vue({
+        el:&quot;.container&quot;,
+        data:{
+            userList:[
+                {uid:'001',username:'胡歌',age:18,gender:'male'},
+                {uid:'002',username:'霍建华',age:20,gender:'male'},
+                {uid:'003',username:'焦恩俊',age:23,gender:'male'},
+                {uid:'004',username:'胡一菲',age:20,gender:'female'},
+                {uid:'005',username:'胡图图',age:6,gender:'male'},	
+                {uid:'006',username:'刘诗诗',age:21,gender:'female'},
+                {uid:'007',username:'刘亦菲',age:22,gender:'female'},				
+                {uid:'008',username:'刘德华',age:22,gender:'male'}			
+            ],
+            keyWord:''
+        },
+        computed:{
+            tempList:{
+                get(){
+                    return this.userList.filter((user)=&gt;{
+                        return user.username.indexOf(this.keyWord) != -1;
+                    });
+                }
+            }
+        }
+    });
+&lt;/script&gt;
+</code></pre>
+<h3 id="11-列表排序">11. 列表排序</h3>
+<pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+    &lt;input type=&quot;text&quot; v-model=&quot;keyWord&quot; placeholder=&quot;搜索...&quot;&gt;
+    &lt;input type=&quot;button&quot; value=&quot;年龄降序&quot; @click=&quot;sortType = 1&quot;&gt;
+    &lt;input type=&quot;button&quot; value=&quot;年龄升序&quot; @click=&quot;sortType = 2&quot;&gt;
+    &lt;input type=&quot;button&quot; value=&quot;原顺序&quot; @click=&quot;sortType = 0&quot;&gt;
+    &lt;ul class=&quot;list&quot;&gt;
+        &lt;li class=&quot;list-item&quot; v-for=&quot;(user,index) in tempList&quot; :key=&quot;user.uid&quot;&gt;
+            {{ user.uid + &quot;-&quot; + user.username + &quot;-&quot; + user.age}}
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    const vm = new Vue({
+        el:&quot;.container&quot;,
+        data:{
+            userList:[
+                {uid:'001',username:'胡歌',age:18,gender:'male'},
+                {uid:'002',username:'霍建华',age:20,gender:'male'},
+                {uid:'003',username:'焦恩俊',age:23,gender:'male'},
+                {uid:'004',username:'胡一菲',age:20,gender:'female'},					
+                {uid:'005',username:'胡图图',age:6,gender:'male'},					
+                {uid:'006',username:'刘诗诗',age:21,gender:'female'},					
+                {uid:'007',username:'刘亦菲',age:22,gender:'female'},				
+                {uid:'008',username:'刘德华',age:22,gender:'male'}			
+            ],
+            keyWord:'',
+            //sortType为0时正常排序，为1时按年龄降序，为2时按年龄升序
+            sortType:0
+        },
+        computed:{
+            tempList:{
+                get(){
+                    const arr = this.userList.filter((user)=&gt;{
+                        return user.username.indexOf(this.keyWord)!=-1;
+                    });
+                    if(this.sortType){
+                        arr.sort((u1,u2)=&gt;{
+                            return this.sortType===1 ? u2.age-u1.age :u1.age-u2.age;
+                        });
+                    }
+                    return arr;
+                }
+            }
+        }
+    });
+&lt;/script&gt;
+</code></pre>
+<h3 id="12-vue监测数据的原理">12. Vue监测数据的原理</h3>
+<blockquote>
+<ol>
+<li>Vue会监视data中所有层次的数据</li>
+<li>如何监测对象中的数据？
+<ul>
+<li>通过setter实现监视，且要在new Vue时就传入要监测的数据
+<ul>
+<li>对象中后追加的属性，Vue默认不做响应式处理</li>
+<li>如需给后添加的属性做响应式，请使用如下API
+<ul>
+<li><code>Vue.set(target,propertyName/index,value)</code></li>
+<li><code>this.$set(target,propertyName/index,value)</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>如何监测数组中的数据？
+<ul>
+<li>通过包裹数组更新元素的方法实现，本质上就是做了两件事
+<ul>
+<li>调用原生JS对应的数组方法进行更新</li>
+<li>重新解析模板，更新页面</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>在Vue修改数组中的某个元素一定要用如下方法（即Vue重新包装过的方法）：
+<ul>
+<li><code>push</code> <code>pop</code> <code>shift</code> <code>unshift</code> <code>splice</code> <code>sort</code> <code>reverse</code></li>
+<li><code>Vue.set()</code> <code>this.$set()</code></li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<h3 id="13-收集表单数据">13. 收集表单数据</h3>
+<h4 id="v-model的三个修饰符">v-model的三个修饰符</h4>
+<ul>
+<li><code>lazy</code> ：失去焦点再收集数据</li>
+<li><code>number</code> ：输入字符串转为有效的数字</li>
+<li><code>trim</code>：输入首尾空格过滤</li>
+</ul>
+<blockquote>
+<p>收集表单数据注意事项：</p>
+<ol>
+<li><input type="text"/> v-model搜集的是value值，用户的输入就是value值</li>
+<li><input type="radio"/> v-model搜集的是value值，而且需要给标签设置value值</li>
+<li>
+<input type="checkbox"/>
+1. 如果没有设置value值，默认搜集checked的值，即true or false
+2. 设置了value值
+   1. data中搜集此项的属性默认值为字符串，那么vue还是会搜集checked的值
+   2. data中搜集此项的属性默认值为数组，那么vue搜集的就是value组成的数组
+</li>
+</ol>
+</blockquote>
+<h3 id="14-过滤器">14. 过滤器</h3>
+<blockquote>
+<p>过滤器</p>
+<ul>
+<li>定义
+<ul>
+<li>对要展示的数据进行特定格式化后再显示，适用场景，后端商品价格数据，时间戳格式修改为前端展示格式</li>
+</ul>
+</li>
+<li>语法
+<ul>
+<li>注册过滤器：<code>Vue.filter(name,callback)</code> 或 <code>new Vue({filters:{...}})</code></li>
+<li>使用过滤器：<code>{{ 参数 | 过滤器名 }}</code> 或 <code>v-bind:属性名=&quot; 参数 | 过滤器名&quot;</code></li>
+</ul>
+</li>
+<li>备注
+<ul>
+<li>过滤器也可以接受额外参数，多个过滤器可以串联使用，后一个过滤器的参数为前一个过滤器的返回结果</li>
+<li>过滤器并没有改变原本的数据，只是产生了格式化后的新数据</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h4 id="141-局部过滤器">14.1 局部过滤器</h4>
+<pre><code class="language-html">&lt;div id=&quot;container&quot;&gt;
+	&lt;h3&gt;{{formatTime}}&lt;/h3&gt;
+    &lt;h3&gt;{{getFormatTime()}}&lt;/h3&gt;
+    &lt;h3&gt;{{time|timeFormatFilter('YYYY-MM-DD')}}&lt;/h3&gt;
+&lt;/div&gt;
+&lt;script src=&quot;./js/dayjs.min.js&quot;&gt;&lt;/script&gt;
+&lt;script	type=&quot;text/javascript&quot;&gt;
+	const vm = new Vue({
+        el:&quot;#container&quot;,
+        data:{
+            time:1641475263843
+        },
+        computed:{
+            formatTime(){
+                return dayjs(this.time).format('YYYY-MM-DD HH:mm:ss');
+            }
+        },
+        methods:{
+            getFormatTime(){
+                return dayjs(this.time).format('YYYY-MM-DD HH:mm:ss');
+            }
+        },
+        filters:{
+            timeFormatFilter(value,formatStr='YYYY-MM-DD HH:mm:ss'){
+                return dayjs(value).format(formatStr);
+            }
+        }
+    });
+&lt;/script&gt;
+</code></pre>
+<h4 id="142-全局过滤器">14.2 全局过滤器</h4>
+<pre><code class="language-html">&lt;script type=&quot;text/javascript&quot;&gt;
+    Vue.filter('filterName',function(value){
+       return value.slice(0,3);
+    });
+&lt;/script&gt;
+</code></pre>
+<blockquote>
+<p>过滤器只能与插值表达式或者v-bind使用，无法与v-model结合使用</p>
+</blockquote>
+<h3 id="15-其他内部指令">15. 其他内部指令</h3>
+<h4 id="151-v-text">15.1 v-text</h4>
+<ul>
+<li>向其所在的节点中渲染文本内容，不过它会替换掉节点中已有的内容</li>
+</ul>
+<pre><code class="language-html">&lt;div id=&quot;container&quot;&gt;
+	&lt;div v-text=&quot;text&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;script	type=&quot;text/javascript&quot;&gt;
+	const vm = new Vue({
+         el:&quot;#container&quot;,
+        data:{
+            text:&quot;文本内容&quot;
+        }
+    });
+&lt;/script&gt;
+</code></pre>
+<h4 id="152-v-html">15.2 v-html</h4>
+<pre><code class="language-html">&lt;div id=&quot;container&quot;&gt;
+	&lt;div v-html=&quot;html&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;script	type=&quot;text/javascript&quot;&gt;
+	const vm = new Vue({
+         el:&quot;#container&quot;,
+        data:{
+            html:&quot;&lt;h1&gt;html内容&lt;/h1&gt;&quot;
+        }
+    });
+&lt;/script&gt;
+</code></pre>
+<h4 id="153-v-cloak">15.3 v-cloak</h4>
+<ul>
+<li>当容器被Vue实例接管的时候，自动删除本属性</li>
+</ul>
+<blockquote>
+<p>使用场景：在Vue实例未接管之前，隐藏没有数据的DOM元素</p>
+<pre><code class="language-css">[v-cloak] {
+  	display: none;
+}
+</code></pre>
+</blockquote>
+<h4 id="154-v-once">15.4 v-once</h4>
+<blockquote>
+<p>v-once指令在DOM节点初次动态渲染后，就变为静态内容了，之后无论绑定的数据发生何种变化，都不会引起当前内容的更新，用于优化性能</p>
+</blockquote>
+<h4 id="155-v-pre">15.5 v-pre</h4>
+<blockquote>
+<p>v-pre指令会跳过当前节点的编译过程，如果没有使用指令语法、插值表达式的节点，添加v-pre，可以加快编译。使用过的节点则会使所使用的语法失效。</p>
+</blockquote>
+<h3 id="16-自定义指令">16. 自定义指令</h3>
+<h4 id="161-函数式写法">16.1 函数式写法</h4>
+<pre><code class="language-html">&lt;div id=&quot;container&quot;&gt;
+     &lt;span v-text=&quot;number&quot;&gt;&lt;/span&gt;
+     &lt;span v-big=&quot;number&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+	new Vue({
+        el:&quot;#container&quot;,
+        data:{
+            number:1
+        },
+        directives:{
+            big(element,bindObject){
+                element.innerText = bindObject.value * 10;
+            }
+        }
+    });
+&lt;/script&gt;
+</code></pre>
+<blockquote>
+<p>自定义指令函数何时被调用？</p>
+<ol>
+<li>指令与元素成功绑定时，调用一次</li>
+<li>指令所在的模板被重新解析时，调用一次</li>
+</ol>
+</blockquote>
+<h4 id="162-对象式写法">16.2 对象式写法</h4>
+<pre><code class="language-html">&lt;div id=&quot;container&quot;&gt;
+     &lt;input type=&quot;text&quot; v-fbind:value=&quot;number&quot;/&gt;
+&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    new Vue({
+        el:&quot;#container&quot;,
+        data:{
+            number:1
+        },
+        directives:{
+            fbind:{
+                //指令与元素成功绑定时被调用
+                bind(element,bindObject){
+                    element.value = bindObject.value;
+                },
+                //指令所在元素被插入页面时
+                insert(element,bindObject){
+                    element.focus();
+                },
+                //指令所在的模板被重新解析时
+                update(element,bindObject){
+                    elelment.value = bindObject.value;
+                }                
+            }
+        }
+    });
+&lt;/script&gt;   
+</code></pre>
+<h4 id="163-常见问题">16.3 常见问题</h4>
+<blockquote>
+<ol>
+<li>自定义指令命名时不要使用驼峰命名法，要转换为横线命名法，且在声明该指令函数时将函数名用引号包裹，避免Vue解析出错</li>
+<li>自定义指令回调函数中的this是window对象，因为是由我们直接操作真实DOM的，Vue不会再管理this</li>
+<li>一个Vue实例中的自定义指令只能被当前实例索使用，若想被其他vue实例使用，必须声明为全局指令</li>
+</ol>
+</blockquote>
+<h4 id="164-全局自定义指令">16.4 全局自定义指令</h4>
+<pre><code class="language-html">&lt;script type=&quot;text/javascript&quot;&gt;
+    Vue.directive('name',{
+       bind(element,bindObject){
+           ......
+       },
+       inserted(element,bindObject){
+           ......
+       },
+       update(element,bindObject){
+           ......
+       } 
+    });
+&lt;/script&gt;
+</code></pre>
+<h2 id="三-生命周期">三、生命周期</h2>
+<figure data-type="image" tabindex="3"><img src="https://pic.zyblog.xyz/img/typora/lifecycle.png" alt="Vue 实例生命周期" loading="lazy"></figure>
+<blockquote>
+<p>所谓生命周期函数就是Vue在一些关键的节点时刻为我们调用的特殊名称的回调函数</p>
+</blockquote>
+<h3 id="1-beforecreate">1. beforeCreate</h3>
+<blockquote>
+<p>刚刚完成初始化生命周期、事件，数据代理未开始，此时无法通过实例访问到data中的数据，methods中的方法</p>
+</blockquote>
+<h3 id="2-created">2. created</h3>
+<blockquote>
+<p>刚刚完成初始化数据监视、数据代理，此时可以通过实例访问到data中的数据，methods中的方法</p>
+</blockquote>
+<h3 id="3-beforemount">3. beforeMount</h3>
+<blockquote>
+<p>刚刚完成模板解析，在内存中生成虚拟DOM，还未经Vue编译为真实DOM放入到页面，此时对DOM元素的所有操作最终都无效</p>
+</blockquote>
+<h3 id="4-mounted">4. mounted</h3>
+<blockquote>
+<p>Vue将虚拟DOM编译为真实DOM元素放入页面后，调用mounted函数</p>
+</blockquote>
+<h3 id="5-beforeupdate">5. beforeUpdate</h3>
+<blockquote>
+<p>刚刚完成数据的修改，但是页面还没有改变，此时会调用beforeUpdate函数</p>
+</blockquote>
+<h3 id="6-updated">6. updated</h3>
+<blockquote>
+<p>数据被修改，页面也得到了更新，此时调用updated函数</p>
+</blockquote>
+<h3 id="7-beforedestory">7. beforeDestory</h3>
+<blockquote>
+<p>实例中所有的属性（data、methods等）都处于可用状态，马上要执行销毁过程，调用beforeDestory函数，一般在此时：关闭定时器、取消订阅消息、解绑自定义事件等收尾操作</p>
+<p>注意：虽然此时所有的属性都可用，但对属性的更新不会再触发页面更新</p>
+</blockquote>
+<h3 id="8-destoryed">8. destoryed</h3>
+<blockquote>
+<p>实例已经被销毁，实例的监听器，与其关联的子组件以及自定义事件全部被销毁</p>
+<p>注意：</p>
+<ol>
+<li>销毁后借助Vue开发工具看不到任何信息</li>
+<li>销毁后所有自定义的事件失效，但是原生DOM事件仍然有效</li>
+<li>一般不会在beforeDestory中操作数据，因为即使操作数据，也不会再触发更新了</li>
+</ol>
+</blockquote>
+<h2 id="四-组件化编程">四、组件化编程</h2>
+<ul>
+<li>组件：实现应用中局部功能代码和资源的集合</li>
+</ul>
+<blockquote>
+<p>组件中的data必须为函数形式，避免引用数据相互影响导致页面混乱</p>
+</blockquote>
+<blockquote>
+<p>组件名注意事项：</p>
+<ol>
+<li>一个单词组成
+<ul>
+<li>首字母小写，即全小写</li>
+<li>首字母大写</li>
+</ul>
+</li>
+<li>多个单词组成
+<ul>
+<li>短横线命名</li>
+<li>所有单词首字母大写（需要Vue脚手架支持）</li>
+</ul>
+</li>
+<li>注册组件时，尽量回避HTML原有的标签名，否则可能出现意想不到的错误，可以使用name属性在创建组件时指定组件名称</li>
+</ol>
+<p>在页面中使用组件的方式：</p>
+<ul>
+<li><code>&lt;componentName&gt;&lt;/componentName&gt;</code></li>
+<li><code>&lt;componentName/&gt;</code> （需要Vue脚手架支持）</li>
+</ul>
+</blockquote>
+<h3 id="1-非单文件组件">1. 非单文件组件</h3>
+<h4 id="11-创建组件">1.1 创建组件</h4>
+<pre><code class="language-html">&lt;script type=&quot;text/javascript&quot;&gt;
+	const headerNavigation = Vue.extend({
+        template:`&lt;h1&gt;{{title}}&lt;/h1&gt;`,
+        data(){
+        	return {
+                title:&quot;标题&quot;
+            }
+    	},
+        methods:{}
+    });
+&lt;/script&gt;
+</code></pre>
+<h4 id="12-注册组件">1.2 注册组件</h4>
+<h5 id="局部注册">局部注册</h5>
+<pre><code class="language-html">&lt;script type=&quot;text/javascript&quot;&gt;
+	const vm = new Vue({
+        el:&quot;#container&quot;,
+        components:{
+            'header-navigation':headerNavigation
+        }
+    });
+&lt;/script&gt;
+</code></pre>
+<h5 id="全局注册">全局注册</h5>
+<pre><code class="language-html">&lt;script type=&quot;text/javascript&quot;&gt;
+	Vue.component('header-navigation',headerNavigation);
+&lt;/script&gt;
+</code></pre>
+<h4 id="13-使用组件">1.3 使用组件</h4>
+<pre><code class="language-html">&lt;body&gt;
+	&lt;div id=&quot;container&quot;&gt;
+        &lt;header-navigation&gt;&lt;/header-navigation&gt;
+    &lt;/div&gt;	
+&lt;/body&gt;
+</code></pre>
+<h3 id="2-vuecomponent构造函数">2. VueComponent构造函数</h3>
+<blockquote>
+<p>组件本质是一个名为 <code>VueComponent</code> 的构造函数，是由 <code>Vue.extend</code> 生成的</p>
+<p>每次调用 <code>Vue.extend</code> 返回的都是一个全新的 <code>VueComponent</code></p>
+<p>在创建组件的过程中，<code>this</code> 是 <code>VueComponent</code> 实例对象</p>
+</blockquote>
+<figure data-type="image" tabindex="4"><img src="https://pic.zyblog.xyz/img/typora/image-20220107211558018.png" alt="image-20220107211558018" loading="lazy"></figure>
+<blockquote>
+<p><code>VueComponent.propertype.__proto__ === Vue.propertype</code></p>
+</blockquote>
+<h3 id="3-单文件组件">3. 单文件组件</h3>
+<h4 id="31-示例代码">3.1 示例代码</h4>
+<pre><code class="language-vue">&lt;template&gt;
+&lt;!--组件结构--&gt;
+  &lt;div class=&quot;school&quot;&gt;
+      &lt;h1&gt;SchoolVueComponent&lt;/h1&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+//组件交互相关代码
+export default {
+    // eslint-disable-next-line vue/multi-word-component-names
+    name: 'School',
+    data(){
+      return {
+          schoolName: 'IMOOC',
+          address: 'beijing'
+      }
+    },
+    methods:{},
+    computed:{},
+    watch:{},
+    mixins:{}
+}
+&lt;/script&gt;
+&lt;style&gt;
+//组件样式
+*{
+    padding:0;
+    margin:0;
+}
+&lt;/style&gt;
+</code></pre>
+<h2 id="五-vuecli">五、VueCLI</h2>
+<h3 id="1-准备工作">1. 准备工作</h3>
+<h4 id="11-安装nodejs">1.1 安装NodeJS</h4>
+<blockquote>
+<p>下载地址：https://nodejs.org/dist/v16.13.2/node-v16.13.2-x64.msi</p>
+</blockquote>
+<h4 id="12-安装npm">1.2 安装NPM</h4>
+<blockquote>
+<p>换源</p>
+<ol>
+<li>方式一
+<ul>
+<li><code>npm install -g nrm</code></li>
+<li><code>nrm ls</code></li>
+<li><code>nrm use taobao</code></li>
+</ul>
+</li>
+<li>方式二
+<ul>
+<li><code>npm config set registry https://registry.npm.taobao.org</code></li>
+<li><code>npm config get registry</code></li>
+</ul>
+</li>
+<li>方式三：临时指定下载源
+<ul>
+<li><code>npm --registry https://registry.npm.taobao.org install [name]</code></li>
+</ul>
+</li>
+<li>方式三
+<ul>
+<li><code>npm install -g cnpm --registry=https://registry.npm.taobao.org</code></li>
+<li><code>cnpm install [name]</code></li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<h4 id="13-设置自定义缓存目录和模块下载安装目录">1.3 设置自定义缓存目录和模块下载安装目录</h4>
+<pre><code class="language-shell">npm config set prefix E:\Development\NodeJS\npm_prefix
+npm config set cache E:\Development\NodeJS\npm_cache
+</code></pre>
+<h4 id="14-安装vuecli">1.4 安装VueCLI</h4>
+<pre><code class="language-shell">npm install -g @vue/cli
+</code></pre>
+<h4 id="15-创建vue项目">1.5 创建Vue项目</h4>
+<pre><code class="language-shell">vue create [option] projectName
+</code></pre>
+<h4 id="16-运行vue项目">1.6 运行vue项目</h4>
+<pre><code class="language-shell">vue serve
+</code></pre>
+<h3 id="2-render函数">2. render函数</h3>
+<h4 id="21-应用场景">2.1 应用场景</h4>
+<blockquote>
+<p>当我们因为一些需求引入的并非是完整版的 vue 时，没有模板解析器，无法识别 template 项，导致页面无法展示，使用render函数可以将模板内容利用 createElement 函数创建并返回到页面中</p>
+</blockquote>
+<pre><code class="language-js">import Vue from 'vue'
+Vue.config.productionTip = false;
+new Vue({
+    el:'#app',
+  	render(createElement){
+    	return createElement('h1','标题内容');
+  	}
+});
+</code></pre>
+<blockquote>
+<p>render函数没有用到this，所以可以简写为箭头函数，又因为函数中只有一条返回语句，所以可以直接简写为如下格式：</p>
+<pre><code class="language-js">import Vue from 'vue'
+Vue.config.productionTip = false;
+new Vue({
+      el:'#app',
+      render: h=&gt;h('h1','标题内容');
+});
+</code></pre>
+</blockquote>
+<h4 id="22-总结">2.2 总结</h4>
+<ul>
+<li><code>vue.js</code>与<code>vue.runtime.xxx.js</code>的区别
+<ul>
+<li><code>vue.js</code> 是完整版的 <code>Vue</code>，包含核心功能和模板解析器</li>
+<li><code>vue.runtime.xxx.js</code> 是运行版的 <code>Vue</code>，只包含核心功能没有模板解析器</li>
+</ul>
+</li>
+<li><code>vue.runtime.xxx.js</code> 没有模板解析器，所以不能使用 <code>template</code> 配置，需要使用 <code>render</code> 函数接收到的<code>createElement</code> 函数去指定模板内容</li>
+</ul>
+<h3 id="3-覆写脚手架配置">3. 覆写脚手架配置</h3>
+<h4 id="31-查看脚手架配置">3.1 查看脚手架配置</h4>
+<pre><code class="language-shell">vue inspect &gt; output.js
+</code></pre>
+<h4 id="32-覆写配置-vueconfigjs">3.2 覆写配置 <code>vue.config.js</code></h4>
+<pre><code class="language-js">module.exports = {
+  pages:{
+    index:{
+    	//入口
+      entry:'src/yourJs.js'
+    }
+  },
+  //关闭语法检查
+  lintOnSave:false
+}
+</code></pre>
+<pre><code class="language-shell">npm run serve
+</code></pre>
+<h4 id="33-具体配置项">3.3 具体配置项</h4>
+<blockquote>
+<p>详见：https://cli.vuejs.org/zh/</p>
+</blockquote>
+<h3 id="4-ref属性">4. ref属性</h3>
+<ul>
+<li>
+<p>被用来给元素或子组件注册引用信息（id的替代者）</p>
+</li>
+<li>
+<p>当我们为对应元素设置<code>ref</code>后，可以直接通过<code>this</code>调用<code>$refs</code>获取到对应名称的元素，如果为html元素则返回真实DOM对象，如果为组件元素则返回组件实例对象</p>
+</li>
+</ul>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;img alt=&quot;Vue logo&quot; src=&quot;./assets/logo.png&quot; ref=&quot;img&quot;&gt;
+  &lt;HelloWorld msg=&quot;Welcome to Your Vue.js App&quot; ref=&quot;hw&quot;/&gt;
+  &lt;School ref=&quot;school&quot;/&gt;
+  &lt;button @click=&quot;showElement&quot; ref=&quot;btn&quot;&gt;点我输出元素对象&lt;/button&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import HelloWorld from './components/HelloWorld.vue'
+import School from './components/School.vue';
+export default {
+  name: 'App',
+  components: {
+    HelloWorld,School
+  },
+  methods:{
+      showElement(){
+          console.log(this.$refs.img); //真实DOM元素
+          console.log(this.$refs.btn); //真实DOM元素
+          console.log(this.$refs.school); //组件实例对象
+          console.log(this.$refs.hw); //组件实例对象
+      }
+  }
+}
+&lt;/script&gt;
+
+&lt;style&gt;
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+&lt;/style&gt;
+</code></pre>
+<h3 id="5-props配置">5. props配置</h3>
+<blockquote>
+<p>props属性：用于接收组件调用方使用组件时传入的数据</p>
+</blockquote>
+<h4 id="51-props简单接收">5.1 props简单接收</h4>
+<pre><code class="language-vue">&lt;template&gt;
+&lt;!--组件结构--&gt;
+  &lt;div class=&quot;school&quot;&gt;
+      &lt;h1&gt;{{ msg }}&lt;/h1&gt;
+      &lt;h2&gt;学校名称：{{schoolName}}&lt;/h2&gt;
+      &lt;h2&gt;学校地址：{{schoolAddress}}&lt;/h2&gt;
+      &lt;h2&gt;学校面积：{{schoolArea*100}}&lt;/h2&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+//组件交互相关代码
+export default {
+    // eslint-disable-next-line vue/multi-word-component-names
+    name: 'School',
+    data(){
+      return {
+          msg:&quot;SchoolComponentMsg&quot;
+      }
+    },
+    //简单接收
+    props:['schoolName','schoolAddress','schoolArea']
+}
+&lt;/script&gt;
+&lt;style&gt;
+//组件样式
+*{
+    padding:0;
+    margin:0;
+}
+&lt;/style&gt;
+</code></pre>
+<h4 id="52-props接收时限定传入的数据类型">5.2 props接收时限定传入的数据类型</h4>
+<pre><code class="language-vue">&lt;template&gt;
+&lt;!--组件结构--&gt;
+  &lt;div class=&quot;school&quot;&gt;
+      &lt;h1&gt;{{ msg }}&lt;/h1&gt;
+      &lt;h2&gt;学校名称：{{schoolName}}&lt;/h2&gt;
+      &lt;h2&gt;学校地址：{{schoolAddress}}&lt;/h2&gt;
+      &lt;h2&gt;学校面积：{{schoolArea*100}}&lt;/h2&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+//组件交互相关代码
+export default {
+    // eslint-disable-next-line vue/multi-word-component-names
+    name: 'School',
+    data(){
+      return {
+          msg:&quot;SchoolComponentMsg&quot;
+      }
+    },
+    //接收的同时对数据类型进行限制
+    props:{
+        schoolName:String,
+        schoolAddress:String,
+        schoolArea:Number
+    }
+}
+&lt;/script&gt;
+&lt;style&gt;
+//组件样式
+*{
+    padding:0;
+    margin:0;
+}
+&lt;/style&gt;
+</code></pre>
+<h4 id="53-props接收时限定传入数据的各项属性">5.3 props接收时限定传入数据的各项属性</h4>
+<pre><code class="language-vue">&lt;template&gt;
+&lt;!--组件结构--&gt;
+  &lt;div class=&quot;school&quot;&gt;
+      &lt;h1&gt;{{ msg }}&lt;/h1&gt;
+      &lt;h2&gt;学校名称：{{schoolName}}&lt;/h2&gt;
+      &lt;h2&gt;学校地址：{{schoolAddress}}&lt;/h2&gt;
+      &lt;h2&gt;学校面积：{{schoolArea*100}}&lt;/h2&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+//组件交互相关代码
+export default {
+    // eslint-disable-next-line vue/multi-word-component-names
+    name: 'School',
+    data(){
+      return {
+          msg:&quot;SchoolComponentMsg&quot;
+      }
+    },
+    props:{
+        schoolName:{
+            type: String, //数据类型
+            required: true //必须传入
+            //default:&quot;慕课网&quot; 默认值
+        },
+        schoolAddress:{
+            type:String, //数据类型
+            required: true //必须传入
+            //default: &quot;上海&quot; 默认值
+        },
+        schoolArea:{
+            type: Number, //数据类型
+            required: true //必须传入
+            //default: 200 默认值
+        }
+    }
+}
+&lt;/script&gt;
+&lt;style&gt;
+//组件样式
+*{
+    padding:0;
+    margin:0;
+}
+&lt;/style&gt;
+</code></pre>
+<h4 id="54-修改传入数据的解决方案">5.4 修改传入数据的解决方案</h4>
+<blockquote>
+<p>Vue 默认不推荐我们直接修改传入的数据，虽然我们可以修改成功，但是Vue会报错，因为这个过程可能导致Vue 产生错误，但是我们在业务开发中仍然有这样的需求，解决方案就是我们通过在组件定义对应的承接传入数据的data属性，并让页面绑定我们组件内部的data属性，日后修改时只需要修改我们组件内部拥有传入数据的data属性即可重新完成模板解析，实现我们想要的效果</p>
+</blockquote>
+<h3 id="6-mixin混入">6. mixin混入</h3>
+<blockquote>
+<p>mixin混入：一段配置让多个组件共用时，可以使用混入完成</p>
+</blockquote>
+<h4 id="61-书写需要混入的内容">6.1 书写需要混入的内容</h4>
+<pre><code class="language-js">export const mixin = {
+    data(){
+        return {
+            username:&quot;zhiyuan&quot;,
+            email:&quot;zhiyuanworkemail@163.com&quot;,
+            index:&quot;https://www.zync.top&quot;
+        }
+    }
+}
+</code></pre>
+<h4 id="62-引入需要混入的内容">6.2 引入需要混入的内容</h4>
+<h5 id="621-局部引入">6.2.1 局部引入</h5>
+<pre><code class="language-vue">&lt;template&gt;
+&lt;!--组件结构--&gt;
+  &lt;div class=&quot;school&quot;&gt;
+      &lt;h1&gt;{{ msg }}&lt;/h1&gt;
+      &lt;h2&gt;学校名称：{{schoolName}}&lt;/h2&gt;
+      &lt;h2&gt;学校地址：{{schoolAddress}}&lt;/h2&gt;
+      &lt;h2&gt;学校面积：{{schoolArea*100}}&lt;/h2&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import {mixin} from &quot;@/mixin&quot;;
+//组件交互相关代码
+export default {
+    name: 'School',
+    data(){
+      return {
+          msg:&quot;SchoolComponentMsg&quot;
+      }
+    },
+    mixins:[mixin]
+}
+&lt;/script&gt;
+&lt;style&gt;
+//组件样式
+*{
+    padding:0;
+    margin:0;
+}
+&lt;/style&gt;
+</code></pre>
+<h5 id="622-全局引入">6.2.2 全局引入</h5>
+<blockquote>
+<p>在main.js中作如下修改</p>
+</blockquote>
+<pre><code class="language-js">import Vue from 'vue'
+import App from './App.vue'
+import {mixin} from &quot;@/mixin&quot;;
+Vue.mixin(mixin);
+new Vue({
+    el:&quot;#app&quot;,
+    render: h=&gt;h(App)
+})
+</code></pre>
+<h4 id="63-注意事项">6.3 注意事项</h4>
+<blockquote>
+<p>在混入进行的时候，如果组件内部已经有对应data中同名的属性，则会以组件自己的为准</p>
+</blockquote>
+<h3 id="7-插件">7. 插件</h3>
+<blockquote>
+<p>插件本质上就是一个对象，但是Vue规定这个对象中必须存在一个<code>install</code>方法，用于增强Vue，我们可以在其中定义全局的过滤器，定义自己的指令，定义全局的混入等等</p>
+</blockquote>
+<h4 id="71-示例">7.1 示例</h4>
+<pre><code class="language-js">export default{
+    install(){
+        console.info('自定义插件');
+    }
+}
+</code></pre>
+<h4 id="72-引入插件">7.2 引入插件</h4>
+<pre><code class="language-js">//引入自定义插件
+import plugins from &quot;@/plugins&quot;;
+Vue.use(plugins);
+</code></pre>
+<h4 id="73-进阶">7.3 进阶</h4>
+<pre><code class="language-js">export default{
+    install(Vue){
+        console.info('自定义插件',Vue);
+        //全局过滤器
+        Vue.filter('filterName',function (methodParam){
+            return methodParam;
+        });
+        //自定义指令
+        Vue.directive('fbind',{
+            bind(element,binding){
+                element.value = binding.value;
+            },
+            inserted(element,binding){
+                element.focus();
+            },
+            updated(element,binding){
+                element.value = binding.value;
+            }
+        });
+        //定义混入
+        Vue.mixin({
+            data(){
+                return {
+                    username:&quot;zhiyuan&quot;,
+                    gender:&quot;male&quot;
+                }
+            }
+        })
+    }
+}
+</code></pre>
+<h3 id="8-scoped样式">8. scoped样式</h3>
+<blockquote>
+<p>当我们书写的vue文件最终被解析为浏览器能够识别的js、css、html时，其实我们所有的css会完成汇总，而汇总样式就会产生一个问题，那就是选择器名称重复时，某些样式可能被覆盖，覆盖的原则是由引入组件的顺序决定的，谁先被引入，谁的样式就会被覆盖，但是我们通常不希望产生这样的结果，所以vue为我们提供了一个解决方案，那就是使用<code>scoped</code>属性，来限定css的作用域或者说css有效的范围</p>
+</blockquote>
+<pre><code class="language-vue">&lt;style scoped&gt;
+//组件样式
+*{
+    padding:0;
+    margin:0;
+ }
+&lt;/style&gt;
+</code></pre>
+<ul>
+<li>
+<p>实现原理</p>
+<ul>
+<li>Vue在汇总页面样式时，会在对应组件的容器上添加一个名为 <code>data-v-xxxx</code> 的属性，然后通过属性选择器来限定指定样式作用的容器</li>
+</ul>
+</li>
+<li>
+<p>书写less</p>
+<ul>
+<li>
+<p>安装less-loader</p>
+<pre><code class="language-shell">npm i less-loader@10.2.0
+</code></pre>
+</li>
+<li>
+<p>书写less</p>
+<pre><code class="language-css">&lt;style lang=&quot;less&quot; scoped&gt;
+&lt;/style&gt;
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="9-todolist案例">9. ToDoList案例</h3>
+<blockquote>
+<ol>
+<li>
+<p>组件化的编码流程</p>
+<ul>
+<li>
+<p>拆分静态组件：组件按照功能点拆分，命名不要与html元素冲突</p>
+</li>
+<li>
+<p>实现动态组件：考虑好数据的存放位置，确认数据是一个组件在用还是一些组件都在用</p>
+<ul>
+<li>
+<p>一个组件在用：放在组件自身即可</p>
+</li>
+<li>
+<p>一些组件在用：放在它们共同的父组件上</p>
+</li>
+</ul>
+</li>
+<li>
+<p>实现交互：从绑定事件开始</p>
+</li>
+</ul>
+</li>
+<li>
+<p>props适用于</p>
+<ul>
+<li>父组件与子组件进行通信</li>
+<li>子组件与父组件进行通信（需要父组件传给子组件一个函数）</li>
+</ul>
+</li>
+<li>
+<p>使用v-model是要切记：v-model绑定的值不能是props传过来的值，因为props是不建议修改的</p>
+</li>
+<li>
+<p>props传过来的如果是对象类型的值，修改对象中的属性时Vue不会报错，但是不推荐这么做，因为这只是Vue没有检测到，并不意味着Vue允许我们这么做</p>
+</li>
+</ol>
+</blockquote>
+<h3 id="10-浏览器本地存储">10. 浏览器本地存储</h3>
+<h4 id="101-localstorage">10.1 LocalStorage</h4>
+<pre><code class="language-js">//存储基本类型到localStorage中最终都会呈现为字符串类型
+window.localStorage.setItem('key','value');
+//存储对象需要将对象转为JSON
+window.localStorage.setItem('key',JSON.stringify(object));
+//读取localStorage中存储的对象
+JSON.parse(JSON.parse(localStorage.getItem('key'));
+//从localStorage中移除设置的信息
+window.localStorage.removeItem('key');      
+//清空localStorage
+window.localStorage.clear();
+</code></pre>
+<h4 id="102-sessionstorage">10.2 SessionStorage</h4>
+<pre><code class="language-js">//存储基本类型到sessionStorage中最终都会呈现为字符串类型
+window.sessionStorage.setItem('key','value');
+//存储对象需要将对象转为JSON
+window.sessionStorage.setItem('key',JSON.stringify(object));
+//读取sessionStorage中存储的对象
+JSON.parse(JSON.parse(sessionStorage.getItem('key'));
+//从sessionStorage中移除设置的信息
+window.sessionStorage.removeItem('key');      
+//清空sessionStorage
+window.sessionStorage.clear();
+</code></pre>
+<blockquote>
+<p>LocalStorage：浏览器关闭后依然存在</p>
+<p>SessionStorage：一次会话结束后就不存在了，即关闭浏览器后就不存在了</p>
+</blockquote>
+<h3 id="11-组件自定义事件">11. 组件自定义事件</h3>
+<ol>
+<li>
+<p>一种组件间通信的方式，适用于子组件与父组件通信</p>
+</li>
+<li>
+<p>使用场景：A是父组件，B是子组件，B想给A传数据，那么就要在A中给B绑定自定义事件（事件的回调在A中）</p>
+</li>
+<li>
+<p>绑定自定义事件</p>
+<ul>
+<li>
+<p>第一种方式，在父组件中 <code>&lt;Demo @事件名=&quot;test&quot;/&gt;</code> 或 <code>&lt;Demo v-on:事件名=&quot;test&quot;&gt;</code></p>
+</li>
+<li>
+<p>第二种方式，在父组件中</p>
+<pre><code class="language-js">&lt;Demo ref=&quot;demo&quot;&gt;
+......
+mounted(){
+    this.$refs.xxx.$on('事件名',this.test);
+}
+</code></pre>
+</li>
+<li>
+<p>若想让自定义事件只能触发一次，可以使用 <code>once</code> 修饰符，或 <code>$once</code> 方法</p>
+</li>
+</ul>
+</li>
+<li>
+<p>触发自定义事件 <code>this.$emit('事件名',数据)</code></p>
+</li>
+<li>
+<p>解绑自定义事件 <code>this.$off('事件名')</code></p>
+</li>
+<li>
+<p>组件上绑定原生DOM事件，需要使用 <code>native</code> 修饰符</p>
+</li>
+<li>
+<p>注意：通过 <code>this.$refs.xxx.$on('事件名',回调)</code> 绑定自定义事件时，回调要么配置在methods中，要么用箭头函数，否则this指向会出问题</p>
+</li>
+</ol>
+<h3 id="12-全局事件总线">12. 全局事件总线</h3>
+<blockquote>
+<p>任意组件间通信</p>
+<pre><code class="language-js">new Vue({
+    el:&quot;#app&quot;,
+    render:h =&gt; h(App),
+    //vm创建之前
+    beforeCreate(){
+        Vue.prototype.$bus = this; //安装全局事件总线
+    } 
+});
+</code></pre>
+</blockquote>
+<ol>
+<li>
+<p>一种组件间的通信方式，适用于任意组件间通信</p>
+</li>
+<li>
+<p>安装全局事件总线</p>
+<pre><code class="language-js">new Vue({
+   el:&quot;#app&quot;,
+   render:h =&gt; h(App),
+   beforeCreate(){
+       Vue.prototype.$bus = this; //安装全局事件总线,$bus就是当前应用的vm对象
+   } 
+});
+</code></pre>
+</li>
+<li>
+<p>使用事件总线</p>
+<ol>
+<li>
+<p>接收数据：A组件想接收数据，则在A组件汇总给$bus绑定自定义事件，事件的回调留在A组件自身</p>
+<pre><code class="language-js">methods(){
+    demo(data){.......}
+}
+......
+mounted(){
+    this.$bus.$on('xxx',this.demo);
+}
+</code></pre>
+</li>
+<li>
+<p>提供数据：<code>this.$bus.$emit('xxx',数据)</code></p>
+</li>
+</ol>
+</li>
+<li>
+<p>最好在 <code>beforeDestory()</code> 钩子函数中用 <code>$off</code> 去解绑当前组件所用到的事件</p>
+</li>
+</ol>
+<h3 id="13-消息订阅与发布-pubsub">13. 消息订阅与发布 pubsub</h3>
+<blockquote>
+<p>仍然是一种支持任意组件通信的方式</p>
+</blockquote>
+<ul>
+<li>安装 <code>pubsub-js</code></li>
+</ul>
+<pre><code class="language-shell">npm i pubsub-js
+</code></pre>
+<ul>
+<li>引入pubsub</li>
+</ul>
+<pre><code class="language-js">import pubsub from 'pubsub-js'
+</code></pre>
+<ul>
+<li>发布消息</li>
+</ul>
+<pre><code class="language-js">//组件挂载完毕
+mounted(){
+    //发布消息
+    pubsub.publish('消息名','消息内容');
+}
+</code></pre>
+<ul>
+<li>订阅消息</li>
+</ul>
+<pre><code class="language-js">//组件挂载完毕
+mounted(){
+    //订阅消息
+    this.pubId = pubsub.subscribe('消息名',function('消息名','消息内容'){
+        console.log('有人发布了消息，消息名为：' + 消息名 + '@消息内容为：' + 消息内容);
+        ..... 
+    });
+}
+//上方写法中存在错误，错在当前this并非是vc对象，老生常谈的，如果我们需要使用第三方js库时，vue不会帮我们在管理对应的函数、对象以及其他信息，如果想要被vue管理到，就需要把普通函数写成箭头函数，这样this就会去父级找到vm或者vc，正确写法有如下两种：
+
+//第一种
+methods:{
+    demo('消息名','消息内容'){
+        console.log('有人发布了消息，消息名为：' + 消息名 + '@消息内容为：' + 消息内容);
+        ..... 
+    }
+}
+//组件挂载完毕
+mounted(){
+    //订阅消息
+    this.pubId = pubsub.subscribe('消息名',this.demo);
+}
+
+//第二种
+//组件挂载完毕
+mounted(){
+    //订阅消息
+    this.pubId = pubsub.subscribe('消息名',('消息名','消息内容') =&gt; {
+        console.log('有人发布了消息，消息名为：' + 消息名 + '@消息内容为：' + 消息内容);
+        ..... 
+    });
+}
+</code></pre>
+<ul>
+<li>取消订阅</li>
+</ul>
+<pre><code class="language-js">beforeDestory(){
+    //根据订阅消息ID 取消订阅消息
+    pubsub.unscribe(pubId);
+}
+</code></pre>
+<h3 id="14-nexttick">14. $nextTick</h3>
+<blockquote>
+<p>由 <code>this.$nextTick(回调函数)</code> 指定的回调函数会在DOM节点更新之后执行</p>
+<p>作用：在下一次DOM更新结束后执行其指定的回调</p>
+<p>应用场景：当数据改变后，要基于 <code>数据改变后</code> 渲染的DOM进行某些操作时，可以使用此方法来指定</p>
+</blockquote>
+<pre><code class="language-js">this.$nextTick(function(){
+   this.$refs.inputTile.focus(); 
+});
+</code></pre>
+<h3 id="15-过渡与动画">15. 过渡与动画</h3>
+<figure data-type="image" tabindex="5"><img src="https://pic.zyblog.xyz/img/typora/image-20230521124817364.png?origin=typora" alt="image-20230521124817364" loading="lazy"></figure>
+<h4 id="151-动画">15.1 动画</h4>
+<ul>
+<li>CSS3</li>
+</ul>
+<pre><code class="language-css">@keyframes 动画名称 {
+    from {
+        transform: translateX(-100px);
+    }
+    to {
+        transform: translateX(0px);
+    }
+}
+.come { 
+     /* animation:动画名称 持续时间 是否匀速 */
+    animation: 动画名称 1s linear;    
+}
+.go{
+    animation: 动画名称 1s linear reverse;
+}
+</code></pre>
+<ul>
+<li>Vue</li>
+</ul>
+<blockquote>
+<p>使用 <code>&lt;transition&gt;&lt;/transition&gt;</code> 标签包裹需要展示动画的内容</p>
+</blockquote>
+<pre><code class="language-css">@keyframes 动画名称 {
+    from {
+        transform: translateX(-100px);
+    }
+    to {
+        transform: translateX(0px);
+    }
+}
+.v-enter-active { 
+    animation: 动画名称 1s linear;    
+}
+.v-leave-active {
+    animation: 动画名称 1s linear reverse;
+}
+</code></pre>
+<pre><code class="language-html">&lt;button @click=&quot;isShow = !isShow&quot;&gt;显示/隐藏&lt;/button&gt;
+&lt;transition&gt;
+	&lt;h1 v-show=&quot;isShow&quot;&gt;内容&lt;/h1&gt;
+&lt;/transition&gt;
+</code></pre>
+<ul>
+<li>
+<p>appear属性</p>
+<ul>
+<li>我们发现只有我们点击按钮才会触发动画效果，但是通常我们需要一个动画在页面展示时立即播放一次动画，name我们可以在 <code>&lt;transition&gt;&lt;/transition&gt;</code> 标签内添加 <code>appear</code> 属性</li>
+</ul>
+</li>
+<li>
+<p>name属性</p>
+<ul>
+<li>
+<p>我们可以给动画起名字，来让一个组件内可以有多个动画</p>
+<pre><code class="language-html">&lt;transition name=&quot;动画名称&quot;&gt;&lt;/transition&gt;
+</code></pre>
+</li>
+<li>
+<p>对应的css动画名称就需要改成如下格式</p>
+<pre><code class="language-css">.动画名称-enter-active {}
+.动画名称-leave-active {}
+</code></pre>
+</li>
+<li>
+<p>其实我们默认不写，就是将动画名称默认为了 <code>v</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="152-过渡">15.2 过渡</h4>
+<pre><code class="language-css">/* 进入的起点 */
+.动画名称-enter {
+    transform: translateX(-100%);
+}
+/* 进入的终点 */
+.动画名称-enter-to {
+    transform: translateX(0);
+}
+/* 离开的起点 */
+.动画名称-leave {
+    transform: translateX(0);
+}
+/* 离开的终点 */
+.动画名称-leave-to {
+    transform: translateX(-100%);
+}
+</code></pre>
+<pre><code class="language-css">/* 进入的起点,离开的终点 */
+.动画名称-enter,.动画名称-leave-to {
+    transform: translateX(-100%);
+}
+/* 进入的终点，离开的起点 */
+.动画名称-enter-to,.动画名称-leave{
+    transform: translateX(0);
+}
+.动画名称-enter-active,.动画名称-leave-active{
+    transition: 0.5s linear;
+}
+</code></pre>
+<h4 id="153-多个元素的过渡">15.3 多个元素的过渡</h4>
+<ul>
+<li><code>&lt;transition&gt;&lt;/transition&gt;</code>只能够加在一个单独的元素上，如果需要加在多个元素上需要使用<code>&lt;transition-group&gt;&lt;/transition-group&gt;</code></li>
+<li>而且在使用 <code>transition-group</code>标签时，必须为其包裹的每一个元素设置一个key</li>
+</ul>
+<pre><code class="language-html">&lt;transition-group name=&quot;动画名称&quot; appear&gt;
+	&lt;h1 v-show=&quot;isShow&quot; key=&quot;1&quot;&gt;&lt;/h1&gt;
+    &lt;h1 v-show=&quot;isShow&quot; key=&quot;2&quot;&gt;&lt;/h1&gt;
+&lt;/transition-group&gt;
+</code></pre>
+<h4 id="154-第三方动画">15.4 第三方动画</h4>
+<ul>
+<li>
+<p>安装 <code>animate.css</code></p>
+<pre><code class="language-shell">npm install animate.css
+</code></pre>
+</li>
+<li>
+<p>引入 <code>animate.css</code></p>
+<pre><code class="language-js">import 'animate.css'
+</code></pre>
+</li>
+<li>
+<p>使用方式</p>
+<pre><code class="language-html">&lt;transition-group name=&quot;animate__animated animate__bounce&quot;
+                  enter-active-class=&quot;animate__swing&quot;
+                  leave-active-class=&quot;animate__backOutUp&quot;
+                  appear&gt;
+&lt;/transition-group&gt;
+</code></pre>
+</li>
+</ul>
+<h3 id="16-配置代理-axios">16. 配置代理 axios</h3>
+<ul>
+<li>
+<p>安装 <code>axios</code></p>
+<pre><code class="language-shell">npm install axios
+</code></pre>
+</li>
+<li>
+<p>引入<code>axios</code></p>
+<pre><code class="language-js">import axios from 'axios'
+</code></pre>
+</li>
+<li>
+<p>使用<code>axios</code></p>
+<pre><code class="language-js">export default{
+    name: 'App',
+    methods:{
+        getUserInfo(){
+            axios.get('http://localhost:8080/cloud-drive/user/10000010').then(
+                response =&gt; {
+                    console.log(&quot;请求成功&quot;,response.data);
+                },
+                error =&gt; {
+                    console.log(&quot;请求失败&quot;,error.message);
+                }
+            );
+        }
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>解决跨域问题</p>
+<ul>
+<li>cors：后端放行跨域访问</li>
+<li>json：利用了script标签的src属性在引入外部文件时不受同源策略影响的特性</li>
+<li>代理服务器
+<ul>
+<li>nginx</li>
+<li>vue-cli</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="161-方式一">16.1 方式一</h4>
+<ul>
+<li>修改 <code>vue.config.js</code> 文件</li>
+</ul>
+<pre><code class="language-js">module.exports = {
+    devServer:{
+        proxy: 'http://localhost:8080'
+    }
+}
+</code></pre>
+<p>这个方法只能是请求地址没有的资源才走代理服务器，并不能解决我们的跨域问题</p>
+<h4 id="162-方式二">16.2 方式二</h4>
+<pre><code class="language-js">module.exports = {
+    devServer:{
+        proxy: {
+            //匹配所有以/api开头的请求路径
+        	'/cloud-drive':{
+        		target:'http://localhost:8080',
+                pathRewrite:{'^/cloud-drive':''} // key为书写的路径匹配正则，value为与匹配替换的路径
+        		ws: true, // 开启webscoket支持
+        		changeOrigin: true // 代理功能实现的核心属性，前端解决跨域问题
+        	},
+            //匹配所有以/foo开头的请求路径
+        	'/admin':{
+        		target: 'http://localhost:8085'
+        	}
+        }
+    }
+}
+</code></pre>
+<h3 id="17-vue-resource">17. vue-resource</h3>
+<ul>
+<li>
+<p>安装 <code>vue-resource</code></p>
+<pre><code class="language-shell">npm install vue-resource
+</code></pre>
+</li>
+<li>
+<p>引入 <code>vue-resource</code></p>
+<pre><code class="language-js">//main.js 引入插件
+import vueResource from 'vue-resource'
+Vue.use(vueResource);
+</code></pre>
+</li>
+</ul>
+<blockquote>
+<p>官方已经不再维护，不建议使用</p>
+</blockquote>
+<h3 id="18-插槽">18. 插槽</h3>
+<blockquote>
+<p>作用：让父组件可以向子组件指定位置插入html结构</p>
+<p>应用场景：当一个组件被使用多次，但是组件中部分需求有所不同时，可以使用vue的插槽功能，让不同的需求都可以有对应的实现</p>
+</blockquote>
+<h4 id="181-默认插槽">18.1 默认插槽</h4>
+<pre><code class="language-html">&lt;template&gt;
+    &lt;h1&gt;demo组件&lt;/h1&gt;
+	&lt;slot&gt;默认插槽&lt;/slot&gt;
+&lt;/template&gt;
+</code></pre>
+<pre><code class="language-html">&lt;demo&gt;
+    &lt;h2&gt;使用默认插槽&lt;/h2&gt;
+&lt;/demo&gt;
+</code></pre>
+<h4 id="182-具名插槽">18.2 具名插槽</h4>
+<pre><code class="language-html">&lt;template&gt;
+	&lt;h1&gt;demo组件&lt;/h1&gt;
+    &lt;slot name=&quot;center&quot;&gt;我是具名插槽center&lt;/slot&gt;
+    &lt;slot name=&quot;footer&quot;&gt;我是具名插槽footer&lt;/slot&gt;
+&lt;/template&gt;
+</code></pre>
+<pre><code class="language-html">&lt;demo&gt;
+	&lt;h2 slot=&quot;center&quot;&gt;使用具名插槽center&lt;/h2&gt;
+    &lt;h2 slot=&quot;footer&quot;&gt;使用具名插槽footer&lt;/h2&gt;
+&lt;/demo&gt;
+&lt;demo&gt;
+	&lt;template slot=&quot;center&quot;&gt;
+    	&lt;h2&gt;使用具名插槽center&lt;/h2&gt;
+    &lt;/template&gt;
+    &lt;template v-slot:footer&gt;
+    	&lt;h2&gt;使用具名插槽footer&lt;/h2&gt;
+    &lt;/template&gt;
+&lt;/demo&gt;
+</code></pre>
+<h4 id="183-作用域插槽">18.3 作用域插槽</h4>
+<ul>
+<li>数据在组件的自身，但是根据数据生成的结构需要组件的使用者来决定</li>
+</ul>
+<pre><code class="language-html">&lt;template&gt;
+	&lt;h1&gt;demo组件&lt;/h1&gt;
+    &lt;slot :userList=&quot;userList&quot;&gt;&lt;/slot&gt;
+&lt;/template&gt;
+</code></pre>
+<pre><code class="language-html">&lt;template&gt;
+	&lt;demo&gt;
+        &lt;template scope=&quot;userList&quot;&gt;
+            &lt;ul&gt;
+                &lt;li v-for=&quot;(user,index) in userList&quot; :key=&quot;user.id&quot;&gt;{{user.name}}&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/template&gt;
+    &lt;/demo&gt;
+    &lt;demo&gt;
+    	&lt;template slot-scope=&quot;userList&quot;&gt;
+            &lt;h2&gt;{{userList[0].name}}&lt;/h2&gt;
+        &lt;/template&gt;
+    &lt;/demo&gt;
+&lt;/template&gt;
+</code></pre>
+<h3 id="19-vuex">19. vuex</h3>
+<blockquote>
+<p>作用：专门在Vue中实现集中式状态数据管理的一个Vue插件，对Vue应用中多个组件的共享状态进行集中式的管理，也是一种组件间通信方式，且适用于任意组件间通信</p>
+<p>地址：https://github.com/vuejs/vuex</p>
+<p>应用场景：</p>
+<ol>
+<li>多个组件依赖于同一状态</li>
+<li>来自不同的组件的行为需要变更为同一状态</li>
+</ol>
+</blockquote>
+<figure data-type="image" tabindex="6"><img src="https://pic.zyblog.xyz/img/typora/image-20230521145745206.png?origin=typora" alt="image-20230521145745206" loading="lazy"></figure>
+<figure data-type="image" tabindex="7"><img src="https://pic.zyblog.xyz/img/typora/image-20230521150110566.png?origin=typora" alt="image-20230521150110566" loading="lazy"></figure>
+<h4 id="191-vuex工作原理图">19.1 vuex工作原理图</h4>
+<figure data-type="image" tabindex="8"><img src="https://pic.zyblog.xyz/img/typora/vuex.png?origin=typora" alt="vuex" loading="lazy"></figure>
+<h4 id="192-快速入门">19.2 快速入门</h4>
+<ul>
+<li>安装 <code>vuex</code></li>
+</ul>
+<blockquote>
+<p>在2022年2月7日，vue3 成为了默认版本，使用 npm install vue 如果不指定版本号，那么就会直接安装 vue3，并且使用 npm install vuex 不指定版本号，也会直接安装vuex4版本，vue3.0 对应 vuex4.0</p>
+</blockquote>
+<pre><code class="language-shell">npm install vuex@3
+</code></pre>
+<ul>
+<li>
+<p>引入 <code>vuex</code></p>
+<pre><code class="language-js">import Vue from &quot;vue&quot;
+import Vuex from &quot;vuex&quot;
+Vue.use(Vuex);
+</code></pre>
+</li>
+<li>
+<p>创建src/store目录，并新建index.js文件</p>
+<pre><code class="language-js">//引入Vue
+import Vue form 'vue'
+//引入Vuex
+import Vuex from 'vuex'
+Vue.use(Vuex);
+//用于响应组件中的动作
+const actions = {
+    
+}
+//用于操作数据state
+const mutations = {
+    
+}
+//用于存储数据
+const state = {
+    
+}
+//创建store
+const store = new Vuex.Store({
+    actions:actions,
+    mutations:mutations,
+    state:state
+});
+//暴露store
+export default store;
+</code></pre>
+</li>
+<li>
+<p>引入 <code>store</code> ，修改 main.js 文件如下</p>
+<pre><code class="language-js">import store from './store'
+</code></pre>
+</li>
+</ul>
+<h4 id="193-getter配置项">19.3 getter配置项</h4>
+<pre><code class="language-js">const getters = {
+    ......
+}
+const store = new Vuex.Store({
+	......
+    getters:getters
+});
+</code></pre>
+<h4 id="194-mapstate与mapgetters">19.4 mapState与mapGetters</h4>
+<ul>
+<li>
+<p>引入 <code>mapState</code> <code>mapGetters</code></p>
+<pre><code class="language-js">import {mapState,mapGetters} from 'vuex'
+</code></pre>
+</li>
+<li>
+<p>使用 <code>mapState</code> <code>mapGetters</code></p>
+<pre><code class="language-js">computed:{
+    //借助mapState生成计算属性，从state中读取数据
+    ...mapState({sum:'sum',school:'school',subject:'subject'}),
+    ...mapState(['sum','school','subject']) //简写形式
+    //借助mapGetters生成计算属性，从getters中读取数据
+    ...mapGetters({sum:'sum',school:'school',subject:'subject'})
+    ...mapGetters(['sum','school','subject'])
+}
+</code></pre>
+</li>
+</ul>
+<h4 id="195-mapactions与mapmutations">19.5 mapActions与mapMutations</h4>
+<ul>
+<li>
+<p>引入 <code>mapMutations</code> <code>mapActions</code></p>
+<pre><code class="language-js">import {mapMutations,mapActions} from 'vuex'
+</code></pre>
+</li>
+<li>
+<p>使用 <code>mapMutations</code> <code>mapActions</code></p>
+<pre><code class="language-js">methods:{
+    //借助mapMutations生成对应的方法，方法中会调用commit去联系mutations中的方法
+    ...mapMutations({increment:'SUM',decrement:'SUB'})
+    ...mapMutations(['SUM','SUB']); //简写形式
+    //借助mapActions生成对应的方法，方法中会调用dispatch去联系actions中
+    ...mapActions({increment:'sum',decrement:'sub'})
+    ...mapActions(['sum','sub'])
+}
+</code></pre>
+</li>
+</ul>
+<h4 id="196-多组件共享数据">19.6 多组件共享数据</h4>
+<h4 id="197-vuex的模块化编码">19.7 vuex的模块化编码</h4>
+<pre><code class="language-js">import Vue from 'vue'
+import Vuex from 'vuex'
+Vue.use(Vuex);
+const options1 = {
+    namespaced:true, //开启命名空间
+    action:{},
+    mutation:{},
+    state:{},
+    getters:{}
+}
+const options2 = {
+    namespaced:true, //开启命名空间
+    action:{},
+    mutation:{},
+    state:{},
+    getters:{}
+}
+export default new Vuex.Store({
+   modules:{
+       a:options1,
+       b:options2
+   } 
+});
+</code></pre>
+<pre><code class="language-js">...mapState('a',['sum','school','subject']);
+...mapState('b',['persionList'])
+this.store.state.personAbout.list;
+...mapMutations('a',{increment:'SUM',decrement:'SUB'}) 
+this.$store.commit('a/SUM',2);
+...mapActions('a',{increment:'sum',decrement:'sub'})
+this.$store.dispatch('a/sum',2);
+...mapGetters('a',['sum','school','subject'])
+this.$store.getters['a/sum'];
+</code></pre>
+<h3 id="20-路由">20. 路由</h3>
+<blockquote>
+<p>SPA（Single Page Web Application）：单页面应用</p>
+<p>2022年2月7日以后，vue-router的默认版本变为了4，所以如果我们不需要最新版本，就要在安装时指定他的版本</p>
+</blockquote>
+<ul>
+<li>
+<p>安装 <code>vue-router</code></p>
+<pre><code class="language-shell">npm install vue-router
+</code></pre>
+</li>
+<li>
+<p>引入 <code>vue-router</code></p>
+<pre><code class="language-js">import Vue from 'vue'
+import VueRouter from 'vue-router'
+Vue.use(VueRouter);
+new Vue({
+    el: '#app',
+    render: h =&gt; h(App),
+    router:''
+})
+</code></pre>
+</li>
+<li>
+<p>创建src/router目录，并新建index.js文件</p>
+<pre><code class="language-js">import VueRouter from 'vue-router'
+import About from '../components/About'
+import Home from '../component/Home'
+//创建并暴露一个路由器
+export default new VueRouter({
+    routes:[
+        {
+            path:'/about',
+            component:About
+        },
+        {
+            path:'/home',
+            component:Home
+        }
+    ]
+});
+</code></pre>
+</li>
+<li>
+<p>在页面中使用 <code>&lt;router-link&gt;</code> 标签的路由切换 代替 <code>&lt;a&gt;</code> 标签的页面跳转</p>
+<pre><code class="language-html">&lt;router-link to=&quot;/about&quot; active-class=&quot;active&quot;&gt;About&lt;/router-link&gt;
+&lt;router-link to=&quot;/home&quot; active-class=&quot;active&quot;&gt;Home&lt;/router-link&gt;
+</code></pre>
+</li>
+<li>
+<p>在页面中使用 <code>&lt;router-view&gt;</code> 标签指定路由切换对应组件呈现的位置</p>
+<pre><code class="language-html">&lt;router-view&gt;&lt;/router-view&gt;
+</code></pre>
+</li>
+</ul>
+<h4 id="201-注意事项">20.1 注意事项</h4>
+<ul>
+<li>路由组件一般放在 <code>pages</code> 文件夹，普通组件一般放在 <code>components</code> 中</li>
+<li>通过切换，隐藏了的路由组件，默认是被销毁掉的，需要的时候才会再次挂载</li>
+<li>每个组件都有自己的 <code>$route</code> 属性，里面存储着自己的路由信息</li>
+<li>整个应用只有一个 <code>router</code>，可以通过组件的 <code>$router</code> 属性获取到</li>
+</ul>
+<h4 id="202-嵌套路由">20.2 嵌套路由</h4>
+<pre><code class="language-js">export default new VueRouter({
+   routes:[
+       {
+           path:'/about',
+           component:About
+       },
+       {
+           path:'/home',
+           component:Home,
+           children:[
+               {
+                   path:'news',
+                   component:News
+               },
+               {
+                   path:'message',
+                   component:Message
+               }
+           ]
+       }
+   ] 
+});
+</code></pre>
+<h4 id="203-路由的query参数">20.3 路由的query参数</h4>
+<ul>
+<li>
+<p>传递参数</p>
+<pre><code class="language-html">&lt;!--to的字符串写法--&gt;
+&lt;router-link :to=&quot;/home/message/detail?id=666&amp;title=test&quot;&gt;跳转&lt;/router-link&gt;
+&lt;!--to的对象写法--&gt;
+&lt;router-link :to=&quot;{
+                  path:'/home/message/detail',
+                      query:{
+                        id:666,
+                  		title:'test'
+                      }
+                  }&quot;&gt;跳转
+&lt;/router-link&gt;            
+</code></pre>
+</li>
+<li>
+<p>接收参数</p>
+<pre><code class="language-js">$route.query.id
+$route.query.title
+</code></pre>
+</li>
+</ul>
+<h4 id="204-命令路由">20.4 命令路由</h4>
+<ul>
+<li>作用：简化路由的跳转</li>
+</ul>
+<pre><code class="language-js">export default new VueRouter({
+   routes:[
+       {
+           path:'/about',
+           component:About
+       },
+       {
+           path:'/home',
+           component:Home,
+           children:[
+               {
+                   path:'news',
+                   component:News
+               },
+               {
+                   name:'message'
+                   path:'message',
+                   component:Message
+               }
+           ]
+       }
+   ] 
+});
+</code></pre>
+<pre><code class="language-html">&lt;router-link :to=&quot;{name:'message'}&quot;&gt;跳转&lt;/router-link&gt;
+&lt;router-link :to=&quot;{
+                  	name:'message',
+                  	query:{
+                  		id:666,
+                  		title:'test'
+                  	}
+                  }&quot;&gt;跳转
+&lt;/router-link&gt;
+</code></pre>
+<h4 id="204-路由的params参数">20.4 路由的params参数</h4>
+<pre><code class="language-html">&lt;router-link :to=&quot;{name:'message'}&quot;&gt;跳转&lt;/router-link&gt;
+&lt;router-link :to=&quot;{
+                  	name:'message',
+                  	params:{
+                  		id:666,
+                  		title:'test'
+                  	}
+                  }&quot;&gt;跳转
+&lt;/router-link&gt;
+</code></pre>
+<blockquote>
+<p>当通过params传递参数时，只能用name，不能用path</p>
+</blockquote>
+<h4 id="205-路由的props配置">20.5 路由的props配置</h4>
+<pre><code class="language-js">export default new VueRouter({
+   routes:[
+       {
+           path:'/about',
+           component:About
+       },
+       {
+           path:'/home',
+           component:Home,
+           children:[
+               {
+                   path:'news',
+                   component:News
+               },
+               {
+                   name:'message'
+                   path:'message',
+                   component:Message,
+                   children:[
+                   		{
+                   			name:'detail',
+                   			path:'detail/:id/:title',
+                   			component:Detail,
+                   			//第一种写法，值为对象，缺点：数据写死，一般不用
+                   			props:{
+                   				id:'666',
+                   				title:'test'
+               				}
+               				//第二种写法，值为boolean，true时会把该路由组件收到的所有params参数以props形式传给Detail组件
+               				props:true
+               				//第三种写法，值为函数
+               				props(){
+           						return {id:'666',title:'test'}
+       						}
+       						
+               			}
+                   ]
+               }
+           ]
+       }
+   ] 
+});
+</code></pre>
+<pre><code class="language-js">props($route){
+    return {
+        id:$route.query.id,
+        title:$route.query.title
+    }
+}
+</code></pre>
+<h4 id="206-router-link的replace属性">20.6 router-link的replace属性</h4>
+<ul>
+<li>作用：控制路由跳转时操作浏览器历史记录的模式</li>
+<li>浏览器的历史记录由两种写入方式，分别为 <code>push</code> 和 <code>replace</code>，push是追加历史记录，replace是替换当前记录，路由跳转默认为push</li>
+<li>我们只需要在 <code>&lt;router-link replace&gt;</code>标签中添加replace属性，就可以实现浏览器没有历史记录即无法后退的场景</li>
+</ul>
+<h4 id="207-编程式路由导航">20.7 编程式路由导航</h4>
+<ul>
+<li>
+<p>作用：不用借助 <code>router-link</code> 标签实现路由跳转，让路由跳转更加灵活</p>
+</li>
+<li>
+<p>代码</p>
+<pre><code class="language-js">this.$router.push({
+    name:'detail',
+    params:{
+        id:xxx,
+        title:xxx
+    }
+})
+this.$router.replace({
+    name:'detail',
+    params:{
+        id:xxx,
+        title:xxx
+    }
+})
+//前进
+this.$router.forward();
+//后退
+this.$router.back();
+//前进(&gt;0)/后退(&lt;0)
+this.$router.go(3);
+</code></pre>
+</li>
+</ul>
+<h4 id="208-缓存路由组件">20.8 缓存路由组件</h4>
+<ul>
+<li>
+<p>作用：让不展示的路由组件保持挂载，不被销毁</p>
+</li>
+<li>
+<p>代码</p>
+<pre><code class="language-html">&lt;!--缓存单个路由组件--&gt;
+&lt;keep-alive include=&quot;News&quot;&gt;
+	&lt;router-view&gt;&lt;/router-view&gt;
+&lt;/keep-alive&gt;
+&lt;!--缓存多个路由组件--&gt;
+&lt;keep-alive :include=&quot;['News','Message']&quot;&gt;
+	&lt;router-view&gt;&lt;/router-view&gt;
+&lt;/keep-alive&gt;
+</code></pre>
+</li>
+</ul>
+<h4 id="209-两个新的生命周期钩子">20.9 两个新的生命周期钩子</h4>
+<pre><code class="language-js">//激活
+actived(){
+    .......
+},
+//失活    
+deactived(){
+    .......
+}   
+</code></pre>
+<h4 id="2010-路由守卫">20.10 路由守卫</h4>
+<ul>
+<li>
+<p>作用：对路由进行权限控制</p>
+</li>
+<li>
+<p>分类：全局守卫、独享守卫、组件内守卫</p>
+</li>
+<li>
+<p>全局前置守卫：初始化时执行，每次路由切换前执行</p>
+<pre><code class="language-js">const router = new VueRouter({options});
+router.beforeEach((to,from,next)=&gt;{
+    if(to.meta.isAuth){
+        if(localStorage.getItem('role') === 'admin'){
+            next();
+        }else{
+            alert('无权查看');
+        }
+    }else{
+        next();
+    }
+});
+</code></pre>
+</li>
+<li>
+<p>全局后置守卫：初始化时执行，每次路由切换后执行</p>
+<pre><code class="language-js">const router = new VueRouter({options});
+router.afterEach((to,from)=&gt;{
+    if(to.meta.title){
+        document.title = to.meta.title;
+    }else{
+        document.title = '主页';
+    }
+});
+</code></pre>
+</li>
+<li>
+<p>独享路由守卫</p>
+<pre><code class="language-js">export default new VueRouter({
+   routes:[
+       {
+           path:'/about',
+           component:About
+       },
+       {
+           path:'/home',
+           component:Home,
+           children:[
+               {
+                   name:'news',
+                   path:'news',
+                   component:News
+                   meta:{title:'新闻'},
+               	   beforeEnter:(to,from,next)=&gt;{
+           				if(to.meta.isAuth){
+                            if(localStorage.getItem('role') === 'admin'){
+                            next();
+                            }else{
+                                alert('无权查看');
+                            }
+                        }else{
+                            next();
+    					}
+       				}
+               },
+               {
+                   name:'message'
+                   path:'message',
+                   component:Message
+               }
+           ]
+       }
+   ] 
+});
+</code></pre>
+</li>
+<li>
+<p>组件内路由守卫</p>
+<pre><code class="language-js">//通过路由规则，进入该组件时被调用
+beforeRouteEnter(to,from.next){
+    
+},
+//通过路由规则，离开该组件时被调用
+beforeRouteLeave(to,from,next){
+    
+}    
+</code></pre>
+</li>
+</ul>
+<h4 id="2011-history模式与hash模式">20.11 history模式与hash模式</h4>
+<ul>
+<li>对于一个url来说，在 # 后面的内容就是hash值</li>
+<li>hash值不会包含在http请求中</li>
+<li>两种模式
+<ul>
+<li>hash模式
+<ul>
+<li>地址中永远带着 # 号，不美观</li>
+<li>地址通过第三方分享，若第三方校验严格，地址会被标记为不合法</li>
+<li>兼容性好</li>
+</ul>
+</li>
+<li>history模式
+<ul>
+<li>地址干净，美观</li>
+<li>兼容性相较hash模式较差</li>
+<li>应用部署上线时，需要后端人员支持，解决刷新页面服务端404的问题</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="六-element-ui">六、Element-UI</h2>
+<blockquote>
+<p>地址：https://element.eleme.cn/#/zh-CN</p>
+</blockquote>
+<h2 id="七-vue3">七、Vue3</h2>
+<h3 id="1-使用-vue-cli-创建工程">1. 使用 vue-cli 创建工程</h3>
+<h3 id="2-使用vite创建工程">2. 使用vite创建工程</h3>
+<h3 id="3-分析工程结构">3. 分析工程结构</h3>
+<h4 id="31-分析入口文件mainjs">3.1 分析入口文件main.js</h4>
+<pre><code class="language-js">//引入的不再是Vue构造函数了，引入的是一个名为createApp的工厂函数
+import {createApp} from 'vue'
+import App from './App.vue'
+//创建应用实例对象（类似于vue2的vm，但是比vm更加轻量）
+const app = createApp(App);
+app.mount(&quot;#app&quot;);
+</code></pre>
+<h4 id="32-分析appvue">3.2 分析App.vue</h4>
+<pre><code class="language-vue">&lt;template&gt;
+	&lt;!--vue3组件中的模板结构可以没有根标签--&gt;
+    &lt;img alt=&quot;Vue logo&quot; src=&quot;./assets/logo.png&quot; ref=&quot;img&quot;&gt;
+    &lt;HelloWorld msg=&quot;Welcome to Your Vue.js App&quot; ref=&quot;hw&quot;/&gt;
+    &lt;School ref=&quot;school&quot; school-name=&quot;黑马程序猿&quot; school-address=&quot;北京&quot; v-bind:school-area=&quot;10&quot;/&gt;
+    &lt;button @click=&quot;showElement&quot; ref=&quot;btn&quot;&gt;点我输出元素对象&lt;/button&gt;
+&lt;/template&gt;
+</code></pre>
+<h3 id="4-安装开发者工具">4. 安装开发者工具</h3>
+<h3 id="5-初识setup">5. 初识setup</h3>
+<blockquote>
+<p>Vue3中一个新的配置项，值为一个函数</p>
+<p><code>组件中用到的数据data，方法methods等，均要配置到setup中</code></p>
+</blockquote>
+<ul>
+<li>setup函数有两种返回值
+<ul>
+<li>返回一个对象，则对象中的属性、方法。在模板中均可以直接使用</li>
+<li>若返回一个渲染函数，则可以自定义渲染内容</li>
+</ul>
+</li>
+<li>注意事项
+<ul>
+<li>尽量不要与vue2配置混用
+<ul>
+<li>vue2配置（data、methods、computed、watch...）中可以访问到setup中的属性、方法</li>
+<li>但是setup中不能访问vue2的配置（data、methods、computed、watch...）</li>
+<li>如果有重名，以setup优先</li>
+</ul>
+</li>
+<li>setup不能是一个async函数，因为返回值不再是return的对象，而是promise，模板看不到return对象中的属性
+<ul>
+<li>后期可以返回一个Promise实例，但是需要Suspense和异步组件的配合</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-ref函数">6. ref函数</h3>
+<ul>
+<li>
+<p>作用：定义一个响应式数据</p>
+</li>
+<li>
+<p>语法：<code>const xxx = ref(initValue)</code></p>
+<ul>
+<li>创建一个包含响应式数据的引用对象</li>
+<li>js中操作数据 <code>xxx.value</code></li>
+<li>模板中读取数据不需要 <code>.value</code>，直接 <code>{{xxx}}</code></li>
+</ul>
+</li>
+<li>
+<p>备注</p>
+<ul>
+<li>接收的数据可以是基本类型，也可以是对象类型</li>
+<li>基本类型的数据，响应式依然是靠 <code>Object.defineProperty()</code> 的 <code>get</code> 与 <code>set</code> 完成的</li>
+<li>对象类型的数据，内部求助了Vue3的一个新函数 <code>reactive</code> 函数</li>
+</ul>
+</li>
+<li>
+<pre><code class="language-js">import {ref} from 'vue'
+</code></pre>
+</li>
+</ul>
+<h3 id="7-reactive函数">7. reactive函数</h3>
+<ul>
+<li>作用：定义一个对象类型的响应式数据（基本类型别用它，用 <code>ref</code> 函数）</li>
+<li>语法：<code>const 代理对象 = reactive(被代理对象)</code> 接收一个对象（或数组），返回一个代理器对象（Proxy对象）</li>
+<li>reactive定义的响应式数据是深层次的</li>
+<li>内部基于ES6的Proxy实现，通过代理对象操作源对象内部数据都是响应式的</li>
+<li>
+<pre><code class="language-js">import {reactive} from 'vue'
+</code></pre>
+</li>
+</ul>
+<h3 id="8-vue3响应式原理">8. vue3响应式原理</h3>
+<h4 id="81-vue2响应式原理">8.1 vue2响应式原理</h4>
+<ul>
+<li>
+<p>实现原理</p>
+<ul>
+<li>
+<p>对象类型：通过 <code>Object.defineProperty()</code> 对属性的读取、修改进行拦截（数据劫持）</p>
+</li>
+<li>
+<p>数组类型：通过重写更新数组的一系列方法来实现拦截</p>
+<pre><code class="language-js">Object.defineProperty(data,'count',{
+   	get(){},
+    set(){}
+});
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>存在的问题</p>
+<ul>
+<li>新增属性、删除属性，界面不会更新</li>
+<li>直接通过数组下标修改数组内容，界面不会更新</li>
+</ul>
+</li>
+</ul>
+<h4 id="82-vue3响应式原理">8.2 vue3响应式原理</h4>
+<ul>
+<li>实现原理
+<ul>
+<li>通过Proxy（代理）：拦截对象中任意属性的变化，包括（属性值读写、属性添加、属性删除等）</li>
+<li>通过Reflect（反射）：对被代理对象的属性进行操作</li>
+<li>MDN文档中描述的Proxy与Reflect
+<ul>
+<li>Proxy：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy</li>
+<li>Reflect：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Proxy</li>
+</ul>
+<pre><code class="language-js">new Proxy(data,{
+    //有人读取data的某个属性时调用
+    get(target,attributeName){
+        return target[attributeName];
+    },
+    //有人修改data属性或者给data追加属性时调用
+    set(target,attributeName,value){
+        target[attributeName] = value;
+    },
+    //有人删除data上某个属性时调用
+    deleteProperty(target,attributeName){
+		return delete target[attributeName];
+    }
+});
+</code></pre>
+<ul>
+<li>Reflect
+<ul>
+<li>ECMA组织正在尝试将Object上的属性方法移植到Reflect身上</li>
+</ul>
+</li>
+</ul>
+<h3 id="9-reactive与ref对比">9. reactive与ref对比</h3>
+<ol>
+<li>从定义数据角度对比
+<ul>
+<li>ref 用来定义基本数据类型</li>
+<li>reactive 用来定义对象或数组数据类型</li>
+<li>ref 也可以定义对象或数组类型，但是最终内部会通过reactive转为代理对象</li>
+</ul>
+</li>
+<li>从原理的角度对比
+<ul>
+<li>ref 通过 <code>Object.defineProperty()</code> 的 <code>get</code> 和 <code>set</code> 来实现响应式</li>
+<li>reactive 通过使用 <code>Proxy</code> 来实现响应式，并通过 <code>Reflect</code> 操作源对象内部的数据</li>
+</ul>
+</li>
+<li>从使用角度对比
+<ul>
+<li>ref 定义的数据，操作数据需要 <code>.value</code>，模板读取时不需要 <code>.value</code></li>
+<li>reactive 定义的数据，操作数据与读取数据都不需要 <code>.value</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="10-setup的两个注意点">10. setup的两个注意点</h3>
+<ol>
+<li>setup的执行时机
+<ul>
+<li>在beforeCreate之前执行一次，this是undefined</li>
+</ul>
+</li>
+<li>setup的参数
+<ul>
+<li>props：值为对象，存储组件外部传递过来并且组件内部声明接收了的属性</li>
+<li>context：上下文对象
+<ul>
+<li>attrs：值为对象，存储组件外部传递过来，但是没有在props中声明接收的属性。相当于 <code>this.$attrs</code></li>
+<li>slots：收到的插槽内容。相当于 <code>this.$slots</code></li>
+<li>emit：分发自定义事件的函数。相当于 <code>this.$emit</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<pre><code class="language-js">props:['','',''...],
+emits:['','',''...],
+setup(props,context){
+    ...
+    return {
+        ...
+    }
+}
+</code></pre>
+<h3 id="11-computed计算属性">11. computed计算属性</h3>
+<pre><code class="language-js">import {computed,reactive} from 'vue'
+</code></pre>
+<pre><code class="language-js">setup(){
+	let person = reactive({
+       firstName:'张',
+       lastName:'三'
+    });
+    //简写形式，只考虑读取数据
+    person.fullName = computed(()=&gt;{
+       return person.firstName + person.lastName; 
+    });
+    //完整形式，考虑读写
+    person.fullName = computed({
+       get(){
+           return person.firstName + person.lastName; 
+       },
+       set(value){
+           const nameArr = value.split('-');
+           person.firstName = nameArr[0];
+           person.lastName = nameArr[1] ;
+       }
+    });
+    return {
+        person
+    }
+}
+</code></pre>
+<blockquote>
+<p>与Vue2中的computed配置功能一致，只是需要写在setup函数中</p>
+</blockquote>
+<h3 id="12-watch监视属性">12. watch监视属性</h3>
+<ul>
+<li>与Vue2中的watch配置功能一致</li>
+<li>两个注意事项
+<ul>
+<li>监视reactive定义的响应数据时，oldValue无法正确获取，强制开启了深度监视，deep属性失效</li>
+<li>监视reactive定义的响应数据中某个属性时，deep属性有效</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-js">import {ref,reactive,watch} from 'vue'
+</code></pre>
+<pre><code class="language-js">setup(){
+    let sum = ref(0);
+    let msg = ref('hello');
+    let person = reactive({
+       	name:'张三',
+   		age:18,
+        job:{
+            name:'JavaEngineer',
+            salary:20
+        }
+    });
+    //监视ref所定义的一个响应式数据
+    watch(sum,(newValue,oldValue)=&gt;{
+       console.log('sum改变了',newValue,oldValue); 
+    });
+    //监视ref所定义的多个响应式数据
+    watch([sum,msg],(newValue,oldValue)=&gt;{
+       console.log('sum改变了',newValue,oldValue); 
+    },{immediate:true});
+    //监视reactive所定义的一个响应式数据，此处oldValue无法正常获取，deep属性失效
+    watch(person,(newValue,oldValue)=&gt;{
+       console.log('person改变了',newValue,oldValue); 
+    },{deep:false});
+    //监视reactive所定义的一个响应式数据的某个普通属性，此处oldValue可以正常获取，deep属性有效
+    watch(()=&gt;person.age,(newValue,oldValue)=&gt;{
+       console.log('person.age改变了',newValue,oldValue); 
+    });
+    //监视reactive所定义的一个响应式数据的某些普通属性
+    watch([()=&gt;person.age,()=&gt;person.name],(newValue,oldValue)=&gt;{
+       console.log('person.age或name改变了',newValue,oldValue); 
+    });
+    //监视reaction所定义的一个响应式数据中的对象属性，deep属性有效
+    watch(()=&gt;person.job,(newValue,oldValue)=&gt;{
+       console.log('person.job改变了',newValue,oldValue); 
+    },{deep:true});
+    return {
+        sum,age,person
+    }
+}
+</code></pre>
+<ul>
+<li>
+<p>watchEffect函数</p>
+<ul>
+<li>watch的套路是：既要指明监视的属性，也要指明监视的回调</li>
+<li>watchEffect的套路是：不用指明监视哪个属性，监视的回调中用到哪个属性，就监视哪个属性</li>
+<li>watchEffect有点类似与computed
+<ul>
+<li>但是computed注重的是计算出来的值（回调函数的返回值），所以必须需要写返回值</li>
+<li>而watchEffect更注重的是过程（回调函数的函数体），所以不用写返回值</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-js">watchEffect(()=&gt;{
+    const x1 = sum.value;
+    const v2 = person.value;
+    console('watchEffect配置的回调执行了');
+});
+</code></pre>
+</li>
+</ul>
+<h3 id="13-vue3生命周期">13. Vue3生命周期</h3>
+<figure data-type="image" tabindex="9"><img src="https://pic.zyblog.xyz/img/typora/lifecycle.16e4c08e.png?origin=typora" alt="组件生命周期图示" loading="lazy"></figure>
+<blockquote>
+<ul>
+<li>
+<p>Vue3中可以继续使用Vue2中的生命周期钩子，但是有两个被更名</p>
+<ul>
+<li>
+<p><code>beforeDestory</code> 改名为 <code>beforeUnmount</code></p>
+</li>
+<li>
+<p><code>destoryed</code> 改名为 <code>unmounted</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Vue3也提供了CompositionAPI形式的生命周期钩子函数，与Vue2对应关系如下：</p>
+<ul>
+<li><code>beforeCreate</code> ===&gt; <code>setup()</code></li>
+<li><code>created</code> ===&gt; <code>setup()</code></li>
+<li><code>beforeMount</code> ===&gt; <code>onBeforeMount()</code></li>
+<li><code>mounted</code> ===&gt; <code>onMounted()</code></li>
+<li><code>beforeUpdate</code> ===&gt; <code>onBeforeUpdate()</code></li>
+<li><code>updated</code> ===&gt; <code>onUpdated()</code></li>
+<li><code>beforeUnmount</code> ===&gt; <code>onBeforeUnmount()</code></li>
+<li><code>unmounted</code> ===&gt; <code>onUnmounted()</code></li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<pre><code class="language-js">setup(){
+    onBeforeMount(()=&gt;{
+        
+    });
+    onMounted(()=&gt;{
+        
+    });
+    onBeforeUpdate(()=&gt;{
+        
+    });
+    onUpdated(()=&gt;{
+        
+    });
+    onBeforeUnmount(()=&gt;{
+        
+    });
+    onUnmounted(()=&gt;{
+        
+    });
+}
+</code></pre>
+<h3 id="14-自定义hook">14. 自定义hook</h3>
+<blockquote>
+<p>Vue中的hook：本质是一个函数，把setup函数中使用的CompositionAPI进行了封装</p>
+<p>类似于Vue2中的mixin</p>
+<p>自定义hook的优势：复用代码，让setup中的逻辑更清楚易懂</p>
+</blockquote>
+<h3 id="15-toref与torefs">15. toRef与toRefs</h3>
+<ul>
+<li>作用：创建一个 ref 对象，其value值指向另一个对象中的某个属性</li>
+<li>语法：<code>const name = toRef(person,'name')</code></li>
+<li>应用场景：需要将响应式对象中的某个属性单独提供给外部使用时</li>
+<li>扩展：<code>toRefs()</code> 与 <code>toRefs()</code> 的功能一致，但可以批量创建多个ref对象，语法为：<code>toRefs(person)</code></li>
+</ul>
+<pre><code class="language-js">return {
+    person,
+    ...toRefs(person)
+}
+</code></pre>
+<h3 id="16-compositionapi">16. CompositionAPI</h3>
+<h4 id="161-shallowreactive与shallowref">16.1 shallowReactive与shallowRef</h4>
+<ul>
+<li>shallowReactive：只处理对象最外层属性的响应式（浅响应式）</li>
+<li>shallowRef：只处理基本数据类型的响应式，不进行对象的响应式处理</li>
+<li>应用场景：
+<ul>
+<li>如果有一个对象数据，结构比较深，但变化时只是外层属性变化，可以使用shallowReactive</li>
+<li>如果有一个对象数据，后续功能不会修改该对象中的属性，而是生成新的对象来替换，可以使用shallowRef</li>
+</ul>
+</li>
+</ul>
+<h4 id="162-readonly与shallowreadonly">16.2 readonly与shallowReadonly</h4>
+<ul>
+<li>readonly：让一个响应式数据变为只读（深只读）</li>
+<li>shallowReadonly：让一个响应式数据变为只读（浅只读）</li>
+<li>应用场景：不希望数据被修改</li>
+</ul>
+<h4 id="163-toraw与markraw">16.3 toRaw与markRaw</h4>
+<ul>
+<li>toRaw
+<ul>
+<li>作用：将一个由 <code>reactive</code> 生成的响应式对象转为普通对象</li>
+<li>应用场景：用于读取响应式对象对应的普通对象，对这个普通对象的所有操作，不会引起页面的更新</li>
+</ul>
+</li>
+<li>markRaw
+<ul>
+<li>作用：标记一个对象，使其永远不会再成为响应式对象</li>
+<li>应用场景：
+<ul>
+<li>有些值不应被设置为响应式，例如复杂的第三方类库等</li>
+<li>当渲染具有不可变数据源的大列表时，跳过响应式转换可以提高性能</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="164-customref">16.4 customRef</h4>
+<ul>
+<li>
+<p>作用：创建一个自定义的 ref ，并对其依赖项跟踪和更新触发进行显式控制</p>
+</li>
+<li>
+<p>实现防抖效果</p>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;p&gt;
+    This text only updates 1 second after you've stopped typing:
+  &lt;/p&gt;
+  &lt;p&gt;{{ text }}&lt;/p&gt;
+  &lt;input v-model=&quot;text&quot; /&gt;
+&lt;/template&gt;
+&lt;script setup&gt;
+import { useDebouncedRef } from './debouncedRef.js'
+const text = useDebouncedRef('hello', 1000)
+&lt;/script&gt;
+</code></pre>
+<pre><code class="language-js">import { customRef } from 'vue'
+
+export function useDebouncedRef(value, delay = 200) {
+  let timeout
+  return customRef((track, trigger) =&gt; {
+    return {
+      get() {
+        track()//通知vue追踪value的变化
+        return value
+      },
+      set(newValue) {
+        clearTimeout(timeout)
+        timeout = setTimeout(() =&gt; {
+          value = newValue
+          trigger()//通知vue重新解析模板
+        }, delay)
+      }
+    }
+  })
+}
+</code></pre>
+</li>
+</ul>
+<h4 id="165-provide与inject">16.5  provide与inject</h4>
+<figure data-type="image" tabindex="10"><img src="https://pic.zyblog.xyz/img/typora/v2-f7110a1bae2d0744997012ca656d8fa1_r.jpg?origin=typora" alt="img" loading="lazy"></figure>
+<ul>
+<li>
+<p>作用：实现祖孙组件间通信</p>
+</li>
+<li>
+<p>套路：父组件有一个 <code>provide</code> 选项来提供数据，子组件有一个 <code>inject</code> 选项来开始使用这些数据</p>
+</li>
+<li>
+<p>具体写法</p>
+<ul>
+<li>
+<p>祖组件</p>
+<pre><code class="language-js">setup(){
+    ......
+    let car = reactive({
+        name:'奔驰',
+        price:'40万'
+    });
+    provide('car',car)
+    ......
+}
+</code></pre>
+</li>
+<li>
+<p>后代组件</p>
+<pre><code class="language-js">setup(){
+    ......
+    const car = inject('car');
+    return {
+        car
+    }
+    ......
+}
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="166-响应式数据的判断">16.6 响应式数据的判断</h4>
+<ul>
+<li>isRef：检查一个值是否为一个ref对象</li>
+<li>isReactive：检查一个对象是否是由 reactive 创建的响应式代理对象</li>
+<li>isReadonly：检查一个对象是否是由 readonly 创建的只读代理对象</li>
+<li>isProxy：检查一个对象是否是由 reactive 或者 readonly 方法创建的代理对象</li>
+</ul>
+<h3 id="17-compositionapi优势">17. CompositionAPI优势</h3>
+<h4 id="171-optionapi">17.1 OptionAPI</h4>
+<figure data-type="image" tabindex="11"><img src="https://pic.zyblog.xyz/img/typora/b36597b2c96cef710355c7c7476e543a_960x657.gif?origin=typora" alt="img" loading="lazy"></figure>
+<figure data-type="image" tabindex="12"><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/568b0ced69f241d282cf2c512e4e5f33~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img" loading="lazy"></figure>
+<h4 id="172-compositionapi">17.2 CompositionAPI</h4>
+<figure data-type="image" tabindex="13"><img src="https://pic.zyblog.xyz/img/typora/09112004_62f1d264cbff085117.gif?origin=typora" alt="【总结】1267- Vue2 迁移到 Vue3 到底要踩多少坑？_缓存" loading="lazy"></figure>
+<figure data-type="image" tabindex="14"><img src="https://pic.zyblog.xyz/img/typora/09112005_62f1d26565bce28102.gif?origin=typora" alt="【总结】1267- Vue2 迁移到 Vue3 到底要踩多少坑？_缓存_02" loading="lazy"></figure>
+<h3 id="18-fragment组件">18. Fragment组件</h3>
+<ul>
+<li>在Vue2中，组件必须有一个根标签</li>
+<li>在Vue3中，组件可以没有根标签，内部会将多个标签包含在一个Fragment虚拟元素中
+<ul>
+<li>好处：减少标签层级，减少内存占用</li>
+</ul>
+</li>
+</ul>
+<h3 id="19-teleport组件">19. Teleport组件</h3>
+<ul>
+<li>
+<p>Teleport 是一种能够将我们组件html结构移动到指定位置的技术</p>
+<pre><code class="language-html">&lt;teleport to=&quot;移动位置&quot;&gt;
+    &lt;div&gt;我是一个弹窗&lt;/div&gt;
+&lt;/teleport&gt;
+</code></pre>
+</li>
+</ul>
+<h3 id="20-suspense组件">20. Suspense组件</h3>
+<ul>
+<li>
+<p>等待异步组件时渲染一些后备内容，获得更好的用户体验</p>
+</li>
+<li>
+<p>使用步骤</p>
+<ul>
+<li>
+<p>异步引入组件</p>
+<pre><code class="language-js">import {defineAsyncComponent} from 'vue'
+const Child = defineAsyncComponent(()=&gt;import('./components/Child.vue'))
+</code></pre>
+</li>
+<li>
+<p>使用 <code>Suspense</code> 包裹组件，并配置好 <code>default</code> <code>fallback</code></p>
+<pre><code class="language-html">&lt;template&gt;
+	&lt;div class=&quot;#app&quot;&gt;
+        &lt;h3&gt;我是App组件&lt;/h3&gt;
+        &lt;Suspense&gt;
+        	&lt;template v-slot:default&gt;
+            	&lt;Child/&gt;
+            &lt;/template&gt;
+            &lt;template v-slot:fallback&gt;
+            	&lt;h3&gt;加载中......&lt;/h3&gt;
+            &lt;/template&gt;
+        &lt;/Suspense&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="21-收尾">21. 收尾</h3>
+<h4 id="211-全局api的转移">21.1 全局API的转移</h4>
+<ul>
+<li>
+<p>Vue2中有许多全局API和配置</p>
+<ul>
+<li>例如：注册全局组件，注册全局指令等</li>
+</ul>
+</li>
+<li>
+<p>Vue3中对这些API做出了调整</p>
+<ul>
+<li>
+<p>将全局的API，即 <code>Vue.xxx</code> 调整到应用实例 <code>app</code> 上</p>
+<table>
+<thead>
+<tr>
+<th>Vue2</th>
+<th>Vue3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vue.config.xxx</td>
+<td>app.config.xxx</td>
+</tr>
+<tr>
+<td>Vue.config.productionTip</td>
+<td>移除</td>
+</tr>
+<tr>
+<td>Vue.component</td>
+<td>app.component</td>
+</tr>
+<tr>
+<td>Vue.directive</td>
+<td>app.directive</td>
+</tr>
+<tr>
+<td>Vue.mixin</td>
+<td>app.mixin</td>
+</tr>
+<tr>
+<td>Vue.use</td>
+<td>app.use</td>
+</tr>
+<tr>
+<td>Vue.prototype</td>
+<td>app.config.globalProperties</td>
+</tr>
+<tr>
+<td>Vue.config.keyCodes</td>
+<td>移除</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="212-其他改变">21.2 其他改变</h4>
+<ul>
+<li>
+<p>data选项应该始终被声明为一个函数</p>
+</li>
+<li>
+<p>过渡类名的更改</p>
+<ul>
+<li>
+<p>Vue2.x写法</p>
+<pre><code class="language-css">.v-enter,.v-leave-to{
+	opacity: 0;
+}
+.v-leave,.v-enter-to{
+    opacity: 1;
+}
+</code></pre>
+</li>
+<li>
+<p>Vue3.x写法</p>
+<pre><code class="language-css">.v-enter-from,v-leave-to{
+    opacity:0;
+}
+.v-leave-from,v-enter-to{
+    opacity:1;
+}
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>移除 keyCode 作为 <code>v-on</code> 的修饰符，同时也不再支持 <code>config.keyCodes</code></p>
+</li>
+<li>
+<p>移除 <code>v-on.native</code> 修饰符</p>
+<ul>
+<li>
+<p>父组件中绑定事件</p>
+<pre><code class="language-html">&lt;my-component v-on:close=&quot;handleComponentEvent&quot; v-on:click=&quot;handleNativeClickEvent&quot;&gt;&lt;/my-component&gt;
+</code></pre>
+</li>
+<li>
+<p>子组件中声明自定义事件</p>
+<pre><code class="language-html">&lt;script&gt;
+	export default{
+        emits:['close']
+    }
+&lt;/script&gt;
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>移除过滤器 filter</p>
+<blockquote>
+<p>过滤器虽然看起来很方便，但是它需要一个自定义语法，打破大括号内表达式只是javascript的假设，这不仅有学习成本，而且有实现成本，建议用方法调用或计算属性去替换过滤器</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>原文作者：絷缘<br>
+作者邮箱：zhiyuanworkemail@163.com<br>
+原文地址：<a href="https://zhiyuandnc.github.io/Vr0OXGyK8/">https://zhiyuandnc.github.io/Vr0OXGyK8/</a><br>
+版权声明：本文为博主原创文章，转载请注明原文链接作者信息</p>
+</blockquote>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://zhiyuandnc.github.io/DZ1f24lyN/" class="post-title gt-a-link">
+                    微服务学习
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">事实不以人的意志为转移</div>
+    <div class="social-container">
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-telegram gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-qq gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-bilibili gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Copyright&ensp;&copy;&ensp;絷缘的博客<br/><a href="https://beian.miit.gov.cn/" target="_blank">晋ICP备20001723号-1</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://zhiyuandnc.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

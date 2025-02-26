@@ -1,0 +1,605 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Linux命令学习（五） | 絷缘的博客</title>
+
+<link rel="shortcut icon" href="https://zhiyuandnc.github.io/favicon.ico?v=1740567139208">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zhiyuandnc.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+ <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            絷缘的博客
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/friends" class="menu gt-a-link">
+                            友链
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1740567139208" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Linux命令学习（五）
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2022-02-20 ·
+                    </time>
+                    
+                        <a href="https://zhiyuandnc.github.io/linux/" class="post-tags">
+                            # Linux
+                        </a>
+                    
+                        <a href="https://zhiyuandnc.github.io/Z3qSG8exS/" class="post-tags">
+                            # 命令
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="一-raid与lvm">一、RAID与LVM</h2>
+<h3 id="1-raid">1. RAID</h3>
+<ul>
+<li>
+<p>作用：RAID独立磁盘冗余阵列，使用多块硬盘，组成大容量的硬盘组，将数据分成多个片段同时进行读写，以提高读写速度，并通过冗余备份实现数据安全性</p>
+</li>
+<li>
+<p>RAID0</p>
+<ul>
+<li>原理：将至少两块硬盘通过硬件或软件方式 “串联” 起来，组成一个大的硬盘卷组，将数据一次写入各个硬盘中</li>
+<li>图：</li>
+<li>特点
+<ul>
+<li>优点：数据同步传输，读取/写入分开，性能提升较大</li>
+<li>缺点：任意一块硬盘损坏，整个系统数据无法使用</li>
+<li>硬盘使用率100%，至少2块硬盘才可组建</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>RAID1</p>
+<ul>
+<li>原理：把至少两块硬盘 “并联” 起来，写入数据时，数据同时写入到另一硬盘中</li>
+<li>图：</li>
+<li>特点
+<ul>
+<li>优点：使用硬盘镜像功能，提高数据安全性</li>
+<li>缺点：硬盘利用率50%，使用两块硬盘，一块存储，一块备份，成本较大</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>RAID5</p>
+<ul>
+<li>产生原因：兼顾读写速度及数据安全，是一种折中方式</li>
+<li>原理：至少使用三块硬盘，将数据分化存储到不同硬盘中，硬盘中必须存储其他硬盘的校验数据</li>
+<li>图：</li>
+<li>特点：
+<ul>
+<li>优点：兼顾性能，通过 “奇偶校验” 来替代 “镜像备份”</li>
+<li>缺点：硬盘数据安全性较低，硬盘使用率（n-1）*n，硬盘数据出现问题会自动校验恢复</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>RAID10（主流）</p>
+<ul>
+<li>本质：RAID1+RAID0</li>
+<li>原理：至少需要四块硬盘，先制作两两硬盘的RAID1阵列，以保证数据安全性，在两两制作RAID0以提高读写性能</li>
+</ul>
+</li>
+<li>
+<p>mdadm命令</p>
+<ul>
+<li>
+<p>作用：管理系统中的RAID磁盘阵列</p>
+</li>
+<li>
+<p>格式：mdadm  -模式参数    RAID设备文件名    -性能参数    磁盘成员文件名</p>
+</li>
+<li>
+<p>参数：</p>
+<ul>
+<li>-C：创建RAID</li>
+<li>-D：查看RAID详细信息</li>
+<li>-Q：查看摘要信息</li>
+<li>-S：停止RAID工作</li>
+<li>-a：检测设备名称，添加新硬盘</li>
+<li>-n：指定硬盘数量</li>
+<li>-l：指定RAID级别</li>
+<li>-v：显示过程</li>
+<li>-f：模拟设备损坏</li>
+<li>-r：移除RAID中的硬盘设备</li>
+</ul>
+</li>
+<li>
+<p>例：创建RAID10</p>
+<ul>
+<li>
+<p>mdadm  -Cv  /dev/md0   -a yes  -n  4   -l  10   /dev/sdb   /dev/sdc    /dev/sdd    /dev/sde</p>
+</li>
+<li>
+<p>分析</p>
+<p>-Cv：创建RAID并显示过程</p>
+<p>/dev/md0：创建的RAID设备文件名</p>
+<p>-a   yes：检测RAID设备名并确认</p>
+<p>-n    4：参与制作的硬盘个数</p>
+<p>-l     10：RAID级别为RAID10</p>
+<p>最后为参与制作RAID10的硬盘文件名</p>
+</li>
+</ul>
+<figure data-type="image" tabindex="1"><img src="https://pic.zyblog.xyz/img/typora/image-20201011165519217.png?origin=typora" alt="image-20201011165519217" loading="lazy"></figure>
+<ul>
+<li>格式化：mkfs.xfs   /dev/md0</li>
+<li>建立挂载点目录：mkdir   -p   /RAID</li>
+<li>挂载RAID设备：mount /dev/md0 /RAID</li>
+<li>查看RAID信息：mdadm   -D   /dev/md0</li>
+<li>开机挂载：vim   /etc/fstab</li>
+<li>添加新行：/dev/md0    /RAID    xfs      defaults     0      0</li>
+<li>reboot重启</li>
+<li>df -h查看信息</li>
+</ul>
+</li>
+<li>
+<p>RAID10 制作小结</p>
+<ul>
+<li>
+<p>mdadm 命令制作</p>
+<p>mdadm -Cv /dev/md0 -a yes -n 4 -l 10 /dev/sdb /dev/sdc /dev/sdd /dev/sde</p>
+</li>
+<li>
+<p>mkfs.xfs 格式化</p>
+</li>
+<li>
+<p>建立挂载点目录</p>
+</li>
+<li>
+<p>mount 挂载</p>
+</li>
+<li>
+<p>vim  /etc/fstab 开机挂载</p>
+</li>
+<li>
+<p>mdadm   -D   查看信息</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>解散当前RAID</p>
+<ul>
+<li>注意：在生产环境中若要取消RAID，必须先进行数据备份，否则已存在数据无法使用</li>
+<li>第一步：备份数据</li>
+<li>第二步：取消挂载状态 umount   /dev/md0</li>
+<li>第三步：删除开机挂载信息</li>
+<li>第四步：停止 RAID10 mdadm   -S   /dev/md0</li>
+<li>第五步：重启 reboot</li>
+</ul>
+</li>
+<li>
+<p>RAID损坏修复功能</p>
+<ul>
+<li>模拟某个硬盘损坏：mdadm   /dev/md0   -f   /dev/sdb</li>
+<li>查看信息：mdadm   -D   /dev/md0</li>
+<li>卸载RAID：umount   /RAID</li>
+<li>添加新硬盘：mdadm   /dev/md0  -a  /dev/sdf</li>
+<li>查看信息：mdadm   -D   /dev/md0</li>
+</ul>
+</li>
+<li>
+<p>RAID备份技术</p>
+<ul>
+<li>
+<p>原理：在RAID10中添加一块大容量硬盘，通过新硬盘进行备份数据，防止2块硬盘同时故障，若某块硬盘故障，备份盘会同步恢复，无需人工干预</p>
+</li>
+<li>
+<p>例：创建RAID10+备份盘阵列系统</p>
+<ul>
+<li>
+<p>创建RAID10+备份盘：</p>
+<p>mdadm -Cv /dev/md1 -a yes -n 4 -l 10 -x 1 /dev/sdb /dev/sdc /dev/sdd /dev/sde /dev/sdf</p>
+<p>注意：-x  1表示备份盘  ，且为1块硬盘，一般命令的最后一个硬盘为备份盘</p>
+</li>
+<li>
+<p>查看信息：mdadm -D /dev/md1</p>
+</li>
+<li>
+<p>格式化：mkfs.ext4  /dev/md1</p>
+</li>
+<li>
+<p>模拟硬盘损坏：mdadm /dev/md1  -f  /dev/sdb</p>
+</li>
+<li>
+<p>注意：/dev/sdf会自动补上，并且自动同步数据</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-lvm逻辑卷管理器">2. LVM逻辑卷管理器</h3>
+<ul>
+<li>
+<p>产生原因：硬盘分区及RAID部署后再修改空间大小时就十分不方便，甚至数据会丢失，用户需要动态灵活调整硬盘分区大小时，需要通过LVM技术实现</p>
+</li>
+<li>
+<p>原理：LVM在磁盘分区与文件系统之间添加一个逻辑层，以提供一个抽象的卷组，使得管理者可以忽略底层磁盘布局，从而实现对分区的灵活调整</p>
+</li>
+<li>
+<p>图：</p>
+</li>
+<li>
+<p>分析</p>
+<ul>
+<li>PE：数据基本块，默认为4MB大小</li>
+<li>PV：物理卷，由整个硬盘或分区组成</li>
+<li>VG：卷组，由一个或多个物理卷组成</li>
+<li>LV：逻辑卷，从卷组中切割出的空间，用于创建文件系统，供用户使用</li>
+</ul>
+</li>
+<li>
+<p>命令：</p>
+<table>
+    <tr>
+        <th>功能/命令</th>
+        <th>物理卷（PV）</th>
+        <th>卷组（VG）</th>
+        <th>逻辑卷（LV）</th>
+    </tr>
+    <tr>
+    	<td>扫描</td>
+        <td>pvscan</td>
+        <td>vgscan</td>
+        <td>lvscan</td>
+    </tr>
+    <tr>
+    	<td>建立</td>
+        <td>pvcreate</td>
+        <td>vgcreate</td>
+        <td>lvcreate</td>
+    </tr>
+    <tr>
+    	<td>显示</td>
+        <td>pvdisplay</td>
+        <td>vgdisplay</td>
+        <td>lvdisplay</td>
+    </tr>
+    <tr>
+    	<td>删除</td>
+        <td>pvremove</td>
+        <td>vgremove</td>
+        <td>lvremove</td>
+    </tr>
+    <tr>
+    	<td>扩大</td>
+        <td>无</td>
+        <td>vgextend</td>
+        <td>lvextend</td>
+    </tr>
+    <tr>
+    	<td>缩小</td>
+        <td>无</td>
+        <td>vgreduce</td>
+        <td>lvreduce</td>
+    </tr>
+</table>
+</li>
+<li>
+<p>LV使用过程</p>
+<ul>
+<li>
+<p>将硬盘设置为物理卷 -&gt; 创建卷组 -&gt; 将物理卷加入卷组 -&gt; 切割指定大小的逻辑卷 -&gt; 格式化逻辑卷 -&gt; 创建挂载目录 -&gt; 挂载逻辑卷 -&gt; 添加开机挂载项</p>
+</li>
+<li>
+<p>例1：系统中添加两个硬盘，创建物理卷及卷组，划分150MB的逻辑卷并格式化挂载使用</p>
+<ul>
+<li>
+<p>创建物理卷： pvcreate /dev/sdb /dev/sdc</p>
+</li>
+<li>
+<p>创建卷组并将物理卷加入：vgcreate /dev/VG1 /dev/sdb /dev/sdc</p>
+</li>
+<li>
+<p>显示卷组信息：vgdisplay /dev/VG1</p>
+</li>
+<li>
+<p>切割150MB的逻辑卷：lvcreate -n  lv1  -L 150M /dev/VG1</p>
+<blockquote>
+<p><em><strong>注意：lv1逻辑卷默认路径为卷组目录，使用相对路径即可</strong></em></p>
+</blockquote>
+</li>
+<li>
+<p>查看逻辑卷信息：lvdisplay /dev/VG1/lv1</p>
+</li>
+<li>
+<p>格式化逻辑卷：mkfs.xfs   /dev/VG1/lv1</p>
+</li>
+<li>
+<p>创建挂载目录：mkdir -p /lvm1</p>
+</li>
+<li>
+<p>挂载：mount  /dev/VG1/lv1   /lvm1</p>
+</li>
+<li>
+<p>开机挂载：添加新行  /dev/VG1/lv1   /lvm1   xfs     defaults    0    0</p>
+</li>
+</ul>
+</li>
+<li>
+<p>例2：基于上例，划分出200MB的逻辑卷使用</p>
+<ul>
+<li>
+<p>划分200M的lv：lvcreate   -n   lv2   -l   50   /dev/VG1</p>
+<blockquote>
+<p><em><strong>注意：-n为新建参数，-l为PE（4MB）的个数，-L为实际容量</strong></em></p>
+</blockquote>
+</li>
+<li>
+<p>格式化：mkfs.xfs   /dev/VG1/lv2</p>
+</li>
+<li>
+<p>建立挂载点目录：mkdir -p /lvm2</p>
+</li>
+<li>
+<p>挂载：mount   /dev/VG1/lv2   /lvm2</p>
+</li>
+<li>
+<p>开机挂载：/dev/VG1/lv2    /lvm2     xfs     defaults    0     0</p>
+</li>
+</ul>
+</li>
+<li>
+<p>逻辑卷的扩容</p>
+<ul>
+<li>过程：
+<ul>
+<li>卸载设备 -&gt; 扩容到指定容量 -&gt; <strong>重新格式化</strong> -&gt; 重新挂载</li>
+</ul>
+</li>
+<li>例：对lv1逻辑卷扩容到300M
+<ul>
+<li>查看lv1信息：lvdisplay /dev/VG1/lv1</li>
+<li>卸载设备：umount   /dev/VG1/lv1</li>
+<li>扩容：lvextend  -L   300M   /dev/VG1/lv1</li>
+<li>格式化：mkfs.xfs    -f    /dev/VG1/lv1</li>
+<li>重新挂载：mount   /dev/VG1/lv1   /lvm1</li>
+<li>查看信息：lvdisplay   /dev/VG1/lv1</li>
+</ul>
+</li>
+<li>注意：
+<ul>
+<li>扩容前必须先卸载设备</li>
+<li>扩容时注意容量单位换算（-L与-l的区别）</li>
+<li>扩容后未格式化，则容量不变</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>逻辑卷的缩容</p>
+<ul>
+<li>
+<p>原则：相对扩容，逻辑卷缩容有风险，需提前备份，缩容前需对逻辑卷进行文件系统完整性检查，以保证数据安全</p>
+</li>
+<li>
+<p>过程：</p>
+<ul>
+<li>卸载设备 -&gt; 文件完整性检查 -&gt; 缩容 -&gt; <strong>重新格式化</strong> -&gt; 重新挂载</li>
+</ul>
+</li>
+<li>
+<p>例：同上例，对lv2缩容到100MB</p>
+<ul>
+<li>卸载设备：umount   /dev/VG1/lv2</li>
+<li>文件完整性检查：xfs_repair  -n  /dev/VG1/lv2</li>
+<li>缩容：lvreduce -l 25 /dev/VG1/lv2（需要输入y确认，-l   25为物理块个数）</li>
+<li>查看信息：lvdisplay /dev/VG1/lv2</li>
+<li>重新强制格式化：mkfs.xfs -f /dev/VG1/lv2</li>
+<li>挂载：mount  /dev/VG1/lv2   /lvm2</li>
+<li>查看信息：lsblk</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>删除逻辑卷</p>
+<ul>
+<li>删除顺序：逻辑卷  -&gt;  卷组  -&gt;  物理卷（顺序不能错乱）</li>
+<li>注意：
+<ul>
+<li>删除前必须备份数据</li>
+<li>删除时需要输入“y”来确认</li>
+</ul>
+</li>
+<li>过程：
+<ul>
+<li>卸载设备 -&gt; 清除fstab开机挂载中的对应数据 -&gt;  lvremove删除逻辑卷 -&gt; vgremove删除卷组 -&gt; pvremove删除物理卷</li>
+<li>例：将上例所有的LVM数据删除
+<ul>
+<li>卸载：umount  /dev/VG1/lv1           umount   /dev/VG1/lv2</li>
+<li>清除fstab对应信息：vim  /etc/fstab   删除对应行</li>
+<li>删除逻辑卷：lvremove    /dev/VG1/lv1           lvremove   /dev/VG1/lv2（输入y确认）</li>
+<li>删除卷组：vgremove   /dev/VG1</li>
+<li>删除物理卷：pvremove   /dev/sdb    /dev/sdc（取消硬盘对物理卷技术的支持）</li>
+<li>查看信息：lsblk</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>原文作者：絷缘<br>
+作者邮箱：zhiyuanworkemail@163.com<br>
+原文地址：<a href="https://zhiyuandnc.github.io/13bSfXXJ9/">https://zhiyuandnc.github.io/13bSfXXJ9/</a><br>
+版权声明：本文为博主原创文章，转载请注明原文链接作者信息</p>
+</blockquote>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://zhiyuandnc.github.io/iKIiXSumE/" class="post-title gt-a-link">
+                    Linux命令学习（四）
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">事实不以人的意志为转移</div>
+    <div class="social-container">
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-telegram gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-qq gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-bilibili gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Copyright&ensp;&copy;&ensp;絷缘的博客<br/><a href="https://beian.miit.gov.cn/" target="_blank">晋ICP备20001723号-1</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://zhiyuandnc.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

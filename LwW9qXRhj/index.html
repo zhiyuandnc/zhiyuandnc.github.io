@@ -1,0 +1,252 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Win10系统盘空间优化总结 | 絷缘的博客</title>
+
+<link rel="shortcut icon" href="https://zhiyuandnc.github.io/favicon.ico?v=1740567139208">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zhiyuandnc.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+ <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            絷缘的博客
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/friends" class="menu gt-a-link">
+                            友链
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1740567139208" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Win10系统盘空间优化总结
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2021-01-13 ·
+                    </time>
+                    
+                        <a href="https://zhiyuandnc.github.io/vdEsY_-hV/" class="post-tags">
+                            # Windows10
+                        </a>
+                    
+                        <a href="https://zhiyuandnc.github.io/gKHkL-knM/" class="post-tags">
+                            # 小技巧
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="一-找不到这几个系统文件怎么办">一、找不到这几个系统文件怎么办？</h2>
+<p>那是因为这几个都是系统文件，不仅被隐藏还受系统保护，所以要取消隐藏系统保护文件，看下面一步步来就好</p>
+<h3 id="1-第一步">1. 第一步</h3>
+<figure data-type="image" tabindex="1"><img src="https://zhiyuandnc.github.io/post-images/1610614071694.png" alt="" loading="lazy"></figure>
+<h3 id="2-第二步">2. 第二步</h3>
+<figure data-type="image" tabindex="2"><img src="https://zhiyuandnc.github.io/post-images/1610614084253.png" alt="" loading="lazy"></figure>
+<blockquote>
+<p>这样就可以显示被隐藏的系统文件了，但我们尽量不要随便删除系统文件，否则会产生一些无法预料的错误</p>
+</blockquote>
+<h2 id="二-删除系统休眠文件-hiberfilsys">二、删除系统休眠文件 hiberfil.sys</h2>
+<p>我们常说的电脑睡眠，是指电脑进入低功耗状态，将它的工作状态保存进内存，当我们恢复操作时会自动加载之前的状态，而休眠功能则是将它的工作状态保存进磁盘，这就形成了我们现在的这个hiberfil.sys文件，事实上我们大多数人都不会用到这个功能，毕竟我们连这个文件听都没听过，所以这个文件是可以放心删除的，但是请按照我下面的操作进行删除，否则出现其他的问题，可没办法解决</p>
+<blockquote>
+<p>以下内容摘自百度百科：<a href="https://baike.baidu.com/item/hiberfil.sys/4299821?fr=aladdin">https://baike.baidu.com/item/hiberfil.sys/4299821?fr=aladdin</a><br>
+在一些较新的具有STR功能的主板上安装了xp及更新的操作系统后，在系统区根目录下会有一个 hiberfil.sys 的文件，它的大小和内存容量一样，这是什么文件呢？原来这个就是系统的休眠功能所占用的硬盘空间的文件（Windows 默认休眠功能是处于打开状态的），电脑处于休眠状态时，内存中的所有内容将保存到硬盘，并且电脑会被关闭。电脑在返回打开状态之后，关闭电脑时打开的所有程序和文档将全都还原到桌面。也就是说，当你让电脑进入休眠状态时，Windows 在关闭系统前将所有的内存内容写入hiberfil.sys文件。而后，当你重新打开电脑，操作系统使用Hiberfil.sys把所有信息放回内存，电脑恢复到关闭前的状态。然而，Windows 在硬盘上留下了hiberfil.sys文件，即使这个文件不再需要了。</p>
+</blockquote>
+<h3 id="1-第一步管理员权限运行cmd">1. 第一步：管理员权限运行CMD</h3>
+<h3 id="2-第二步输入命令powercfg-h-off回车执行">2. 第二步：输入命令<code>powercfg -h off</code>，回车执行</h3>
+<pre><code class="language-shell">powercfg -h off
+</code></pre>
+<blockquote>
+<p>片刻之后，我们发现C盘中的hiberfil.sys已经被删除，C盘空间也多了出来，删除成功了<br>
+要是之后还想恢复这个休眠功能，只需要再次以管理员权限运行CMD，输入命令 <code>powercfg -h on</code> 即可恢复</p>
+</blockquote>
+<h2 id="二-移动虚拟内存文件-pagefilesys">二、移动虚拟内存文件 pagefile.sys</h2>
+<blockquote>
+<p>什么是pagefile.sys？<br>
+以下内容摘自百度百科：https://baike.baidu.com/item/pagefile.sys/460068?fr=aladdin](https://baike.baidu.com/item/pagefile.sys/460068?fr=aladdin)<br>
+pagefile.sys即安装过程中创建的虚拟内存页面文件。这个文件的大小是自己系统虚拟内存设置的最小值的大小。假如虚拟内存的设置为800MB－1600MB 那么你在自己的设定驱动盘下面就可看到大小为800MB的pagefile.sys文件<br>
+也就是说pagefile.sys文件是系统管理虚拟内存的文件，所以说我们是不建议删除它的，一般我们会将这个文件移动到其他空闲的盘符上，以节省C盘空间</p>
+</blockquote>
+<h3 id="第一步右键此电脑点击属性在弹出窗口点击高级系统设置如下">第一步：右键“此电脑”，点击“属性”，在弹出窗口点击“高级系统设置”，如下</h3>
+<figure data-type="image" tabindex="3"><img src="https://zhiyuandnc.github.io/post-images/1610615542491.png" alt="" loading="lazy"></figure>
+<h3 id="第二步在弹出窗口选择高级选项卡点击性能下的设置">第二步：在弹出窗口选择“高级”选项卡，点击“性能”下的“设置”</h3>
+<figure data-type="image" tabindex="4"><img src="https://zhiyuandnc.github.io/post-images/1610615619675.png" alt="" loading="lazy"></figure>
+<h3 id="第三步在弹出窗口选择高级选项卡点击更改">第三步：在弹出窗口选择“高级”选项卡，点击“更改”</h3>
+<figure data-type="image" tabindex="5"><img src="https://zhiyuandnc.github.io/post-images/1610615704082.png" alt="" loading="lazy"></figure>
+<h3 id="第四步我是已经移动过这个文件所以c盘这里显示空没移动前会显示托管的系统">第四步：我是已经移动过这个文件，所以C盘这里显示空，没移动前会显示“托管的系统”</h3>
+<figure data-type="image" tabindex="6"><img src="https://zhiyuandnc.github.io/post-images/1610615952562.png" alt="" loading="lazy"></figure>
+<h3 id="第五步选择一个你的空闲磁盘准备将虚拟内存文件移动过去的磁盘选择它然后点击系统管理的大小然后点击设置最后确定可能会让你重启系统如果提示请忽略我们还要继续操作">第五步：选择一个你的空闲磁盘，准备将虚拟内存文件移动过去的磁盘，选择它，然后点击“系统管理的大小”，然后点击“设置”，最后“确定”，可能会让你重启系统，如果提示，请忽略，我们还要继续操作</h3>
+<figure data-type="image" tabindex="7"><img src="https://zhiyuandnc.github.io/post-images/1610616069552.png" alt="" loading="lazy"></figure>
+<h3 id="第六步这次选择c盘然后选择无分页文件点击设置最后点击确认然后一路确认直到所有窗口关闭点击立即重新启动系统等待系统重启就好了系统重启后我们发现c盘中的pagefilesys不在了打开我们选择的空闲硬盘可以在根目录看到被移动的pagefilesys文件">第六步：这次选择C盘，然后选择“无分页文件”，点击“设置”，最后点击“确认”，然后一路确认，直到所有窗口关闭，点击“立即重新启动”系统，等待系统重启就好了，系统重启后，我们发现C盘中的pagefile.sys不在了，打开我们选择的空闲硬盘，可以在根目录看到被移动的pagefile.sys文件</h3>
+<figure data-type="image" tabindex="8"><img src="https://zhiyuandnc.github.io/post-images/1610616342157.png" alt="" loading="lazy"></figure>
+<blockquote>
+<p>这两次下来，C盘应该能被释放不少空间，Win10的小技巧分享结束</p>
+</blockquote>
+<blockquote>
+<p>原文作者：絷缘<br>
+作者邮箱：zhiyuanworkemail@163.com<br>
+原文地址：<a href="https://zhiyuandnc.github.io/LwW9qXRhj/">https://zhiyuandnc.github.io/LwW9qXRhj/</a><br>
+版权声明：本文为博主原创文章，转载请注明原文链接作者信息</p>
+</blockquote>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://zhiyuandnc.github.io/hab_ZN2hO/" class="post-title gt-a-link">
+                    常用注册表自定义功能
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">事实不以人的意志为转移</div>
+    <div class="social-container">
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-telegram gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-qq gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-bilibili gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Copyright&ensp;&copy;&ensp;絷缘的博客<br/><a href="https://beian.miit.gov.cn/" target="_blank">晋ICP备20001723号-1</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://zhiyuandnc.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

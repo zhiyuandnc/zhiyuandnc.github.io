@@ -1,0 +1,276 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Java原生实现DOM树解析XML文件 | 絷缘的博客</title>
+
+<link rel="shortcut icon" href="https://zhiyuandnc.github.io/favicon.ico?v=1740567139208">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zhiyuandnc.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+ <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            絷缘的博客
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/friends" class="menu gt-a-link">
+                            友链
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1740567139208" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Java原生实现DOM树解析XML文件
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2021-01-30 ·
+                    </time>
+                    
+                        <a href="https://zhiyuandnc.github.io/mDjn3cvfIJ/" class="post-tags">
+                            # XML
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="一-测试用的xml文件">一、测试用的XML文件</h2>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;bookstore&gt;
+    &lt;book id=&quot;1&quot;&gt;
+        &lt;name&gt;书1&lt;/name&gt;
+        &lt;author&gt;作者1&lt;/author&gt;
+        &lt;price&gt;￥998&lt;/price&gt;
+    &lt;/book&gt;
+    &lt;book id=&quot;2&quot;&gt;
+        &lt;name&gt;书2&lt;/name&gt;
+        &lt;author&gt;作者2&lt;/author&gt;
+        &lt;price&gt;￥998&lt;/price&gt;
+    &lt;/book&gt;
+    &lt;book id=&quot;3&quot;&gt;
+        &lt;name&gt;书3&lt;/name&gt;
+        &lt;author&gt;作者3&lt;/author&gt;
+        &lt;price&gt;￥998&lt;/price&gt;
+    &lt;/book&gt;
+&lt;/bookstore&gt;
+</code></pre>
+<h2 id="二-解析xml文件">二、解析XML文件</h2>
+<pre><code class="language-java">public class DomDemo {
+    public static void main(String[] args) {
+        InputStream inputStream = DomDemo.class.getClassLoader().getResourceAsStream(&quot;test.xml&quot;);
+        DocumentBuilderFactory dom = DocumentBuilderFactory.newInstance();
+        try {
+            DocumentBuilder domBuilder = dom.newDocumentBuilder();
+            Document document = domBuilder.parse(inputStream);
+            Element bookstore = document.getDocumentElement();
+            System.out.println(bookstore.getTagName());
+            NodeList bookList = bookstore.getElementsByTagName(&quot;book&quot;);
+            for (int i = 0; i &lt; bookList.getLength() ; i++) {
+                Node book = bookList.item(i);
+                NamedNodeMap bookAttributes = book.getAttributes();
+                for (int j = 0; j &lt; bookAttributes.getLength(); j++) {
+                    Node node = bookAttributes.item(j);
+                    if (node.getNodeType() == Node.ATTRIBUTE_NODE){
+                        System.out.println(node.getNodeName()+&quot;:&quot;+node.getNodeValue());
+                    }
+                }
+                NodeList bookChildList = book.getChildNodes();
+                for (int j = 0; j &lt; bookChildList.getLength(); j++) {
+                    Node childItem = bookChildList.item(j);
+                    if (childItem.getNodeType() == Node.ELEMENT_NODE){
+                        System.out.println(childItem.getNodeName()+&quot;:&quot;+childItem.getTextContent());
+                    }
+                }
+                System.out.println(&quot;=======================&quot;);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+<h2 id="三-稍微有点麻烦了建议使用jsoup操作更加方便">三、稍微有点麻烦了，建议使用Jsoup，操作更加方便</h2>
+<pre><code class="language-java">bookstore
+id:1
+name:书1
+author:作者1
+price:￥998
+=======================
+id:2
+name:书2
+author:作者2
+price:￥998
+=======================
+id:3
+name:书3
+author:作者3
+price:￥998
+=======================
+</code></pre>
+<blockquote>
+<p>原文作者：絷缘<br>
+作者邮箱：zhiyuanworkemail@163.com<br>
+原文地址：<a href="https://zhiyuandnc.github.io/fIrwGdZp7/">https://zhiyuandnc.github.io/fIrwGdZp7/</a><br>
+版权声明：本文为博主原创文章，转载请注明原文链接作者信息</p>
+</blockquote>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://zhiyuandnc.github.io/AqFeWp4vE/" class="post-title gt-a-link">
+                    JSTL标签+EL表达式改进360影视采集练习案例
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">事实不以人的意志为转移</div>
+    <div class="social-container">
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-telegram gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-qq gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-bilibili gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Copyright&ensp;&copy;&ensp;絷缘的博客<br/><a href="https://beian.miit.gov.cn/" target="_blank">晋ICP备20001723号-1</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://zhiyuandnc.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

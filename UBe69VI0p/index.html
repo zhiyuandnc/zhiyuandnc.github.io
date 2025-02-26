@@ -1,0 +1,299 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>正则表达式模拟实现C3P0读取配置文件创建Connection对象 | 絷缘的博客</title>
+
+<link rel="shortcut icon" href="https://zhiyuandnc.github.io/favicon.ico?v=1740567139208">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zhiyuandnc.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+ <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            絷缘的博客
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/friends" class="menu gt-a-link">
+                            友链
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1740567139208" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    正则表达式模拟实现C3P0读取配置文件创建Connection对象
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2021-01-04 ·
+                    </time>
+                    
+                        <a href="https://zhiyuandnc.github.io/_nw6e62q9/" class="post-tags">
+                            # JDBC
+                        </a>
+                    
+                        <a href="https://zhiyuandnc.github.io/NQ4hTFbHKX/" class="post-tags">
+                            # Regex
+                        </a>
+                    
+                        <a href="https://zhiyuandnc.github.io/RTDPTZadb2/" class="post-tags">
+                            # 正则表达式
+                        </a>
+                    
+                        <a href="https://zhiyuandnc.github.io/mDjn3cvfIJ/" class="post-tags">
+                            # XML
+                        </a>
+                    
+                        <a href="https://zhiyuandnc.github.io/5RyDY5oFU/" class="post-tags">
+                            # C3P0
+                        </a>
+                    
+                        <a href="https://zhiyuandnc.github.io/mysql/" class="post-tags">
+                            # MySQL
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <blockquote>
+<p>本教程仅限于 <code>mysql-connectorv8.0.21</code> + <code>mysql8.0</code> + <code>jdk1.8</code></p>
+</blockquote>
+<h2 id="一-在pomxml中加入jdbc驱动jar包的依赖项">一、在pom.xml中加入JDBC驱动JAR包的依赖项</h2>
+<pre><code class="language-java">&lt;!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;mysql&lt;/groupId&gt;
+    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+    &lt;version&gt;8.0.21&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h2 id="二-书写配置文件并置于resources目录下">二、书写配置文件，并置于resources目录下</h2>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;c3p0-config&gt;
+    &lt;default-config&gt;
+        &lt;property name=&quot;driverClass&quot;&gt;com.mysql.cj.jdbc.Driver&lt;/property&gt;
+        &lt;property name=&quot;jdbcUrl&quot;&gt;jdbc:mysql://localhost:3306/test?useUnicode=true&amp;amp;characterEncoding=utf8&amp;amp;serverTimezone=UTC&lt;/property&gt;
+        &lt;property name=&quot;user&quot;&gt;root&lt;/property&gt;
+        &lt;property name=&quot;password&quot;&gt;123456&lt;/property&gt;
+    &lt;/default-config&gt;
+&lt;/c3p0-config&gt;
+</code></pre>
+<h2 id="三-书写jdbc简单工具类">三、书写JDBC简单工具类</h2>
+<pre><code class="language-java">public class JDBCUtils {
+    private JDBCUtils(){}
+    public static Connection getConnection(String driverClass,String jdbcUrl,String user,String password){
+        Connection conn = null;
+        try {
+            Class.forName(driverClass);
+            conn = DriverManager.getConnection(jdbcUrl,user,password);
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return conn;
+    }
+}
+</code></pre>
+<h2 id="四-书写代码是用正则表达式实现xml配置文件解析">四、书写代码，是用正则表达式实现xml配置文件解析</h2>
+<pre><code class="language-java">public class RegexDemo {
+    public static void main(String[] args) throws IOException {
+        StringBuilder sb = new StringBuilder();
+        BufferedReader br = new BufferedReader(new InputStreamReader(RegexDemo.class.getClassLoader().getResourceAsStream(&quot;c3p0-config.xml&quot;), &quot;UTF-8&quot;));
+        String str;
+        while((str=br.readLine())!=null){
+            sb.append(str);
+        }
+        Pattern p = compile(&quot;&lt;property name=\&quot;(.*?)\&quot;&gt;(.*?)&lt;/property&gt;&quot;);
+        Matcher matcher = p.matcher(sb);
+        HashMap&lt;String, String&gt; config = new HashMap&lt;String, String&gt;();
+        while(matcher.find()){
+            config.put(matcher.group(1),matcher.group(2));
+        }
+        Set&lt;Map.Entry&lt;String, String&gt;&gt; sets = config.entrySet();
+        for (Map.Entry&lt;String, String&gt; set : sets) {
+            System.out.println(set.getKey()+&quot;:&quot;+set.getValue());
+        }
+        String driverClass = config.get(&quot;driverClass&quot;);
+        String jdbcUrl = URLDecoder.decode(config.get(&quot;jdbcUrl&quot;));
+        jdbcUrl = jdbcUrl.replaceAll(&quot;&amp;amp;&quot;,&quot;&amp;&quot;);
+        String user = config.get(&quot;user&quot;);
+        String password = config.get(&quot;password&quot;);
+        Connection conn = JDBCUtils.getConnection(driverClass, jdbcUrl, user, password);
+        System.out.println(conn);
+    }
+}
+</code></pre>
+<h2 id="五-成功获取所需信息输出结果如下">五、成功获取所需信息，输出结果如下</h2>
+<pre><code>password:123456
+driverClass:com.mysql.cj.jdbc.Driver
+jdbcUrl:jdbc:mysql://localhost:3306/test?useUnicode=true&amp;amp;characterEncoding=utf8&amp;amp;serverTimezone=UTC
+user:root
+com.mysql.cj.jdbc.ConnectionImpl@49070868
+</code></pre>
+<blockquote>
+<p>注意：在第四步的时候，我做了一个额外操作，将jdbcUrl中的&amp;amp;转义字符全部转换为&amp;，否则url是错误的，是不上数据库的！</p>
+</blockquote>
+<blockquote>
+<p>原文作者：絷缘<br>
+作者邮箱：zhiyuanworkemail@163.com<br>
+原文地址：<a href="https://zhiyuandnc.github.io/UBe69VI0p/">https://zhiyuandnc.github.io/UBe69VI0p/</a><br>
+版权声明：本文为博主原创文章，转载请注明原文链接作者信息</p>
+</blockquote>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://zhiyuandnc.github.io/rSoFG8-KT/" class="post-title gt-a-link">
+                    使用Jsoup解析XML文档
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">事实不以人的意志为转移</div>
+    <div class="social-container">
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-telegram gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-qq gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-bilibili gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Copyright&ensp;&copy;&ensp;絷缘的博客<br/><a href="https://beian.miit.gov.cn/" target="_blank">晋ICP备20001723号-1</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://zhiyuandnc.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

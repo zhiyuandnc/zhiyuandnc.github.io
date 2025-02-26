@@ -1,0 +1,619 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>JavaWeb阶段练习：360影视数据采集 | 絷缘的博客</title>
+
+<link rel="shortcut icon" href="https://zhiyuandnc.github.io/favicon.ico?v=1740567139208">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zhiyuandnc.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+ <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            絷缘的博客
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/friends" class="menu gt-a-link">
+                            友链
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1740567139208" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    JavaWeb阶段练习：360影视数据采集
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2021-01-29 ·
+                    </time>
+                    
+                        <a href="https://zhiyuandnc.github.io/oPMSWE43i/" class="post-tags">
+                            # 360影视
+                        </a>
+                    
+                        <a href="https://zhiyuandnc.github.io/Z2yHQeB2g/" class="post-tags">
+                            # 小练习
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="一-idea创建maven管理的javaweb项目">一、idea创建Maven管理的JavaWeb项目</h2>
+<h2 id="二-创建一个用来封装影片数据的javabean对象">二、创建一个用来封装影片数据的JavaBean对象</h2>
+<pre><code class="language-java">public class FilmInfo {
+    private String name;
+    private String url;
+    private String poster;
+    private boolean isPaid;
+    private String year;
+    private String score;
+    private String star;
+    public FilmInfo(){}
+
+    public FilmInfo(String name, String url, String poster, boolean isPaid, String year, String score, String star) {
+        this.name = name;
+        this.url = url;
+        this.poster = poster;
+        this.isPaid = isPaid;
+        this.year = year;
+        this.score = score;
+        this.star = star;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public String getPoster() {
+        return poster;
+    }
+
+    public boolean isPaid() {
+        return isPaid;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public String getScore() {
+        return score;
+    }
+
+    public String getStar() {
+        return star;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public void setPoster(String poster) {
+        this.poster = poster;
+    }
+
+    public void setPaid(boolean paid) {
+        isPaid = paid;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public void setScore(String score) {
+        this.score = score;
+    }
+
+    public void setStar(String star) {
+        this.star = star;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer(&quot;FilmInfo{&quot;);
+        sb.append(&quot;name='&quot;).append(name).append('\'');
+        sb.append(&quot;, url='&quot;).append(url).append('\'');
+        sb.append(&quot;, poster='&quot;).append(poster).append('\'');
+        sb.append(&quot;, isPaid=&quot;).append(isPaid);
+        sb.append(&quot;, year=&quot;).append(year);
+        sb.append(&quot;, score=&quot;).append(score);
+        sb.append(&quot;, star='&quot;).append(star).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
+}
+</code></pre>
+<h2 id="三-使用了-gson-和-httputils-的依赖">三、使用了 <code>Gson</code> 和 <code>HttpUtils</code> 的依赖</h2>
+<h3 id="1-gson的maven依赖">1. Gson的maven依赖</h3>
+<pre><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;com.google.code.gson&lt;/groupId&gt;
+    &lt;artifactId&gt;gson&lt;/artifactId&gt;
+    &lt;version&gt;2.8.5&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h3 id="2-httputils是我手写的http工具类里面主要包含3个方法get请求post请求还有采集数据的getdata方法">2. HttpUtils是我手写的Http工具类，里面主要包含3个方法，get请求，post请求，还有采集数据的getData方法</h3>
+<pre><code class="language-java">public class HttpUtils {
+    public static String getHtmlCode(String url) {
+        HttpURLConnection connection = null;
+        InputStream is = null;
+        BufferedReader br = null;
+        StringBuilder sb = new StringBuilder();
+        try {
+            connection = (HttpURLConnection) new URL(url).openConnection();
+            is = connection.getInputStream();
+            br = new BufferedReader(new InputStreamReader(is, &quot;UTF-8&quot;));
+            String line;
+            while ((line = br.readLine()) != null) {
+                sb.append(line);
+                sb.append(&quot;\n&quot;);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return sb.toString();
+    }
+    public static String Get(String url) {
+        HttpURLConnection conn = null;
+        InputStream is = null;
+        BufferedReader br = null;
+        String line = null;
+        StringBuilder sb = new StringBuilder();
+        try {
+            //获取URL连接对象强转为HTTPURL连接对象
+            conn = (HttpURLConnection) new URL(url).openConnection();
+            //设置HTTP请求方式为GET
+            conn.setRequestMethod(&quot;GET&quot;);
+            //设置连接超时时间为3秒
+            conn.setConnectTimeout(3000);
+            //设置读取时间超时为5秒
+            conn.setReadTimeout(5000);
+            conn.setRequestProperty(&quot;Content-Type&quot;, &quot;text/html;charset=utf-8&quot;);
+            conn.setRequestProperty(&quot;Accept&quot;, &quot;text/html,application/xhtml+xml,application/xml,application/json;&quot;);
+            conn.setRequestProperty(&quot;User-Agent&quot;, &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36&quot;);
+            //发送请求
+            conn.connect();
+            if (conn.getResponseCode() == 200) {
+                is = conn.getInputStream();
+                br = new BufferedReader(new InputStreamReader(is, &quot;UTF-8&quot;));
+                while ((line = br.readLine()) != null) {
+                    sb.append(line + &quot;\n&quot;);
+                }
+            } else {
+                return &quot;ResponseCode is Error:&quot; + conn.getResponseCode();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return sb.toString();
+    }
+    public static String Post(String url, String requestContent) {
+        System.out.println(&quot;请求的URL：&quot;+url);
+        System.out.println(&quot;请求的参数：&quot;+requestContent);
+        HttpURLConnection conn = null;
+        OutputStream os = null;
+        BufferedWriter bw = null;
+        InputStream is = null;
+        String line = null;
+        StringBuilder sb = new StringBuilder();
+        BufferedReader br = null;
+        try {
+            conn = (HttpURLConnection) new URL(url).openConnection();
+            conn.setRequestProperty(&quot;Connection&quot;,&quot;keep-alive&quot;);
+            conn.setRequestMethod(&quot;POST&quot;);
+            conn.setDoInput(true);
+            conn.setDoOutput(true);
+            conn.setConnectTimeout(3000);
+            conn.setReadTimeout(15000);
+            conn.setRequestProperty(&quot;Content-Type&quot;, &quot;application/x-www-form-urlencoded;charset=utf-8&quot;);
+            conn.setRequestProperty(&quot;Accept&quot;, &quot;text/html,application/xhtml+xml,application/xml,application/json,application/x-www-form-urlencoded&quot;);
+            conn.setRequestProperty(&quot;User-Agent&quot;, &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36&quot;);
+            conn.getOutputStream().write(requestContent.getBytes(&quot;UTF-8&quot;));
+            conn.getOutputStream().flush();
+            if (conn.getResponseCode()==200){
+                is = conn.getInputStream();
+                br = new BufferedReader(new InputStreamReader(is, &quot;UTF-8&quot;));
+                while((line=br.readLine())!=null){
+                    sb.append(line+&quot;\n&quot;);
+                }
+            }else{
+                return &quot;ResponseCode is Error:&quot; + conn.getResponseCode();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            if(br!=null){
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if(bw!=null){
+                try {
+                    bw.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return sb.toString();
+    }
+    public static String getData(String url){
+        String sourceCode = Get(url);
+        String regex = &quot;&lt;li class=\&quot;item\&quot;&gt;\\s*&lt;a class=\&quot;js-tongjic\&quot; href=\&quot;(.*?)\&quot; monitor-shortpv-c=\&quot;(.*?)\&quot;&gt;\\s*&lt;div class=\&quot;cover g-playicon\&quot;&gt;\\s*&lt;img src=\&quot;(.*?)\&quot;&gt;\\s*(&lt;span class=\&quot;pay\&quot;&gt;(.*?)&lt;/span&gt;)?\\s*&lt;div class=\&quot;mask-wrap\&quot;&gt;\\s*&lt;span class=\&quot;hint\&quot;&gt;(.*?)&lt;/span&gt;\\s*(&lt;span class=\&quot;point\&quot;&gt;(.*?)&lt;/span&gt;)?\\s*&lt;/div&gt;\\s*&lt;/div&gt;\\s*&lt;div class=\&quot;detail\&quot;&gt;\\s*&lt;p class=\&quot;title g-clear\&quot;&gt;\\s*&lt;span class=\&quot;s1\&quot;&gt;(.*?)&lt;/span&gt;\\s*&lt;/p&gt;\\s*&lt;p class=\&quot;star\&quot;&gt;(.*?)&lt;/p&gt;\\s*&lt;/div&gt;\\s*&lt;/a&gt;\\s*&lt;/li&gt;&quot;;
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(sourceCode);
+        // System.out.println(m.groupCount());
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        ArrayList&lt;FilmInfo&gt; list = new ArrayList&lt;FilmInfo&gt;();
+        while(m.find()){
+            FilmInfo fi = new FilmInfo(m.group(9),&quot;http://www.360kan.com/&quot;+m.group(1),m.group(3),&quot;付费&quot;.equals(m.group(5)),m.group(6),m.group(8),m.group(10));
+            list.add(fi);
+        }
+        return gson.toJson(list);
+    }
+}
+</code></pre>
+<blockquote>
+<p>Java实现原生的get和post请求，我在之前的博客中发过了，不懂的朋友可以回看我之前的博客，我就不做解释了，这里解释一下getData方法，这个方法主要是使用get发送请求获取指定页面源码，再通过正则表达式拿到我们所需要的数据，使用gson封装为Json数据返回，没有什么技术含量<br>
+注意：为了取到详细信息，此处正则表达式比较长，我建议使用配置文件来读取这种较长的正则表达式，避免代码中语句过长，问题排查难度大的问题，我这里是做记录写博客，所以直接放到变量里</p>
+</blockquote>
+<h2 id="四-随便写个前端页面">四、随便写个前端页面</h2>
+<h3 id="1-jsp部分">1. JSP部分</h3>
+<pre><code class="language-html">&lt;%@ page import=&quot;com.zhiyuan.utils.HttpUtils&quot; %&gt;
+&lt;%@ page import=&quot;com.google.gson.JsonArray&quot; %&gt;
+&lt;%@ page import=&quot;com.google.gson.JsonParser&quot; %&gt;
+&lt;%@ page import=&quot;com.zhiyuan.bean.FilmInfo&quot; %&gt;
+&lt;%@ page import=&quot;java.util.ArrayList&quot; %&gt;
+&lt;%@ page import=&quot;com.google.gson.Gson&quot; %&gt;
+&lt;%@ page import=&quot;com.google.gson.JsonElement&quot; %&gt;
+&lt;%@ page contentType=&quot;text/html;charset=UTF-8&quot; language=&quot;java&quot; pageEncoding=&quot;UTF-8&quot; %&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;360Video&lt;/title&gt;
+    &lt;link rel=&quot;icon&quot; href=&quot;https://www.360kan.com/favicon.ico&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;./css/style.css?v=&lt;%=Math.random()%&gt;&quot;&gt;
+    &lt;script src=&quot;./js/jquery-3.1.1.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;header&quot;&gt;
+    &lt;div class=&quot;nav&quot;&gt;360影视采集&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;container&quot;&gt;
+    &lt;ul class=&quot;list&quot;&gt;
+    &lt;%
+        String data = HttpUtils.getData(&quot;https://www.360kan.com/dianying/list.php?rank=rankhot&amp;cat=all&amp;area=all&amp;act=all&amp;year=all&amp;pageno=2&amp;from=dianying_list&quot;);
+        JsonArray jsonElements = new JsonParser().parse(data).getAsJsonArray();
+        ArrayList&lt;FilmInfo&gt; filmInfos = new ArrayList&lt;&gt;();
+        Gson gson = new Gson();
+        for (JsonElement filmInfo : jsonElements) {
+            filmInfos.add(gson.fromJson(filmInfo,FilmInfo.class));
+        }
+        for (FilmInfo filmInfo : filmInfos) {
+    %&gt;
+        &lt;li&gt;
+            &lt;div class=&quot;poster&quot;&gt;
+                &lt;img src=&quot;&lt;%=filmInfo.getPoster()%&gt;&quot;&gt;
+                &lt;div class=&quot;paid&quot;&gt;&lt;%=filmInfo.isPaid()?&quot;付费&quot;:&quot;免费&quot;%&gt;&lt;/div&gt;
+                &lt;div class=&quot;info&quot;&gt;
+                    &lt;div class=&quot;year&quot;&gt;&lt;%=filmInfo.getYear()%&gt;&lt;/div&gt;
+                    &lt;div class=&quot;score&quot;&gt;&lt;%=filmInfo.getScore()!=null?filmInfo.getScore():&quot;&quot;%&gt;&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;detail&quot;&gt;
+                &lt;div class=&quot;name&quot;&gt;&lt;%=filmInfo.getName()%&gt;&lt;/div&gt;
+                &lt;div class=&quot;star&quot;&gt;&lt;%=filmInfo.getStar().length()&gt;12?filmInfo.getStar().substring(0,12)+&quot;...&quot; : filmInfo.getStar()%&gt;&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/li&gt;
+    &lt;%
+        }
+    %&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h3 id="2-css部分">2. css部分</h3>
+<pre><code class="language-css">*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body,html{
+    background-color:#f2f2f2;
+}
+a{
+    text-decoration:none;
+}
+li{
+    list-style:none;
+}
+.header{
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color:#228b22;
+    font-weight: bold;
+    background-color:#fff;
+    box-shadow:rgba(0, 0, 0, 0.2) 1px 1px 8px 1px;
+}
+.container{
+    width:1190px;
+    background-color:#fff;
+    margin:20px auto;
+}
+.list &gt; li{
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+    width: 155px;
+    height: 250px;
+    margin-bottom:15px;
+}
+.list{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:space-between;
+}
+li &gt; .poster{
+    width: 155px;
+    height: 212px;
+    border-radius:5px;
+    overflow: hidden;
+    position:relative;
+}
+.poster &gt; img{
+    width: 100%;
+    height: 100%;
+}
+.poster .info{
+    position:absolute;
+    width:155px;
+    height: 38px;
+    line-height: 38px;
+    font-size: 12px;
+    color:#000;
+    bottom:0;
+    background-color:rgba(0,0,0,.12);
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    padding:0 10px;
+}
+.poster .paid{
+    position: absolute;
+    left:5px;
+    top:5px;
+    width:40px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+    color:#fff;
+    background-color:goldenrod;
+    text-align:center;
+    border-radius:5px;
+}
+.info .score{
+    color:goldenrod;
+}
+.info .year{
+    color:#fff;
+}
+li &gt; .detail{
+    width: 155px;
+    height: 38px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    cursor:pointer;
+}
+.detail &gt; .name{
+    width:155px;
+    height: 14px;
+    line-height: 14px;
+    font-size: 14px;
+    color:#000;
+    padding-left:5px;
+}
+.detail &gt; .star{
+    width: 155px;
+    height: 12px;
+    line-height: 12px;
+    font-size: 12px;
+    color:#666666;
+    margin-top:5px;
+    padding-left:5px;
+}
+</code></pre>
+<h2 id="五-运行起来看一下效果">五、运行起来看一下效果</h2>
+<figure data-type="image" tabindex="1"><img src="https://zhiyuandnc.github.io/post-images/1611919017902.png" alt="" loading="lazy"></figure>
+<blockquote>
+<p>这里我只是采集了1页数据，当然采集其他的数据不过是重复这个操作，没有什么技术含量，就不说了</p>
+</blockquote>
+<blockquote>
+<p>原文作者：絷缘<br>
+作者邮箱：zhiyuanworkemail@163.com<br>
+原文地址：<a href="https://zhiyuandnc.github.io/360Video/">https://zhiyuandnc.github.io/360Video/</a><br>
+版权声明：本文为博主原创文章，转载请注明原文链接作者信息</p>
+</blockquote>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://zhiyuandnc.github.io/Dw2rPiHYV/" class="post-title gt-a-link">
+                    LayUI学习（2）栅格系统
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">事实不以人的意志为转移</div>
+    <div class="social-container">
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-telegram gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-qq gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-bilibili gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Copyright&ensp;&copy;&ensp;絷缘的博客<br/><a href="https://beian.miit.gov.cn/" target="_blank">晋ICP备20001723号-1</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://zhiyuandnc.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

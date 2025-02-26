@@ -1,0 +1,4168 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>微服务学习 | 絷缘的博客</title>
+
+<link rel="shortcut icon" href="https://zhiyuandnc.github.io/favicon.ico?v=1740567139208">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zhiyuandnc.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+ <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            絷缘的博客
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/friends" class="menu gt-a-link">
+                            友链
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1740567139208" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    微服务学习
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2023-01-08 ·
+                    </time>
+                    
+                        <a href="https://zhiyuandnc.github.io/ioMcFDQ77/" class="post-tags">
+                            # 微服务
+                        </a>
+                    
+                        <a href="https://zhiyuandnc.github.io/springcloud/" class="post-tags">
+                            # SpringCloud
+                        </a>
+                    
+                        <a href="https://zhiyuandnc.github.io/p0lsHeUez/" class="post-tags">
+                            # SpringCloudAlibaba
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h1 id="微服务">微服务</h1>
+<blockquote>
+<p>微服务就是一种经过良好架构设计的分布式架构方案，微服务架构的特征：</p>
+<ul>
+<li>单一职责：微服务拆分力度更大，每一个服务都对应唯一的业务能力，做到单一职责，避免重复的业务开发</li>
+<li>面向服务：微服务只对外暴露业务接口</li>
+<li>自治：团队独立、技术独立、数据独立、部署独立</li>
+<li>隔离性强：服务调用做好隔离、容错、降级，避免出现级联问题</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>第一天</p>
+</blockquote>
+<h2 id="一-认识微服务">一、认识微服务</h2>
+<h3 id="1-几种技术的比较">1. 几种技术的比较</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Dubbo</th>
+<th>SpringCloud</th>
+<th>SpringCloudAlibaba</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>注册中心</td>
+<td>zookeeper、redis</td>
+<td>Eureka、Consul</td>
+<td>Nacos、Eureka</td>
+</tr>
+<tr>
+<td>服务远程调用</td>
+<td>Dubbo协议</td>
+<td>Feign（http协议）</td>
+<td>Dubbo、Feign</td>
+</tr>
+<tr>
+<td>配置中心</td>
+<td>无</td>
+<td>SpringCloudConfig</td>
+<td>SpringCloudConfig、Nacos</td>
+</tr>
+<tr>
+<td>服务网关</td>
+<td>无</td>
+<td>SpringCloudGateway、Zuul</td>
+<td>SpringCloudGateway、Zuul</td>
+</tr>
+<tr>
+<td>服务监控和保护</td>
+<td>dubbo-admin，功能弱</td>
+<td>Hystrix</td>
+<td>Sentinel</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-springcloud">2. SpringCloud</h3>
+<ul>
+<li>
+<p>SpringCloud是目前国内使用最广泛的微服务框架</p>
+<ul>
+<li>官网地址：https://spring.io/projects/spring-cloud</li>
+<li>版本对应信息查询地址：https://start.spring.io/actuator/info</li>
+</ul>
+</li>
+<li>
+<p>SpringCloud集成了各种微服务功能组件，并给予SpringBoot实现了这些组件的自动装配，从而提供了良好的开箱即用体验</p>
+<ul>
+<li><img src="https://pic.zyblog.xyz/img/typora/image-20220215142839247.png" alt="微服务" loading="lazy"></li>
+</ul>
+</li>
+<li>
+<p>SpringCloud与SpringBoot的版本兼容情况如下：</p>
+<figure data-type="image" tabindex="2"><img src="http://pic.zyblog.xyz/img/typora/image-20240108102144858.png?origin=typora" alt="image-20240108102144858" loading="lazy"></figure>
+<table>
+<thead>
+<tr>
+<th>SpringCloud</th>
+<th>SpringBoot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2023.0.x aka Leyton</td>
+<td>3.2.x</td>
+</tr>
+<tr>
+<td>2022.0.x aka Kilburn</td>
+<td>3.0.x，3.1.x（Starting with 2022.0.3）</td>
+</tr>
+<tr>
+<td>2021.0.x aka Jubilee</td>
+<td>2.6.x，2.7.x（Starting with 2021.0.3）</td>
+</tr>
+<tr>
+<td>2020.0.x aka Ilford</td>
+<td>2.4.x，2.5.x（Starting with 2020.0.3）</td>
+</tr>
+<tr>
+<td>Hoxton</td>
+<td>2.2.x，2.3.x（Starting with SR5）</td>
+</tr>
+<tr>
+<td>Greenwich</td>
+<td>2.1.x</td>
+</tr>
+<tr>
+<td>Finchley</td>
+<td>2.0.x</td>
+</tr>
+<tr>
+<td>Edgware</td>
+<td>1.5.x</td>
+</tr>
+<tr>
+<td>Dalston</td>
+<td>1.5.x</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<h3 id="3-服务拆分及远程调用">3. 服务拆分及远程调用</h3>
+<h4 id="31-服务拆分注意事项">3.1 服务拆分注意事项</h4>
+<ol>
+<li>微服务要根据业务模块拆分，做到单一职责，不同的微服务中不要重复开发相同的业务</li>
+<li>微服务可以将业务暴露为接口，供其他微服务使用</li>
+<li>微服务数据独立，不要访问其他微服务的数据库</li>
+</ol>
+<h4 id="32-微服务的远程调用">3.2 微服务的远程调用</h4>
+<ul>
+<li>基于RestTemplate发起的http请求实现远程调用</li>
+</ul>
+<h3 id="4-提供者与消费者">4. 提供者与消费者</h3>
+<ul>
+<li>服务提供者：在一次业务中，被其他微服务调用的服务</li>
+<li>服务消费者：在一次业务中，调用其他微服务的服务</li>
+</ul>
+<h2 id="二-eureka注册中心">二、Eureka注册中心</h2>
+<blockquote>
+<p>Eureka的作用：将所有微服务集中注册，微服务请求时向注册中心发送消息即可获取服务列表</p>
+<ul>
+<li>消费者如何获取服务提供者的具体信息？
+<ul>
+<li>服务提供者启动时会向EurekaServer注册自己的信息</li>
+<li>消费者根据服务名称向EurekaServer拉取提供者信息</li>
+</ul>
+</li>
+<li>如果有多个服务提供者，消费者该如何选择？
+<ul>
+<li>服务消费者利用负载均衡算法，从服务列表中挑选一个</li>
+</ul>
+</li>
+<li>消费者如何感知服务提供者的健康状态？
+<ul>
+<li>服务提供者会每隔30秒向EurekaServer注册中心发送心跳请求，报告健康状态</li>
+<li>EurekaServer会根据健康状态更新服务列表，消费者就可以获取到最新的服务信息</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h3 id="1-搭建eurekaserver">1. 搭建EurekaServer</h3>
+<h4 id="搭建eurekaserver服务步骤如下">搭建EurekaServer服务步骤如下：</h4>
+<ol>
+<li>
+<p>创建项目，引入<code>spring-cloud-starter-netflix-eureka-server</code>依赖</p>
+<pre><code class="language-xml">&lt;dependency&gt;
+	&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+  &lt;artifactId&gt;spring-cloud-starter-netflix-eureka-server&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+</li>
+<li>
+<p>编写启动类，添加<code>@EnableEurekaServer</code>注解</p>
+</li>
+<li>
+<p>添加<code>application.yml</code>文件，书写配置内容如下：</p>
+<pre><code class="language-yaml">server:
+	port: 10086
+spring:
+	application:
+		name: eurekaserver
+eureka:
+	client:
+		service-url:
+			defaultZone: http://127.0.0.1:10086/eureka
+</code></pre>
+</li>
+</ol>
+<h3 id="2-注册微服务">2. 注册微服务</h3>
+<h4 id="步骤如下">步骤如下：</h4>
+<ol>
+<li>
+<p>在<code>user-service</code>项目中引入<code>spring-cloud-starter-netflix-eureka-client</code>的依赖</p>
+<pre><code class="language-xml">&lt;dependency&gt;
+	&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+  &lt;artifactId&gt;spring-cloud-starter-netflix-eureka-client&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+</li>
+<li>
+<p>在<code>application.yml</code>文件添加如下配置：</p>
+<pre><code class="language-yaml">spring:
+	application:
+		name: userservice
+eureka:
+	client:
+		service-url:
+			defaultZone: http://127.0.0.1:10086/eureka/
+</code></pre>
+</li>
+</ol>
+<h3 id="3-服务发现">3. 服务发现</h3>
+<h4 id="在order-service中完成服务发现">在order-service中完成服务发现</h4>
+<ol>
+<li>
+<p>修改<code>OrderService</code>的代码，修改访问的url路径，用服务名代替IP和端口号</p>
+<pre><code class="language-java">String url = &quot;http://uservice/user/&quot; + order.getUserId();
+User user = restTemplate.getForObject(url,User.class);
+</code></pre>
+</li>
+<li>
+<p>在<code>order-service</code>项目的启动类<code>OrderApplication</code>中的<code>RestTemplate</code>添加负载均衡注解<code>@LoadBalanced</code>：</p>
+<pre><code class="language-java">@Bean
+@LoadBalanced
+public RestTemplate restTemplate(){
+  return new RestTemplate();
+}
+</code></pre>
+</li>
+</ol>
+<h2 id="三-ribbon负载均衡">三、Ribbon负载均衡</h2>
+<h3 id="1-负载均衡的流程">1. 负载均衡的流程</h3>
+<ul>
+<li><code>order-service</code>发起请求<code>http://userservice/user/1</code></li>
+<li><code>LoadBalancerInterceptor</code>负载均衡拦截器拦截请求，交给<code>RibbonLoadBanlancerClient</code></li>
+<li><code>RibbonLoadBanlancerClient</code>获得服务名称交给<code>DynamicServerListLoadBalancer</code></li>
+<li><code>DynamicServerListLoadBalancer</code>从<code>IRule</code>中选取负载均衡规则去决定选择使用的服务并将服务地址返还给<code>RibbonLoadBalancerClient</code></li>
+<li><code>RibbonLoadBalancerClient</code>将带有服务名称的url修改为指定服务真实地址的url并发送请求</li>
+</ul>
+<h3 id="2-irule负载均衡的策略">2. IRule负载均衡的策略</h3>
+<figure data-type="image" tabindex="3"><img src="https://pic.zyblog.xyz/img/typora/image-20220215163327792.png" alt="IRule" loading="lazy"></figure>
+<table>
+<thead>
+<tr>
+<th>内置负载均衡规则类</th>
+<th>规则描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RoundRobinRule</td>
+<td>简单轮询服务列表来选择服务器，它是Ribbon默认的负载均衡规则</td>
+</tr>
+<tr>
+<td>AvailabilityFilteringRule</td>
+<td>对以下两种服务器进行过滤：<br>1. 在默认情况下，如果服务器3次连接均失败，该服务器就会被设置为&quot;短路&quot;状态，此状态持续30秒，如果再次连接失败，短路持续的时间就会几何倍增<br>2. 并发数过高的服务器，如果一个服务器的并发连接数过高，配置了AvailabilityFilteringRule规则的客户端也会将其忽略，并发连接数的上限，可以由客户端的<code>&lt;clientName&gt;-&lt;clientConfigNameSpace&gt;-ActiveConnectionsLimit</code>属性进行配置</td>
+</tr>
+<tr>
+<td>WeightedResponseTimeRule</td>
+<td>为每一个服务器赋予一个权重值，服务器响应时间越长，该服务器权重越小</td>
+</tr>
+<tr>
+<td>ZoneAvoidanceRule</td>
+<td>以区域内可用的服务器为基础进行服务器的选择，使用Zone对服务器进行分类，Zone可以理解为一个机房，然后对Zone内的多个服务做轮询</td>
+</tr>
+<tr>
+<td>BestAvailableRule</td>
+<td>忽略短路的服务器，并选择并发数较低的服务器</td>
+</tr>
+<tr>
+<td>RandomRule</td>
+<td>随机选择一个可用的服务器</td>
+</tr>
+<tr>
+<td>RetryRule</td>
+<td>重试机制的选择逻辑</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-修改负载均衡规则的方式">3. 修改负载均衡规则的方式</h3>
+<h4 id="31-代码方式">3.1 代码方式</h4>
+<ul>
+<li>
+<p>在order-service中的Order Application类中，定义一个新的IRule：</p>
+<pre><code class="language-java">@Bean
+public IRule randomRule(){
+  return new RandomRule();
+}
+</code></pre>
+</li>
+</ul>
+<h4 id="32-配置文件方式">3.2 配置文件方式</h4>
+<ul>
+<li>
+<p>在order-service的application.yml文件中，添加新的配置也可以修改规则：</p>
+<pre><code class="language-yaml">userservice:
+	ribbon:
+		NFLoadBanlancerRuleClassName: com.netflix.loadbalancer.RandomRule
+</code></pre>
+</li>
+</ul>
+<h3 id="4-饥饿加载">4. 饥饿加载</h3>
+<blockquote>
+<p>Ribbon默认采用懒加载，即第一次访问时才会创建LoadBalanceClient，请求时间会很长，而饥饿加载会在项目启动时创建，降低第一次访问时的耗时，通过下面的配置开启饥饿加载：</p>
+<pre><code class="language-yml">ribbon
+	eager-load:
+		enabled: true
+		clients: 
+			- userservice
+</code></pre>
+</blockquote>
+<h2 id="四-nacos注册中心">四、Nacos注册中心</h2>
+<h3 id="github-httpsgithubcomalibabanacos">GitHub： <a href="https://github.com/alibaba/nacos">https://github.com/alibaba/nacos</a></h3>
+<h3 id="版本对应说明地址">版本对应说明：<a href="https://github.com/alibaba/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E">地址</a></h3>
+<p>前往Github下载安装包，解压到指定位置即可，使用以下命令启动：</p>
+<pre><code class="language-shell">startup.cmd -m standalone
+</code></pre>
+<figure data-type="image" tabindex="4"><img src="https://pic.zyblog.xyz/img/typora/image-20220215183004197.png" alt="启动成功" loading="lazy"></figure>
+<h3 id="1-nacos搭建">1. Nacos搭建</h3>
+<h4 id="步骤如下-2">步骤如下：</h4>
+<p>创建项目，引入<code>spring-cloud-alibaba</code>的依赖</p>
+<pre><code class="language-xml">&lt;dependency&gt;
+	&lt;groupId&gt;com.alibaba.cloud&lt;/groupId&gt;
+  &lt;artifactId&gt;spring-cloud-alibaba-dependencies&lt;/artifactId&gt;
+  &lt;version&gt;2.2.5.RELEASE&lt;/version&gt;
+  &lt;type&gt;pom&lt;/type&gt;
+  &lt;scope&gt;import&lt;/scope&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h3 id="2-注册微服务-2">2. 注册微服务</h3>
+<ol>
+<li>
+<p>对应微服务引入<code>spring-cloud-starter-alibaba-nacos-discovery</code></p>
+<pre><code class="language-xml"></code></pre>
+</li>
+</ol>
+<dependency>
+    <groupId>com.alibaba.cloud</groupId>
+    <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+</dependency>
+	```
+<ol start="2">
+<li>
+<p>修改该服务的application.yml文件，配置如下：</p>
+<pre><code class="language-yaml">spring:
+	cloud:
+		nacos:
+			server-addr: localhost:8848
+</code></pre>
+</li>
+</ol>
+<h3 id="3-nacos服务多级存储模型">3. Nacos服务多级存储模型</h3>
+<blockquote>
+<p>一级是服务，二级是集群，三级是实例</p>
+</blockquote>
+<h4 id="31-服务集群属性">3.1 服务集群属性</h4>
+<ol>
+<li>
+<p>修改提供者<code>application.yml</code>，添加配置如下：</p>
+<pre><code class="language-yaml">spring:
+	cloud:
+		nacos:
+			server-addr: localhost:8848 #配置nacos服务端地址
+			discovery:
+				cluster-name: HZ #配置集群名称
+</code></pre>
+</li>
+<li>
+<p>修改消费者<code>application.yml</code>，添加配置如下：</p>
+<pre><code class="language-yaml">servicename:
+	ribbon:
+		NFLoadBalancerRuleClassName: com.alibaba.cloud.nacos.ribbon.NacosRule
+</code></pre>
+<blockquote>
+<p>NacosRule负载均衡策略</p>
+<ol>
+<li>优先选择同集群服务实例列表</li>
+<li>本地集群找不到提供者，才去其他集群寻找，并且会警告</li>
+<li>确定了可用实例列表后，再采用随机负载均衡挑选实例</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p>注：从<code>spring-cloud-alibaba2020.*</code>版本开始，已经逐渐弃用netflix相关组件，例如ribbon，要想继续使用，应该回退版本到<code>spring-cloud-alibaba2.*</code>，还要注意对应的<code>spring-boot</code>和<code>spring-cloud</code>版本的兼容性</p>
+<p>版本说明：<a href="https://github.com/alibaba/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E">Github版本说明</a></p>
+</blockquote>
+<ol start="3">
+<li>实例的权重控制
+<ul>
+<li>Nacos控制台可以设置实例的权重值，0-1之间</li>
+<li>统计群内的多个实例，权重越高被访问的频率越高</li>
+<li>权重设置为0则完全不会被访问</li>
+</ul>
+</li>
+</ol>
+<h4 id="32-环境隔离-namespace">3.2 环境隔离 namespace</h4>
+<blockquote>
+<p>Nacos中服务存储和数据存储的最外层都是一个名为namespace的东西，用来做最外层隔离，未设置namespace的情况下默认为public</p>
+</blockquote>
+<figure data-type="image" tabindex="5"><img src="https://pic.zyblog.xyz/img/typora/image-20220703081115288.png" alt="image-20220703081115288" loading="lazy"></figure>
+<blockquote>
+<h4 id="实例">实例</h4>
+<ol>
+<li>
+<p>在Nacos控制台创建命名空间dev，并复制namespace的UUID</p>
+<figure data-type="image" tabindex="6"><img src="https://pic.zyblog.xyz/img/typora/image-20220703081956710.png" alt="image-20220703081956710" loading="lazy"></figure>
+</li>
+<li>
+<p>在注册服务的application.yml中添加如下配置文件，即可将该服务分配到此命名空间下，此时若其他服务与它不属于同一namespace下，将无法访问此服务</p>
+<p><code>namespace: 8f6f25b2-4758-40f7-8445-6c36ae9fb962 </code></p>
+</li>
+</ol>
+<pre><code class="language-yaml">spring:
+	cloud:
+		nacos:
+			server-addr: localhost:8848  
+			discovery:
+				cluster-name: 西安
+				namespace: 8f6f25b2-4758-40f7-8445-6c36ae9fb962 #dev环境
+</code></pre>
+</blockquote>
+<blockquote>
+<p>Nacos环境隔离</p>
+<ul>
+<li>namespace用来做环境隔离</li>
+<li>每个namespace都有唯一id，由Nacos控制台生成UUID</li>
+<li>不同namespace下服务不可见</li>
+</ul>
+<p>可用来分别控制开发环境，测试环境，生产环境下的服务之间不可随意调用</p>
+</blockquote>
+<h3 id="4-nacos和eureka的区别">4. Nacos和Eureka的区别</h3>
+<figure data-type="image" tabindex="7"><img src="https://pic.zyblog.xyz/img/typora/image-20220703083516074.png" alt="image-20220703083516074" loading="lazy"></figure>
+<h4 id="41-临时实例和非临时实例">4.1 临时实例和非临时实例</h4>
+<p>服务注册时，在启动配置文件中添加以下配置来设置当前实例的类别</p>
+<pre><code class="language-yaml">spring:
+	cloud:
+		nacos:
+			discovery:
+				ephemeral: false #设置为非临时实例 
+</code></pre>
+<blockquote>
+<p><code>ephemeral</code>: <code>英 [ɪˈfemərəl]</code> <code>美 [ɪˈfemərəl]</code></p>
+<ul>
+<li>adj. 短暂的；（主指植物）短生的，短命的</li>
+<li>n. 只生存一天的事物；短生植物</li>
+</ul>
+</blockquote>
+<h4 id="42-区别与联系">4.2 区别与联系</h4>
+<ol>
+<li>共同点
+<ul>
+<li>都支持服务注册和服务拉取</li>
+<li>都支持服务提供者心跳方式做健康检测</li>
+</ul>
+</li>
+<li>区别
+<ul>
+<li>Nacos支持服务端主动检测提供者状态
+<ul>
+<li>临时实例采用心跳模式</li>
+<li>非临时实例采用主动监测模式</li>
+</ul>
+</li>
+<li>在Nacos中，临时实例心跳不正常会被剔除，非临时实例则不会被剔除</li>
+<li>Nacos支持服务列表变更的消息推送模式，服务列表更新及时</li>
+<li>Nacos集群默认采用AP方式，当集群中存在非临时实例时，采用CP模式；Eureka采用AP方式</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>第二天</p>
+</blockquote>
+<h2 id="五-nacos配置管理">五、 Nacos配置管理</h2>
+<figure data-type="image" tabindex="8"><img src="https://pic.zyblog.xyz/img/typora/image-20220703085636245.png" alt="image-20220703085636245" loading="lazy"></figure>
+<h3 id="1-统一配置管理">1. 统一配置管理</h3>
+<figure data-type="image" tabindex="9"><img src="https://pic.zyblog.xyz/img/typora/image-20220703090539366.png" alt="image-20220703090539366" loading="lazy"></figure>
+<blockquote>
+<p>因为bootstrap.yml的优先级高于application.yml，所以我们可以通过将Nacos服务信息配置到bootstrap.yml中来读取Nacos管理的配置文件，然后与本地配置文件进行合并，然后创建Spring容器，加载Bean启动程序</p>
+</blockquote>
+<h4 id="11-在指定服务的pom中引入nacos配置管理客户端依赖">1.1 在指定服务的pom中引入Nacos配置管理客户端依赖</h4>
+<pre><code class="language-xml">&lt;dependency&gt;
+  &lt;groupId&gt;com.alibaba.cloud&lt;/groupId&gt;
+  &lt;artifactId&gt;spring-cloud-starter-alibaba-nacos-config&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h4 id="12-在指定服务的resources目录下添加一个bootstrapyml文件这是一个引导文件优先级高于applicationyml">1.2 在指定服务的resources目录下添加一个<code>bootstrap.yml</code>文件，这是一个引导文件，优先级高于<code>application.yml</code></h4>
+<pre><code class="language-yaml">spring:
+  application:
+    name: user-service #服务名称
+  profiles:
+    active: dev #开发环境
+  cloud:
+    nacos:
+      server-addr: localhost:8848 #Nacos地址
+      config:
+        file-extension: yaml #文件后缀
+</code></pre>
+<h3 id="2-配置热更新">2. 配置热更新</h3>
+<h4 id="21-方式一">2.1 方式一</h4>
+<blockquote>
+<p>通过<code>@Value</code>注解注入，结合<code>@RefreshScope</code>来刷新</p>
+</blockquote>
+<h4 id="22-方式二">2.2 方式二</h4>
+<blockquote>
+<p>通过<code>@ConfigurationProperties</code>注解创建对应配置类注入，自动刷新</p>
+</blockquote>
+<h4 id="23-注意事项">2.3 注意事项</h4>
+<ul>
+<li>不是所有的配置都适合放到配置中心，维护起来比较麻烦</li>
+<li>建议将一些关键参数，需要运行时调整的参数放到nacos配置中心，一般都是自定义配置</li>
+</ul>
+<h3 id="3-多环境配置共享">3. 多环境配置共享</h3>
+<blockquote>
+<p>微服务启动时会从Nacos中读取多个配置文件：</p>
+<ul>
+<li>[spring.application.name]-[spring.profiles.active].yaml</li>
+<li>[spring.application.name].yaml</li>
+</ul>
+<p>我们发现无论是开发环境，测试环境，生产环境，[spring.application.name].yaml一定会被加载，因此我们可以将多环境共享的配置内容写入这个文件</p>
+</blockquote>
+<h4 id="31-注意事项">3.1 注意事项</h4>
+<blockquote>
+<p>当一个环境共享配置文件的值在本地配置文件中也存在时，以环境共享配置文件的值为主</p>
+</blockquote>
+<p>多种配置的优先级：</p>
+<ul>
+<li><code>[spring.application.name]-[spring.profiles.active].yaml</code>  &gt;  <code>[spring.application.name].yaml</code> &gt; <code>application.yaml</code></li>
+</ul>
+<h3 id="4-搭建nacos集群">4. 搭建Nacos集群</h3>
+<figure data-type="image" tabindex="10"><img src="https://nacos.io/img/deployDnsVipMode.jpg" alt="https://nacos.io/img/deployDnsVipMode.jpg" loading="lazy"></figure>
+<h4 id="41-创建集群数据库">4.1 创建集群数据库</h4>
+<pre><code class="language-sql">create database if not exists nacos_config default character set utf8mb4 collate utf8mb4_general_ci;
+</code></pre>
+<h4 id="42-创建集群数据表">4.2 创建集群数据表</h4>
+<pre><code class="language-sql">CREATE TABLE `config_info` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `data_id` varchar(255) NOT NULL COMMENT 'data_id',
+  `group_id` varchar(255) DEFAULT NULL,
+  `content` longtext NOT NULL COMMENT 'content',
+  `md5` varchar(32) DEFAULT NULL COMMENT 'md5',
+  `gmt_create` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `gmt_modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
+  `src_user` text COMMENT 'source user',
+  `src_ip` varchar(50) DEFAULT NULL COMMENT 'source ip',
+  `app_name` varchar(128) DEFAULT NULL,
+  `tenant_id` varchar(128) DEFAULT '' COMMENT '租户字段',
+  `c_desc` varchar(256) DEFAULT NULL,
+  `c_use` varchar(64) DEFAULT NULL,
+  `effect` varchar(64) DEFAULT NULL,
+  `type` varchar(64) DEFAULT NULL,
+  `c_schema` text,
+  `encrypted_data_key` text NOT NULL COMMENT '秘钥',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uk_configinfo_datagrouptenant` (`data_id`,`group_id`,`tenant_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='config_info';
+</code></pre>
+<pre><code class="language-sql">CREATE TABLE `config_info_aggr` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `data_id` varchar(255) NOT NULL COMMENT 'data_id',
+  `group_id` varchar(255) NOT NULL COMMENT 'group_id',
+  `datum_id` varchar(255) NOT NULL COMMENT 'datum_id',
+  `content` longtext NOT NULL COMMENT '内容',
+  `gmt_modified` datetime NOT NULL COMMENT '修改时间',
+  `app_name` varchar(128) DEFAULT NULL,
+  `tenant_id` varchar(128) DEFAULT '' COMMENT '租户字段',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uk_configinfoaggr_datagrouptenantdatum` (`data_id`,`group_id`,`tenant_id`,`datum_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='增加租户字段';
+</code></pre>
+<pre><code class="language-sql">CREATE TABLE `config_info_beta` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `data_id` varchar(255) NOT NULL COMMENT 'data_id',
+  `group_id` varchar(128) NOT NULL COMMENT 'group_id',
+  `app_name` varchar(128) DEFAULT NULL COMMENT 'app_name',
+  `content` longtext NOT NULL COMMENT 'content',
+  `beta_ips` varchar(1024) DEFAULT NULL COMMENT 'betaIps',
+  `md5` varchar(32) DEFAULT NULL COMMENT 'md5',
+  `gmt_create` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `gmt_modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
+  `src_user` text COMMENT 'source user',
+  `src_ip` varchar(50) DEFAULT NULL COMMENT 'source ip',
+  `tenant_id` varchar(128) DEFAULT '' COMMENT '租户字段',
+  `encrypted_data_key` text NOT NULL COMMENT '秘钥',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uk_configinfobeta_datagrouptenant` (`data_id`,`group_id`,`tenant_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='config_info_beta';
+</code></pre>
+<pre><code class="language-sql">CREATE TABLE `config_info_tag` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `data_id` varchar(255) NOT NULL COMMENT 'data_id',
+  `group_id` varchar(128) NOT NULL COMMENT 'group_id',
+  `tenant_id` varchar(128) DEFAULT '' COMMENT 'tenant_id',
+  `tag_id` varchar(128) NOT NULL COMMENT 'tag_id',
+  `app_name` varchar(128) DEFAULT NULL COMMENT 'app_name',
+  `content` longtext NOT NULL COMMENT 'content',
+  `md5` varchar(32) DEFAULT NULL COMMENT 'md5',
+  `gmt_create` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `gmt_modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
+  `src_user` text COMMENT 'source user',
+  `src_ip` varchar(50) DEFAULT NULL COMMENT 'source ip',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uk_configinfotag_datagrouptenanttag` (`data_id`,`group_id`,`tenant_id`,`tag_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='config_info_tag';
+</code></pre>
+<pre><code class="language-sql">CREATE TABLE `config_tags_relation` (
+  `id` bigint(20) NOT NULL COMMENT 'id',
+  `tag_name` varchar(128) NOT NULL COMMENT 'tag_name',
+  `tag_type` varchar(64) DEFAULT NULL COMMENT 'tag_type',
+  `data_id` varchar(255) NOT NULL COMMENT 'data_id',
+  `group_id` varchar(128) NOT NULL COMMENT 'group_id',
+  `tenant_id` varchar(128) DEFAULT '' COMMENT 'tenant_id',
+  `nid` bigint(20) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`nid`),
+  UNIQUE KEY `uk_configtagrelation_configidtag` (`id`,`tag_name`,`tag_type`),
+  KEY `idx_tenant_id` (`tenant_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='config_tag_relation';
+</code></pre>
+<pre><code class="language-sql">CREATE TABLE `group_capacity` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  `group_id` varchar(128) NOT NULL DEFAULT '' COMMENT 'Group ID，空字符表示整个集群',
+  `quota` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '配额，0表示使用默认值',
+  `usage` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '使用量',
+  `max_size` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '单个配置大小上限，单位为字节，0表示使用默认值',
+  `max_aggr_count` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '聚合子配置最大个数，，0表示使用默认值',
+  `max_aggr_size` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '单个聚合数据的子配置大小上限，单位为字节，0表示使用默认值',
+  `max_history_count` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '最大变更历史数量',
+  `gmt_create` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `gmt_modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uk_group_id` (`group_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='集群、各Group容量信息表';
+</code></pre>
+<pre><code class="language-sql">CREATE TABLE `his_config_info` (
+  `id` bigint(64) unsigned NOT NULL,
+  `nid` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `data_id` varchar(255) NOT NULL,
+  `group_id` varchar(128) NOT NULL,
+  `app_name` varchar(128) DEFAULT NULL COMMENT 'app_name',
+  `content` longtext NOT NULL,
+  `md5` varchar(32) DEFAULT NULL,
+  `gmt_create` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `gmt_modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `src_user` text,
+  `src_ip` varchar(50) DEFAULT NULL,
+  `op_type` char(10) DEFAULT NULL,
+  `tenant_id` varchar(128) DEFAULT '' COMMENT '租户字段',
+  `encrypted_data_key` text NOT NULL COMMENT '秘钥',
+  PRIMARY KEY (`nid`),
+  KEY `idx_gmt_create` (`gmt_create`),
+  KEY `idx_gmt_modified` (`gmt_modified`),
+  KEY `idx_did` (`data_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='多租户改造';
+</code></pre>
+<pre><code class="language-sql">CREATE TABLE `tenant_capacity` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  `tenant_id` varchar(128) NOT NULL DEFAULT '' COMMENT 'Tenant ID',
+  `quota` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '配额，0表示使用默认值',
+  `usage` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '使用量',
+  `max_size` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '单个配置大小上限，单位为字节，0表示使用默认值',
+  `max_aggr_count` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '聚合子配置最大个数',
+  `max_aggr_size` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '单个聚合数据的子配置大小上限，单位为字节，0表示使用默认值',
+  `max_history_count` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '最大变更历史数量',
+  `gmt_create` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `gmt_modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uk_tenant_id` (`tenant_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='租户容量信息表';
+</code></pre>
+<pre><code class="language-sql">CREATE TABLE `tenant_info` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `kp` varchar(128) NOT NULL COMMENT 'kp',
+  `tenant_id` varchar(128) default '' COMMENT 'tenant_id',
+  `tenant_name` varchar(128) default '' COMMENT 'tenant_name',
+  `tenant_desc` varchar(256) DEFAULT NULL COMMENT 'tenant_desc',
+  `create_source` varchar(32) DEFAULT NULL COMMENT 'create_source',
+  `gmt_create` bigint(20) NOT NULL COMMENT '创建时间',
+  `gmt_modified` bigint(20) NOT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uk_tenant_info_kptenantid` (`kp`,`tenant_id`),
+  KEY `idx_tenant_id` (`tenant_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='tenant_info';
+</code></pre>
+<pre><code class="language-sql">CREATE TABLE `users` (
+	`username` varchar(50) NOT NULL PRIMARY KEY,
+	`password` varchar(500) NOT NULL,
+	`enabled` boolean NOT NULL
+);
+</code></pre>
+<pre><code class="language-sql">CREATE TABLE `roles` (
+	`username` varchar(50) NOT NULL,
+	`role` varchar(50) NOT NULL,
+	UNIQUE INDEX `idx_user_role` (`username` ASC, `role` ASC) USING BTREE
+);
+</code></pre>
+<pre><code class="language-sql">CREATE TABLE `permissions` (
+    `role` varchar(50) NOT NULL,
+    `resource` varchar(255) NOT NULL,
+    `action` varchar(8) NOT NULL,
+    UNIQUE INDEX `uk_role_permission` (`role`,`resource`,`action`) USING BTREE
+);
+</code></pre>
+<h4 id="43-向表中插入数据">4.3 向表中插入数据</h4>
+<pre><code class="language-sql">INSERT INTO users (username, password, enabled) VALUES ('nacos', '$2a$10$EuWPZHzz32dJN7jexM34MOeYirDdFAZm2kuWj7VEOJhhZkDrxfvUu', TRUE);
+
+INSERT INTO roles (username, role) VALUES ('nacos', 'ROLE_ADMIN');
+</code></pre>
+<h4 id="44-配置nacos">4.4 配置Nacos</h4>
+<h5 id="1-打开-nacos安装目录conf">1. 打开 <code>\Nacos安装目录\conf\</code></h5>
+<ul>
+<li>
+<p>找到<code>cluster.conf.example</code>文件，将后缀<code>.example</code>去掉，编辑<code>cluster.conf</code>文件，配置多个Nacos服务的地址及端口</p>
+<pre><code class="language-conf">127.0.0.1:8845
+127.0.0.1:8846
+127.0.0.1:8847
+
+</code></pre>
+</li>
+<li>
+<p>找到<code>application.properties</code>文件，编辑文件</p>
+<ul>
+<li>将第33行取消注释，表示我们所使用的数据库为mysql</li>
+</ul>
+<pre><code class="language-properties">#*************** Config Module Related Configurations ***************#
+### If use MySQL as datasource:
+spring.datasource.platform=mysql
+</code></pre>
+<ul>
+<li>将36,39,40,41行取消注释，并修改为我们刚才建立的集群数据库信息</li>
+</ul>
+<pre><code class="language-properties">### Count of DB:
+db.num=1
+
+### Connect URL of DB:
+db.url.0=jdbc:mysql://127.0.0.1:3306/nacos_config?characterEncoding=utf8&amp;connectTimeout=1000&amp;socketTimeout=3000&amp;autoReconnect=true&amp;useUnicode=true&amp;useSSL=false&amp;serverTimezone=UTC
+db.user.0=root
+db.password.0=root
+</code></pre>
+</li>
+</ul>
+<h5 id="2-复制nacos文件夹并分别修改为nacos1nacos2nacos3">2. 复制Nacos文件夹并分别修改为Nacos1，Nacos2，Nacos3</h5>
+<ul>
+<li>
+<p>编辑<code>application.properties</code>文件，修改对应端口</p>
+<ul>
+<li>
+<p>nacos1</p>
+<pre><code class="language-properties">server.port = 8840
+</code></pre>
+</li>
+<li>
+<p>nacos2</p>
+<pre><code class="language-properties">server.port = 8845
+</code></pre>
+</li>
+<li>
+<p>nacos3</p>
+<pre><code class="language-properties">server.port = 8847
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>分别启动三个nacos节点 <code>startup.cmd</code></p>
+</li>
+</ul>
+<h4 id="45-nginx反向代理">4.5 Nginx反向代理</h4>
+<pre><code class="language-conf">upstream nacos-cluster {
+		server 192.168.1.7:8840;
+		server 192.168.1.7:8845;
+		server 192.168.1.7:8847;
+	}
+	server {
+		listen		80;
+		server_name	localhost;
+		
+		location /nacos {
+			proxy_pass http://nacos-cluster;
+		}
+	}
+</code></pre>
+<blockquote>
+<p>如果访问<code>localhost/nacos</code>提示404，那么就是80端口号被占用，请更改端口号重启nginx</p>
+</blockquote>
+<figure data-type="image" tabindex="11"><img src="https://pic.zyblog.xyz/img/typora/image-20220703115917500.png" alt="image-20220703115917500" loading="lazy"></figure>
+<h2 id="六-基于feign的远程调用">六、 基于Feign的远程调用</h2>
+<figure data-type="image" tabindex="12"><img src="https://camo.githubusercontent.com/f1bd8b9bfe3c049484b0776b42668bb76a57872fe0f01402e5ef73d29b811e50/687474703a2f2f7777772e706c616e74756d6c2e636f6d2f706c616e74756d6c2f70726f78793f63616368653d6e6f267372633d68747470733a2f2f7261772e67697468756275736572636f6e74656e742e636f6d2f4f70656e466569676e2f666569676e2f6d61737465722f7372632f646f63732f6f766572766965772d6d696e646d61702e69756d6c" alt="MindMap overview" loading="lazy"></figure>
+<h3 id="1-添加依赖">1. 添加依赖</h3>
+<pre><code class="language-xml">&lt;dependency&gt;
+  &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+  &lt;artifactId&gt;spring-cloud-starter-openfeign&lt;/ artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h3 id="2-代码书写">2. 代码书写</h3>
+<ul>
+<li>
+<p>在服务启动类上添加<code>@EnableFeignClients</code>注解</p>
+<pre><code class="language-java">@SpringBootApplication
+@EnableFeignClients
+public class OrderServiceApplication {
+
+  public static void main(String[] args) {
+      SpringApplication.run(OrderServiceApplication.class, args);
+  }
+}
+</code></pre>
+</li>
+<li>
+<p>创建远程调用服务接口，格式如下</p>
+<pre><code class="language-java">@FeignClient(&quot;user-service&quot;)
+public interface UserClients {
+
+    @GetMapping(&quot;/user/info/{id}&quot;)
+    Response getUserInfoById(@PathVariable(&quot;id&quot;) Long id);
+}
+</code></pre>
+</li>
+<li>
+<p>Feign调用远程服务接口实例</p>
+<pre><code class="language-java">public Response getOrderInfoById(Long id){
+  Response response = new Response();
+  OrderInfo orderInfo = orderMapper.selectById(id);
+  if(orderInfo!=null){
+    OrderVO orderVO = new OrderVO();
+    BeanUtils.copyProperties(orderInfo,orderVO);
+    orderVO.setPrice(Double.valueOf((orderInfo.getPrice()/100)));
+    Response userInfoById = userClients.getUserInfoById(orderInfo.getUserId());
+    orderVO.setUserInfo(userInfoById.getData());
+    response.code(ResponseCode.SUCCESS).message(&quot;获取成功&quot;).count(1).data(orderVO);
+  }
+  return response;
+}
+</code></pre>
+</li>
+<li>
+<p>返回结果</p>
+<blockquote>
+<p>{<br>
+&quot;code&quot;: 200,<br>
+&quot;message&quot;: &quot;获取成功&quot;,<br>
+&quot;count&quot;: 1,<br>
+&quot;data&quot;: {<br>
+&quot;id&quot;: &quot;1543151273902505986&quot;,<br>
+&quot;price&quot;: 3902.0,<br>
+&quot;name&quot;: &quot;OculusQuest2&quot;,<br>
+&quot;num&quot;: 2,<br>
+&quot;userId&quot;: &quot;1543062156246155265&quot;,<br>
+&quot;userInfo&quot;: {<br>
+&quot;id&quot;: &quot;1543062156246155265&quot;,<br>
+&quot;username&quot;: &quot;zhiyuan121&quot;,<br>
+&quot;email&quot;: &quot;5168154488@gmail.com&quot;,<br>
+&quot;introduction&quot;: &quot;个人简介&quot;,<br>
+&quot;phoneNumber&quot;: &quot;97938192868&quot;,<br>
+&quot;nickname&quot;: &quot;絷缘&quot;,<br>
+&quot;status&quot;: &quot;正常&quot;,<br>
+&quot;registerTime&quot;: &quot;2022-07-02&quot;<br>
+},<br>
+&quot;createTime&quot;: &quot;2022-07-02&quot;<br>
+}<br>
+}</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="3-feign的自定义配置">3. Feign的自定义配置</h3>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>作用</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>feign.Logger.Level</td>
+<td>日志级别</td>
+<td>包含四种不同级别：NONE、BASIC、HEADERS、FULL</td>
+</tr>
+<tr>
+<td>feign.codec.Decoder</td>
+<td>响应结果解析器</td>
+<td>远程调用返回结果解析</td>
+</tr>
+<tr>
+<td>feign.codec.Encoder</td>
+<td>请求参数编码</td>
+<td>将请求参数编码</td>
+</tr>
+<tr>
+<td>feign.Contract</td>
+<td>支持的注解格式</td>
+<td>默认SpringMVC注解</td>
+</tr>
+<tr>
+<td>feign.Retryer</td>
+<td>失败重试机制</td>
+<td>请求失败重试，默认没有，但是会使用Ribbon重试</td>
+</tr>
+</tbody>
+</table>
+<h4 id="31-日志配置方式">3.1 日志配置方式</h4>
+<ol>
+<li>
+<p>配置文件方式</p>
+<ul>
+<li>
+<p>全局生效</p>
+<pre><code class="language-yaml">feign:
+	client:
+		config:	
+			default: #default表示全局配置
+				loggerLevel: FULL #日志级别
+</code></pre>
+</li>
+<li>
+<p>局部生效</p>
+<pre><code class="language-yaml">feign:
+	client:
+		config:
+			user-service: #对应服务名表示局部配置
+				loggerLevel: FULL #日志级别
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>Java代码方式</p>
+<ul>
+<li>
+<p>声明一个Bean</p>
+<pre><code class="language-java">public class FeignClientConfiguration{
+	@Bean
+  public Logger.Level feignLogLevel(){
+    return Logger.Level.BASIC;
+  }
+}
+</code></pre>
+</li>
+<li>
+<p>全局生效：使用加在启动类上的<code>@EnableFeignClients</code>上</p>
+<pre><code class="language-java">@EnableFeignClients(defaultConfiguration = FeignClientConfiguration.class)
+</code></pre>
+</li>
+<li>
+<p>局部生效：使用加在指定服务上的<code>@FeignClient</code>上</p>
+<pre><code class="language-java">@FeignClient(value = &quot;user-service&quot;,configuration = FeignClientsConfiguration.class)
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="3-feign性能优化">3. Feign性能优化</h3>
+<h4 id="31-feign底层客户端的实现">3.1 Feign底层客户端的实现</h4>
+<ul>
+<li>URLConnection：默认实现，不支持连接池</li>
+<li>Apache HttpClient：支持连接池</li>
+<li>OKHttp：支持连接池</li>
+</ul>
+<blockquote>
+<p>因此优化Feign的性能主要包括：</p>
+<ol>
+<li>使用连接池代替默认的URLConnection</li>
+<li>日志级别，最好用basic或none</li>
+</ol>
+</blockquote>
+<h4 id="32-为feign添加httpclient支持">3.2 为Feign添加HttpClient支持</h4>
+<ol>
+<li>
+<p>引入依赖</p>
+<pre><code class="language-xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.github.openfeign&lt;/groupId&gt;
+  &lt;artifactId&gt;feign-httpclient&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+</li>
+<li>
+<p>配置连接池</p>
+<pre><code class="language-yaml">feign:
+	client:
+		config:
+			default:
+				loggerLevel: BASIC
+	httpclient:
+		enabled: true #开启httpclient支持
+		max-connections: 200 #最大连接数
+		max-connections-per-route: 50 #每个路径最大连接数
+</code></pre>
+</li>
+</ol>
+<h3 id="4-feign的最佳实践">4. Feign的最佳实践</h3>
+<h4 id="41-方式一继承">4.1 方式一(继承)</h4>
+<blockquote>
+<p>给消费者的FeignClient和提供者的Controller定义统一的父接口作为标准</p>
+</blockquote>
+<h4 id="42-方式二抽取">4.2 方式二（抽取）</h4>
+<blockquote>
+<p>将FeignClient抽取为独立模块，并且把接口有关的Entity、默认的Feign配置都放到这个模块中，提供给所有消费者使用</p>
+</blockquote>
+<figure data-type="image" tabindex="13"><img src="https://pic.zyblog.xyz/img/typora/image-20220703214647319.png" alt="image-20220703214647319" loading="lazy"></figure>
+<blockquote>
+<p>步骤：</p>
+<ol>
+<li>首先创建一个module，命名为feign-api，然后引入feign依赖</li>
+<li>将order-service中编写的UserClient、User、DefaultFeignConfiguration都复制到feign-api项目中</li>
+<li>在order-service中引入feign-api依赖</li>
+<li>修改order-service中所有与上述三个组件有关的import部分，改成导入feign-api中的包</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>当定义的FeignClient不在SpringBootApplication的扫描包范围时，这些FeignClient无法使用，解决方式有两种：</p>
+<ol>
+<li>
+<p>指定FeignClient所在包</p>
+<p><code>@EnableFeignClients(basePackages = &quot;com.zhiyuan.feign.clients&quot;)</code></p>
+</li>
+<li>
+<p>指定FeignClient字节码</p>
+<p><code>@EnableFeignClients(clients = {UserClient.class})</code></p>
+</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>抽取为feign-api后会导致日志配置失效，通过添加 <code>logging.level.com.zhiyuan.clients:DEBUG</code> 可以使日志配置生效</p>
+</blockquote>
+<h2 id="七-统一网关gateway">七、统一网关Gateway</h2>
+<h3 id="1-网关的功能">1. 网关的功能</h3>
+<h4 id="11-身份认证和权限校验">1.1 身份认证和权限校验</h4>
+<h4 id="12-服务路由-负载均衡">1.2 服务路由、负载均衡</h4>
+<h4 id="13-请求限流">1.3 请求限流</h4>
+<h3 id="2-springcloud中网关的实现">2. SpringCloud中网关的实现</h3>
+<h4 id="21-gateway">2.1 Gateway</h4>
+<h4 id="22-zuul">2.2 zuul</h4>
+<blockquote>
+<p>Zuul是基于Servlet实现的，属于阻塞式编程，而SpringCloudGateway则是基于Spring5中提供的WebFlux，属于响应式编程的实现，具备更好的性能</p>
+</blockquote>
+<h3 id="3-搭建网关">3. 搭建网关</h3>
+<h4 id="31-创建新的module引入springcloudgateway的依赖和nacos的服务发现依赖">3.1 创建新的module，引入SpringCloudGateway的依赖和nacos的服务发现依赖</h4>
+<pre><code class="language-xml">&lt;dependency&gt;
+  &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+  &lt;artifactId&gt;spring-cloud-starter-gateway&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;com.alibaba.cloud&lt;/groupId&gt;
+  &lt;artifactId&gt;spring-cloud-alibaba-nacos-discovery&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h4 id="32-编写路由配置及nacos地址">3.2 编写路由配置及nacos地址</h4>
+<pre><code class="language-yaml">server:
+	port: 10010
+spring:
+	application:
+		name: gateway
+	cloud:
+		nacos:
+			server-addr: localhost:8848
+		gateway:
+			routes: #网关路由配置
+				- id: user-service #路由ID，自定义唯一即可
+					uri: lb://user-service # 路由目标地址 
+					predicates: #路由断言，即用来判断请求是否符合路由规则的配置
+						- Path=/user/** 
+</code></pre>
+<h4 id="33-路由断言工厂route-predicate-factory">3.3 路由断言工厂Route Predicate Factory</h4>
+<blockquote>
+<p>我们在配置文件中写的断言规则只是字符串，这些字符串会被Predicate Factory读取并处理，转变为路由判断的条件</p>
+<p><code>org.springframework.cloud.gateway.handler.predicate.PathRoutePredicateFactory</code></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>After</td>
+<td>某个时间点后的请求</td>
+<td><code>- After=2022-06-20T17:00:00.369+8:00[Asia/Shanghai]</code></td>
+</tr>
+<tr>
+<td>Before</td>
+<td>某个时间点前的请求</td>
+<td><code>- Before2022-06-20T17:00:00.369+8:00[Asia/Shanghai]</code></td>
+</tr>
+<tr>
+<td>Between</td>
+<td>某两个时间点之间的请求</td>
+<td><code>- Between=2022-06-20T17:00:00.369+8:00[Asia/Shanghai],2022-07-01T17:00:00.369+8:00[Asia/Shanghai]</code></td>
+</tr>
+<tr>
+<td>Cookie</td>
+<td>请求必须包含某些Cookie</td>
+<td><code>- Cookie=</code></td>
+</tr>
+<tr>
+<td>Header</td>
+<td>请求必须包含某些Header</td>
+<td><code>- Header=</code></td>
+</tr>
+<tr>
+<td>Host</td>
+<td>请求必须访问某个host</td>
+<td><code>- Host=**</code></td>
+</tr>
+<tr>
+<td>Method</td>
+<td>请求必须以指定方式发起</td>
+<td><code>- Method=GET,POST</code></td>
+</tr>
+<tr>
+<td>Path</td>
+<td>请求路径必须符合指定规则</td>
+<td><code>- Path=</code></td>
+</tr>
+<tr>
+<td>Query</td>
+<td>请求参数必须包含指定参数</td>
+<td><code>- Query=</code></td>
+</tr>
+<tr>
+<td>RemoteAddr</td>
+<td>请求者的ip必须是指定范围</td>
+<td><code>- RemoteAddr=192.168.1.1/24</code></td>
+</tr>
+<tr>
+<td>Weight</td>
+<td>权重处理</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="34-路由过滤器gatewayfilter">3.4 路由过滤器GatewayFilter</h4>
+<ul>
+<li>
+<h5 id="局部过滤器">局部过滤器</h5>
+<table>
+<thead>
+<tr>
+<th>过滤器工厂</th>
+<th>作用</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AddRequestHeader</td>
+<td>给原始请求添加Header</td>
+<td>Header名称，Header值</td>
+</tr>
+<tr>
+<td>AddRequestParameter</td>
+<td>给原始请求添加请求参数</td>
+<td>参数名称，参数值</td>
+</tr>
+<tr>
+<td>AddResponseHeader</td>
+<td>给原始响应添加Header</td>
+<td>Header名称，Header值</td>
+</tr>
+<tr>
+<td>DedupeResponseHeader</td>
+<td>剔除响应头中的重复值</td>
+<td>Header名称，去重策略</td>
+</tr>
+<tr>
+<td>Hystrix</td>
+<td>引入Hystrix的断路器保护</td>
+<td><code>HystrixCommand</code>名称</td>
+</tr>
+<tr>
+<td>FallbackHeaders</td>
+<td>给FallbackURL请求头中添加具体的异常信息</td>
+<td>Header名称</td>
+</tr>
+<tr>
+<td>PrefixPath</td>
+<td>给原始请求路径添加前缀</td>
+<td>前缀路径</td>
+</tr>
+<tr>
+<td>PreserveHostHeader</td>
+<td>给请求添加一个preserveHostHeader=true的属性，路由过滤器会检查该属性来决定是否要发送原始的Host</td>
+<td>无</td>
+</tr>
+<tr>
+<td>RequestRateLimiter</td>
+<td>对请求限流，限流算法为令牌桶</td>
+<td>keyResolver、rateLimiter、status Code、denyEmptyKey、emptyKeyStatus</td>
+</tr>
+<tr>
+<td>RedirectTo</td>
+<td>将原始请求重定向到指定URL</td>
+<td>HTTP状态码，重定向URL</td>
+</tr>
+<tr>
+<td>RemoveHopByHopHeadersFilter</td>
+<td>将原始请求中IETF组织规定的Header信息全部移除</td>
+<td>默认启用，可以通过配置指定删除的Header</td>
+</tr>
+<tr>
+<td>RemoveRequestHeader</td>
+<td>将原始请求中的某个Header移除</td>
+<td>Header名称</td>
+</tr>
+<tr>
+<td>RemoveResponseHeader</td>
+<td>将原始响应中的某个Header移除</td>
+<td>Header名称</td>
+</tr>
+<tr>
+<td>RewritePath</td>
+<td>重写原始请求路径</td>
+<td>原始路径正则表达式，重写后路径的正则表达式</td>
+</tr>
+<tr>
+<td>RewriteResponseHeader</td>
+<td>重写原始响应中的某个Header</td>
+<td>Header名称，值的正则表达式，重写后的值</td>
+</tr>
+<tr>
+<td>SaveSession</td>
+<td>在转发请求之前强制执行<code>WebSession::save</code>操作</td>
+<td>无</td>
+</tr>
+<tr>
+<td>SecureHeaders</td>
+<td>给原始响应添加有安全作用的Header</td>
+<td>无</td>
+</tr>
+<tr>
+<td>SetPath</td>
+<td>修改原始请求路径</td>
+<td>修改后的路径</td>
+</tr>
+<tr>
+<td>SetResponseHeader</td>
+<td>修改原始响应中某个Header的值</td>
+<td>Header名称，修改后的值</td>
+</tr>
+<tr>
+<td>SetStatus</td>
+<td>修改原始响应中的状态码</td>
+<td>HTTP状态码，字符串或数字均可</td>
+</tr>
+<tr>
+<td>StripPrefix</td>
+<td>截断原始请求路径</td>
+<td>使用数字表示要截断路径的数量</td>
+</tr>
+<tr>
+<td>Retry</td>
+<td>针对不同的响应进行重试</td>
+<td>retries、statuses、methods、series</td>
+</tr>
+<tr>
+<td>RequestSize</td>
+<td>设置允许接收的最大请求包，如果请求大小超过设置的值，返回<code>413 Payload Too Large</code></td>
+<td>请求包大小，单位Byte，默认5M</td>
+</tr>
+<tr>
+<td>ModifyRequestBody</td>
+<td>在转发请求之前修改原始请求体内容</td>
+<td>修改后的请求体内容</td>
+</tr>
+<tr>
+<td>ModifyResponseBody</td>
+<td>修改原始响应体的内容</td>
+<td>修改后的响应体内容</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<h5 id="全局过滤器">全局过滤器</h5>
+</li>
+</ul>
+<figure data-type="image" tabindex="14"><img src="https://pic.zyblog.xyz/img/typora/1731789-20210729134816531-578321460.png" alt="img" loading="lazy"></figure>
+<ul>
+<li>
+<p>使用示例</p>
+<ul>
+<li>
+<h5 id="局部过滤器-2">局部过滤器</h5>
+</li>
+</ul>
+<pre><code class="language-yaml">#局部过滤器，只对定义该过滤器的服务有效
+server:
+  port: 10010
+spring:
+  application:
+    name: gateway
+  cloud:
+    nacos:
+      server-addr: localhost:8848 #nacos服务端地址
+      discovery:
+        cluster-name: 西安
+    gateway:
+      routes:
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/user/**
+          filters:
+          	- AddRequestHeader=Author,ZhiYuanXie
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/order/**
+</code></pre>
+<pre><code class="language-yaml">#默认过滤器，对配置的所有的服务有效
+server:
+  port: 10010
+spring:
+  application:
+    name: gateway
+  cloud:
+    nacos:
+      server-addr: localhost:8848 #nacos服务端地址
+      discovery:
+        cluster-name: 西安
+    gateway:
+      routes:
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/user/**
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/order/**
+     default-filters:
+        - AddRequestHeader=Author,ZhiYuanXie
+</code></pre>
+<ul>
+<li>
+<h5 id="全局过滤器-2">全局过滤器</h5>
+</li>
+</ul>
+<pre><code class="language-java">@Order(-1)
+@Component
+public class AuthorizeFilter implements GlobalFilter,Ordered {
+    @Override
+    public Mono&lt;Void&gt; filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+        //获取请求参数
+        MultiValueMap&lt;String, String&gt; queryParams = exchange.getRequest().getQueryParams();
+        //获取响应对象
+        ServerHttpResponse response = exchange.getResponse();
+        //获取authorization参数  
+        String auth = queryParams.getFirst(&quot;authorization&quot;);
+        if (&quot;admin&quot;.equals(auth)){
+            //放行
+            return chain.filter(exchange);
+        }
+        //拦截请求，响应对象设置HTTP状态码
+        response.setStatusCode(HttpStatus.UNAUTHORIZED);
+        return response.setComplete();
+    }
+    
+    //设置过滤器优先级
+    public int getOrder(){
+        return -1;
+    }
+}
+</code></pre>
+<blockquote>
+<p><code>@Order</code>注解</p>
+<p>路由过滤器、默认过滤器、全局过滤器的执行顺序</p>
+<figure data-type="image" tabindex="15"><img src="https://pic.zyblog.xyz/img/typora/image-20220704132511162.png" alt="image-20220704132511162" loading="lazy"></figure>
+<ul>
+<li>每一个过滤器都必须指定一个int类型的order值，<strong>order值越小，优先级越高</strong></li>
+<li>全局过滤器GlobalFilter通过实现Ordered接口，或者添加<code>@Order</code>注解来指定order值，由我们自己实现</li>
+<li>路由过滤器Filters和默认过滤器defaultFilter由Spring指定，默认是按声明顺序从1开始递增</li>
+<li>当过滤器的order值都一样时，会按照 <strong>defaultFilter &gt; 路由过滤器 &gt; GlobalFilter</strong> 的顺序执行</li>
+</ul>
+<p>参考以下方法查看优先级：</p>
+<figure data-type="image" tabindex="16"><img src="https://pic.zyblog.xyz/img/typora/image-20220704133728495.png" alt="image-20220704133728495" loading="lazy"></figure>
+</blockquote>
+</li>
+</ul>
+<h4 id="35-网关的跨域请求配置">3.5 网关的跨域请求配置</h4>
+<blockquote>
+<p>跨域：域名不一致就是跨域，主要包括：</p>
+<ul>
+<li>域名不同</li>
+<li>域名相同，端口不同</li>
+</ul>
+<p>跨域问题：浏览器禁止请求发起者与服务端发生跨域ajax请求，请求被浏览器拦截的问题</p>
+<p>解决方案：CORS</p>
+</blockquote>
+<p>Gateway的跨域只需要简单配置即可实现</p>
+<pre><code class="language-yaml">server:
+  port: 10010
+spring:
+  application:
+    name: gateway
+  cloud:
+    nacos:
+      server-addr: localhost:8848 #nacos服务端地址
+      discovery: 
+        cluster-name: 西安
+    gateway:
+      globalcors: #全局跨域处理
+        add-to-simple-url-handler-mapping: true #解决options请求被拦截的问题
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: #跨域允许的网址
+              - &quot;http://localhost:8080/&quot;
+            allowedMethods: #跨域允许的请求方式
+              - &quot;GET&quot;
+              - &quot;POST&quot;
+              - &quot;DELETE&quot;
+              - &quot;PUT&quot;
+              - &quot;OPTIONS&quot;
+            allowedHeaders: &quot;*&quot; #跨域是否允许携带Header信息
+            allowedCredentials: true #跨域是否允许携带Cookie信息
+            maxAge: 360000 #跨域检测有效期
+      routes:
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/user/**
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/order/**
+      default-filters:
+        - AddRequestHeader=Author,ZhiYuanXie
+</code></pre>
+<blockquote>
+<p>第三天</p>
+</blockquote>
+<h2 id="八-容器化部署docker">八、容器化部署Docker</h2>
+<blockquote>
+<p>Docker如何解决大型项目依赖关系复杂，不同组件依赖的兼容性问题？</p>
+<ul>
+<li>Docker允许开发汇总将应用、依赖、函数库、配置一起打包，形成可以直接安装的镜像</li>
+<li>Docker应用运行在容器中，使用沙箱机制，相互隔离</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>Docker如何解决开发、测试、生产环境有差异的问题？</p>
+<p>Docker镜像中包含完整的运行环境，包括系统函数库，仅依赖系统的Linux内核，因此可以在任意Linux操作系统上运行</p>
+</blockquote>
+<blockquote>
+<p>Docker与虚拟机的区别：</p>
+<p>虚拟机是使用Hypervisor技术在操作系统中模拟硬件设备，然后运行另一个操作系统，比如在Windows系统里面运行Ubuntu系统。</p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Docker</th>
+<th>虚拟机</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>性能</td>
+<td>接近原生</td>
+<td>性能较差</td>
+</tr>
+<tr>
+<td>硬盘占用</td>
+<td>一般为MB</td>
+<td>一般为GB</td>
+</tr>
+<tr>
+<td>启动</td>
+<td>秒级</td>
+<td>分钟级</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h3 id="1-概念">1. 概念</h3>
+<h4 id="11-镜像image">1.1 镜像（Image）</h4>
+<ul>
+<li>Docker将应用程序及其所需的依赖、函数库、环境、配置等文件打包在一起，称为<strong>镜像</strong></li>
+</ul>
+<h4 id="12-容器container">1.2 容器（Container）</h4>
+<ul>
+<li>镜像中的应用程序运行后形成的进程就是<strong>容器</strong>，只是Docker会给容器做隔离，对外不可见</li>
+</ul>
+<h4 id="13-dockerhub">1.3 DockerHub</h4>
+<ul>
+<li>DockerHub是一个Docker镜像的托管平台，这样的平台称为Docker Registry</li>
+<li>国内也有类似于DockerHub的公开服务，比如网易云镜像服务、阿里云镜像库等</li>
+</ul>
+<h4 id="14-docker">1.4 Docker</h4>
+<ul>
+<li>
+<p>Docker是一个CS架构的程序，由两部分组成</p>
+<ul>
+<li>服务端：Docker守护进程，负责处理Docker指令，管理镜像、容器等</li>
+<li>客户端：通过命令或RestAPI向Docker服务端发送指令，可以在本地或远程向服务端发送指令</li>
+</ul>
+<figure data-type="image" tabindex="17"><img src="https://pic.zyblog.xyz/img/typora/image-20220704170659232.png" alt="image-20220704170659232" loading="lazy"></figure>
+</li>
+</ul>
+<h3 id="2-安装docker">2. 安装Docker</h3>
+<h4 id="21-centos7安装docker">2.1 CentOS7安装Docker</h4>
+<blockquote>
+<p>CentOS7系统下载地址：</p>
+<p>http://mirrors.163.com/centos/7.9.2009/isos/x86_64/CentOS-7-x86_64-DVD-2009.iso</p>
+<p>迅雷下载镜像文件有奇效，IDM平时下载很快，下载镜像开8线程只能跑到1M/s，迅雷直接10M/s</p>
+</blockquote>
+<ul>
+<li>
+<h5 id="若之前安装过其他版本docker通过以下方式完成卸载">若之前安装过其他版本Docker，通过以下方式完成卸载：</h5>
+<pre><code class="language-shell">yum remove docker \
+                docker-client \
+                docker-client-latest \
+                docker-common \
+                docker-lastest-logrotate \
+                docker-logrotate \
+                docker-selinux \
+                docker-engine-selinux \
+                docker-engine \
+                docker-ce
+</code></pre>
+</li>
+<li>
+<h5 id="安装docker">安装Docker</h5>
+<pre><code class="language-shell">yum install -y yum-utils device-mapper-persistent-data lvm2
+</code></pre>
+<ul>
+<li>
+<p>更新yum本地镜像源</p>
+<pre><code class="language-shell"># 删除原有配置源目录
+cd /etc
+rm -rf yum.repos.d
+# 新建配置源目录
+mkdir yum.repos.d
+# 下载阿里镜像源
+cd yum.repos.d
+wget https://mirrors.aliyun.com/repo/Centos-7.repo
+# 更新yum缓存
+yum makecache
+</code></pre>
+</li>
+<li>
+<p>更新软件源信息</p>
+<blockquote>
+<p>参考：https://developer.aliyun.com/mirror/docker-ce?spm=a2c6h.13651102.0.0.40491b11PUGxwo</p>
+</blockquote>
+<pre><code class="language-shell"># step 1: 安装必要的一些系统工具
+yum install -y yum-utils device-mapper-persistent-data lvm2
+# Step 2: 添加软件源信息
+yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+# Step 3
+# Step 4: 更新并安装Docker-CE
+yum makecache fast
+yum -y install docker-ce
+# Step 4: 开启Docker服务
+service docker start
+</code></pre>
+</li>
+<li>
+<p>关闭防火墙（为了学习Docker，开发中应该开启指定端口）</p>
+<pre><code class="language-shell"># 关闭防火墙应用
+systemctl stop firewalld
+# 禁止开机启动防火墙
+systemctl disable firewalld
+# 查看防火墙状态
+systemctl status firewalld
+</code></pre>
+</li>
+<li>
+<p>配置Docker镜像源</p>
+<pre><code class="language-shell">mkdir -p /etc/docker
+tee /etc/docker/daemon.json &lt;&lt;-'EOF'
+{
+  &quot;registry-mirrors&quot;: [&quot;https://xm9ypajm.mirror.aliyuncs.com&quot;]
+}
+EOF
+systemctl daemon-reload
+systemctl restart docker
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="22-docker基本操作">2.2 Docker基本操作</h4>
+<blockquote>
+<p>镜像的命名规范：</p>
+<ul>
+<li>镜像名称一般由两部分组成：<code>[respository]:[tag]</code>
+<ul>
+<li>respository：镜像名称</li>
+<li>tag：版本</li>
+</ul>
+</li>
+<li>如果没有指定tag时，默认是latest，代表最新版本的镜像</li>
+</ul>
+</blockquote>
+<figure data-type="image" tabindex="18"><img src="https://pic.zyblog.xyz/img/typora/image-20220705111817819.png" alt="DOCKER" loading="lazy"></figure>
+<ul>
+<li>
+<h5 id="镜像相关指令">镜像相关指令</h5>
+<ul>
+<li><code>docker images</code>：查看当前所有镜像</li>
+<li><code>docker pull [respository]:[tag]</code>：从镜像仓库中拉取指定镜像</li>
+<li><code>docker save -o [Path/FileName.tar] [respository]:[tag]</code>：将指定镜像打包</li>
+<li><code>docker load -i [Path/FileName.tar]</code>：将打包好的镜像加载到Docker中</li>
+<li><code>docker rmi [respository]:[tag]</code>：移除指定镜像</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>示例：</strong></p>
+<ul>
+<li>
+<p>从DockerHub中拉取一个nginx镜像并查看</p>
+<p><code>docker pull nginx</code></p>
+<p><code>docker images</code></p>
+</li>
+<li>
+<p>将nginx镜像打包到本地</p>
+<p><code>docker save -o ~/nginx.tar nginx:latest</code></p>
+</li>
+<li>
+<p>将镜像文件从本地tar包加载</p>
+<p><code>docker load -i ~/nginx.tar</code></p>
+<p><code>docker images</code></p>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li>
+<h5 id="容器相关命令">容器相关命令</h5>
+<ul>
+<li><code>docker run</code>：创建并运行一个容器</li>
+<li><code>docker pause</code>：暂停运行</li>
+<li><code>docker unpause</code>：继续运行</li>
+<li><code>docker stop</code>：停止运行</li>
+<li><code>docker start</code>：运行</li>
+<li><code>docker ps</code>：查看所有运行容器及状态</li>
+<li><code>docker logs</code>：查看容器运行日志</li>
+<li><code>docker exec</code>：进入容器执行命令</li>
+<li><code>docker rm</code>：删除指定容器</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>示例：</strong></p>
+<ul>
+<li>
+<p>运行一个nginx容器</p>
+<p><code>docker run --name mn -p 80:80 -d nginx</code></p>
+<ul>
+<li><code>--name</code>：指定容器名称</li>
+<li><code>-p</code>：指定端口映射</li>
+<li><code>-d</code>：后台运行</li>
+</ul>
+<p><code>docker ps</code></p>
+</li>
+<li>
+<p>查看指定容器运行日志</p>
+<p><code>docker logs mn</code></p>
+<p>跟踪查看运行日志：<code>docker logs -f mn</code></p>
+</li>
+<li>
+<p>进入容器执行命令</p>
+<p><code>docker exec -it mv bash</code></p>
+<p><code>exit</code>：退出容器</p>
+</li>
+<li>
+<p>停止运行容器</p>
+<p><code>docker stop mn</code></p>
+</li>
+<li>
+<p>查看所有容器包括未运行的</p>
+<p><code>docker ps -a</code></p>
+</li>
+<li>
+<p>运行容器</p>
+<p><code>docker start mn</code></p>
+</li>
+<li>
+<p>删除容器</p>
+<p><code>docker rm</code>：只能删除未运行的容器</p>
+<p><code>docker rm -f mn</code>：强制删除容器，无论是否运行</p>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>示例：运行一个持久化存储的redis容器，并通过redis-cli设置num=666</p>
+<ul>
+<li>
+<p>运行容器</p>
+<p><code>docker run --name my-redis -p 6379:6379 -d redis redis-server --appendonly yes</code></p>
+</li>
+<li>
+<p>进入容器</p>
+<p><code>docker exec -it my-redis bash</code></p>
+</li>
+<li>
+<p>启动redis-cli</p>
+<p><code>redis-cli</code></p>
+</li>
+<li>
+<p>设置num=666</p>
+<p><code>set num 666</code></p>
+</li>
+<li>
+<p>退出redis-cli，退出容器</p>
+<p><code>exit</code></p>
+<blockquote>
+<p><code>docker exec -it my-redis redis-cli</code>：直接进入容器中启动redis-cli</p>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<h4 id="23-数据卷操作">2.3 数据卷操作</h4>
+<blockquote>
+<p>数据卷的作用：将容器与数据分离，解耦合，方便操作容器内数据，保证数据安全</p>
+</blockquote>
+<figure data-type="image" tabindex="19"><img src="https://pic.zyblog.xyz/img/typora/image-20220705192332218.png" alt="image-20220705192332218" loading="lazy"></figure>
+<ul>
+<li>
+<p><strong>基本语法</strong>：<code>docker volume [COMMAND]</code></p>
+<ul>
+<li>COMMAND
+<ul>
+<li>create：创建一个volume</li>
+<li>inspect：显示一个或多个volume的信息</li>
+<li>ls：列出所有的volume</li>
+<li>prune：删除未使用的volume</li>
+<li>rm：删除一个或多个指定的volume</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>挂载数据卷</strong></p>
+<ul>
+<li>
+<p>创建并运行容器时指定数据卷的挂载目录，若数据卷不存在，则自动创建数据卷</p>
+<pre><code class="language-shell">docker run \
+--name mn \
+-p 80:80 \
+-v html:/usr/share/nginx/html \
+-d nginx
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>挂载目录</strong></p>
+<ul>
+<li>
+<pre><code class="language-shell">docker run \
+--name some-mysql \
+-e MYSQL_ROOT_PASSWORD=root \
+-p 3306:3306 \
+-v /tmp/mysql/data:/var/lib/mysql \
+-v /tmp/mysql/conf/hmy.cnf:/etc/mysql/conf.d/hmy.cnf \
+-d mysql:latest
+</code></pre>
+</li>
+</ul>
+<blockquote>
+<p>数据卷挂载与目录挂载</p>
+<ul>
+<li>数据卷挂载耦合度低，有docker来管理目录，但是目录较深，不好找</li>
+<li>目录挂载耦合度高，需要我们自己管理目录，不过目录容易寻找查看</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h3 id="3-镜像结构">3. 镜像结构</h3>
+<blockquote>
+<p>镜像就是将应用程序及其所需要的系统函数库、环境、配置、依赖打包而成的</p>
+<ul>
+<li>基础镜像（BaseImage）：应用依赖的系统函数库、环境变量、配置、文件系统等</li>
+<li>入口（Entrypoint）：镜像运行入口，一般是程序启动的脚本和参数</li>
+<li>层（Layer）：在BaseImage基础上添加安装包、依赖、配置等，每次操作形成新的一层</li>
+</ul>
+<p>镜像是分层结构，每一层称一个Layer</p>
+</blockquote>
+<h4 id="31-自定义镜像">3.1 自定义镜像</h4>
+<blockquote>
+<p>Dockerfile：一个文本文件，指令的合集，用指令来说明要执行什么操作来构建镜像，每一个指令都会形成一层Layer</p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FROM</td>
+<td>指定BaseImage</td>
+<td>FROM centos:6</td>
+</tr>
+<tr>
+<td>ENV</td>
+<td>设置环境变量，可在后面指令使用</td>
+<td>ENV key value</td>
+</tr>
+<tr>
+<td>COPY</td>
+<td>拷贝本地文件到镜像的指定目录</td>
+<td>COPY ./mysql-5.7.rpm /tmp</td>
+</tr>
+<tr>
+<td>RUN</td>
+<td>执行Linux的shell命令，一般是安装过程的命令</td>
+<td>RUN yum install gcc</td>
+</tr>
+<tr>
+<td>EXPOSE</td>
+<td>指定容器运行时监听的端口，是给镜像使用者看的</td>
+<td>EXPOSE 8080</td>
+</tr>
+<tr>
+<td>ENTRYPOINT</td>
+<td>镜像中应用的启动命令，容器运行时调用</td>
+<td>ENTRYPOINT java -jar xx.jar</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<pre><code class="language-shell"># 指定基础镜像
+FROM ubuntu:16.04
+# 配置环境变量，JDK的安装目录
+ENV JAVA_DIR=/usr/local
+
+# 拷贝jdk和java项目的包
+COPY ./jdk8.tar.gz $JAVA_DIR/
+COPY ./docker-demo.jar /tmp/app.jar
+
+# 安装JDK
+RUN cd $JAVA_DIR \
+ &amp;&amp; tar -xf ./jdk8.tar.gz \
+ &amp;&amp; mv ./jdk1.8.0_144 ./java8
+
+# 配置环境变量
+ENV JAVA_HOME=$JAVA_DIR/java8
+ENV PATH=$PATH:$JAVA_HOME/bin
+
+# 暴露端口
+EXPOSE 8090
+# 入口，java项目的启动命令
+ENTRYPOINT java -jar /tmp/app.jar
+</code></pre>
+<ul>
+<li>
+<p><code>mkdir -p /tmp/docker-demo</code></p>
+</li>
+<li>
+<p>将<code>docker-demo.jar</code> <code>jdk8.tar.gz</code> <code>Dockerfile</code>上传至<code>/tmp/docker-demo</code></p>
+</li>
+<li>
+<p><code>docker build -t javaweb:1.0 .</code></p>
+</li>
+<li>
+<p><code>docker images</code></p>
+</li>
+<li>
+<p><code>docker run --name web -p 8090:8090 -d javaweb:1.0</code></p>
+</li>
+<li>
+<p>访问<code>ip:8090/hello/count</code></p>
+</li>
+</ul>
+<blockquote>
+<p>我们发现在Dockerfile中构建jdk环境的操作是可复用的，我们应该把构建jdk环境的部分构建一个镜像，这样以后就可以直接使用了，而java:8-alpine帮我们做了这件事</p>
+</blockquote>
+<h4 id="32-dockercompose">3.2 DockerCompose</h4>
+<blockquote>
+<p>DockerCompose可以基于Compose文件帮我们快速部署分布式应用，而无需手动一个个创建和运行容器</p>
+<p>Compose文件是一个文本文件，通过指令定义集群中的每个容器如何运行</p>
+<pre><code class="language-yaml">version: &quot;3.9&quot;
+services:
+	mysql: #指定服务名称
+		image: mysql:8.0.21 # 指定镜像文件
+		environment: #设置环境变量
+			MYSQL_ROOT_PASSWORD: 123456
+		volumes: #数据卷挂载
+			- /tmp/mysql/data:/var/lib/mysql
+			- /tmp/mysql/conf/hym.cnf:/etc/mysql/conf.d/hym.cnf
+	web: #指定服务名称
+		build: . #从当前目录中构建镜像
+		ports:   #设置端口号
+			- &quot;8090:8090&quot;
+</code></pre>
+<blockquote>
+<p>书写格式参考规范：</p>
+<ul>
+<li>https://docs.docker.com/compose/compose-file/compose-file-v3/</li>
+<li>https://docs.docker.com/compose/compose-file/compose-file-v2/</li>
+</ul>
+</blockquote>
+</blockquote>
+<h5 id="321-安装dockercompose">3.2.1 安装DockerCompose</h5>
+<blockquote>
+<p>参考：https://docs.docker.com/compose/install/compose-plugin/#installing-compose-on-linux-systems</p>
+</blockquote>
+<pre><code class="language-shell"> curl -SL https://github.com/docker/compose/releases/download/v2.6.1/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
+</code></pre>
+<ul>
+<li>
+<p><code>docker-compose</code>所在目录<code>/usr/local/bin/docker-compose</code></p>
+</li>
+<li>
+<p>给<code>docker-compose</code>添加可执行权限<code>chmod +x docker-compose</code></p>
+</li>
+<li>
+<p>Base自动补全命令</p>
+<pre><code class="language-shell">curl \
+    -L https://raw.githubusercontent.com/docker/compose/v2.6.1/contrib/completion/bash/docker-compose \
+    -o /etc/bash_completion.d/docker-compose
+</code></pre>
+<blockquote>
+<p>如果无法访问该地址，则修改本机hosts文件</p>
+<p><code>echo &quot;185.199.108.133 raw.githubusercontent.com&quot; &gt;&gt; /etc/hosts</code></p>
+</blockquote>
+</li>
+</ul>
+<h5 id="322-部署微服务集群">3.2.2 部署微服务集群</h5>
+<pre><code class="language-shell">docker run \
+--name my-mysql8 \
+-e MYSQL_ROOT_PASSWORD=root \
+-p 3306:3306 \
+-d mysql:latest \
+--character-set-server=utf8mb4 \
+--collation-server=utf8mb4_unicode_ci
+
+</code></pre>
+<blockquote>
+<pre><code class="language-dockerfile">FROM java:8-alpine
+COPY ./app.jar /tmp/app.jar
+ENTRYPOINT java -jar /tmp/app.jar
+</code></pre>
+<pre><code class="language-yaml"># docker-comspose配置文件语法版本
+version: 3.8
+services:
+	nacos:
+		images: nacos/nacos-server
+		environment: 
+			MODE: standalone
+		ports:
+			- &quot;8848:8848&quot;
+	mysql:
+		images: mysql:8.0.31
+		environment: 
+			MYSQL_ROOT_PASSWORD: 996748
+		volumes:
+			- &quot;$PWD/mysql/data:/var/lib/mysql&quot;
+			- &quot;$PWD/mysql/conf:/etc/mysql/conf.d&quot;
+	user-service: 
+		build: ./user-service
+	order-service:
+		build: ./order-service
+	gateway:
+		build: ./gateway
+		ports: 
+			- &quot;10010:10010&quot;
+		
+</code></pre>
+<figure data-type="image" tabindex="20"><img src="https://pic.zyblog.xyz/img/typora/image-20230505123711539.png?origin=typora" alt="image-20230505123711539" loading="lazy"></figure>
+</blockquote>
+<h3 id="4-docker镜像仓库">4. Docker镜像仓库</h3>
+<h4 id="41-配置docker信任地址">4.1 配置Docker信任地址</h4>
+<blockquote>
+<p>我们的私服采用的是http协议，默认不被Docker信任</p>
+</blockquote>
+<pre><code class="language-shell"># 编辑Docker服务守护进程配置文件
+vi /etc/docker/daemon.json
+# 添加内容
+&quot;insecure-registries&quot;:[&quot;http://192.168.96.130:8080&quot;]
+# 重新加载Docker服务守护进程
+systemctl daemon-reload
+# 重启Docker
+systemctl restart docker  
+</code></pre>
+<h4 id="42-使用docker部署带有图形界面的dockerregistry">4.2 使用Docker部署带有图形界面的DockerRegistry</h4>
+<pre><code class="language-yaml">version: '3.0'
+services:
+	registry:
+		image: registry
+		volumes:
+			- ./registry-data:/var/lib/registry
+	ui:
+		image: joxit/docker-registry-ui:1.5-static
+		ports:
+			- 8080:80
+		environment:
+			- REGISTRY_TITLE=絷缘私有仓库
+			- REGISTRY_URL=http://registry:5000
+		depends_on:
+			- registry
+</code></pre>
+<pre><code class="language-shell">mkdir /tmp/docker-registry-ui
+cd /tmp/docker-registry-ui
+touch docker-compose.yml
+vim docker-compose.yml
+docker-compose up -d 
+</code></pre>
+<h4 id="43-在私有镜像仓库推送拉取镜像">4.3 在私有镜像仓库推送/拉取镜像</h4>
+<pre><code class="language-shell"># 将现有镜像打包成为私有镜像
+docker tag nginx:latest 192.168.96.130:8080/nginx:latest
+# 将私有镜像推送到私有仓库
+docker push 192.168.96.130:8080/nginx:latest
+# 将私有镜像拉取到当前环境
+docker pull 192.168.96.130:8080/nginx:latest
+</code></pre>
+<figure data-type="image" tabindex="21"><img src="https://pic.zyblog.xyz/img/typora/image-20220706180422059.png" alt="image-20220706180422059" loading="lazy"></figure>
+<blockquote>
+<p>第四天</p>
+</blockquote>
+<h2 id="九-消息队列rabbitmq">九、消息队列RabbitMQ</h2>
+<blockquote>
+<p>同步调用的问题</p>
+<ul>
+<li>微服务之间基于Feign的调用就属于同步方式，存在一些问题
+<ul>
+<li>耦合度高，每次加入新的需求，就需要修改原来的代码</li>
+<li>阻塞调用，调用者需要等待提供者响应，调用链过长时等待时间相当于业务执行时间总和</li>
+<li>资源浪费，调用者在等待过程中，不会释放请求占用的资源</li>
+<li>级联失败：当调用链中有一个服务出现问题，name就会导致依赖于此服务的所有微服务发生故障</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>异步调用的方案</p>
+<ul>
+<li>实现方式是事件驱动模式
+<ul>
+<li>优势
+<ul>
+<li>服务解耦</li>
+<li>性能提升，吞吐量提高</li>
+<li>故障隔离，服务之间没有强依赖，不担心级联失败</li>
+<li>流量削峰</li>
+</ul>
+</li>
+<li>缺点
+<ul>
+<li>依赖于Broker的可靠性、安全性、吞吐能力</li>
+<li>架构复杂了，业务之间没有明显的流程线，不好追踪管理</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h3 id="1-mqmessagequeue">1. MQ（MessageQueue）</h3>
+<blockquote>
+<p>消息队列，字面来看就是存放消息的队列，也就是事件驱动架构中的Broker</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>信息</th>
+<th>RabbitMQ</th>
+<th>ActiveMQ</th>
+<th>RocketMQ</th>
+<th>Kafka</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>公司/社区</td>
+<td>Rabbit</td>
+<td>Apache</td>
+<td>阿里</td>
+<td>Apache</td>
+</tr>
+<tr>
+<td>开发语言</td>
+<td>Erlang</td>
+<td>Java</td>
+<td>Java</td>
+<td>Scala&amp;Java</td>
+</tr>
+<tr>
+<td>协议支持</td>
+<td>AMQP,XMPP,SMTP,STOMP</td>
+<td>OpenWire,STOMP,REST,XMPP,AMQP</td>
+<td>自定义协议</td>
+<td>自定义协议</td>
+</tr>
+<tr>
+<td>可用性</td>
+<td>高</td>
+<td>一般</td>
+<td>高</td>
+<td>高</td>
+</tr>
+<tr>
+<td>单击吞吐量</td>
+<td>一般</td>
+<td>差</td>
+<td>高</td>
+<td>非常高</td>
+</tr>
+<tr>
+<td>消息延迟</td>
+<td>微秒级</td>
+<td>毫秒级</td>
+<td>毫秒级</td>
+<td>毫秒以内</td>
+</tr>
+<tr>
+<td>消息可靠性</td>
+<td>高</td>
+<td>一般</td>
+<td>高</td>
+<td>一般</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-rabbitmq快速入门">2. RabbitMQ快速入门</h3>
+<blockquote>
+<p>RabbitMQ是基于Erlang语言开发的开源消息通信中间件</p>
+<p>官网地址：https://rabbitmq.com/</p>
+</blockquote>
+<h4 id="21-安装rabbitmq">2.1 安装RabbitMQ</h4>
+<h5 id="211-下载镜像">2.1.1 下载镜像</h5>
+<pre><code class="language-shell">docker pull rabbitmq:3-management
+</code></pre>
+<h5 id="212-安装mq">2.1.2 安装MQ</h5>
+<pre><code class="language-shell">docker run \
+-e RABBITMQ_DEFAULT_USER=zhiyuan \
+-e RABBITMQ_DEFAULT_PASS=123456 \
+--name my-mq \
+--hostname mql \
+-p 15672:15672 \
+-p 5672:5672 \
+-d \
+rabbitmq:3-management
+</code></pre>
+<blockquote>
+<p>若浏览器无法访问<code>ip:15672</code>，则按照下方操作即可：</p>
+<pre><code class="language-shell">docker exec -it my-mq bash
+rabbitmq_plugins enable rabbitmq_management
+</code></pre>
+</blockquote>
+<h4 id="22-概念解析">2.2 概念解析</h4>
+<figure data-type="image" tabindex="22"><img src="https://pic.zyblog.xyz/img/typora/image-20220706190426729.png" alt="image-20220706190426729" loading="lazy"></figure>
+<ul>
+<li>channel：操作MQ的工具</li>
+<li>exchange：路由消息到队列中</li>
+<li>queue：缓存消息</li>
+<li>virtualhost：虚拟主机，是对queue、exchange等资源的逻辑分组</li>
+</ul>
+<h4 id="23-常见消息模型">2.3 常见消息模型</h4>
+<h5 id="231-基本消息队列basicqueue">2.3.1 基本消息队列（BasicQueue）</h5>
+<figure data-type="image" tabindex="23"><img src="https://pic.zyblog.xyz/img/typora/image-20230505173449633.png?origin=typora" alt="image-20230505173449633" loading="lazy"></figure>
+<h5 id="232-工作消息队列work-queue">2.3.2 工作消息队列（Work Queue）</h5>
+<ul>
+<li>
+<p>可以提高消息处理速度，避免队列消息堆积</p>
+<figure data-type="image" tabindex="24"><img src="https://pic.zyblog.xyz/img/typora/image-20230506114816183.png?origin=typora" alt="image-20230506114816183" loading="lazy"></figure>
+</li>
+</ul>
+<h5 id="233-发布订阅publish-subscribe">2.3.3 发布订阅（Publish Subscribe）</h5>
+<ul>
+<li>发布订阅模式允许将同一消息发送给多个消费者，实现方式就是加入交换机exchange</li>
+</ul>
+<figure data-type="image" tabindex="25"><img src="https://pic.zyblog.xyz/img/typora/image-20230506121857146.png?origin=typora" alt="image-20230506121857146" loading="lazy"></figure>
+<ul>
+<li>Fanout Exchange：广播</li>
+<li>Direct Exchange：路由</li>
+<li>Topic Exchange：主题</li>
+</ul>
+<h3 id="3-springamqp">3. SpringAMQP</h3>
+<figure data-type="image" tabindex="26"><img src="https://pic.zyblog.xyz/img/typora/image-20230505173640193.png?origin=typora" alt="image-20230505173640193" loading="lazy"></figure>
+<h4 id="31-入门案例消息的发送">3.1 入门案例：消息的发送</h4>
+<ul>
+<li>引入AMQP依赖</li>
+</ul>
+<pre><code class="language-xml">&lt;dependency&gt;
+	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-amqp&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+<ul>
+<li>在publisher服务中编写application.yml，添加mq连接信息：</li>
+</ul>
+<pre><code class="language-yaml">spring：
+	rabbitmq:
+		host: 192.168.174.130
+		port: 5672
+		virtual-host: /
+		username: zhiyuan
+		password: 123456
+</code></pre>
+<ul>
+<li>在publisher服务中新建一个测试类，编写测试方法：</li>
+</ul>
+<pre><code class="language-java">@RunWith(SpringRunner.class)
+@SpringBootTest
+public class SpringAMQPTest{
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
+    @Test
+    public void testSimpleQueue(){
+        String queueName = &quot;simple.queue&quot;;
+        String message = &quot;Hello,SpringAMQP&quot;;
+        rabbitTemplate.covertAndSend(queueName,message);
+    }
+}
+</code></pre>
+<h4 id="32-入门案例消息的接收">3.2 入门案例：消息的接收</h4>
+<ul>
+<li>在consumer服务中编写application.yml，添加mq连接信息：</li>
+</ul>
+<pre><code class="language-yaml">spring:
+	rabbitmq:
+		host: 192.168.174.130
+		port: 5672
+		virtual-host: /
+		username: zhiyuan
+		password: 123456
+</code></pre>
+<ul>
+<li>在consumer服务中新建一个类，编写消费逻辑：</li>
+</ul>
+<pre><code class="language-java">@Component
+public class SpringRabbitListener{
+    @RabbitListener(queues = {&quot;simple.queue&quot;})
+    public void listenSimpleQueueMessage(String msg) throws InterruptedException{
+        System.out.println(&quot;SpringConsumer接受到消息：【&quot; + msg + &quot;】&quot;);
+    }
+}
+</code></pre>
+<blockquote>
+<p>注意事项：消息一旦被消费就会从队列中移除，RabbitMQ没有消息回溯功能</p>
+</blockquote>
+<h4 id="33-工作队列案例">3.3 工作队列案例</h4>
+<ul>
+<li>
+<p>基本思路</p>
+<ul>
+<li>在publisher服务中定义测试方法，每秒产生50条消息发送到simple.queue</li>
+<li>在consumer服务中定义两个消息监听者，都监听simple.queue</li>
+<li>消费者1每秒钟处理50条消息，消费者2每秒钟处理10条消息</li>
+</ul>
+</li>
+<li>
+<pre><code class="language-java">@Test
+public void testSendMessageToWorkQueue() throws InterruptedException {
+    String queueName = &quot;simple.queue&quot;;
+    String message = &quot;Hello,SpringAMQP-MESSAGE_&quot;;
+    for (int i = 0; i &lt; 50; i++) {
+        rabbitTemplate.convertAndSend(queueName,message + i);
+        Thread.sleep(20);
+    }
+}
+</code></pre>
+</li>
+<li>
+<pre><code class="language-java">@RabbitListener(queues = {&quot;simple.queue&quot;})
+public void listenWorkQueueMessage1(String msg) throws InterruptedException {
+    System.out.println(&quot;SpringConsumer1接收到消息“【&quot; + msg + &quot;】&quot; + LocalTime.now());
+    Thread.sleep(20);
+}
+</code></pre>
+</li>
+<li>
+<pre><code class="language-java">@RabbitListener(queues = {&quot;simple.queue&quot;})
+public void listenWorkQueueMessage2(String msg) throws InterruptedException {
+    System.err.println(&quot;SpringConsumer2接收到消息“【&quot; + msg + &quot;】&quot; + LocalTime.now());
+    Thread.sleep(200);
+}
+</code></pre>
+<blockquote>
+<p>我们发现一个现象，消费者1很快处理完消息后就停止处理了，而把所有的消息都交由速度较慢的消费者2，这是由于预取消息导致的，我们可以通过修改application.yml文件来限制预取消息的上限</p>
+<pre><code class="language-yaml">spring:
+  rabbitmq:
+    host: 192.168.174.130
+    port: 5672
+    virtual-host: /
+    username: zhiyuan
+    password: 123456
+    listener:
+      simple:
+        prefetch: 1 # 每次只能获取一条消息，处理完成才能发获取下一条消息
+</code></pre>
+</blockquote>
+</li>
+</ul>
+<h4 id="34-发布订阅案例">3.4 发布订阅案例</h4>
+<h5 id="341-fanout-exchange将接受到的消息路由到每一个与其绑定的queue">3.4.1 Fanout Exchange：将接受到的消息路由到每一个与其绑定的queue</h5>
+<figure data-type="image" tabindex="27"><img src="https://pic.zyblog.xyz/img/typora/image-20230506122404242.png?origin=typora" alt="image-20230506122404242" loading="lazy"></figure>
+<ul>
+<li>
+<p>实现思路</p>
+<ul>
+<li>在consumer服务中利用代码声明队列，交换机，并将二者绑定</li>
+<li>在consumer服务中编写两个消费者方法，分别监听fanout.queue1和fanoput.queue2</li>
+<li>在publisher服务中编写测试方法，向zhiyuan.fanout发送消息</li>
+</ul>
+</li>
+<li>
+<pre><code class="language-java">@Configuration
+public class FanoutConfig {
+    @Bean
+    public FanoutExchange fanoutExchange(){
+        return new FanoutExchange(&quot;zhiyuan.fanout&quot;);
+    }
+
+    @Bean
+    public Queue fanoutQueue1(){
+        return new Queue(&quot;fanout.queue1&quot;);
+    }
+
+    @Bean
+    public Binding bindingQueue1(Queue fanoutQueue1,FanoutExchange fanoutExchange){
+        return BindingBuilder.bind(fanoutQueue1).to(fanoutExchange);
+    }
+
+    @Bean
+    public Queue fanoutQueue2(){
+        return new Queue(&quot;fanout.queue2&quot;);
+    }
+
+    @Bean
+    public Binding bindingQueue2(Queue fanoutQueue2,FanoutExchange fanoutExchange){
+        return BindingBuilder.bind(fanoutQueue2).to(fanoutExchange);
+    }
+
+}
+</code></pre>
+</li>
+<li>
+<pre><code class="language-java">@RabbitListener(queues = {&quot;fanout.queue1&quot;})
+public void listenFanoutQueue1(String msg) throws InterruptedException {
+    System.err.println(&quot;SpringConsumer1接收到FanoutQueue1消息“【&quot; + msg + &quot;】&quot; + LocalTime.now());
+}
+@RabbitListener(queues = {&quot;fanout.queue2&quot;})
+public void listenFanoutQueue2(String msg) throws InterruptedException {
+    System.err.println(&quot;SpringConsumer2接收到FanoutQueue2消息“【&quot; + msg + &quot;】&quot; + LocalTime.now());
+}
+</code></pre>
+</li>
+<li>
+<pre><code class="language-java">@Test
+public void testSendMessageToFanoutQueue() throws InterruptedException {
+    String exchangeName = &quot;zhiyuan.fanout&quot;;
+    String message = &quot;Hello,Fanout EveryOne!&quot;;
+    rabbitTemplate.convertAndSend(exchangeName,&quot;&quot;,message);
+}
+</code></pre>
+</li>
+</ul>
+<h5 id="342-direct-exchange将接受到的消息根据规则路由到指定的queue">3.4.2 Direct Exchange：将接受到的消息根据规则路由到指定的queue</h5>
+<figure data-type="image" tabindex="28"><img src="https://pic.zyblog.xyz/img/typora/image-20230506125801143.png?origin=typora" alt="image-20230506125801143" loading="lazy"></figure>
+<ul>
+<li>
+<p>实现思路</p>
+<ul>
+<li>每一个queue都与Exchange设置一个BindingKey</li>
+<li>发布者发送消息时，指定消息的RoutingKey</li>
+<li>Exchange将消息路由到BindingKey与消息RoutingKey一致的队列</li>
+</ul>
+<blockquote>
+<ol>
+<li>利用@RabbitListener声明Exchange、Queue、RoutingKey</li>
+<li>在consumer服务中编写两个消费者方法，分别监听direct.queue1和direct.queue2</li>
+<li>在publisher中编写测试方法，向zhiyuan.direct发送消息</li>
+</ol>
+</blockquote>
+</li>
+<li>
+<pre><code class="language-java">@RabbitListener(bindings = @QueueBinding(
+    value = @Queue(name = &quot;direct.queue1&quot;),
+    exchange = @Exchange(name = &quot;zhiyuan.direct&quot;,type = ExchangeTypes.DIRECT),
+    key = {&quot;red&quot;,&quot;blue&quot;}
+))
+public void listenDirectQueue1(String msg){
+    System.err.println(&quot;SpringConsumer接收到DirectQueue1消息“【&quot; + msg + &quot;】&quot; + LocalTime.now());
+}
+
+@RabbitListener(bindings = @QueueBinding(
+    value = @Queue(name = &quot;direct.queue2&quot;),
+    exchange = @Exchange(name = &quot;zhiyuan.direct&quot;,type = ExchangeTypes.DIRECT),
+    key = {&quot;red&quot;,&quot;yellow&quot;}
+))
+public void listenDirectQueue2(String msg){
+    System.err.println(&quot;SpringConsumer接收到DirectQueue2消息“【&quot; + msg + &quot;】&quot; + LocalTime.now());
+}
+</code></pre>
+</li>
+<li>
+<pre><code class="language-java">@Test
+public void testSendMessageToDirectQueue1() throws InterruptedException {
+    String exchangeName = &quot;zhiyuan.direct&quot;;
+    String message = &quot;Hello,Direct key is blue&quot;;
+    rabbitTemplate.convertAndSend(exchangeName,&quot;blue&quot;,message);
+}
+@Test
+public void testSendMessageToDirectQueue2() throws InterruptedException {
+    String exchangeName = &quot;zhiyuan.direct&quot;;
+    String message = &quot;Hello,Direct key is yellow&quot;;
+    rabbitTemplate.convertAndSend(exchangeName,&quot;yellow&quot;,message);
+}
+
+@Test
+public void testSendMessageToDirectQueue() throws InterruptedException {
+    String exchangeName = &quot;zhiyuan.direct&quot;;
+    String message = &quot;Hello,Direct key is red&quot;;
+    rabbitTemplate.convertAndSend(exchangeName,&quot;red&quot;,message);
+}
+</code></pre>
+</li>
+</ul>
+<h5 id="343-topicexchange与directexchange类似区别在于routingkey必须是多个单词列表并且以分割">3.4.3 TopicExchange：与DirectExchange类似，区别在于routingKey必须是多个单词列表，并且以<code>.</code>分割</h5>
+<ul>
+<li>Queue和Exchange指定BindingKey时可以使用通配符
+<ul>
+<li><code>#</code>：代指0个或多个单词</li>
+<li><code>*</code>：代指一个单词</li>
+</ul>
+</li>
+</ul>
+<figure data-type="image" tabindex="29"><img src="https://pic.zyblog.xyz/img/typora/image-20230506131941723.png?origin=typora" alt="image-20230506131941723" loading="lazy"></figure>
+<ul>
+<li>
+<p>实现思路</p>
+<ul>
+<li>利用@RabbitListener声明Exchange、Queue、RoutingKey</li>
+<li>在consumer服务中编写两个消费者方法，分别监听topic.queue1和topic.queue2</li>
+<li>在publisher中编写测试方法，向zhiyuan.topic发送消息</li>
+</ul>
+</li>
+<li>
+<pre><code class="language-java">@RabbitListener(bindings = @QueueBinding(
+    value = @Queue(name = &quot;topic.queue1&quot;),
+    exchange = @Exchange(name = &quot;zhiyuan.topic&quot;,type = ExchangeTypes.TOPIC),
+    key = &quot;china.#&quot;
+))
+public void listenTopicQueue1(String msg){
+    System.err.println(&quot;SpringConsumer接收到TopicQueue1消息“【&quot; + msg + &quot;】&quot; + LocalTime.now());
+}
+
+@RabbitListener(bindings = @QueueBinding(
+    value = @Queue(name = &quot;topic.queue2&quot;),
+    exchange = @Exchange(name = &quot;zhiyuan.topic&quot;,type = ExchangeTypes.TOPIC),
+    key = &quot;#.news&quot;
+))
+public void listenTopicQueue2(String msg){
+    System.err.println(&quot;SpringConsumer接收到TopicQueue2消息“【&quot; + msg + &quot;】&quot; + LocalTime.now());
+}
+</code></pre>
+</li>
+<li>
+<pre><code class="language-java">@Test
+public void testSendMessageToTopicQueue() throws InterruptedException {
+    String exchangeName = &quot;zhiyuan.topic&quot;;
+    String message = &quot;Hello,Topic key is china.news&quot;;
+    rabbitTemplate.convertAndSend(exchangeName,&quot;china.news&quot;,message);
+}
+</code></pre>
+</li>
+</ul>
+<h4 id="4springamqp消息转换器">4.SpringAMQP消息转换器</h4>
+<blockquote>
+<p>在SpringAMQP的发送方法中，接收消息的类型时Object，也就是说我们可以发送任意对象类型的消息，SpringAMQP最终会帮我们序列化为字节后发送，<code>content-type</code> 为 <code>application/x-java-serialized-object</code> ，默认直接以对象方式传输是很不安全的而且消息很长</p>
+</blockquote>
+<ul>
+<li>
+<p>SpringAMQP对消息对象的处理是由 <code>org.springframework.amqp.support.converter.MessageConverter</code>完成的</p>
+<ul>
+<li>
+<p>默认实现：<code>SimpleMessageConverter</code></p>
+<ul>
+<li>
+<p>基于JDK的 <code>ObjectOutputStream</code> 完成序列化</p>
+</li>
+<li>
+<p>如果要修改只需要定义一个MessageConverter类型的Bean即可</p>
+<ul>
+<li>
+<p>创建 object.queue 队列</p>
+<pre><code class="language-java">@Bean
+public Queue objectQueue(){
+    return new Queue(&quot;object.queue&quot;);
+}
+</code></pre>
+</li>
+<li>
+<p>引入依赖</p>
+<pre><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;
+    &lt;artifactId&gt;jackson-databind&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;com.fasterxml.jackson.dataformat&lt;/groupId&gt;
+    &lt;artifactId&gt;jackson-dataformat-xml&lt;/artifactId&gt;
+    &lt;version&gt;2.9.10&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+</li>
+<li>
+<p>在publisher、consumer服务声明MessageConverter</p>
+<pre><code class="language-java">@Bean
+public MessageConverter jsonMessageConverter(){
+    return new Jackson2JsonMessageConverter();
+}
+</code></pre>
+</li>
+<li>
+<p>测试发送HashMap类型消息</p>
+<pre><code class="language-java">@Test
+public void testSendObjectMessageToSimpleQueue(){
+    String queueName = &quot;object.queue&quot;;
+    HashMap&lt;String, String&gt; map = new HashMap&lt;&gt;();
+    map.put(&quot;name&quot;,&quot;zhiyuan&quot;);
+    map.put(&quot;gender&quot;,&quot;male&quot;);
+    rabbitTemplate.convertAndSend(queueName,map);
+}
+</code></pre>
+</li>
+<li>
+<p>测试接收HashMap类型消息</p>
+<pre><code class="language-java">@RabbitListener(queues = &quot;object.queue&quot;)
+public void listenObjectQueue(Map&lt;String,String&gt; msg){
+    System.out.println(&quot;收到消息：【&quot; + msg + &quot;】&quot;);
+}
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="十-分布式搜索elasticsearch">十、分布式搜索Elasticsearch</h2>
+<h3 id="1-初识elasticsearch">1. 初识elasticsearch</h3>
+<blockquote>
+<p>介绍：elasticsearch是一款非常强大的开源搜索引擎，可以帮助我们从海量数据中快速找到需要的内容</p>
+<ul>
+<li>elasticsearch结合kibana、Logstash、Beats，也就是说elastic stack（ELK）被广泛应用于日志数据分析、实时监控等领域</li>
+<li>elasticsearch是elastic stack的核心，负责存储、搜索、分析数据</li>
+</ul>
+<figure data-type="image" tabindex="30"><img src="https://pic.zyblog.xyz/img/typora/image-20230506142641009.png?origin=typora" alt="image-20230506142641009" loading="lazy"></figure>
+<ul>
+<li>elasticsearch的发展
+<ul>
+<li>Lucene是一个Java语言的搜索引擎类库，是Apache公司的顶级项目，由DougCutting于1999年研发
+<ul>
+<li>官网地址：https://lucene.apache.org</li>
+<li>优势：
+<ul>
+<li>易扩展</li>
+<li>高性能（基于倒排索引）</li>
+</ul>
+</li>
+<li>缺点：
+<ul>
+<li>只限于java语言开发</li>
+<li>学习曲线陡峭</li>
+<li>不支持水平扩展</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>相比于lucene，elasticsearch具有以下优势
+<ul>
+<li>支持分布式，可水平扩展</li>
+<li>提供Restful接口，可被任何语言调用</li>
+</ul>
+</li>
+<li>搜索引擎技术排名
+<ol>
+<li>Elasticsearch：开源的分布式搜索引擎</li>
+<li>Splunk：商业项目收费</li>
+<li>Solr： Apache的开源搜索引擎</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h4 id="11-正向索引和倒排索引">1.1. 正向索引和倒排索引</h4>
+<blockquote>
+<p>传统数据库采用正向索引</p>
+</blockquote>
+<ul>
+<li>elaticsearch采用倒排索引
+<ul>
+<li>文档（document）：每条数据就是一个文档</li>
+<li>词条（term）：文档按照语义分成的词语</li>
+</ul>
+</li>
+</ul>
+<figure data-type="image" tabindex="31"><img src="https://pic.zyblog.xyz/img/typora/image-20230506173552402.png?origin=typora" alt="image-20230506173552402" loading="lazy"></figure>
+<figure data-type="image" tabindex="32"><img src="https://pic.zyblog.xyz/img/typora/image-20230506173822385.png?origin=typora" alt="image-20230506173822385" loading="lazy"></figure>
+<h4 id="12-文档">1.2 文档</h4>
+<ul>
+<li>elasticsearch是面向文档存储的，可以是数据库中的一条商品数据，一个订单信息</li>
+<li>文档数据会被序列化为json格式存储在elasticsearch中</li>
+</ul>
+<h4 id="13-索引">1.3 索引</h4>
+<ul>
+<li>索引（index）：相同类型文档的集合</li>
+<li>映射（mapping）：索引中文档的字段约束信息，类似表的结构约束</li>
+</ul>
+<figure data-type="image" tabindex="33"><img src="https://pic.zyblog.xyz/img/typora/image-20230506175935509.png?origin=typora" alt="image-20230506175935509" loading="lazy"></figure>
+<h4 id="14-概念对比">1.4 概念对比</h4>
+<figure data-type="image" tabindex="34"><img src="https://pic.zyblog.xyz/img/typora/image-20230506183639661.png?origin=typora" alt="image-20230506183639661" loading="lazy"></figure>
+<ul>
+<li>MySQL擅长事务类型操作，可以确保数据的安全和一致性</li>
+<li>Elasticsearch擅长海量数据的搜索、分析、计算</li>
+</ul>
+<figure data-type="image" tabindex="35"><img src="https://pic.zyblog.xyz/img/typora/image-20230506184113064.png?origin=typora" alt="image-20230506184113064" loading="lazy"></figure>
+<h3 id="2-安装elasticsearch">2. 安装Elasticsearch</h3>
+<h4 id="21-创建网络">2.1 创建网络</h4>
+<p>因为我们还需要部署kibana容器，因此需要让es和kibana容器互联，这里先创建一个网络</p>
+<pre><code class="language-shell">docker network create es-net
+</code></pre>
+<h4 id="22-加载镜像">2.2 加载镜像</h4>
+<pre><code class="language-shell">docker pull elasticsearch:7.12.1
+</code></pre>
+<h4 id="23-运行">2.3 运行</h4>
+<pre><code class="language-shell">docker run -d \
+--name es \
+-e &quot;ES_JAVA_OPTS=-Xms512m -Xmx512m&quot; \
+-e &quot;discovery.type=single-node&quot; \
+-v es-data:/usr/share/elasticsearch/data \
+-v es-plugins:/usr/share/elasticsearch/plugins \
+--privileged \
+--network es-net \
+-p 9200:9200 \
+-p 9300:9300 \
+elasticsearch:7.12.1
+</code></pre>
+<blockquote>
+<p>命令解释：</p>
+<ul>
+<li><code>-e &quot;cluster.name=es-docker-cluster&quot;</code>：设置集群名称</li>
+<li><code>-e &quot;ES_JAVA_OPTS=-Xms512m -Xmx512m&quot;</code>：设置JAVA程序运行内存</li>
+<li><code>-e &quot;discovery.type=single-node&quot;</code>：设置es为单例模式</li>
+<li><code>--privileged</code>：授予数据卷访问权</li>
+<li><code>--network es-net</code>：加入名为es-net的网络</li>
+</ul>
+</blockquote>
+<h4 id="24-部署kibana">2.4 部署kibana</h4>
+<pre><code class="language-shell">docker pull kibana:7.12.1
+</code></pre>
+<pre><code class="language-shell">docker run -d \
+--name kibana \
+-e ELASTICSEARCH_HOSTS=http://es:9200 \
+--network=es-net \
+-p 5601:5601 \
+kibana:7.12.1
+</code></pre>
+<figure data-type="image" tabindex="36"><img src="https://pic.zyblog.xyz/img/typora/image-20230506190829754.png?origin=typora" alt="image-20230506190829754" loading="lazy"></figure>
+<h3 id="3-分词器">3. 分词器</h3>
+<blockquote>
+<p>es在创建倒排索引时需要对文档分词，在搜索时，需要对用户输入内容分词，但默认的分词规则对中文处理并不友好</p>
+<pre><code class="language-json">POST /_analyze
+{
+    &quot;analyzer&quot;:&quot;standard&quot;,
+    &quot;text&quot;:&quot;神探狄仁杰&quot;
+}
+</code></pre>
+<ul>
+<li>语法说明
+<ul>
+<li>POST：请求方式</li>
+<li>/_analyze：请求路径，省略了<code>http://IP:9200</code>，kibana会帮我们补充</li>
+<li>请求参数：JSON风格
+<ul>
+<li>analyzer：分词器类型，这里默认时standard分词器</li>
+<li>text：要分词的内容</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li>
+<p>elasticsearch 的分词器对中文支持不好，一般我们会采用IK分词器</p>
+<ul>
+<li>
+<p>测试默认分词器效果</p>
+<ul>
+<li>
+<pre><code class="language-json">POST /_analyze
+{ 
+  &quot;text&quot;:&quot;神探狄仁杰&quot;, 
+  &quot;analyzer&quot;:&quot;standard&quot;
+}
+</code></pre>
+</li>
+<li>
+<pre><code>{
+  &quot;tokens&quot; : [
+    {
+      &quot;token&quot; : &quot;神&quot;,
+      &quot;start_offset&quot; : 0,
+      &quot;end_offset&quot; : 1,
+      &quot;type&quot; : &quot;&lt;IDEOGRAPHIC&gt;&quot;,
+      &quot;position&quot; : 0
+    },
+    {
+      &quot;token&quot; : &quot;探&quot;,
+      &quot;start_offset&quot; : 1,
+      &quot;end_offset&quot; : 2,
+      &quot;type&quot; : &quot;&lt;IDEOGRAPHIC&gt;&quot;,
+      &quot;position&quot; : 1
+    },
+    {
+      &quot;token&quot; : &quot;狄&quot;,
+      &quot;start_offset&quot; : 2,
+      &quot;end_offset&quot; : 3,
+      &quot;type&quot; : &quot;&lt;IDEOGRAPHIC&gt;&quot;,
+      &quot;position&quot; : 2
+    },
+    {
+      &quot;token&quot; : &quot;仁&quot;,
+      &quot;start_offset&quot; : 3,
+      &quot;end_offset&quot; : 4,
+      &quot;type&quot; : &quot;&lt;IDEOGRAPHIC&gt;&quot;,
+      &quot;position&quot; : 3
+    },
+    {
+      &quot;token&quot; : &quot;杰&quot;,
+      &quot;start_offset&quot; : 4,
+      &quot;end_offset&quot; : 5,
+      &quot;type&quot; : &quot;&lt;IDEOGRAPHIC&gt;&quot;,
+      &quot;position&quot; : 4
+    }
+  ]
+}
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>IK分词器：https://github.com/medcl/elasticsearch-analysis-ik</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="31-安装分词器">3.1 安装分词器</h4>
+<pre><code class="language-shell"># 进入容器内部
+docker exec -it elasticsearch /bin/bash
+# 在线下载插件并安装
+./bin/elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v7.12.1/elasticsearch-analysis-ik-7.12.1.zip
+# 退出
+exit
+# 重启容器
+docker restart elasticsearch
+</code></pre>
+<blockquote>
+<p>在线安装可能会失败，解决办法离线安装</p>
+<pre><code class="language-shell">docker volume inspect es-plugins
+cd /var/lib/docker/volume/es-plugins/_data
+# 上传插件压缩包解压后目录
+# 重启容器
+docker restart es
+# 查看es日志
+docker logs -f es
+</code></pre>
+</blockquote>
+<h4 id="32-ik分词器">3.2 IK分词器</h4>
+<p>IK分词器包含两种模式</p>
+<ul>
+<li><code>ik_smart</code>：最少切分</li>
+<li><code>ik_max_word</code>：最细切分</li>
+</ul>
+<p>测试请求：</p>
+<pre><code class="language-json">POST /_analyze
+{
+    &quot;text&quot;:&quot;神探狄仁杰&quot;,
+    &quot;analyzer&quot;:&quot;ik_smart&quot;
+}
+</code></pre>
+<p>返回结果</p>
+<pre><code class="language-JSON">{
+  &quot;tokens&quot; : [
+    {
+      &quot;token&quot; : &quot;神&quot;,
+      &quot;start_offset&quot; : 0,
+      &quot;end_offset&quot; : 1,
+      &quot;type&quot; : &quot;CN_CHAR&quot;,
+      &quot;position&quot; : 0
+    },
+    {
+      &quot;token&quot; : &quot;探&quot;,
+      &quot;start_offset&quot; : 1,
+      &quot;end_offset&quot; : 2,
+      &quot;type&quot; : &quot;CN_CHAR&quot;,
+      &quot;position&quot; : 1
+    },
+    {
+      &quot;token&quot; : &quot;狄仁杰&quot;,
+      &quot;start_offset&quot; : 2,
+      &quot;end_offset&quot; : 5,
+      &quot;type&quot; : &quot;CN_WORD&quot;,
+      &quot;position&quot; : 2
+    }
+  ]
+}
+</code></pre>
+<h4 id="33-ik分词器的拓展和停用字典">3.3 IK分词器的拓展和停用字典</h4>
+<p>要拓展IK分词器的词库，只需要修改一个IK分词器目录中config目录下的<code>IKAnalyzer.cfg.xml</code>文件</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;!DOCTYPE properties SYSTEM &quot;http://java.sun.com/dtd/properties.dtd&quot;&gt;
+&lt;properties&gt;
+    &lt;comment&gt;IK Analyzer扩展配置&lt;/comment&gt;
+    &lt;!-- 用户可以在这里配置自己的扩展字典 --&gt;
+    &lt;entry key=&quot;ext_dict&quot;&gt;ext.dic&lt;/entry&gt;
+    &lt;!-- 用户可以在这里配置自己的扩展停止词典 --&gt;
+    &lt;entry key=&quot;ext_stopwords&quot;&gt;stopword.dic&lt;/entry&gt;
+&lt;/properties&gt;
+</code></pre>
+<p>在config目录下对应的字典文件中添加扩展词语，或创建自己的扩展字典加入扩展词语，词语以换行符分隔</p>
+<h3 id="4-索引库操作">4. 索引库操作</h3>
+<h4 id="41-mapping属性">4.1 mapping属性</h4>
+<ul>
+<li>mapping是对索引库中文档的约束
+<ul>
+<li>type：字段数据类型，常见的简单类型有：
+<ul>
+<li>字符串：text（可分词的文本）关键字：keyword（精确值）</li>
+<li>数值：long、integer、short、byte、double、float</li>
+<li>布尔：boolean</li>
+<li>日期：date</li>
+<li>对象：object</li>
+</ul>
+</li>
+<li>index：是否创建索引，默认为true</li>
+<li>analyzer：分词器</li>
+<li>properties：某字段的子字段</li>
+</ul>
+</li>
+</ul>
+<h4 id="42-创建索引库">4.2 创建索引库</h4>
+<blockquote>
+<p>ES中通过Restful请求操作索引库、文档。请求内容用DSL语句来表示</p>
+</blockquote>
+<pre><code class="language-json">PUT /索引库名称
+{
+    &quot;mappings&quot;:{
+        &quot;properties&quot;:{
+            &quot;字段名1&quot;:{
+                &quot;type&quot;:&quot;text&quot;,
+                &quot;analzyer&quot;:&quot;ik_smart&quot;
+            },
+            &quot;字段名2&quot;:{
+                &quot;type&quot;:&quot;keyword&quot;,
+                &quot;index&quot;:false
+            },
+            &quot;字段名3&quot;:{
+                &quot;properties&quot;:{
+                    &quot;子字段&quot;: {
+                       &quot;type&quot;:&quot;keyword&quot; 
+                    }  
+                }             
+            } 
+        } 
+    } 
+}
+</code></pre>
+<h4 id="43-查看-删除索引库">4.3 查看、删除索引库</h4>
+<ul>
+<li>查看索引库</li>
+</ul>
+<pre><code>GET /索引库名
+</code></pre>
+<ul>
+<li>删除索引库</li>
+</ul>
+<pre><code>DELETE /索引库名
+</code></pre>
+<h4 id="44-修改索引库">4.4 修改索引库</h4>
+<blockquote>
+<p>索引库和mapping一旦创建无法修改，但是可以加入新的字段</p>
+</blockquote>
+<pre><code class="language-json">PUT /索引库名/_mapping
+{
+    &quot;properties&quot;:{
+        &quot;新字段名&quot;:{
+            &quot;type&quot;:&quot;integer&quot;
+        }
+    }
+}
+</code></pre>
+<h3 id="5-文档操作">5. 文档操作</h3>
+<h4 id="51-新增文档">5.1 新增文档</h4>
+<pre><code class="language-json">POST /索引库名/_doc/文档ID
+{
+    &quot;字段1&quot;:&quot;值1&quot;,
+    &quot;字段2&quot;:&quot;值2&quot;,
+    &quot;字段3&quot;:{
+        &quot;子属性1&quot;:&quot;值3&quot;,
+        &quot;子属性2&quot;:&quot;值4&quot;
+    }
+}
+</code></pre>
+<h4 id="52-查询文档">5.2 查询文档</h4>
+<pre><code class="language-json">GET /索引库名/_doc/文档ID
+</code></pre>
+<h4 id="53-删除文档">5.3 删除文档</h4>
+<pre><code class="language-json">DELETE /索引库名/_doc/文档ID
+</code></pre>
+<h4 id="54-修改文档">5.4 修改文档</h4>
+<h5 id="541-全量修改">5.4.1 全量修改</h5>
+<ul>
+<li>会删除旧文档，添加新文档</li>
+</ul>
+<pre><code class="language-json">PUT /索引库名/_doc/文档ID
+{
+	&quot;字段1&quot;:&quot;值1&quot;,
+	&quot;字段2&quot;:&quot;值2&quot;
+}
+</code></pre>
+<h5 id="542-增量修改">5.4.2 增量修改</h5>
+<ul>
+<li>只修改指定字段值</li>
+</ul>
+<pre><code class="language-json">POST /索引库名/_update/文档ID
+{
+    &quot;doc&quot;:{
+        &quot;字段名&quot;:&quot;新值&quot;
+    }
+}
+</code></pre>
+<h3 id="6-restclient">6. RestClient</h3>
+<blockquote>
+<ol>
+<li>ES中支持两种地理坐标类型：</li>
+</ol>
+<ul>
+<li>geo_point：由纬度（latitude）和经度（longitude）确定的一个点</li>
+<li>geo_shape：由多个geo_point组成的复杂几何图形</li>
+</ul>
+</blockquote>
+<blockquote>
+<ol start="2">
+<li>ES中字段拷贝可以使用copy_to属性将当前字段拷贝到指定字段</li>
+</ol>
+<pre><code class="language-json">&quot;all&quot;:{
+    &quot;type&quot;:&quot;text&quot;,
+    &quot;analyzer&quot;:&quot;ik_max_word&quot;
+},
+&quot;brand&quot;:{
+    &quot;type&quot;:&quot;keyword&quot;,
+    &quot;copy_to&quot;:&quot;all&quot;
+}
+</code></pre>
+<pre><code class="language-json">PUT /hotel
+{
+  &quot;mappings&quot;:{
+    &quot;properties&quot;: {
+      &quot;id&quot;:{
+        &quot;type&quot;:&quot;keyword&quot;
+      },
+      &quot;name&quot;:{
+        &quot;type&quot;:&quot;text&quot;,
+        &quot;analyzer&quot;:&quot;ik_max_word&quot;,
+        &quot;copy_to&quot;: &quot;all&quot;
+      },
+      &quot;address&quot;:{
+        &quot;type&quot;:&quot;keyword&quot;,
+        &quot;index&quot;:false
+      },
+      &quot;price&quot;:{
+        &quot;type&quot;:&quot;integer&quot;
+      },
+      &quot;score&quot;:{
+        &quot;type&quot;:&quot;integer&quot;
+      },
+      &quot;brand&quot;:{
+        &quot;type&quot;:&quot;keyword&quot;
+      },
+      &quot;city&quot;:{
+        &quot;type&quot;: &quot;keyword&quot;
+      },
+      &quot;starName&quot;:{
+        &quot;type&quot;:&quot;keyword&quot;
+      },
+      &quot;business&quot;:{
+        &quot;type&quot;:&quot;keyword&quot;,
+        &quot;copy_to&quot;: &quot;all&quot;  
+      },
+      &quot;location&quot;:{
+        &quot;type&quot;:&quot;geo_point&quot;
+      },
+      &quot;pic&quot;:{
+        &quot;type&quot;:&quot;keyword&quot;,
+        &quot;index&quot;:false
+      },
+      &quot;all&quot;:{
+        &quot;type&quot;:&quot;text&quot;,
+        &quot;analyzer&quot;: &quot;ik_max-word&quot;
+      }
+    }
+  }
+}
+</code></pre>
+</blockquote>
+<ul>
+<li>
+<p>参不参与分词</p>
+<ul>
+<li><code>&quot;type&quot;:&quot;keyword&quot;</code>：不参与分词</li>
+<li><code>&quot;type&quot;:&quot;text&quot;</code>：参与分词
+<ul>
+<li><code>&quot;analyzer&quot;</code>：指定分词器</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>参不参与搜索：</p>
+<ul>
+<li><code>&quot;index&quot;:true</code>：参与搜索</li>
+<li><code>&quot;index&quot;:false</code>：不参与搜索</li>
+</ul>
+</li>
+<li>
+<p>多个字段均参与搜索：</p>
+<ul>
+<li>
+<p>添加一个新的字段，并将要参与搜索的字段copy_to新的字段</p>
+<pre><code class="language-JSON">&quot;新字段&quot;:{
+    &quot;type&quot;:&quot;text&quot;,
+    &quot;analyzer&quot;:&quot;ik_max_word&quot;
+},
+&quot;city&quot;:{
+    &quot;type&quot;:&quot;keyword&quot;,
+    &quot;copy_to&quot;:&quot;新字段&quot;
+}
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="61-初始化-javarestclient">6.1 初始化 JavaRestClient</h4>
+<ul>
+<li>
+<p>引入依赖</p>
+<pre><code class="language-xml">&lt;properties&gt;
+	&lt;elasticsearch.version&gt;7.12.1&lt;/elasticsearch.version&gt;
+&lt;/properties&gt;
+</code></pre>
+<pre><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.elasticsearch.client&lt;/groupId&gt;
+    &lt;artifactId&gt;elasticsearch-rest-high-level-client&lt;/artifactId&gt;
+    &lt;version&gt;${elasticsearch.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+</li>
+<li>
+<p>书写测试类</p>
+<pre><code class="language-java">public class HotelIndexTest {
+    private RestHighLevelClient client;
+
+    @BeforeEach
+    void setUp(){
+        this.client = new RestHighLevelClient(RestClient.builder(
+                HttpHost.create(&quot;http://192.168.174.130:9200&quot;)
+        ));
+    }
+
+    @AfterEach
+    void tearDown() throws IOException{
+        this.client.close();
+    }
+
+    @Test
+    public void testInit(){
+        System.out.println(client);
+    }
+}
+</code></pre>
+</li>
+</ul>
+<h4 id="62-restclient实现索引库的crud">6.2 RestClient实现索引库的CRUD</h4>
+<h5 id="621-创建索引库">6.2.1 创建索引库</h5>
+<ul>
+<li>将DSL语句创建为常量使用，内容如下，需要去掉请求方式和请求地址，变成正常的JSON格式</li>
+</ul>
+<pre><code class="language-json">{
+  &quot;mappings&quot;:{
+    &quot;properties&quot;: {
+      &quot;id&quot;:{
+        &quot;type&quot;:&quot;keyword&quot;
+      },
+      &quot;name&quot;:{
+        &quot;type&quot;:&quot;text&quot;,
+        &quot;analyzer&quot;:&quot;ik_max_word&quot;,
+        &quot;copy_to&quot;: &quot;all&quot;
+      },
+      &quot;address&quot;:{
+        &quot;type&quot;:&quot;keyword&quot;,
+        &quot;index&quot;:false
+      },
+      &quot;price&quot;:{
+        &quot;type&quot;:&quot;integer&quot;
+      },
+      &quot;score&quot;:{
+        &quot;type&quot;:&quot;integer&quot;
+      },
+      &quot;brand&quot;:{
+        &quot;type&quot;:&quot;keyword&quot;
+      },
+      &quot;city&quot;:{
+        &quot;type&quot;: &quot;keyword&quot;
+      },
+      &quot;starName&quot;:{
+        &quot;type&quot;:&quot;keyword&quot;
+      },
+      &quot;business&quot;:{
+        &quot;type&quot;:&quot;keyword&quot;,
+        &quot;copy_to&quot;: &quot;all&quot;
+      },
+      &quot;location&quot;:{
+        &quot;type&quot;:&quot;geo_point&quot;
+      },
+      &quot;pic&quot;:{
+        &quot;type&quot;:&quot;keyword&quot;,
+        &quot;index&quot;:false
+      },
+      &quot;all&quot;:{
+        &quot;type&quot;:&quot;text&quot;,
+        &quot;analyzer&quot;: &quot;ik_max_word&quot;
+      }
+    }
+  }
+}
+</code></pre>
+<pre><code class="language-java">@Test
+public void createHotelIndex() throws IOException {
+    //创建提交创建索引库请求的对象
+    CreateIndexRequest hotelRequest = new CreateIndexRequest(&quot;hotel&quot;);
+    //为请求对象设置请求DSL语句及请求格式
+    hotelRequest.source(HotelConstants.HOTEL_MAPPING_TEMPLATE, XContentType.JSON);
+    //创建索引库
+    client.indices().create(hotelRequest, RequestOptions.DEFAULT);
+}
+</code></pre>
+<ul>
+<li><code>indices()</code>：此方法返回的对象中包含所有有关索引库的操作方法</li>
+</ul>
+<h5 id="622-删除索引库">6.2.2 删除索引库</h5>
+<pre><code class="language-java">@Test
+public void deleteHotelIndex() throws IOException {
+     //创建提交删除索引库请求的对象
+    DeleteIndexRequest hotelRequest = new DeleteIndexRequest(&quot;hotel&quot;);
+    client.indices().delete(hotelRequest,RequestOptions.DEFAULT);
+}
+</code></pre>
+<h5 id="623-判断索引库是否存在">6.2.3 判断索引库是否存在</h5>
+<pre><code class="language-java">@Test
+public void existsHotelIndex() throws IOException {
+     //创建提交查询索引库请求的对象
+    GetIndexRequest hotelRequest = new GetIndexRequest(&quot;hotel&quot;);
+    boolean exists = client.indices().exists(hotelRequest, RequestOptions.DEFAULT);
+    System.out.println(exists?&quot;索引库已存在&quot;:&quot;索引库不存在&quot;);
+}
+</code></pre>
+<h5 id="624-查询索引库">6.2.4 查询索引库</h5>
+<pre><code class="language-java">@Test
+public void getHotelIndex() throws IOException{
+    //创建提交查询索引库请求的对象
+    GetIndexRequest hotelRequest = new GetIndexRequest(&quot;hotel&quot;);
+    GetIndexResponse hotelResponse = client.indices().get(hotelRequest, RequestOptions.DEFAULT);
+    Map&lt;String, MappingMetadata&gt; mappings = hotelResponse.getMappings();
+    ObjectMapper objectMapper = new ObjectMapper();
+    String mappingsJSON = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(mappings);
+    System.out.println(mappingsJSON);
+}
+</code></pre>
+<h4 id="63-restclient实现文档的crud">6.3 RestClient实现文档的CRUD</h4>
+<h5 id="631-创建文档">6.3.1 创建文档</h5>
+<pre><code class="language-java">@Test
+public void createDoc() throws IOException{
+    Hotel hotel = hotelService.getById(39106L);
+    IndexRequest indexRequest = new IndexRequest(&quot;hotel&quot;).id(hotel.getId().toString());
+    HotelDoc hotelDoc = new HotelDoc(hotel);
+    indexRequest.source(JSON.toJSONString(hotelDoc), XContentType.JSON);
+    client.index(indexRequest, RequestOptions.DEFAULT);
+}
+</code></pre>
+<h5 id="632-查询文档">6.3.2 查询文档</h5>
+<pre><code class="language-java">@Test
+public void getDoc() throws IOException{
+    GetRequest getRequest = new GetRequest(&quot;hotel&quot;).id(&quot;39106&quot;);
+    GetResponse response = client.get(getRequest, RequestOptions.DEFAULT);
+    System.out.println(JSON.toJSONString(response.getSource(),SerializerFeature.PrettyFormat));
+}
+</code></pre>
+<h5 id="633-删除文档">6.3.3 删除文档</h5>
+<pre><code class="language-java">@Test
+public void deleteDoc() throws IOException{
+    DeleteRequest deleteRequest = new DeleteRequest(&quot;hotel&quot;).id(&quot;39106&quot;);
+    client.delete(deleteRequest,RequestOptions.DEFAULT);
+}
+</code></pre>
+<h5 id="634-修改文档">6.3.4 修改文档</h5>
+<ul>
+<li>全量更新与创建文档操作并无差别</li>
+<li>增量更新</li>
+</ul>
+<pre><code class="language-java">@Test
+public void modifyDoc() throws IOException{
+    UpdateRequest updateRequest = new UpdateRequest(&quot;hotel&quot;,&quot;39106&quot;);
+    updateRequest.doc(
+        &quot;price&quot;,&quot;350&quot;,
+        &quot;starName&quot;,&quot;五钻&quot;
+    ).upsert(
+        &quot;area&quot;,&quot;120&quot;
+    );
+    client.update(updateRequest,RequestOptions.DEFAULT);
+}
+</code></pre>
+<h5 id="635-批量新增文档">6.3.5 批量新增文档</h5>
+<pre><code class="language-java">@Test
+public void testBulk() throws IOException{
+    BulkRequest bulkRequest = new BulkRequest();
+    List&lt;Hotel&gt; hotelList = hotelService.list();
+    for (Hotel hotel : hotelList) {
+        HotelDoc hotelDoc = new HotelDoc(hotel);
+        bulkRequest.add(new IndexRequest(&quot;hotel&quot;)
+                        .id(hotelDoc.getId().toString())
+                        .source(JSON.toJSONString(hotelDoc),XContentType.JSON));
+
+    }
+    client.bulk(bulkRequest,RequestOptions.DEFAULT);
+}
+</code></pre>
+<pre><code class="language-json">GET /hotel/_search
+</code></pre>
+<h3 id="7-dsl语法">7. DSL语法</h3>
+<h4 id="71-查询所有">7.1 查询所有</h4>
+<pre><code>match_all
+</code></pre>
+<ul>
+<li>示例</li>
+</ul>
+<pre><code class="language-json">GET /indexName/_search
+{
+    &quot;query&quot;:{
+        &quot;[queryType]&quot;:{
+            &quot;[queryCondition|field]&quot;:&quot;[conditionValue|value]&quot;
+        }
+    }
+}
+</code></pre>
+<ul>
+<li>实例</li>
+</ul>
+<pre><code class="language-json">//查询所有
+GET /hotel/_search
+{
+    &quot;query&quot;:{
+        &quot;match_all&quot;:{}
+    }
+}
+</code></pre>
+<h4 id="72-全文检索">7.2 全文检索</h4>
+<pre><code class="language-json">match_query
+multi_match_query
+</code></pre>
+<ul>
+<li>示例</li>
+</ul>
+<pre><code class="language-json">GET /indexName/_search
+{
+    &quot;query&quot;:{
+        &quot;match&quot;:{
+            &quot;[fieldName]&quot;:&quot;[textValue]&quot;
+        }
+    }
+}
+
+GET /indexName/_search
+{
+  &quot;query&quot;: {
+    &quot;multi_match&quot;: {
+      &quot;query&quot;: &quot;[textValue]&quot;,
+      &quot;fields&quot;: [&quot;field1&quot;,&quot;field2&quot;,&quot;field3&quot;...]
+    }
+  }
+}
+</code></pre>
+<ul>
+<li>实例</li>
+</ul>
+<pre><code class="language-json">GET /hotel/_search
+{
+  &quot;query&quot;: {
+    &quot;match&quot;: {
+      &quot;all&quot;: &quot;外滩&quot;
+    }
+  }
+}
+
+GET /hotel/_search
+{
+  &quot;query&quot;: {
+    &quot;multi_match&quot;: {
+      &quot;query&quot;: &quot;如家&quot;,
+      &quot;fields&quot;: [&quot;brand&quot;,&quot;name&quot;,&quot;business&quot;]
+    }
+  }
+}
+</code></pre>
+<h4 id="73-精确查询">7.3 精确查询</h4>
+<pre><code class="language-json">ids
+range:根据值的范围查询 gte：大于等于 lte：小于等于 gt：大于 lt：小于
+term:根据词条精确值查询
+</code></pre>
+<ul>
+<li>示例</li>
+</ul>
+<pre><code class="language-json">GET /indexName/_search
+{
+    &quot;query&quot;:{
+        &quot;term&quot;:{
+            &quot;[fieldName]&quot;:{
+                &quot;value&quot;:&quot;[value]&quot;
+            }
+        }
+    }
+}
+
+GET /indexName/_search
+{
+	&quot;query&quot;:{
+        &quot;range&quot;:{
+            &quot;[fieldName]&quot;:{
+                &quot;gte&quot;:[numValue],
+                &quot;lte&quot;:[numValue]
+            }
+        }
+    }    
+}
+</code></pre>
+<ul>
+<li>实例</li>
+</ul>
+<pre><code class="language-json">GET /hotel/_search
+{
+  &quot;query&quot;:{
+    &quot;term&quot;: {
+      &quot;city&quot;: {
+        &quot;value&quot;: &quot;上海&quot;
+      }
+    }
+  }
+}
+
+GET /hotel/_search
+{
+  &quot;query&quot;: {
+    &quot;range&quot;: {
+      &quot;price&quot;: {
+        &quot;gte&quot;: 100,
+        &quot;lte&quot;: 300
+      }
+    }
+  }
+}
+</code></pre>
+<h4 id="74-地理查询">7.4 地理查询</h4>
+<pre><code class="language-json">geo_distance
+geo_bounding_box
+</code></pre>
+<ul>
+<li>示例</li>
+</ul>
+<pre><code class="language-json">GET /indexName/_search
+{
+    &quot;query&quot;:{
+        &quot;geo_distance&quot;:{
+            &quot;distance&quot;:&quot;15km&quot;,
+            &quot;[fieldName]&quot;:&quot;31.21,121.5&quot;
+        }
+    }
+}
+</code></pre>
+<ul>
+<li>实例</li>
+</ul>
+<pre><code class="language-json">GET /hotel/_search
+{
+  &quot;query&quot;: {
+    &quot;geo_distance&quot;:{
+      &quot;distance&quot;:&quot;15km&quot;,
+      &quot;location&quot;:&quot;31.21,121.5&quot;
+    }
+  }
+}
+</code></pre>
+<h4 id="75-复合查询">7.5 复合查询</h4>
+<pre><code class="language-json">bool
+function_score:算分函数查询，可以控制文档相关性算分，控制文档排名
+</code></pre>
+<h5 id="751-相关性算分查询">7.5.1 相关性算分查询</h5>
+<figure data-type="image" tabindex="37"><img src="https://pic.zyblog.xyz/img/typora/image-20230510113953995.png?origin=typora" alt="image-20230510113953995" loading="lazy"></figure>
+<ul>
+<li>
+<p><code>TF-IDF</code>：在elasticsearch5.0之前，会随着词频增加而越来越大</p>
+</li>
+<li>
+<p><code>BM25</code>：在elasticsearch5.0之后，会随着词频增加而增大，蛋增长曲线趋于水平</p>
+</li>
+<li>
+<p>示例</p>
+</li>
+</ul>
+<pre><code class="language-json">GET /indexName/_search
+{
+    &quot;query&quot;:{
+        &quot;function_score&quot;:{
+            &quot;query&quot;:{
+                &quot;match&quot;:{
+                    &quot;all&quot;:&quot;外滩&quot;
+                }
+            },
+            &quot;functions&quot;:[
+                {
+                    &quot;filter&quot;:{
+                        &quot;term&quot;:{
+                            &quot;id&quot;:&quot;1&quot;
+                        }
+                    },
+                    &quot;weight&quot;:10
+                }
+            ],
+            &quot;boost_mode&quot;:&quot;multiply&quot;
+        }
+    }
+}
+</code></pre>
+<figure data-type="image" tabindex="38"><img src="https://pic.zyblog.xyz/img/typora/image-20230510114817294.png?origin=typora" alt="image-20230510114817294" loading="lazy"></figure>
+<ul>
+<li>实例</li>
+</ul>
+<pre><code class="language-json">//让如家品牌酒店排名更靠前一些
+GET /hotel/_search
+{
+    &quot;query&quot;:{
+        &quot;function_score&quot;:{
+            &quot;query&quot;:{
+                &quot;match&quot;:{
+                    &quot;all&quot;:&quot;外滩&quot;
+                }
+            },
+            &quot;functions&quot;:[
+                {
+                    &quot;filter&quot;:{
+                        &quot;term&quot;:{
+                            &quot;brand&quot;:&quot;如家&quot;
+                        }
+                    },
+                    &quot;weight&quot;:2
+                }
+            ],
+            &quot;boost_mode&quot;:&quot;sum&quot;        
+        }
+    }
+}
+</code></pre>
+<h5 id="752-布尔查询">7.5.2 布尔查询</h5>
+<ul>
+<li>布尔查询是一个或多个查询字句的组合，子查询的组合方式有如下：
+<ul>
+<li>must：必须匹配每个子查询，参与算分，类似 <code>与</code></li>
+<li>should：选择性匹配子查询，参与算分，类似 <code>或</code>，</li>
+<li>must_not：必须不匹配，不参与算分，类似 <code>非</code></li>
+<li>filter：必须匹配，不参与算分</li>
+</ul>
+</li>
+<li>实例</li>
+</ul>
+<pre><code class="language-json">GET /hotel/_search
+{
+    &quot;query&quot;:{
+        &quot;bool&quot;:{
+            &quot;must&quot;:[
+                {&quot;term&quot;:{&quot;city&quot;:&quot;上海&quot;}}
+            ],
+            &quot;should&quot;:[
+                {&quot;term&quot;:{&quot;brand&quot;:&quot;皇冠假日&quot;}},
+                {&quot;term&quot;:{&quot;brand&quot;:&quot;华美达&quot;}}
+            ],
+            &quot;must_not&quot;:[
+            	{&quot;range&quot;:{&quot;price&quot;:{&quot;lte&quot;:500}}}
+            ],
+            &quot;filter&quot;:[
+                {&quot;range&quot;:{&quot;score&quot;:{&quot;gte&quot;:45}}}
+            ]
+        }
+    }
+}
+</code></pre>
+<pre><code class="language-json">GET /hotel/_search
+{
+    &quot;query&quot;:{
+        &quot;bool&quot;:{
+            &quot;must&quot;:[
+                {&quot;match&quot;:{&quot;name&quot;:&quot;如家&quot;}}
+            ],
+            &quot;must_not&quot;:[
+                {&quot;range&quot;:{&quot;price&quot;:{&quot;gt&quot;:400}}}
+            ],
+            &quot;filter&quot;:[
+                {&quot;geo_distance&quot;:{&quot;distance&quot;:&quot;10km&quot;,&quot;location&quot;:{&quot;lat&quot;:&quot;31.21&quot;,&quot;lon&quot;:&quot;121.5&quot;}}
+            ]
+        }
+    }
+}
+</code></pre>
+<h3 id="8-排序">8. 排序</h3>
+<blockquote>
+<p>elasticsearch支持对搜索结果排序，默认是根据相关度算分(_score)来排序，可排序的字段类型有：</p>
+<ul>
+<li>keyword</li>
+<li>数值</li>
+<li>地理坐标</li>
+<li>日期类型</li>
+</ul>
+</blockquote>
+<pre><code class="language-json">GET /indexName/_search
+{
+    &quot;query&quot;:{
+        &quot;match_all&quot;:{}
+    },
+    &quot;sort&quot;:[
+        {
+            &quot;[fieldName]&quot;:&quot;[desc|asc]&quot;
+        }
+    ]
+}
+</code></pre>
+<pre><code class="language-json">GET /indexName/_search
+{
+    &quot;query&quot;:{
+        &quot;match_all&quot;:{}
+    },
+    &quot;sort&quot;:[
+        {
+            &quot;_geo_distance&quot;:{
+                &quot;location&quot;:&quot;lat,lau&quot;,
+                &quot;order&quot;:&quot;[desc|asc]&quot;,
+                &quot;unit&quot;:&quot;km&quot;
+            }
+        }
+    ]
+}
+</code></pre>
+<h3 id="9-分页">9. 分页</h3>
+<blockquote>
+<p>elasticsearch默认情况下只返回top10的数据，而如果要查询更多的数据就需要修改分页参数</p>
+<ul>
+<li>from：分页开始的位置，默认为0</li>
+<li>size：每页文档条数</li>
+</ul>
+</blockquote>
+<pre><code class="language-json">GET /indexName/_search
+{
+    &quot;query&quot;:{
+        &quot;match_all&quot;:{}
+    },
+    &quot;from&quot;:100,
+    &quot;size&quot;:20,
+    &quot;sort&quot;:[
+        {&quot;price&quot;:&quot;asc&quot;}
+    ]
+}
+</code></pre>
+<h4 id="深度分页问题">深度分页问题</h4>
+<figure data-type="image" tabindex="39"><img src="https://pic.zyblog.xyz/img/typora/image-20230510134615469.png?origin=typora" alt="image-20230510134615469" loading="lazy"></figure>
+<blockquote>
+<p>ES是分布式的，所以会面临深度分页问题</p>
+<ol>
+<li>首先在每个数据分片上都排序并查询前1000条文档</li>
+<li>然后将所有节点的结果聚合，在内存中重新排序选出前1000条文档</li>
+</ol>
+<p>如果搜索页数过深，或者结果集（from+size）越大，对内存和CPU的消耗也越高，所以ES设定结果集查询上限是10000</p>
+</blockquote>
+<h5 id="解决方案">解决方案</h5>
+<ul>
+<li>search_after：分页时需要排序，原理是从上一次的排序值开始，查询下一页数据【官方推荐】</li>
+<li>scroll：原理是将排序数据形成快照，保存在内存【官方不推荐】</li>
+</ul>
+<h3 id="10-高亮">10. 高亮</h3>
+<blockquote>
+<p>高亮就是在搜索结果中吧搜索关键字突出显示</p>
+<p>高亮显示的原理</p>
+<ul>
+<li>后端将搜索结果中的关键字用指定标签标记出来</li>
+<li>前端对指定标签添加高亮样式</li>
+</ul>
+<p>默认情况下，ES搜索字段必须与高亮字段一致，才会正常返回高亮字段内容，如果要改变默认情况，应该将<code>require_field_match</code>改为<code>false</code></p>
+</blockquote>
+<pre><code class="language-json">GET /hotel/_search
+{
+    &quot;query&quot;:{
+        &quot;match&quot;:{
+            &quot;[fieldName]&quot;:&quot;[textValue]&quot;
+        }
+    },
+    &quot;highlight&quot;:{
+        &quot;fields&quot;:{
+            &quot;[fieldName]&quot;:{
+            	&quot;pre_tags&quot;:&quot;&lt;em&gt;&quot;,
+                &quot;post_tags&quot;:&quot;&lt;/em&gt;&quot;,
+                &quot;require_field_match&quot;:false
+        	}
+        }
+    }
+}
+</code></pre>
+<h3 id="11-restclient查询文档">11. RestClient查询文档</h3>
+<h4 id="111-查询所有">11.1 查询所有</h4>
+<ul>
+<li>
+<p>代码</p>
+<pre><code class="language-java">@Test
+void testMatchAll() throws IOException {
+    SearchRequest hotelRequest = new SearchRequest(&quot;hotel&quot;);
+    hotelRequest.source().query(QueryBuilders.matchAllQuery());
+    SearchResponse searchResponse = client.search(hotelRequest, RequestOptions.DEFAULT);
+    SearchHits searchHits = searchResponse.getHits();
+    long total = searchHits.getTotalHits().value;
+    System.out.println(&quot;共检索到&quot; + total + &quot;条数据&quot;);
+    SearchHit[] hits = searchHits.getHits();
+    for (SearchHit hit : hits) {
+        System.out.println(JSON.toJSONString(hit.getSourceAsMap(), SerializerFeature.PrettyFormat));
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>DSL</p>
+<pre><code class="language-json">GET /hotel/_search
+{
+    &quot;query&quot;:{
+        &quot;match_all&quot;:{}
+    }
+}
+</code></pre>
+</li>
+<li>
+<p><code>RestAPI</code>中构建DSL都是通过<code>HighLevelRestClient</code>中的<code>source()</code>方法实现的</p>
+</li>
+</ul>
+<h4 id="112-全文检索">11.2 全文检索</h4>
+<ul>
+<li>
+<p>代码</p>
+<pre><code class="language-java">@Test
+void testMatch() throws IOException {
+    SearchRequest hotelRequest = new SearchRequest(&quot;hotel&quot;);
+    hotelRequest.source().query(QueryBuilders.matchQuery(&quot;all&quot;,&quot;如家&quot;));
+    SearchResponse searchResponse = client.search(hotelRequest, RequestOptions.DEFAULT);
+    SearchHits searchHits = searchResponse.getHits();
+    long total = searchHits.getTotalHits().value;
+    System.out.println(&quot;共检索到&quot; + total + &quot;条数据&quot;);
+    SearchHit[] hits = searchHits.getHits();
+    for (SearchHit hit : hits) {
+        System.out.println(JSON.toJSONString(hit.getSourceAsMap(), SerializerFeature.PrettyFormat));
+    }
+}
+
+@Test
+void testMultiMatch() throws IOException{
+    SearchRequest hotelRequest = new SearchRequest(&quot;hotel&quot;);
+    hotelRequest.source().query(QueryBuilders.multiMatchQuery(&quot;如家&quot;,&quot;business&quot;,&quot;name&quot;));
+    SearchResponse searchResponse = client.search(hotelRequest, RequestOptions.DEFAULT);
+    SearchHits searchHits = searchResponse.getHits();
+    long total = searchHits.getTotalHits().value;
+    System.out.println(&quot;共检索到&quot; + total + &quot;条数据&quot;);
+    SearchHit[] hits = searchHits.getHits();
+    for (SearchHit hit : hits) {
+        System.out.println(JSON.toJSONString(hit.getSourceAsMap(), SerializerFeature.PrettyFormat));
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>DSL</p>
+<pre><code class="language-json">GET /hotel/_search
+{
+    &quot;query&quot;:{
+        &quot;match&quot;:{
+            &quot;all&quot;:&quot;如家&quot;
+        }
+    }
+}
+
+GET /hotel/_search
+{
+    &quot;query&quot;:{
+        &quot;match&quot;:{
+            &quot;query&quot;:&quot;如家&quot;,
+            &quot;fields&quot;:[&quot;brand&quot;,&quot;name&quot;]
+        }
+    }
+}
+</code></pre>
+</li>
+</ul>
+<h4 id="113-精确查询">11.3 精确查询</h4>
+<ul>
+<li>
+<p>代码</p>
+<pre><code class="language-java">@Test
+void testTerm() throws IOException{
+    SearchRequest hotelRequest = new SearchRequest(&quot;hotel&quot;);
+    hotelRequest.source().query(QueryBuilders.termQuery(&quot;city&quot;,&quot;上海&quot;));
+    SearchResponse searchResponse = client.search(hotelRequest, RequestOptions.DEFAULT);
+    SearchHits searchHits = searchResponse.getHits();
+    long total = searchHits.getTotalHits().value;
+    System.out.println(&quot;共检索到&quot; + total + &quot;条数据&quot;);
+    SearchHit[] hits = searchHits.getHits();
+    for (SearchHit hit : hits) {
+        System.out.println(JSON.toJSONString(hit.getSourceAsMap(), SerializerFeature.PrettyFormat));
+    }
+}
+
+@Test
+void testRange() throws IOException{
+    SearchRequest hotelRequest = new SearchRequest(&quot;hotel&quot;);
+    hotelRequest.source().query(QueryBuilders.rangeQuery(&quot;price&quot;).gte(150).lte(200));
+    SearchResponse searchResponse = client.search(hotelRequest, RequestOptions.DEFAULT);
+    SearchHits searchHits = searchResponse.getHits();
+    long total = searchHits.getTotalHits().value;
+    System.out.println(&quot;共检索到&quot; + total + &quot;条数据&quot;);
+    SearchHit[] hits = searchHits.getHits();
+    for (SearchHit hit : hits) {
+        System.out.println(JSON.toJSONString(hit.getSourceAsMap(), SerializerFeature.PrettyFormat));
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>DSL</p>
+<pre><code class="language-json">GET /hotel._search
+{
+    &quot;query&quot;:{
+        &quot;term&quot;:{
+            &quot;city&quot;:&quot;上海&quot;
+        }
+    }
+}
+
+GET /hotel/_search
+{
+    &quot;query&quot;:{
+        &quot;range&quot;:{
+            &quot;price&quot;:{
+                &quot;gte&quot;:100,
+                &quot;lte&quot;:150
+            }
+        }
+    }
+}
+</code></pre>
+</li>
+</ul>
+<h4 id="114-地理查询">11.4 地理查询</h4>
+<ul>
+<li>
+<p>代码</p>
+<pre><code class="language-java">@Test
+void testGeoDistance() throws IOException{
+    SearchRequest hotelRequest = new SearchRequest(&quot;hotel&quot;);
+    hotelRequest.source().query(QueryBuilders.geoDistanceQuery(&quot;location&quot;).distance(&quot;15km&quot;).point(31.21,121.5));
+    SearchResponse searchResponse = client.search(hotelRequest, RequestOptions.DEFAULT);
+    SearchHits searchHits = searchResponse.getHits();
+    long total = searchHits.getTotalHits().value;
+    System.out.println(&quot;共检索到&quot; + total + &quot;条数据&quot;);
+    SearchHit[] hits = searchHits.getHits();
+    for (SearchHit hit : hits) {
+        System.out.println(JSON.toJSONString(hit.getSourceAsMap(), SerializerFeature.PrettyFormat));
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>DSL</p>
+<pre><code class="language-json">GET /hotel/_search
+{
+  &quot;query&quot;: {
+    &quot;geo_distance&quot;:{
+      &quot;distance&quot;:&quot;15km&quot;,
+      &quot;location&quot;:&quot;31.21,121.5&quot;
+    }
+  }
+}
+</code></pre>
+</li>
+</ul>
+<h4 id="115-复合查询">11.5 复合查询</h4>
+<ul>
+<li>
+<p>代码</p>
+<pre><code class="language-java">@Test
+void testBool() throws IOException{
+    SearchRequest searchRequest = new SearchRequest(&quot;hotel&quot;);
+    BoolQueryBuilder boolQueryBuilder = new BoolQueryBuilder();
+    boolQueryBuilder
+        .must(QueryBuilders.termQuery(&quot;city&quot;,&quot;上海&quot;))
+        .filter(QueryBuilders.rangeQuery(&quot;price&quot;).gte(150).lte(200));
+    searchRequest.source().query(boolQueryBuilder);
+    SearchResponse searchResponse = client.search(searchRequest, RequestOptions.DEFAULT);
+    SearchHits searchHits = searchResponse.getHits();
+    long total = searchHits.getTotalHits().value;
+    System.out.println(&quot;共检索到&quot; + total + &quot;条数据&quot;);
+    SearchHit[] hits = searchHits.getHits();
+    for (SearchHit hit : hits) {
+        System.out.println(JSON.toJSONString(hit.getSourceAsMap(), SerializerFeature.PrettyFormat));
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>DSL</p>
+<pre><code class="language-json">GET /hotel/_search
+{
+    &quot;query&quot;:{
+        &quot;bool&quot;:{
+            &quot;must&quot;:[
+                {&quot;term&quot;:{&quot;city&quot;:&quot;上海&quot;}}
+            ],
+            &quot;should&quot;:[],
+            &quot;must_not&quot;:[],
+            &quot;filter&quot;:[
+                {
+                    &quot;range&quot;:{
+                        &quot;price&quot;:{
+                            &quot;gte&quot;:150,
+                            &quot;lte&quot;:200
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}
+</code></pre>
+</li>
+</ul>
+<h4 id="116-排序分页">11.6 排序分页</h4>
+<ul>
+<li>
+<p>代码</p>
+<pre><code class="language-java">@Test
+void testPageAndSort() throws IOException{
+    SearchRequest searchRequest = new SearchRequest(&quot;hotel&quot;);
+    searchRequest.source()
+        .query(QueryBuilders.matchAllQuery())
+        .from(0)
+        .size(20)
+        .sort(&quot;price&quot;, SortOrder.DESC);
+    SearchResponse searchResponse = client.search(searchRequest, RequestOptions.DEFAULT);SearchHits searchHits = searchResponse.getHits();
+    long total = searchHits.getTotalHits().value;
+    System.out.println(&quot;共检索到&quot; + total + &quot;条数据&quot;);
+    SearchHit[] hits = searchHits.getHits();
+    for (SearchHit hit : hits) {
+        System.out.println(JSON.toJSONString(hit.getSourceAsMap(), SerializerFeature.PrettyFormat));
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>DSL</p>
+<pre><code class="language-json">GET /hotel/_search
+{
+    &quot;query&quot;:{
+        &quot;match_all&quot;:{}
+    },
+    &quot;from&quot;:0,
+    &quot;size&quot;:20,
+    &quot;sort&quot;:[
+        {
+            &quot;price&quot;:&quot;desc&quot;
+        }
+    ]
+}
+</code></pre>
+</li>
+</ul>
+<h4 id="117-高亮文档">11.7 高亮文档</h4>
+<ul>
+<li>
+<p>代码</p>
+<pre><code class="language-java">@Test
+void testHighlight() throws IOException{
+    SearchRequest searchRequest = new SearchRequest(&quot;hotel&quot;);
+    HighlightBuilder highlightBuilder = new HighlightBuilder();
+    highlightBuilder.field(&quot;name&quot;)
+        .requireFieldMatch(false)
+        .preTags(&quot;&lt;keyword-highlight&gt;&quot;)
+        .postTags(&quot;&lt;/keyword-highlight&gt;&quot;);
+    searchRequest.source()
+        .query(QueryBuilders.matchQuery(&quot;all&quot;,&quot;如家&quot;))
+        .highlighter(highlightBuilder);
+    SearchResponse searchResponse = client.search(searchRequest, RequestOptions.DEFAULT);
+    SearchHits searchHits = searchResponse.getHits();
+    long total = searchHits.getTotalHits().value;
+    System.out.println(&quot;共检索到&quot; + total + &quot;条数据&quot;);
+    SearchHit[] hits = searchHits.getHits();
+    for (SearchHit hit : hits) {
+        Map&lt;String, HighlightField&gt; highlightFields = hit.getHighlightFields();
+        if(highlightFields!=null &amp;&amp; highlightFields.size()&gt;0){
+            HighlightField highlightField = highlightFields.get(&quot;name&quot;);
+            System.out.println(highlightField.getFragments()[0].toString());
+        }
+        System.out.println(JSON.toJSONString(hit.getSourceAsMap(), SerializerFeature.PrettyFormat));
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>DSL</p>
+<pre><code class="language-json">GET /hotel/_search
+{
+    &quot;query&quot;:{
+        &quot;match&quot;:{
+            &quot;all&quot;:&quot;如家&quot;
+        }
+    },
+    &quot;highlight&quot;:{
+        &quot;fields&quot;:{
+            &quot;name&quot;:{
+                &quot;pre_tags&quot;:&quot;&lt;em&gt;&quot;,
+                &quot;post_tags&quot;:&quot;&lt;/em&gt;&quot;,
+                &quot;require_field_match&quot;:false
+            }
+        }
+    }
+}
+</code></pre>
+</li>
+</ul>
+<h3 id="12-数据聚合">12. 数据聚合</h3>
+<h4 id="121-聚合的分类">12.1 聚合的分类</h4>
+<h4 id="122-dsl实现聚合">12.2 DSL实现聚合</h4>
+<h4 id="123-restapi实现聚合">12.3 RestAPI实现聚合</h4>
+<h3 id="13-自动补全">13. 自动补全</h3>
+<blockquote>
+<p>原文作者：絷缘<br>
+作者邮箱：zhiyuanworkemail@163.com<br>
+原文地址：<a href="https://zhiyuandnc.github.io/DZ1f24lyN/">https://zhiyuandnc.github.io/DZ1f24lyN/</a><br>
+版权声明：本文为博主原创文章，转载请注明原文链接作者信息</p>
+</blockquote>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://zhiyuandnc.github.io/doBPQq_Z4/" class="post-title gt-a-link">
+                    Docker学习（一）
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">事实不以人的意志为转移</div>
+    <div class="social-container">
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-telegram gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-qq gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-bilibili gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Copyright&ensp;&copy;&ensp;絷缘的博客<br/><a href="https://beian.miit.gov.cn/" target="_blank">晋ICP备20001723号-1</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://zhiyuandnc.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

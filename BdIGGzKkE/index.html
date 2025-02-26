@@ -1,0 +1,502 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Linux命令学习（一） | 絷缘的博客</title>
+
+<link rel="shortcut icon" href="https://zhiyuandnc.github.io/favicon.ico?v=1740567139208">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zhiyuandnc.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+ <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            絷缘的博客
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/friends" class="menu gt-a-link">
+                            友链
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1740567139208" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Linux命令学习（一）
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2022-02-10 ·
+                    </time>
+                    
+                        <a href="https://zhiyuandnc.github.io/linux/" class="post-tags">
+                            # Linux
+                        </a>
+                    
+                        <a href="https://zhiyuandnc.github.io/Z3qSG8exS/" class="post-tags">
+                            # 命令
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="一-linux操作系统初识">一、Linux操作系统初识</h2>
+<ol>
+<li>
+<p>Linux操作系统 = 内核（kernel）+操作界面+第三方应用程序</p>
+</li>
+<li>
+<p>版本介绍：</p>
+<ul>
+<li>2.1 RedHat：红帽企业软件系统，企业常用</li>
+<li>2.2 Centos：社区企业操作系统，学习/企业首选，与RedHat功能完全一致</li>
+<li>2.3 Ubuntu：乌班图，面向消费级平台，日常使用首选</li>
+</ul>
+</li>
+</ol>
+<h2 id="二-开发环境的搭建">二、开发环境的搭建</h2>
+<h3 id="1-虚拟机vmware的安装">1. 虚拟机VMware的安装</h3>
+<ul>
+<li>
+<p>增强型键盘驱动（必须打钩）：识别不同硬盘设备</p>
+</li>
+<li>
+<p>输入序列号</p>
+</li>
+</ul>
+<h3 id="2-centos7系统版本选择">2. Centos7系统版本选择</h3>
+<ul>
+<li>
+<p>阿里巴巴开源镜像站：https://developer.aliyun.com/mirror</p>
+</li>
+<li>
+<p>网易开源镜像站：https://mirrors.163.com</p>
+</li>
+<li>
+<figure data-type="image" tabindex="1"><img src="https://pic.zyblog.xyz/img/typora/image-20201005112522574.png?origin=typora" alt="image-20201005112522574" loading="lazy"></figure>
+</li>
+<li>
+<figure data-type="image" tabindex="2"><img src="https://pic.zyblog.xyz/img/typora/image-20201005112853958.png?origin=typora" alt="image-20201005112853958" loading="lazy"></figure>
+</li>
+<li>
+<p>Centos DVD 版本：使用原软件DVD制作的镜像，功能全面（常用基本都有），推荐使用（4.5G左右）</p>
+</li>
+<li>
+<p>Centos Everthing 版本：完整版本（10G左右），不推荐使用</p>
+</li>
+<li>
+<p>Centos NetInstall 版本：网络安装及救援使用（500M左右）</p>
+</li>
+<li>
+<p>Centos Minimal 版本：最小功能安装包（1G左右）</p>
+</li>
+<li>
+<p>Centos LiveGNOME 版本：GNOME桌面版本</p>
+</li>
+<li>
+<p>Centos LiveKDE 版本：KDE桌面版本</p>
+</li>
+<li>
+<p>注：x86_64及amd64都表示64位系统</p>
+<p>I386：32位系统          desktop：桌面版            server：服务器</p>
+</li>
+</ul>
+<h3 id="3-centos7系统的安装">3. Centos7系统的安装</h3>
+<ul>
+<li>
+<h4 id="31-创建新的虚拟机典型">3.1 创建新的虚拟机：典型</h4>
+</li>
+<li>
+<p>注：<img src="https://pic.zyblog.xyz/img/typora/image-20201005114036836.png?origin=typora" alt="image-20201005114036836" loading="lazy"></p>
+</li>
+<li>
+<h4 id="32-需要自定义配置否则是最小化安装选择稍后安装系统">3.2 需要自定义配置，否则是最小化安装，选择稍后安装系统</h4>
+</li>
+<li>
+<h4 id="33-选择客户机操作系统linux-centos7-64位">3.3 选择客户机操作系统：Linux-&gt;Centos7 64位</h4>
+</li>
+<li>
+<h4 id="34-命名虚拟机">3.4 命名虚拟机</h4>
+<ul>
+<li>按照功能命名</li>
+<li>存储在非C盘的目录下</li>
+</ul>
+</li>
+<li>
+<figure data-type="image" tabindex="3"><img src="https://pic.zyblog.xyz/img/typora/image-20201005114925641.png?origin=typora" alt="image-20201005114925641" loading="lazy"></figure>
+<ul>
+<li>容量20GB，动态分配，此容量为最大值</li>
+<li>单个文件：存取效率高，但不方便数据迁移</li>
+<li>多个文件：存取效率低，但是方便数据迁移</li>
+</ul>
+</li>
+<li>
+<figure data-type="image" tabindex="4"><img src="https://pic.zyblog.xyz/img/typora/image-20201005115612435.png?origin=typora" alt="：" loading="lazy"></figure>
+</li>
+<li>
+<h4 id="35-自定义硬件">3.5 自定义硬件</h4>
+<ul>
+<li>内存：推荐2GB</li>
+<li>CPU：1颗，核心数以实际物理机为标准</li>
+<li>新CD/DVD：设置系统启动文件，选择“使用ISO镜像文件”选项，后点击“浏览”选择之前已经下载好的iso镜像文件</li>
+<li>网络适配器：选择NAT模式
+<ul>
+<li>桥接模式：适用于网络固定不变的环境中</li>
+<li>NAT模式：适用于网络环境经常发生变化的环境中</li>
+</ul>
+</li>
+<li>仅主机模式：表示Linux系统只能与本机物理机通信无法连接互联网</li>
+</ul>
+</li>
+<li>
+<figure data-type="image" tabindex="5"><img src="https://pic.zyblog.xyz/img/typora/image-20201005121216115.png?origin=typora" alt="image-20201005121216115" loading="lazy"></figure>
+</li>
+<li>
+<h4 id="36-安装系统">3.6 安装系统</h4>
+<ul>
+<li>
+<p>软件选择：带有GUI的服务器</p>
+</li>
+<li>
+<p>安装位置（硬盘分区）</p>
+<ul>
+<li>概念：
+<ul>
+<li>挂载点：（windows的分区）</li>
+<li>手动分区
+<ul>
+<li><img src="https://pic.zyblog.xyz/img/typora/image-20201005142151232.png?origin=typora" alt="image-20201005142151232" loading="lazy">系统启动引导分区：400MB    /boot</li>
+<li><img src="https://pic.zyblog.xyz/img/typora/image-20201005142516290.png?origin=typora" alt="image-20201005142516290" loading="lazy">交换分区（虚拟内存分区)：4GB       swap</li>
+<li><img src="https://pic.zyblog.xyz/img/typora/image-20201005142531111.png?origin=typora" alt="image-20201005142531111" loading="lazy">根分区，剩余空间（容量不填) /</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>KDUMP：内核崩溃转储机制，生产环境中开启</p>
+</li>
+<li>
+<p>设置root用户密码，创建一个新用户</p>
+</li>
+</ul>
+</li>
+<li>
+<h4 id="37-centos系统功能的基本配置">3.7 Centos系统功能的基本配置</h4>
+<ul>
+<li>登录系统</li>
+<li>终端切换（Ctrl+Alt+F1/F2/F3/F4/F5/F6）</li>
+</ul>
+</li>
+<li>
+<p>共提供6个终端界面，5个命令行界面，1个GUI界面，使用Ctrl+Alt+F1~F6进行切换</p>
+</li>
+<li>
+<p>网卡配置</p>
+<ul>
+<li>cd  /etc/sysconfig/network-scripts/</li>
+<li>vim ifcfg-ens33</li>
+<li>此时处于浏览状态，按i进入编辑状态</li>
+<li>ONBOOT=no 改为 ONBOOT=yes</li>
+<li>ESC退出编辑状态，进入浏览状态</li>
+<li>输入冒号进入命令状态，输入wq，保存并退出</li>
+<li>重启网卡服务： service network restart</li>
+<li>测试网络：ping www.baidu.com，Ctrl+C终止</li>
+</ul>
+</li>
+<li>
+<p>yum源替换</p>
+<ul>
+<li>
+<pre><code>[base]
+name=CentOS-$releasever - Base
+mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=os&amp;infra=$infra
+#baseurl=http://mirror.centos.org/centos/$releasever/os/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+</code></pre>
+</li>
+</ul>
+<blockquote>
+<p>下载地址：https://mirrors.aliyun.com/repo/Centos-7.repo</p>
+</blockquote>
+<ul>
+<li>
+<p>原因：由于系统自带yum源位于国外，下载软件过慢，则需要更改yum配置文件为国内常用的开源镜像网站（阿里，华为，网易）</p>
+</li>
+<li>
+<p>过程</p>
+<ul>
+<li>
+<p>① 删除原有yum配置文件目录</p>
+<p>cd /etc</p>
+<p>rm -rf 	yum.repos.d</p>
+</li>
+<li>
+<p>② 新建该目录</p>
+<p>mkdir 	yum.repos.d</p>
+</li>
+<li>
+<p>③ 下载阿里开源镜像站的centosyum源配置文件</p>
+<p>cd 	yum.repos.d</p>
+<p>wget 	https://mirrors.aliyun.com/repo/Centos-7.repo</p>
+<p>ls</p>
+</li>
+<li>
+<p>④ 建立新的yum缓存并生效：yum	makecache</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>更新软件</p>
+<ul>
+<li>内核：yum update kernel</li>
+<li>软件：yum update 软件名</li>
+<li>注：yum update 表示更新所有已安装软件</li>
+<li>reboot重启系统</li>
+</ul>
+</li>
+<li>
+<p>制作快照：虚拟机-&gt;快照-&gt;拍摄快照-&gt;命名-&gt;拍摄快照</p>
+</li>
+<li>
+<p>Putty远程登录软件</p>
+<ul>
+<li>
+<p>作用：使用putty远程登录到服务器进行操作控制</p>
+</li>
+<li>
+<p>方法：</p>
+<ul>
+<li>
+<p>① 在Linux系统中查看本机IP地址：ip addr</p>
+<ul>
+<li>② Putty软件中点击：Hosts Name（or IP address）输入之前查看的IP地址</li>
+<li>③ Save Sessions：命名并点击右侧save按钮保存</li>
+<li>④ 点击open按钮打开</li>
+<li>⑤ 点击yes</li>
+<li>⑥ login as：输入用户名</li>
+</ul>
+</li>
+<li>
+<p>⑦ 输入密码</p>
+</li>
+</ul>
+</li>
+<li>
+<p>字号的更改：</p>
+<p>右键单击标题栏-&gt;Change Settings-&gt;Window-&gt;Appearance-&gt;Change按钮-&gt;设置字体属性-&gt;Apply应用</p>
+</li>
+</ul>
+</li>
+<li>
+<p>常用快捷键：</p>
+<ul>
+<li>Ctrl+C：终止命令</li>
+<li>Ctrl+L：清屏命令</li>
+<li>Ctrl+D：结束当前终端</li>
+<li>Ctrl+Z：终止进程</li>
+<li>reboot：重启</li>
+<li>shutdown now：关机</li>
+</ul>
+</li>
+<li>
+<p>例：下载安装一个屏保软件</p>
+<ul>
+<li>
+<p>下载屏保软件：</p>
+<p>cd	~</p>
+<p>wget	http://archive.ubuntu.com/ubuntu/pool/universe/c/cmatrix/cmatrix_1.2a.orig.tar.gz</p>
+</li>
+<li>
+<p>解压文件</p>
+<p>tar xvf cmatrix_1.2a.orig.tar.gz</p>
+</li>
+<li>
+<p>进入安装目录</p>
+<p>cd 	cmatrix-1.2a</p>
+</li>
+<li>
+<p>安装调用库及编译器</p>
+<p>yum install -y ncurses-devel</p>
+<p>yum install -y gcc</p>
+</li>
+<li>
+<p>编译安装软件：</p>
+<p>./configure &amp;&amp; make &amp;&amp; make install</p>
+</li>
+<li>
+<p>运行软件：</p>
+<p>cmatrix</p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>原文作者：絷缘<br>
+作者邮箱：zhiyuanworkemail@163.com<br>
+原文地址：<a href="https://zhiyuandnc.github.io/BdIGGzKkE/">https://zhiyuandnc.github.io/BdIGGzKkE/</a><br>
+版权声明：本文为博主原创文章，转载请注明原文链接作者信息</p>
+</blockquote>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://zhiyuandnc.github.io/pILxU31oU/" class="post-title gt-a-link">
+                    Spring+SpringMVC+MyBatis学习
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">事实不以人的意志为转移</div>
+    <div class="social-container">
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-telegram gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-qq gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-bilibili gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Copyright&ensp;&copy;&ensp;絷缘的博客<br/><a href="https://beian.miit.gov.cn/" target="_blank">晋ICP备20001723号-1</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://zhiyuandnc.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,834 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Linux命令学习（四） | 絷缘的博客</title>
+
+<link rel="shortcut icon" href="https://zhiyuandnc.github.io/favicon.ico?v=1740567139208">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zhiyuandnc.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+ <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            絷缘的博客
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/friends" class="menu gt-a-link">
+                            友链
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1740567139208" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Linux命令学习（四）
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2022-02-18 ·
+                    </time>
+                    
+                        <a href="https://zhiyuandnc.github.io/linux/" class="post-tags">
+                            # Linux
+                        </a>
+                    
+                        <a href="https://zhiyuandnc.github.io/Z3qSG8exS/" class="post-tags">
+                            # 命令
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="一-磁盘管理">一、 磁盘管理</h2>
+<h3 id="1-硬盘命名规则">1. 硬盘命名规则</h3>
+<ul>
+<li>名称：
+<ul>
+<li>硬盘：/dev/sd[a-p]</li>
+<li>光盘：/dev/sr0   /dev/cdrom</li>
+<li>打印机：/dev/lp[0-15]</li>
+</ul>
+</li>
+<li>硬盘命名分析
+<ul>
+<li>硬盘名称以sd开头</li>
+<li>使用了a-p代表16块不同的硬盘</li>
+<li>主分区编号为：1   2   3    4</li>
+<li>逻辑分区：从5开始</li>
+<li>例：/dev/sda5：表示第一块硬盘的第一个逻辑分区</li>
+<li>例：/dev/sdb2：表示第二块硬盘的第二个主分区</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-添加新硬盘">2. 添加新硬盘</h3>
+<ul>
+<li>关闭系统</li>
+<li>编辑虚拟机设置</li>
+<li>点击“添加”</li>
+<li>选择硬盘类型</li>
+<li>选择“SCSI”类型</li>
+<li>创建新虚拟磁盘</li>
+<li>设置容量（默认：20GB），将虚拟磁盘存储为单个文件</li>
+<li>命名（默认）</li>
+<li>完成</li>
+</ul>
+<h3 id="3-分区格式">3. 分区格式</h3>
+<ul>
+<li>
+<p>MBR（主引导记录区）分区格式</p>
+<ul>
+<li>MBR数据存储于第0磁道第1扇区</li>
+<li>作用：存储硬盘一系列分区参数及一段引导程序</li>
+<li>组成：
+<ul>
+<li>原则：MBR所在扇区共512B
+<ul>
+<li>MBR信息：446B</li>
+<li>DPT：硬盘分区表，64B</li>
+<li>最后两个字节为结束标志</li>
+<li>构成图：</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>MBR分区特点：
+<ul>
+<li>主分区（P）：不能超过4个</li>
+<li>扩展分区（E）：只能有1个</li>
+<li>P+E最多4个</li>
+<li>逻辑分区（L）：由扩展分区进行划分</li>
+<li>一般使用：PPP+E的结构</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>GPT（磁盘分区表）分区格式</p>
+<ul>
+<li>
+<p>产生原因</p>
+<ul>
+<li>MBR分区模式最高支持磁盘容量为2.2TB</li>
+<li>MBR分区表中没有备份机制，若分区表被删除，则硬盘数据相当于丢失</li>
+<li>MBR存储相关信息只有446B，无法存储较多内容</li>
+</ul>
+</li>
+<li>
+<p>分区格式</p>
+<ul>
+<li>GPT分区使用LBA（逻辑区块）记录磁盘信息</li>
+<li>LBA区块大小为512B-4K，支持68个LBA区块，其中前34个LBA区块记录分区信息，后34个LBA区块记录备份信息</li>
+</ul>
+</li>
+<li>
+<p>LBA区块作用</p>
+<ul>
+<li>LBA0：与MBR分区功能相同，并存储MBR分区标志或GPT分区标志</li>
+<li>LBA1：存储GPT表头信息</li>
+<li>LBA2-LBA33：记录分区信息，一个LBA区块可记录4个分区信息，共32个分区128个分区信息（32×4=128）</li>
+</ul>
+</li>
+<li>
+<p>GPT分区特点</p>
+<ul>
+<li>GPT不再区分主分区和扩展分区，所有分区都是主分区，理论上可以划分128个主分区</li>
+<li>GPT分区理论上最大支持磁盘空间为8ZB（1ZB=2<sup>30</sup>TB）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-常见磁盘命令">4. 常见磁盘命令</h3>
+<ul>
+<li>
+<p>df命令：</p>
+<ul>
+<li>作用：列出磁盘使用量</li>
+<li>格式：df   -参数   目录名/文件名</li>
+<li>参数
+<ul>
+<li>-a：列出所有文件系统</li>
+<li>-h：以容易理解的方式列出信息（KB、MB、GB）</li>
+</ul>
+</li>
+<li>常用：df    -ah</li>
+<li>信息解释：
+<ul>
+<li>文件系统：文件系统名称及所在分区位置</li>
+<li>已使用空间容量：不要超过90%的警戒线</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>du 命令：</p>
+<ul>
+<li>作用：查看文件或目录占用硬盘空间容量</li>
+<li>格式：du   -参数   目录名/文件名</li>
+<li>常用参数：du   -ah</li>
+</ul>
+</li>
+<li>
+<p>lsblk命令：</p>
+<ul>
+<li>
+<p>作用：列出所有磁盘信息</p>
+</li>
+<li>
+<p>格式：lsblk   -参数   设备文件名</p>
+</li>
+<li>
+<p>信息解释</p>
+<ul>
+<li>NAME：设备名称</li>
+</ul>
+</li>
+<li>
+<p>MAJ:MIN：主要:次要设备代码</p>
+<ul>
+<li>RM：是否可卸载</li>
+<li>SIZE：容量</li>
+<li>RO：是否只读</li>
+<li>TYPE：设备类型（disk磁盘，part分区等）</li>
+<li>MOUNTPOINT：挂载点</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>blkid命令</p>
+<ul>
+<li>
+<p>作用：显示设备的UUID值和文件系统名称</p>
+</li>
+<li>
+<p>格式：blkid   设备名</p>
+</li>
+<li>
+<p>UUID：全局单一标识符，系统给所有设备分配的唯一编号，以便于区别设备</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-硬盘分区">5. 硬盘分区</h3>
+<ul>
+<li>parted 命令
+<ul>
+<li>作用：显示硬盘分区表及类型</li>
+<li>格式：parted  设备名   print</li>
+<li>注意：msdos表示MBR格式的分区模式</li>
+<li>例：parted /dev/sda print</li>
+</ul>
+</li>
+<li>fdisk命令
+<ul>
+<li>格式：fdisk   设备名</li>
+<li>注意
+<ul>
+<li>fdisk命令只针对MBR分区格式进行分区</li>
+<li>fdisk命令之后只能识别硬盘名不能书写分区数字</li>
+</ul>
+</li>
+<li>例：使用fdisk命令对/dev/sdb硬盘分区，格式：P+P+P+E（L+L）
+<ul>
+<li>分区命令：n（新建）、p（浏览分区列表）、d（删除）、w（保存退出）、q（退出）</li>
+<li>分区编号直接回车即可</li>
+<li>起始扇区直接回车即可</li>
+<li>last扇区：输入容量（+数字单位，如+5G）</li>
+<li>若将剩余空间全部分配，则last扇区处直接回车</li>
+</ul>
+</li>
+<li>例：fdisk  命令分区，格式：P+P+E（L+L+L）</li>
+</ul>
+</li>
+<li>gdisk命令
+<ul>
+<li>注意：gdisk命令针对GPT分区格式，若在已存在的MBR分区格式下添加GPT新分区，则所有数据会全部丢失，切记一块硬盘中，fdisk与gdisk不能混用</li>
+<li>格式：gdisk   设备名</li>
+<li>例：使用gdisk对/dev/sdc进行分区，格式P+P+P
+<ul>
+<li>gdisk  /dev/sdc</li>
+<li>输入n新建分区</li>
+<li>回车，设置为默认的分区编号</li>
+<li>起始扇区回车</li>
+<li>终止扇区输入+4G</li>
+<li>编号默认直接回车</li>
+<li>重复上述过程</li>
+<li>输入p查看分区列表</li>
+<li>输入w回车输入y回车保存并退出</li>
+<li>注意：实际工作中，硬盘分区应保留一定未分区自由空间，以备将来分区空间不足扩容时或添加新分区时使用</li>
+</ul>
+</li>
+<li>例：使用gdisk分区，P+P+P+P
+<ul>
+<li>gdisk  /dev/sdc</li>
+<li>输入n新建分区</li>
+<li>回车设置为默认的分区编号</li>
+<li>起始扇区回车</li>
+<li>终止扇区输入+4G</li>
+<li>重复上述过程</li>
+<li>输入p查看分区列表</li>
+<li>输入w回车输入y回车保存并退出</li>
+<li>lsblk  /dev/sdc  查看分区信息</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-分区格式化">6. 分区格式化</h3>
+<ul>
+<li>作用：在硬盘分区上建立文件系统</li>
+<li>格式化：若硬盘空间为一张白纸，分区是对其进行裁剪，对白纸进行方格绘制称为格式化</li>
+<li>EXT2文件系统
+<ul>
+<li>组成：
+<ul>
+<li>超级块：又称为“硬盘地图”，记录文件系统的整体信息，如：数据块的总量、使用量等</li>
+<li>索引块：记录文件属性，一个文件占用一个inode块，记录文件数据块的编号，默认占用128B，还存储文件的权限信息、账户信息、工作组信息、时间信息、地址信息等</li>
+<li>数据块：存储文件真实数据的存储块，容量可划分为1K   2K   4K，一个文件会占用多个数据块。</li>
+</ul>
+</li>
+<li>索引块与数据块的关系
+<ul>
+<li>索引块大小均为128B</li>
+<li>每一个文件只占用一个索引块</li>
+<li>文件系统创建的文件容量与索引块的容量有关</li>
+<li>一个索引块记录一个数据块号需要4B</li>
+</ul>
+</li>
+<li>当数据块为1K时，最大文件为16GB，文件系统总量为2TB；数据块为2K时，最大文件为256GB，文件系统总量为8TB；数据块为4K时，最大文件为2TB，文件系统总量为16TB</li>
+</ul>
+</li>
+<li>日志文件系统
+<ul>
+<li>产生原因：文件在写入时由于不明原因出现中断此时会发生文件内容不一致的情况，此时ext2文件系统会进行全盘检查，耗时较长</li>
+<li>解决方法：在文件系统中重新规划一个区域为日志区块，专门记录文件修改的信息，简化文件一致性检查，若文件出现问题只检查相应日志区块即可，只修复部分信息，减少耗时</li>
+<li>常见日志文件系统：EXT3、EXT4，Centos7默认的文件系统为xfs</li>
+</ul>
+</li>
+<li>Centos7支持的文件系统格式：输入mkfs点击两次tab可查看</li>
+<li>xfs格式化命令
+<ul>
+<li>格式：mkfs.xfs   -参数   设备名</li>
+<li>参数：
+<ul>
+<li>-f：强制格式化，对已存在的文件系统格式化时使用</li>
+<li>-b：后跟上block容量，表示格式化时数据块的容量，范围是512B-64KB，但Linux限制为4KB</li>
+</ul>
+</li>
+<li>例：mkfs.xfs   /dev/sdb1</li>
+</ul>
+</li>
+</ul>
+<h3 id="7-设备挂载与卸除">7. 设备挂载与卸除</h3>
+<ul>
+<li>
+<p>挂载点：（mount point）：本只是一个目录，该目录是进入磁盘分区的入口</p>
+</li>
+<li>
+<p>挂载：建立目录与分区之间的联系，通过目录进入分区空间并使用</p>
+</li>
+<li>
+<p>注意：</p>
+<ul>
+<li>单一的文件系统不能被重复挂载到不同的挂载点</li>
+<li>单一目录不能重复挂载多个文件系统</li>
+<li>作为挂载点目录，应为空目录，若已存在文件，则原有数据会被隐藏</li>
+</ul>
+</li>
+<li>
+<p>mount命令</p>
+<ul>
+<li>格式：mount   -参数  设备名   挂载目录名</li>
+<li>-a：依照配置文件（/etc/fstab）的数据将未挂载的设备全部挂载，主要用于测试</li>
+<li>例：新建4个目录挂载/dev/sdb的四个分区
+<ul>
+<li>mkdir   -p    /data/sdb1   /data/sdb2   /data/sdb5   /data/sdb6</li>
+<li>mount  /dev/sdb1  /data/sdb1</li>
+<li>mount  /dev/sdb2  /data/sdb2</li>
+<li>mount  /dev/sdb5  /data/sdb5</li>
+<li>mount  /dev/sdb6  /data/sdb6</li>
+<li>lsblk  /dev/sdb</li>
+</ul>
+</li>
+<li>挂载光盘：mount   /dev/sr0   /media</li>
+</ul>
+</li>
+<li>
+<p>卸载命令</p>
+<ul>
+<li>
+<p>格式：umount   -参数   设备名/挂载点名</p>
+</li>
+<li>
+<p>参数：</p>
+<ul>
+<li>-f：强制卸载</li>
+<li>-l：立即卸载文件系统</li>
+<li>-n：不更新/etc/mtab情况下卸载</li>
+</ul>
+</li>
+<li>
+<p>例：umount  /dev/sdb1</p>
+<p>​        umount  /data/sdb2</p>
+</li>
+<li>
+<p>注意：卸载时，当前目录不能是挂载点目录，必须退出后才可卸载，否则显示设备正忙</p>
+</li>
+</ul>
+</li>
+<li>
+<p>开机挂载命令</p>
+<ul>
+<li>
+<p>原因：由于手动挂载为临时挂载，系统重启后会自动卸载</p>
+</li>
+<li>
+<p>开机挂载必须修改配置文件实现 /etc/fstab</p>
+</li>
+<li>
+<p>开机挂载挂载原则</p>
+<ul>
+<li>根目录分区必须先挂载</li>
+<li>其他挂载点必须为已建立目录，应遵守系统目录架构原则（FHS）</li>
+<li>所有挂载点在同一时间内只能挂载一次</li>
+<li>所有分区在同一时间内，只能被挂载一次</li>
+</ul>
+</li>
+<li>
+<p>fstab意义解释</p>
+<ul>
+<li>共6列</li>
+<li>第一列：设备名称或UUID值</li>
+<li>第二列：挂载点目录</li>
+<li>第三列：文件系统</li>
+<li>第四列：文件系统参数，默认defaults</li>
+<li>第五列：0（不备份），是否备份</li>
+<li>第六列：0，是否开机进行扇区检查，xfs文件系统不支持则为0</li>
+</ul>
+</li>
+<li>
+<p>例：将/dev/sdb  4个分区进行开机挂载</p>
+<ul>
+<li>vim  /etc/fstab</li>
+<li>点击i键编辑，添加新行</li>
+<li>/dev/sdb1    /data/sdb1     xfs     defaults    0       0</li>
+<li>保存并退出</li>
+<li>mount   -a   进行测试</li>
+<li>reboot  重启</li>
+<li>lsblk   /dev/sdb</li>
+</ul>
+<figure data-type="image" tabindex="1"><img src="https://pic.zyblog.xyz/img/typora/image-20201011093918020.png?origin=typora" alt="image-20201011093918020" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://pic.zyblog.xyz/img/typora/image-20201011094556784.png?origin=typora" alt="image-20201011094556784" loading="lazy"></figure>
+</li>
+<li>
+<p>例：添加新硬盘sde，对sde进行如下操作</p>
+<ul>
+<li>
+<p>硬盘进行gdisk分区：P+P+P（3G+5G+6G）</p>
+</li>
+<li>
+<p>对硬盘进行格式化：sde1，sde2为xfs，sde3为ext4</p>
+</li>
+<li>
+<p>新建挂载目录：/mnt/s1    /mnt/s2    /mnt/s3</p>
+</li>
+<li>
+<p>进行开机挂载</p>
+</li>
+<li>
+<p>查看信息</p>
+<figure data-type="image" tabindex="3"><img src="https://pic.zyblog.xyz/img/typora/image-20201011095916866.png?origin=typora" alt="image-20201011095916866" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="https://pic.zyblog.xyz/img/typora/image-20201011095940249.png?origin=typora" alt="image-20201011095940249" loading="lazy"></figure>
+<figure data-type="image" tabindex="5"><img src="https://pic.zyblog.xyz/img/typora/image-20201011095957452.png?origin=typora" alt="image-20201011095957452" loading="lazy"></figure>
+<figure data-type="image" tabindex="6"><img src="https://pic.zyblog.xyz/img/typora/image-20201011100348327.png?origin=typora" alt="image-20201011100348327" loading="lazy"></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="8-大文件挂载为分区">8. 大文件挂载为分区</h3>
+<ul>
+<li>当硬盘无自由空间，且需要增加新分区，可以将已存在分区的剩余空间中划出一个大容量文件，格式化后挂载为一个分区使用</li>
+<li>例：在/dev/sdb1中制作1G大文件挂载为新分区
+<ul>
+<li>制作大文件：dd if=/dev/zero of=/data/sdb1/loopdev count=1 bs=1G</li>
+<li>格式化文件：mkfs.xfs   -f   /data/sdb1/loopdev</li>
+<li>建立挂载点目录：mkdir   /data/sdb1/loopdir</li>
+<li>挂载大文件：mount   -o  loop   /data/sdb1/loopdev    /data/sdb1/loopdir</li>
+<li>查看挂载情况：df  -h</li>
+<li>注意：挂载大文件时，参数需增加  -o loop参数</li>
+</ul>
+</li>
+</ul>
+<h3 id="9-增加swap交换分区空间">9. 增加swap交换分区空间</h3>
+<ul>
+<li>
+<p>swap：类似于windows的虚拟内存，将一块硬盘中的剩余空间虚拟成 “内存” 使用，从而解决内存不足的问题</p>
+</li>
+<li>
+<p>swap空间大小：4-8GB</p>
+</li>
+<li>
+<p>查看swap空间容量： free  -h</p>
+</li>
+<li>
+<p>创建新分区制作swap空间</p>
+<ul>
+<li>
+<p>使用 gdisk 对  /dev/sdc  创建4个分区，容量（2,3,4,2）</p>
+</li>
+<li>
+<p>使用 gdisk 对  /dev/sdc  添加一个新分区sdc5（2G）</p>
+</li>
+<li>
+<p>格式化分区：mkswap   /dev/sdc5</p>
+</li>
+<li>
+<p>启用生效：swapon   /dev/sdc5</p>
+</li>
+<li>
+<p>查看：free   -h</p>
+</li>
+<li>
+<p>开机挂载swap：必须设置开机挂载，否则重启失效</p>
+</li>
+<li>
+<p>vim   /etc/fstab</p>
+</li>
+<li>
+<p>添加新行：/dev/sdc5   swap    swap    defaults   0      0</p>
+</li>
+<li>
+<p>保存并退出</p>
+</li>
+<li>
+<p>mount   -a 进行测试</p>
+</li>
+<li>
+<p>reboot 重启</p>
+</li>
+<li>
+<p>free   -h 查看是否生效<br>
+<img src="https://pic.zyblog.xyz/img/typora/image-20201011111729024.png?origin=typora" alt="image-20201011111729024" loading="lazy"></p>
+<figure data-type="image" tabindex="7"><img src="https://pic.zyblog.xyz/img/typora/image-20201011112334216.png?origin=typora" alt="image-20201011112334216" loading="lazy"></figure>
+<figure data-type="image" tabindex="8"><img src="https://pic.zyblog.xyz/img/typora/image-20201011112448197.png?origin=typora" alt="image-20201011112448197" loading="lazy"></figure>
+</li>
+</ul>
+</li>
+<li>
+<p>创建大文件制作swap空间</p>
+<ul>
+<li>
+<p>原则：由于硬盘没有自由空间，无法添加新分区，则在某分区剩余空间制作大文件并创建成swap空间</p>
+</li>
+<li>
+<p>例：在/dev/sdb5分区中制作2G大文件并生成swap空间</p>
+<ul>
+<li>
+<p>制作大文件：dd   if=/dev/zero   of=/dev/sdb5/swapfile    count=2   bs=1G</p>
+</li>
+<li>
+<p>cd  /data/sdb5</p>
+</li>
+<li>
+<p>ls</p>
+</li>
+<li>
+<p>格式化：mkswap    /data/sdb5/swapfile</p>
+</li>
+<li>
+<p>启用生效：swapon  /data/sdb5/swapfile</p>
+</li>
+<li>
+<p>查看：free  -h</p>
+</li>
+<li>
+<p>配置开机挂载：vim   /etc/fstab</p>
+</li>
+<li>
+<p>添加新行：/data/sdb5/swapfile   swap    swap   defaults   0    0</p>
+</li>
+<li>
+<p>保存退出</p>
+</li>
+<li>
+<p>测试：mount   -a</p>
+</li>
+<li>
+<p>重启：reboot</p>
+</li>
+<li>
+<p>查看：free   -h</p>
+<figure data-type="image" tabindex="9"><img src="https://pic.zyblog.xyz/img/typora/image-20201011114145819.png?origin=typora" alt="image-20201011114145819" loading="lazy"></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>注意：fstab配置文件中，若添加的对象是大文件，则第一列不能使用UUID值</p>
+</li>
+</ul>
+<h3 id="10-软硬链接方式">10. 软硬链接方式</h3>
+<ul>
+<li>
+<p>硬盘文件存储原理：</p>
+<ul>
+<li>硬盘数据分为两类：用户数据（UserData）与 元数据（MetaData）</li>
+<li>用户数据：文件的数据块，存储文件数据的实际空间</li>
+<li>元数据：存储文件附加属性，如文件大小，创建时间、所有者等信息</li>
+<li>Linux中元数据的inode号（索引节点号）是文件的唯一标识，而非文件名，系统或程序通过inode号寻找正确的文件数据块</li>
+<li>图：</li>
+</ul>
+</li>
+<li>
+<p>硬链接</p>
+<ul>
+<li>原理：由于Linux系统允许多个文件指向同一个inode即允许一个文件有多个有效路径名</li>
+<li>硬链接本质为指向原始文件的inode指针</li>
+<li>查看硬链接方法：
+<ul>
+<li>ll 文件名</li>
+<li>stat   文件名</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>建立硬链接方法：</p>
+<ul>
+<li>
+<p>格式：ln   -参数   源文件   目标链接名</p>
+</li>
+<li>
+<p>例：touch  t1.txt</p>
+<p>​        echo &quot;Hello World&quot;   &gt;  t1.txt</p>
+<p>​		stat  t1.txt</p>
+<p>​		ln  t1.txt   t2.txt</p>
+<p>​		ln  t1.txt   t3.txt</p>
+<p>​		stat  t1.txt</p>
+<p>​		cat  t2.txt</p>
+<p>​		rm  -rf  t1.txt</p>
+<p>​		cat  t3.txt</p>
+</li>
+<li>
+<p>注意：</p>
+<ul>
+<li>新建文件的硬连接默认为1，即文件名指向数据块</li>
+<li>创建多个硬链接后，删除源文件，数据依然可以访问</li>
+<li>只有源文件删除且硬链接数为0时，数据相当于删除，不可访问</li>
+<li>硬链接不能给目录建立</li>
+<li>目录默认带有2个硬链接，实际为目录中的点（.）和点点(..)</li>
+<li>硬链接不可以在不同的文件系统中建立，由于inode是当前文件在本文件系统的索引号，只针对本分区空间，所以硬链接不能跨越文件系统</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>软链接</p>
+<ul>
+<li>
+<p>原理：是一种符号链接，类似于windows的快捷方式，仅包含所链接的路径名</p>
+</li>
+<li>
+<p>格式：ln   -s   源文件   目标链接名称</p>
+</li>
+<li>
+<p>例：<img src="https://pic.zyblog.xyz/img/typora/image-20201011140855496.png?origin=typora" alt="image-20201011140855496" loading="lazy"></p>
+<figure data-type="image" tabindex="10"><img src="https://pic.zyblog.xyz/img/typora/image-20201011141019843.png?origin=typora" alt="image-20201011141019843" loading="lazy"></figure>
+</li>
+<li>
+<p>例：创建软链接，减少访问文件时间</p>
+<figure data-type="image" tabindex="11"><img src="https://pic.zyblog.xyz/img/typora/image-20201011141507111.png?origin=typora" alt="image-20201011141507111" loading="lazy"></figure>
+</li>
+<li>
+<p>软硬链接区别</p>
+<ul>
+<li>
+<p>硬链接中源文件与链接文件共用一个inode号，是同一个文件，软链接中源文件与链接文件拥有不同的inode号，是两个不同的文件</p>
+</li>
+<li>
+<p>软链接可以查看链接路径，硬链接不可查看</p>
+</li>
+<li>
+<p>硬链接可以增加链接数，软链接不变</p>
+</li>
+<li>
+<p>文件大小不同，硬链接文件大小与源文件相同</p>
+</li>
+<li>
+<p>软链接可以跨越文件系统或分区</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>原文作者：絷缘<br>
+作者邮箱：zhiyuanworkemail@163.com<br>
+原文地址：<a href="https://zhiyuandnc.github.io/iKIiXSumE/">https://zhiyuandnc.github.io/iKIiXSumE/</a><br>
+版权声明：本文为博主原创文章，转载请注明原文链接作者信息</p>
+</blockquote>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://zhiyuandnc.github.io/xc3aA90Gk/" class="post-title gt-a-link">
+                    Linux命令学习（三）
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">事实不以人的意志为转移</div>
+    <div class="social-container">
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-telegram gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-qq gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-bilibili gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Copyright&ensp;&copy;&ensp;絷缘的博客<br/><a href="https://beian.miit.gov.cn/" target="_blank">晋ICP备20001723号-1</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://zhiyuandnc.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

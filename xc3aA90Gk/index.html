@@ -1,0 +1,1366 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Linux命令学习（三） | 絷缘的博客</title>
+
+<link rel="shortcut icon" href="https://zhiyuandnc.github.io/favicon.ico?v=1740567139208">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zhiyuandnc.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+ <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            絷缘的博客
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/friends" class="menu gt-a-link">
+                            友链
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1740567139208" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Linux命令学习（三）
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2022-02-15 ·
+                    </time>
+                    
+                        <a href="https://zhiyuandnc.github.io/linux/" class="post-tags">
+                            # Linux
+                        </a>
+                    
+                        <a href="https://zhiyuandnc.github.io/Z3qSG8exS/" class="post-tags">
+                            # 命令
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="一-文件系统命令">一、文件系统命令</h2>
+<h3 id="1-fhs">1. FHS</h3>
+<ul>
+<li>1.1 FHS：文件系统层次化标准</li>
+<li>1.2 拓扑：倒置的树形结构，一切都从根目录（/）开始</li>
+<li>1.3 常见一级目录存储文件功能
+<ul>
+<li>/boot：存储开机所需文件，如：内核、镜像、菜单的配置文件</li>
+<li>/dev：以文件的形式存储设备及接口，如：硬盘、光驱等</li>
+<li>/bin：存储命令程序及配置文件</li>
+<li>/lib：开机时用到的函数及数据</li>
+<li>/root：root账户的家目录，相当于~</li>
+<li>/var：存储系统产生的日志文件</li>
+<li>/media：用于挂载设备（光驱）的目录</li>
+<li>/user：存储应用程序的安装目录</li>
+<li>/etc：配置文件存储目录</li>
+</ul>
+</li>
+<li>1.4 注意：目录名称区分大小写，FHS意义在于按照功能进行分类存储文件</li>
+</ul>
+<h3 id="2-文件操作命令">2. 文件操作命令</h3>
+<ul>
+<li>
+<p>2.1 新建目录命令</p>
+<ul>
+<li>
+<p>格式：mkdir  -参数    目录名称</p>
+</li>
+<li>
+<p>参数：</p>
+<ul>
+<li>-p：创建递归目录（包含下级目录的多级目录）</li>
+<li>-m：对新建的目录设置存取权限</li>
+</ul>
+</li>
+<li>
+<p>例：</p>
+<figure data-type="image" tabindex="1"><img src="https://pic.zyblog.xyz/img/typora/image-20201006155715956.png?origin=typora" alt="image-20201006155715956" loading="lazy"></figure>
+</li>
+</ul>
+</li>
+<li>
+<p>2.2 新建文件命令</p>
+<ul>
+<li>
+<p>格式：touch   -参数   文件名</p>
+</li>
+<li>
+<p>例1：touch    n{1,2,3,4,5,6,7,8}.txt</p>
+<figure data-type="image" tabindex="2"><img src="https://pic.zyblog.xyz/img/typora/image-20201006160252021.png?origin=typora" alt="image-20201006160252021" loading="lazy"></figure>
+</li>
+<li>
+<p>例2：</p>
+<figure data-type="image" tabindex="3"><img src="https://pic.zyblog.xyz/img/typora/image-20201006162125240.png?origin=typora" alt="image-20201006162125240" loading="lazy"></figure>
+</li>
+<li>
+<p>例3：</p>
+<ul>
+<li>
+<p>touch test.c</p>
+</li>
+<li>
+<p>vim test.c</p>
+</li>
+<li>
+<pre><code class="language-c">#include&lt;stdio.h&gt;
+int main(void){
+    printf(&quot;Hello World&quot;);
+    return 0;
+}
+</code></pre>
+</li>
+<li>
+<p>gcc test.c</p>
+</li>
+<li>
+<p>ls -a</p>
+<figure data-type="image" tabindex="4"><img src="https://pic.zyblog.xyz/img/typora/image-20201006163827628.png?origin=typora" alt="image-20201006163827628" loading="lazy"></figure>
+</li>
+<li>
+<p>./a.out</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>2.3 删除命令</p>
+<ul>
+<li>
+<p>格式：rm   -参数  文件名</p>
+</li>
+<li>
+<p>参数：</p>
+<ul>
+<li>
+<p>-r：删除目录</p>
+</li>
+<li>
+<p>-f：强制删除，不确认</p>
+<figure data-type="image" tabindex="5"><img src="https://pic.zyblog.xyz/img/typora/image-20201006162615901.png?origin=typora" alt="image-20201006162615901" loading="lazy"></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>2.4 pwd命令：显示绝对路径</p>
+</li>
+<li>
+<p>2.5 cp拷贝命令</p>
+<ul>
+<li>格式：cp  -参数   源文件    目标文件</li>
+<li>参数：
+<ul>
+<li>-r：拷贝目录</li>
+<li>-p：保留原始文件属性</li>
+<li>-d：若为链接文件，则保留链接文件属性</li>
+</ul>
+</li>
+<li>注意：
+<ul>
+<li>若目标为目录，则拷贝到目录中</li>
+<li>若目标为文件且不存在，则正常拷贝</li>
+<li>若目标为文件且名称不同，则改名后拷贝</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>2.6 mv移动文件命令</p>
+<ul>
+<li>格式：mv   -参数  源文件   目标文件</li>
+<li>注意：
+<ul>
+<li>若目标为目录，则剪切移动到目录中</li>
+<li>若目标为文件，则修改名称（无同名目录）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>2.7 大容量文件生成命令</p>
+<ul>
+<li>
+<p>格式：dd   if=数据来源  of=新文件名  count=数据块个数  bs=单个块容量</p>
+</li>
+<li>
+<p>功能：按照指定容量制作大文件，数据来源一般为算法设备或光驱</p>
+</li>
+<li>
+<p>if=/dev/zero：zero为可输出指定容量大小的数据0</p>
+</li>
+<li>
+<p>if=/dev/sr0：光驱（cdrom）</p>
+</li>
+<li>
+<p>例：</p>
+<ul>
+<li>制作400MB大文件：dd        if=/dev/zero         of=xin.txt        count=2       bs=200MB</li>
+<li>制作光盘镜像：dd      if=/dev/sr0      of=centos7_x86_64.iso</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>2.8 file命令</p>
+<ul>
+<li>作用：查看文件类型</li>
+<li>格式：file   文件名</li>
+<li>文件类型
+<ul>
+<li>empty：空文件</li>
+<li>ASCII   File：ASCII文件</li>
+<li>character    special：字符设备文件</li>
+<li>block special：块设备文件</li>
+<li>directory：目录</li>
+<li>link：链接文件</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>2.9 cat命令</p>
+<ul>
+<li>
+<p>作用：输出文本内容</p>
+</li>
+<li>
+<p>格式：cat   文件名</p>
+</li>
+<li>
+<p>参数：</p>
+<ul>
+<li>-n：显示行号</li>
+<li>-b：排除空行，非空行显示行号，从1开始显示</li>
+</ul>
+</li>
+<li>
+<p>将文件显示内容输出到另一文件</p>
+<ul>
+<li>touch temp.txt</li>
+<li>cat /etc/passwd   &gt;   temp.txt</li>
+<li>cat temp.txt</li>
+</ul>
+</li>
+<li>
+<p>文档合并：</p>
+<figure data-type="image" tabindex="6"><img src="https://pic.zyblog.xyz/img/typora/image-20201007165810521.png?origin=typora" alt="image-20201007165810521" loading="lazy"></figure>
+</li>
+</ul>
+</li>
+<li>
+<p>2.10 tac命令</p>
+<ul>
+<li>
+<p>作用：倒序查看文件内容</p>
+</li>
+<li>
+<p>格式：tac  文件名</p>
+<figure data-type="image" tabindex="7"><img src="https://pic.zyblog.xyz/img/typora/image-20201007170247545.png?origin=typora" alt="image-20201007170247545" loading="lazy"></figure>
+</li>
+</ul>
+</li>
+<li>
+<p>2.11 more命令</p>
+<ul>
+<li>作用：翻页查看文件内容，适用于内容较多的文件</li>
+<li>格式：more   文件名</li>
+<li>参数
+<ul>
+<li>-s：将输出文件中的空行减少为1个空行</li>
+<li>-p：先清屏后显示</li>
+<li>-数字：如-10，表示1屏显示10行，包括空行</li>
+</ul>
+</li>
+<li>例：
+<ul>
+<li>more  -sp  /etc/passwd</li>
+<li>more  -5  /etc/passwd</li>
+</ul>
+</li>
+<li>注意：
+<ul>
+<li>点击空格进行翻页浏览</li>
+<li>点击回车进行换行浏览</li>
+<li>点击q键退出浏览</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>2.12 less命令</p>
+<ul>
+<li>作用：同more，使用键盘上下键浏览</li>
+</ul>
+</li>
+<li>
+<p>2.13 head命令</p>
+<ul>
+<li>作用：显示文本文件的前n行</li>
+<li>格式：head   -数字  文件名</li>
+</ul>
+</li>
+<li>
+<p>2.14 wc命令</p>
+<ul>
+<li>
+<p>作用：统计文本文件内容的个数</p>
+</li>
+<li>
+<p>格式：wc  -参数    文件名</p>
+</li>
+<li>
+<p>参数</p>
+<ul>
+<li>-l：显示行数</li>
+<li>-w：显示单词数</li>
+<li>-c：显示字节数</li>
+</ul>
+</li>
+<li>
+<p>不加参数全显示</p>
+</li>
+<li>
+<p>例：显示文件前十行后统计字节数</p>
+<figure data-type="image" tabindex="8"><img src="https://pic.zyblog.xyz/img/typora/image-20201007171748647.png?origin=typora" alt="image-20201007171748647" loading="lazy"></figure>
+</li>
+</ul>
+</li>
+<li>
+<p>2.15 stat命令</p>
+<ul>
+<li>作用：显示文件的存储信息</li>
+<li>格式：stat 文件名</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-文件查找命令">3. 文件查找命令</h3>
+<ul>
+<li>
+<p>作用：按照条件查找文件</p>
+</li>
+<li>
+<p>格式：find    查找路径   查找条件   操作</p>
+</li>
+<li>
+<p>查找条件：</p>
+<ul>
+<li>
+<p>文件名称</p>
+<ul>
+<li>
+<p>-name：按照文件名检索，文件名最好加上双引号</p>
+<ul>
+<li><img src="https://pic.zyblog.xyz/img/typora/image-20201008091901205.png?origin=typora" alt="image-20201008091901205" loading="lazy"></li>
+</ul>
+</li>
+<li>
+<p>通配符：</p>
+<ul>
+<li>*：表示任意内容匹配任意次数</li>
+<li>？：表示任意内容匹配一次</li>
+<li><img src="https://pic.zyblog.xyz/img/typora/image-20201008092204622.png?origin=typora" alt="image-20201008092204622" loading="lazy"></li>
+<li><img src="https://pic.zyblog.xyz/img/typora/image-20201008092255826.png?origin=typora" alt="image-20201008092255826" loading="lazy"></li>
+<li><img src="https://pic.zyblog.xyz/img/typora/image-20201008092635098.png?origin=typora" alt="image-20201008092635098" loading="lazy"></li>
+</ul>
+</li>
+<li>
+<p>以扩展名查询文件</p>
+<ul>
+<li>
+<p>find   /etc   -name   &quot;*.cfg&quot;</p>
+<figure data-type="image" tabindex="13"><img src="https://pic.zyblog.xyz/img/typora/image-20201008093035974.png?origin=typora" alt="image-20201008093035974" loading="lazy"></figure>
+<figure data-type="image" tabindex="14"><img src="https://pic.zyblog.xyz/img/typora/image-20201008093054674.png?origin=typora" alt="image-20201008093054674" loading="lazy"></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>文件属性</p>
+<ul>
+<li>
+<p>-user：按照所有者进行匹配（root账户或普通账户）</p>
+<ul>
+<li>find   ~   -user   &quot;root&quot;</li>
+</ul>
+<figure data-type="image" tabindex="15"><img src="https://pic.zyblog.xyz/img/typora/image-20201008093426050.png?origin=typora" alt="image-20201008093426050" loading="lazy"></figure>
+<ul>
+<li>find   ~   -name   &quot;a*&quot;     -user    &quot;root&quot;（检索以a开头且归属于root账户的文件）</li>
+</ul>
+<figure data-type="image" tabindex="16"><img src="https://pic.zyblog.xyz/img/typora/image-20201008093547774.png?origin=typora" alt="image-20201008093547774" loading="lazy"></figure>
+<ul>
+<li>find   /   -name    &quot;*e&quot;   -o   -user   &quot;ZHIYUAN&quot;（检索以e结尾或归属于ZHIYUAN账户的文件）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>设备</p>
+<ul>
+<li>-type b/d/c/p/l/f：按照文件类型检索（块设备、目录、字符设备、管道设备、链接文件、文本文件）
+<ul>
+<li>find   /dev   -type   b   （检索块设备文件）</li>
+<li>find  ~  -type  d （检索目录）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>权限</p>
+<ul>
+<li>-perm：按照权限检索</li>
+<li>find  /dev  -perm  777</li>
+</ul>
+</li>
+<li>
+<p>时间</p>
+<ul>
+<li>-mtime：按照修改文件时间检索</li>
+<li>-atime：按照访问文件时间检索</li>
+<li>-ctime：按照修改权限时间检索</li>
+<li>注意：-n表示n天以内，+n表示n天以前</li>
+<li>例：find / -mtime -10 -empty（检索10以内未修改的空文件）</li>
+</ul>
+</li>
+<li>
+<p>容量</p>
+<ul>
+<li>-size：按照容量来检索（k、M、G）
+<ul>
+<li>find   /dev   -type   c    -size    -10k（检索/dev目录下的容量小于10k的字符设备文件）</li>
+<li>find   /      -size    +100M（检索根目录下容量大于100M的文件）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-文件内容过滤命令">4. 文件内容过滤命令</h3>
+<ul>
+<li>
+<p>作用：在一个文件中按照查找字段进行过滤内容</p>
+</li>
+<li>
+<p>格式：grep   -参数   查找条件   文件名</p>
+</li>
+<li>
+<p>参数：</p>
+<ul>
+<li>-n：显示检索内容的行号</li>
+<li>-i：忽略字母大小写</li>
+<li>-v：根据检索关键字进行反向显示</li>
+<li>-c：统计符合条件的行数</li>
+<li>-A数字：如-A3，显示符合条件的当前行和以下3行，向下遍历（4行）</li>
+<li>-B数字：如-B3，显示符合条件的当前行和以上3行，向上遍历（4行）</li>
+<li>-C数字：如-C2，显示符合条件的当前行以及上下2行（5行）</li>
+</ul>
+</li>
+<li>
+<p>例：</p>
+<ul>
+<li>检索包含“root” 的行信息：grep  -n   &quot;root&quot;  /etc/passwd</li>
+</ul>
+<figure data-type="image" tabindex="17"><img src="https://pic.zyblog.xyz/img/typora/image-20201008105652649.png?origin=typora" alt="image-20201008105652649" loading="lazy"></figure>
+<ul>
+<li>
+<p>检索passwd文件中不能登录的信息：grep    -n    “/sbin/nologin”    /etc/passwd</p>
+<figure data-type="image" tabindex="18"><img src="https://pic.zyblog.xyz/img/typora/image-20201008110049784.png?origin=typora" alt="image-20201008110049784" loading="lazy"></figure>
+</li>
+<li>
+<p>检索passwd文件中能登录的信息：grep   -n   -v  &quot;/sbin/nologin&quot;   /etc/passwd</p>
+<figure data-type="image" tabindex="19"><img src="https://pic.zyblog.xyz/img/typora/image-20201008110252359.png?origin=typora" alt="image-20201008110252359" loading="lazy"></figure>
+</li>
+<li>
+<p>检索包含“ssh”字段的行以及上5行：grep   -nB5  &quot;ssh&quot;   /etc/passwd</p>
+<figure data-type="image" tabindex="20"><img src="https://pic.zyblog.xyz/img/typora/image-20201008110442342.png?origin=typora" alt="image-20201008110442342" loading="lazy"></figure>
+</li>
+<li>
+<p>检索包含“ftp”的行及上下两行：grep   -nC2  &quot;ftp&quot;  /etc/passwd</p>
+<figure data-type="image" tabindex="21"><img src="https://pic.zyblog.xyz/img/typora/image-20201008110607221.png?origin=typora" alt="image-20201008110607221" loading="lazy"></figure>
+</li>
+<li>
+<p>检索不能登录账户的行数：grep   -c  &quot;/sbin/nologin&quot;  /etc/passwd</p>
+<figure data-type="image" tabindex="22"><img src="https://pic.zyblog.xyz/img/typora/image-20201008110717180.png?origin=typora" alt="image-20201008110717180" loading="lazy"></figure>
+<figure data-type="image" tabindex="23"><img src="https://pic.zyblog.xyz/img/typora/image-20201008110754636.png?origin=typora" alt="image-20201008110754636" loading="lazy"></figure>
+</li>
+<li>
+<p>检索包含大小写字母d的信息：grep   -ni  &quot;d&quot;   /etc/passwd</p>
+<figure data-type="image" tabindex="24"><img src="https://pic.zyblog.xyz/img/typora/image-20201008110931203.png?origin=typora" alt="image-20201008110931203" loading="lazy"></figure>
+</li>
+</ul>
+</li>
+<li>
+<p>正则表达式</p>
+<ul>
+<li>
+<p>概念：为了处理大量文本或字符串而定义的一套规则方法</p>
+</li>
+<li>
+<p>特点：</p>
+<ul>
+<li>通过定义特殊符号来描述模糊查找关键字，可以快速过滤、替换、输出字符串</li>
+<li>检索时是按行为单位进行处理</li>
+</ul>
+</li>
+<li>
+<p>使用[ ]字符集表示</p>
+<ul>
+<li>
+<p>[ab]：检索包含或者 b的行信息，[]中只能表示一个内容</p>
+<p>例：检索包含字母d或者D的信息：grep</p>
+<figure data-type="image" tabindex="25"><img src="https://pic.zyblog.xyz/img/typora/image-20201008111636544.png?origin=typora" alt="image-20201008111636544" loading="lazy"></figure>
+<p>例：检索包含字母o的信息：grep   -n  [o]    /etc/passwd</p>
+</li>
+<li>
+<p>[^]：根据关键字检索后反向显示（反向着色）</p>
+<p>例：检索不包含字母o的信息：grep   -n  [ ^o ]     /etc/passwd</p>
+<p>例：检索不以r开头且包含oot的信息：grep   -n   [ ^r ]oot    /etc/passwd</p>
+<figure data-type="image" tabindex="26"><img src="https://pic.zyblog.xyz/img/typora/image-20201008112349265.png?origin=typora" alt="image-20201008112349265" loading="lazy"></figure>
+</li>
+<li>
+<p>[-]：[0-9] 表示数字，[a-z] [A-Z]表示小写或大写字母，[a-zA-Z]表示字母</p>
+<p>例：检索包含7-9的信息：grep  -n  [7-9]   /etc/passwd</p>
+<figure data-type="image" tabindex="27"><img src="https://pic.zyblog.xyz/img/typora/image-20201008112559287.png?origin=typora" alt="image-20201008112559287" loading="lazy"></figure>
+<p>例：检索包含大写字母：grep   -n   [A-Z]   /etc/passwd</p>
+<figure data-type="image" tabindex="28"><img src="https://pic.zyblog.xyz/img/typora/image-20201008112701436.png?origin=typora" alt="image-20201008112701436" loading="lazy"></figure>
+</li>
+</ul>
+</li>
+<li>
+<p>行首及行尾</p>
+<ul>
+<li>
+<p>^：表示行首</p>
+<p>例：检索以“root”开头的行信息：grep   -n  &quot;^root&quot;   /etc/passwd</p>
+<figure data-type="image" tabindex="29"><img src="https://pic.zyblog.xyz/img/typora/image-20201008112905339.png?origin=typora" alt="image-20201008112905339" loading="lazy"></figure>
+<p>例：检索以#开头的行信息：grep   -n   &quot;^#&quot;  /etc/sos.conf</p>
+<figure data-type="image" tabindex="30"><img src="https://pic.zyblog.xyz/img/typora/image-20201008113112533.png?origin=typora" alt="image-20201008113112533" loading="lazy"></figure>
+<p>例：检索以[开头的信息：grep   -n   &quot;^\[&quot;   /etc/sos.conf（注意：\转义）</p>
+<figure data-type="image" tabindex="31"><img src="https://pic.zyblog.xyz/img/typora/image-20201008113553198.png?origin=typora" alt="image-20201008113553198" loading="lazy"></figure>
+</li>
+<li>
+<p>$：表示行尾</p>
+<p>例：检索以数字结尾的信息：grep   -n    [0-9]$  /etc/sos.conf</p>
+<figure data-type="image" tabindex="32"><img src="https://pic.zyblog.xyz/img/typora/image-20201008113830879.png?origin=typora" alt="image-20201008113830879" loading="lazy"></figure>
+<p>例：检索空白行：grep  -n   ^$  /etc/sos.conf</p>
+<figure data-type="image" tabindex="33"><img src="https://pic.zyblog.xyz/img/typora/image-20201008114017543.png?origin=typora" alt="image-20201008114017543" loading="lazy"></figure>
+<p>例：检索非空行：grep   -nv   ^$  /etc/sos.conf</p>
+<figure data-type="image" tabindex="34"><img src="https://pic.zyblog.xyz/img/typora/image-20201008114138441.png?origin=typora" alt="image-20201008114138441" loading="lazy"></figure>
+</li>
+</ul>
+</li>
+<li>
+<p>正则通配符</p>
+<ul>
+<li>
+<p>点（.）：表示一个任意字符</p>
+<p>例：检索以r开头，t结尾的中间2个字符的信息：grep   -n    &quot;r..t&quot;   /etc/passwd</p>
+</li>
+<li>
+<p>星号（*）：重复前面字符 0次或多次</p>
+<p>例：检索至少包含2个字母o的信息：grep   -n   &quot;ooo*&quot;  /etc/passwd</p>
+<figure data-type="image" tabindex="35"><img src="https://pic.zyblog.xyz/img/typora/image-20201008115219639.png?origin=typora" alt="image-20201008115219639" loading="lazy"></figure>
+</li>
+<li>
+<p>转义字符</p>
+<ul>
+<li>
+<p>作用：由于某些字符有特殊作用，若使用该字符原来的功能，则需要使用\将其特殊功能去掉，称为转义</p>
+<figure data-type="image" tabindex="36"><img src="https://pic.zyblog.xyz/img/typora/image-20201008115700465.png?origin=typora" alt="image-20201008115700465" loading="lazy"></figure>
+</li>
+<li>
+<p>例：检索以点结尾的字符：grep  -n   &quot;\.$&quot;  tt.txt</p>
+</li>
+</ul>
+</li>
+<li>
+<p>区间字符</p>
+<ul>
+<li>
+<p>格式：\{n1,n2\}</p>
+</li>
+<li>
+<p>分析：由于{}有特殊作用，需要使用\进行转义，n1==n2时，可以简写为\{n1\}，表示执行n1次</p>
+</li>
+<li>
+<p>例：检索包含两个o的信息：grep   -n  &quot;o\{2\}&quot;   /etc/passwd</p>
+<figure data-type="image" tabindex="37"><img src="https://pic.zyblog.xyz/img/typora/image-20201008120202158.png?origin=typora" alt="image-20201008120202158" loading="lazy"></figure>
+<p>例：检索包含两个到五个o的信息：grep   -n   &quot;o\{2,5\}&quot;   /etc/passwd</p>
+<figure data-type="image" tabindex="38"><img src="https://pic.zyblog.xyz/img/typora/image-20201008120403954.png?origin=typora" alt="image-20201008120403954" loading="lazy"></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-文档内容替换命令">5. 文档内容替换命令</h3>
+<ul>
+<li>
+<p>作用：进行文本内容的批量替换</p>
+</li>
+<li>
+<p>格式：tr   原字符    结果字符</p>
+</li>
+<li>
+<p>例：将passwd文件中的小写字母改为大写：cat /etc/passwd | tr [a-z] [A-Z]</p>
+<figure data-type="image" tabindex="39"><img src="https://pic.zyblog.xyz/img/typora/image-20201008140951688.png?origin=typora" alt="image-20201008140951688" loading="lazy"></figure>
+</li>
+<li>
+<p>例：grep -n &quot;root&quot; ~/passwd | tr [a-z] [A-Z]</p>
+<figure data-type="image" tabindex="40"><img src="https://pic.zyblog.xyz/img/typora/image-20201008141308276.png?origin=typora" alt="image-20201008141308276" loading="lazy"></figure>
+</li>
+</ul>
+<h3 id="6-打包压缩命令">6. 打包压缩命令</h3>
+<ul>
+<li>
+<p>作用：将文件或目录进行打包、压缩、解压缩</p>
+</li>
+<li>
+<p>分类：</p>
+<ul>
+<li>*.gz：由gzip程序进行压缩、解压缩</li>
+<li>*.bz2：由bz2程序压缩、解压缩</li>
+<li>*.tar：只是打包文件</li>
+<li>*.tar.gz：使用tar打包后进行gzip压缩</li>
+<li>注意：*.tar.bz2 和 *.tar.xz  也是打包压缩文件</li>
+</ul>
+</li>
+<li>
+<p>tar命令</p>
+<ul>
+<li>
+<p>格式：tar  -参数  文件名  目标及存储路径</p>
+</li>
+<li>
+<p>参数：</p>
+<ul>
+<li>-c：创建压缩文件</li>
+<li>-x：解压缩文件</li>
+<li>-v：显示时间进度</li>
+<li>-f：目标文件名</li>
+<li>-p：保留原始文件的属性及权限</li>
+<li>-t：查看压缩包的内容</li>
+<li>-P：使用绝对路径进行压缩</li>
+<li>常用参数：
+<ul>
+<li>-cvf：压缩</li>
+<li>-xvf：解压缩</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>例：tar  -cvf  rootfile.tar.gz   /root</p>
+<p>​		tar  -xvf rootfile.tar.gz</p>
+<ul>
+<li>注意：参数c和参数x不能同时使用</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="7-管道符与重定向符">7. 管道符与重定向符</h3>
+<ul>
+<li>
+<p>重定向</p>
+<ul>
+<li>
+<p>分类：</p>
+<ul>
+<li>
+<p>输入重定向：默认来源于键盘</p>
+</li>
+<li>
+<p>输出重定向：默认到屏幕</p>
+</li>
+</ul>
+</li>
+<li>
+<p>符号：</p>
+<ul>
+<li>命令  &lt;  文件：将文件作为命令的标准输入</li>
+<li>命令  &gt;  文件：将标准输出重定向为文件（覆盖清空原有内容）</li>
+<li>注意 &gt;&gt; 表示追加，会保留原有内容</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>管道符</p>
+<ul>
+<li>符号：|</li>
+<li>格式：命令1|命令2|命令3.......</li>
+<li>作用：将前一个命令的输出结果作为下一个命令的标准输入</li>
+</ul>
+</li>
+</ul>
+<h3 id="8-环境变量">8. 环境变量</h3>
+<ul>
+<li>
+<p>作用：用来定义系统运行环境的相关参数</p>
+</li>
+<li>
+<p>一般使用大写英文字母</p>
+</li>
+<li>
+<p>PATH环境变量</p>
+<ul>
+<li>作用：存储Linux系统命令解释器bash及程序的路径</li>
+<li>查看：ehco   $PATH</li>
+</ul>
+</li>
+<li>
+<p>常见环境变量</p>
+<ul>
+<li>HOME：存储家目录的绝对路径</li>
+<li>HISTSIZE：记录history命令的历史命令条数</li>
+<li>LANG：记录语系</li>
+<li>MAIL：邮箱文件</li>
+</ul>
+</li>
+<li>
+<p>执行命令过程</p>
+<ul>
+<li>第一步：判断是否以绝对路径或者相对路径来书写命令，若为绝对路径则立即执行</li>
+<li>第二步：判断命令名是否为别名</li>
+<li>第三步：使用bash解释器判断命令是外部命令还是内部命令</li>
+<li>第四步：通过PATH查询路径执行</li>
+<li>查看环境变量：$
+<ul>
+<li>格式：$ 变量名</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>全局变量：</p>
+<ul>
+<li>
+<p>作用：所有账户都生效的变量，默认定义的为局部变量</p>
+</li>
+<li>
+<p>格式：export  变量名</p>
+</li>
+<li>
+<p>例：</p>
+<p>在root账户下：</p>
+<ul>
+<li>export NIC=/etc/sysconfig/network-scripts/ifcfg-ens33</li>
+<li>cat $NIC</li>
+</ul>
+<p>在普通账户下</p>
+<ul>
+<li>su ZHIYUAN</li>
+<li>cat $NIC</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="二-用户账户及权限">二、 用户账户及权限</h2>
+<h3 id="1-root账户">1. root账户</h3>
+<ul>
+<li>root账户为默认的系统管理员账户，拥有完整权限</li>
+<li>使用原则：生产活动中尽量不使用root账户，应使用普通账户临时分配权限来使用</li>
+</ul>
+<h3 id="2-uid">2. UID</h3>
+<ul>
+<li>账户ID是管理账户的一种手段，相当于账户的“身份证编号”，具有唯一性</li>
+<li>编号原则
+<ul>
+<li>系统使用无符号整数进行编号，范围：[0,4294967294]</li>
+<li>UID分类
+<ul>
+<li>系统管理员账户：[0,999]，root账户UID为0</li>
+<li>普通账户：从1000开始编号，连续编号，即使管理员编号未使用，普通账户也不可占用</li>
+<li>查看：/etc/passwd</li>
+</ul>
+</li>
+<li>id命令
+<ul>
+<li>作用：显示账户的UID值</li>
+<li>格式：id  账户名</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>注意：UID不能相同</li>
+</ul>
+<h3 id="3-新建账户">3. 新建账户</h3>
+<ul>
+<li>格式： useradd   -参数   账户名</li>
+<li>参数：
+<ul>
+<li>-d：指定账户家目录，默认普通账户家目录为：/home/账户名</li>
+<li>-e：设置账户到期失效时间，时间格式：YYYY-MM-DD（如：2020-10-08）</li>
+<li>-u：指定账户的UID值</li>
+<li>-g：指定一个初始用户的工作组（工作组必须已存在）</li>
+<li>-G：指定一个或多个扩展组</li>
+<li>-N：不创建与账户同名的基本工作组</li>
+</ul>
+</li>
+<li>例：useradd  test1</li>
+</ul>
+<h3 id="4-设置账户密码">4. 设置账户密码</h3>
+<ul>
+<li>
+<p>格式：passwd   -参数   账户名</p>
+</li>
+<li>
+<p>参数：</p>
+<ul>
+<li>-l：锁定账户，禁止登录</li>
+<li>-u：解除锁定，允许登录</li>
+<li>-d：允许用户可以用空格密码登录</li>
+<li>-e：强制用户在在下次登录时修改密码</li>
+</ul>
+</li>
+<li>
+<p>注意：</p>
+<ul>
+<li>密码输入时不回显</li>
+<li>密码应超过8字符</li>
+<li>密码应使用数字、字母、符号组成</li>
+<li>密码应定期更换</li>
+</ul>
+</li>
+<li>
+<p>例1：新建账户、设置密码、注销账户、重新登录</p>
+<ul>
+<li>useradd  test2</li>
+<li>passwd  test2  （输入两次密码）</li>
+<li>logout</li>
+<li>登录test2账户</li>
+</ul>
+</li>
+<li>
+<p>例2：新建账户test3，UID=5555，工作组为test1，家目录为/home/tmp</p>
+<ul>
+<li>useradd  test3  -u 5555  -g  test1   -d  /home/tmp（/homt/tmp需要新建）</li>
+<li>passwd test3（输入两次密码）</li>
+<li>logout</li>
+<li>登录test3账户</li>
+<li>pwd</li>
+<li>id  test3</li>
+</ul>
+</li>
+<li>
+<p>例3：设置账户为不可登录状态</p>
+<ul>
+<li>vim  /etc/passwd</li>
+<li>定位倒数几行的普通账户，点击i键，将本行尾部的/bin/bash修改为/sbin/nologin</li>
+<li>点击ESC键，冒号，wq保存并退出</li>
+<li>logout</li>
+<li>尝试登录被修改账户</li>
+</ul>
+</li>
+<li>
+<p>root账户密码的破解</p>
+<ul>
+<li>reboot重启系统</li>
+<li>在内核选择界面点击键盘上下键，再点击e键</li>
+<li>进入内核登录编辑界面，定位Linux16所在行，找到ro修改为rw  init=/sysroot/bin/bash</li>
+<li>按下Ctrl+X</li>
+<li>进入紧急救援模式后输入chroot  /sysroot</li>
+<li>passwd修改密码（输入两次密码，方块为汉字不能显示）</li>
+<li>设置selinux 使其密码修改生效：touch  /.autorelabel</li>
+<li>按下Ctrl+D</li>
+<li>reboot重启</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-删除账户">5. 删除账户</h3>
+<ul>
+<li>格式：userdel   -参数    账户名</li>
+<li>参数：
+<ul>
+<li>-f：强制删除</li>
+<li>-r：同时删除账户及家目录</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-工作组group">6. 工作组（group）</h3>
+<ul>
+<li>意义：将相同属性及权限的账户作为一组，组内账户属性等信息相同</li>
+<li>Linux系统为了方便管理数据，引入了层级管理机制：公司（系统）-&gt;部门（工作组）-&gt;员工（账户）-&gt; 文件（权限）</li>
+<li>分类
+<ul>
+<li>基本工作组：创建账户时一同创建同名的工作组</li>
+<li>扩展组：可以将账户加入到其他工作组中</li>
+<li>查看：more  /etc/group</li>
+</ul>
+</li>
+<li>GID：工作组编号，规则同UID</li>
+<li>创建工作组
+<ul>
+<li>格式：groupadd   -参数   工作组名</li>
+<li>参数：-g  ，自定义工作组GID，默认从1000开始</li>
+</ul>
+</li>
+<li>删除工作组
+<ul>
+<li>格式：groupdel   工作组名</li>
+<li>注意：若工作组中已存在账户，必须先移除再删除工作组，否则无法删除工作组</li>
+</ul>
+</li>
+</ul>
+<h3 id="7-文件权限">7. 文件权限</h3>
+<ul>
+<li>
+<p>文件归属者</p>
+<ul>
+<li>文件拥有者（账户）</li>
+<li>所属组（工作组）</li>
+<li>其它账户</li>
+</ul>
+</li>
+<li>
+<p>权限的意义</p>
+<ul>
+<li>
+<p>限制用户操作，规范命令使用，将破坏性限制在一定范围</p>
+</li>
+<li>
+<p>类别</p>
+<ul>
+<li>普通文件（-）
+<ul>
+<li>可读（r）：可以读取到文件中的内容</li>
+<li>可写（w）：可以编辑修改删除文件内容</li>
+<li>可执行（x）：可以运行一个脚本</li>
+</ul>
+</li>
+<li>目录（d）
+<ul>
+<li>可读（r）：可以读取目录中的文件列表</li>
+<li>可写（w）：可以读取目录内容，修改目录名称，增删目录中的文件</li>
+<li>可执行（x）：可以进入该目录（cd命令）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>查看权限方法：</p>
+<ul>
+<li>
+<p>ls  -l（ll同）：查看目录内的文件权限信息</p>
+</li>
+<li>
+<p>ls  -ld：查看当前目录的权限信息</p>
+</li>
+<li>
+<p>显示内容分析：</p>
+<ul>
+<li>第一列描述文件类别，-  表示普通文件，d为目录</li>
+<li>rw-r--r--：三个一组，分别对应账户、工作组、其他账户对该文件拥有的权限，- 表示无权限</li>
+<li>1：链接数</li>
+<li>root  root：该文件对应的账户及所属工作组</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>权限数字表示法</p>
+<ul>
+<li>
+<p>原则：</p>
+<ul>
+<li>r：4</li>
+<li>w：2</li>
+<li>w：1</li>
+</ul>
+</li>
+<li>
+<p>小结：</p>
+<table>
+	<tr align="center">
+        <th>权限项</th>
+        <th>读</th>
+        <th>写</th>
+        <th>执行</th>
+        <th>读</th>
+        <th>写</th>
+        <th>执行</th>
+        <th>读</th>
+        <th>写</th>
+        <th>执行</th>
+	</tr>
+    <tr align="center">
+        <td>字符表示法</td>
+    <td>r</td>
+        <td>w</td>
+        <td>x</td>
+        <td>r</td>
+        <td>w</td>
+        <td>x</td>
+        <td>r</td>
+        <td>w</td>
+        <td>x</td>
+    </tr>
+    <tr align="center">
+        <td>数字表示法</td>
+        <td>4</td>
+        <td>2</td>
+        <td>1</td>
+        <td>4</td>
+        <td>2</td>
+        <td>1</td>
+        <td>4</td>
+        <td>2</td>
+        <td>1</td>
+    </tr>
+    <tr align="center">
+        <td>权限分配</td>
+        <td colspan="3">文件所有者</td>
+        <td colspan="3">文件所属组</td>
+        <td colspan="3">其他账户</td>
+    </tr>
+</table>
+</li>
+<li>
+<p>组合</p>
+<ul>
+<li>rwx：4+2+1-&gt;7（完整权限）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>rw-：4+2-&gt;6（可读可写不可执行）</p>
+<ul>
+<li>
+<p>r-x：4+1-&gt;5（可读可执行不可写）</p>
+</li>
+<li>
+<p>r--：4（可读不可写不可执行）</p>
+</li>
+<li>
+<p>-wx：2+1-&gt;3（不可读可写可执行）</p>
+</li>
+<li>
+<p>-w-：2（可写）</p>
+</li>
+<li>
+<p>--x：1（可执行）</p>
+</li>
+<li>
+<p>---：0（无权限）</p>
+</li>
+<li>
+<p>例：764、642、153、731的字符描述</p>
+<ul>
+<li>rwxrw-r--</li>
+<li>rw-r---w-</li>
+<li>--xr-x-wx</li>
+<li>rwx-wx--x</li>
+</ul>
+</li>
+<li>
+<p>例：rwxrw-r-- 、rw--w--wx  、rw-r--r--数字描述</p>
+<ul>
+<li>rwxrw-r--：764</li>
+<li>rw--w--wx：623</li>
+<li>rw-r--r--：644</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>修改文件权限命令chmod</p>
+<ul>
+<li>
+<p>格式：chmod  -参数   权限   文件或目录名</p>
+</li>
+<li>
+<p>例：touch  tmp.cfg（新建文件默认权限644）</p>
+<p>​		chmod  777  tmp.cfg</p>
+</li>
+</ul>
+</li>
+<li>
+<p>chown命令</p>
+<ul>
+<li>作用：设置文件所有者及工作组</li>
+<li>格式：chown    -参数    账户名:工作组   文件或目录名</li>
+<li>例： chown ZHIYUAN:ZHIYUAN tmp.cfg</li>
+</ul>
+</li>
+<li>
+<p>文件隐藏权限</p>
+<ul>
+<li>
+<p>原则：文件一般包含默认权限和隐藏权限，隐藏权限默认状态下无法查看，若权限足够但无法删除，此时应考虑该文件是否有隐藏权限</p>
+</li>
+<li>
+<p>lsattr命令</p>
+<ul>
+<li>作用：查看文件隐藏权限</li>
+<li>格式：lsattr   文件或目录名</li>
+</ul>
+</li>
+<li>
+<p>chattr命令</p>
+<ul>
+<li>
+<p>作用：设置文件隐藏权限</p>
+</li>
+<li>
+<p>格式：chattr   参数    文件或目录名</p>
+</li>
+<li>
+<p>参数</p>
+<ul>
+<li>i：表示文件无法修改（目录中不能新建和删除）</li>
+<li>a：仅允许追加内容，不可以覆盖、删除</li>
+<li>s：从硬盘中彻底删除，不可恢复，会使用0填充文件所在存储空间</li>
+<li>S：文件变更后同步到磁盘</li>
+</ul>
+</li>
+<li>
+<p>注意：参数前若有加号（+）或减号（-），则表示增加或撤销功能</p>
+</li>
+<li>
+<p>例：设置不可删除权限</p>
+<figure data-type="image" tabindex="41"><img src="https://pic.zyblog.xyz/img/typora/image-20201009105520603.png?origin=typora" alt="image-20201009105520603" loading="lazy"></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="8-账户切换命令">8. 账户切换命令</h3>
+<ul>
+<li>格式：su   -参数   账户名</li>
+<li>常用：su   -  账户名</li>
+<li>注意：
+<ul>
+<li>减号（-）表示完全切换，重新建立系统环境变量，不保留原有环境参数</li>
+<li>root账户切换到普通账户，不需要输入密码，反之需要重新验证密码</li>
+</ul>
+</li>
+</ul>
+<h3 id="9-sudo命令">9. sudo命令</h3>
+<ul>
+<li>
+<p>作用： 给普通账户提供额外的权限完成原本root账户才能实现功能，将权限控制在某个命令或文件上，降低安全风险</p>
+</li>
+<li>
+<p>sudo配置文件分析</p>
+<ul>
+<li>
+<p>原则：必须在root账户下配置后才可使用</p>
+</li>
+<li>
+<p>格式：visudo</p>
+</li>
+<li>
+<p>方法：</p>
+<ul>
+<li>
+<p>visudo</p>
+</li>
+<li>
+<p>输入后定位第99行即：root   ALL=(ALL)   ALL</p>
+</li>
+<li>
+<p>该参数意义为：账户名   允许使用的主机=（以谁的身份）  执行命令列表</p>
+</li>
+<li>
+<p>点击i键输入：普通账户名   ALL=(ALL)  ALL</p>
+</li>
+<li>
+<p>输入冒号，wq保存并退出</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>提权方法：</p>
+<ul>
+<li>
+<p>格式： sudo  -参数   命令名称</p>
+</li>
+<li>
+<p>例：新建账户访问  /etc/shadow</p>
+<figure data-type="image" tabindex="42"><img src="https://pic.zyblog.xyz/img/typora/image-20201009112930327.png?origin=typora" alt="image-20201009112930327" loading="lazy"></figure>
+<figure data-type="image" tabindex="43"><img src="https://pic.zyblog.xyz/img/typora/image-20201009112725500.png?origin=typora" alt="image-20201009112725500" loading="lazy"></figure>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>原文作者：絷缘<br>
+作者邮箱：zhiyuanworkemail@163.com<br>
+原文地址：<a href="https://zhiyuandnc.github.io/xc3aA90Gk/">https://zhiyuandnc.github.io/xc3aA90Gk/</a><br>
+版权声明：本文为博主原创文章，转载请注明原文链接作者信息</p>
+</blockquote>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://zhiyuandnc.github.io/hNHvS29UU/" class="post-title gt-a-link">
+                    Linux命令学习（二）
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">事实不以人的意志为转移</div>
+    <div class="social-container">
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-telegram gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-qq gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-bilibili gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Copyright&ensp;&copy;&ensp;絷缘的博客<br/><a href="https://beian.miit.gov.cn/" target="_blank">晋ICP备20001723号-1</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://zhiyuandnc.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

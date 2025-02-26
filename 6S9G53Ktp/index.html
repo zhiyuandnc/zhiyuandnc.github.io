@@ -1,0 +1,295 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>SemanticUI学习（4）图片 | 絷缘的博客</title>
+
+<link rel="shortcut icon" href="https://zhiyuandnc.github.io/favicon.ico?v=1740567139208">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zhiyuandnc.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+ <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            絷缘的博客
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/friends" class="menu gt-a-link">
+                            友链
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1740567139208" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    SemanticUI学习（4）图片
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2021-01-09 ·
+                    </time>
+                    
+                        <a href="https://zhiyuandnc.github.io/semanticui/" class="post-tags">
+                            # SemanticUI
+                        </a>
+                    
+                        <a href="https://zhiyuandnc.github.io/qjuNtQyCB/" class="post-tags">
+                            # 自学
+                        </a>
+                    
+                        <a href="https://zhiyuandnc.github.io/2WP8Q3KZTb/" class="post-tags">
+                            # 前端
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="一-引入资源文件">一、引入资源文件</h2>
+<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css&quot;/&gt;
+&lt;script src=&quot;https://code.jquery.com/jquery-3.1.1.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<h2 id="二-不同尺寸的图片">二、不同尺寸的图片</h2>
+<pre><code class="language-html">&lt;!-- 迷你图片 --&gt;
+&lt;div class=&quot;ui block header&quot;&gt;ui-mini-image&lt;/div&gt;
+&lt;div class=&quot;ui mini image&quot;&gt;
+    &lt;img src=&quot;./img/image.png&quot; alt=&quot;&quot;&gt;
+&lt;/div&gt;
+&lt;!-- 较小图片 --&gt;
+&lt;div class=&quot;ui block header&quot;&gt;ui-tiny-image&lt;/div&gt;
+&lt;div class=&quot;ui tiny image&quot;&gt;
+    &lt;img src=&quot;./img/image.png&quot; alt=&quot;&quot;&gt;
+&lt;/div&gt;
+&lt;!-- 小图片 --&gt;
+&lt;div class=&quot;ui block header&quot;&gt;ui-small-image&lt;/div&gt;
+&lt;div class=&quot;ui small image&quot;&gt;
+    &lt;img src=&quot;./img/image.png&quot; alt=&quot;&quot; title=&quot;小图片&quot;&gt;
+&lt;/div&gt;
+&lt;!-- 中等图片 --&gt;
+&lt;div class=&quot;ui block header&quot;&gt;ui-medium-image&lt;/div&gt;
+&lt;div class=&quot;ui medium image&quot;&gt;
+    &lt;img src=&quot;./img/image.png&quot; alt=&quot;&quot; title=&quot;中等图片&quot;&gt;
+&lt;/div&gt;
+&lt;!-- 大图片 --&gt;
+&lt;div class=&quot;ui block header&quot;&gt;ui-large-image&lt;/div&gt;
+&lt;div class=&quot;ui large image&quot;&gt;
+    &lt;img src=&quot;./img/image.png&quot; alt=&quot;&quot;&gt;
+&lt;/div&gt;
+&lt;!-- 较大图片 --&gt;
+&lt;div class=&quot;ui block header&quot;&gt;ui-big-image&lt;/div&gt;
+&lt;div class=&quot;ui big image&quot;&gt;
+    &lt;img src=&quot;./img/image.png&quot; alt=&quot;&quot;&gt;
+&lt;/div&gt;
+&lt;!-- 巨大图片 --&gt;
+&lt;div class=&quot;ui block header&quot;&gt;ui-huge-image&lt;/div&gt;
+&lt;div class=&quot;ui huge image&quot;&gt;
+    &lt;img src=&quot;./img/image.png&quot; alt=&quot;&quot;&gt;
+&lt;/div&gt;
+&lt;!-- 最大图片 --&gt;
+&lt;div class=&quot;ui block header&quot;&gt;ui-massive-image&lt;/div&gt;
+&lt;div class=&quot;ui massive image&quot;&gt;
+    &lt;img src=&quot;./img/image.png&quot; alt=&quot;&quot;&gt;
+&lt;/div&gt;            
+</code></pre>
+<h2 id="三-不同状态的图片">三、不同状态的图片</h2>
+<pre><code class="language-html">&lt;!-- 隐藏的图片 --&gt;
+&lt;div class=&quot;ui block header&quot;&gt;ui-hidden-image&lt;/div&gt;
+&lt;div class=&quot;ui hidden image&quot;&gt;
+    &lt;img src=&quot;./img/image.png&quot; alt=&quot;&quot;&gt;
+&lt;/div&gt;
+&lt;!-- 禁止的图片 --&gt;
+&lt;div class=&quot;ui block header&quot;&gt;ui-disabled-image&lt;/div&gt;
+&lt;div class=&quot;ui disabled small image&quot;&gt;
+    &lt;img src=&quot;./img/image.png&quot; alt=&quot;&quot;&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="四-有边框的图片">四、有边框的图片</h2>
+<pre><code class="language-html">&lt;img src=&quot;./img/white-image.png&quot; alt=&quot;&quot; class=&quot;ui bordered small image&quot;&gt;
+</code></pre>
+<h2 id="五-适应容器的图片">五、适应容器的图片</h2>
+<pre><code class="language-html">&lt;img src=&quot;./img/image.png&quot; alt=&quot;&quot; class=&quot;ui fluid image&quot;&gt;
+</code></pre>
+<h2 id="六-圆角的图片">六、圆角的图片</h2>
+<pre><code class="language-html">&lt;img src=&quot;./img/image.png&quot; alt=&quot;&quot; class=&quot;ui rounded medium image&quot;&gt;
+</code></pre>
+<h2 id="七-圆形的图片">七、圆形的图片</h2>
+<pre><code class="language-html">&lt;img src=&quot;./img/square-image.png&quot; alt=&quot;&quot; class=&quot;ui circular small image&quot;&gt;
+</code></pre>
+<h2 id="八-位置居中的图片">八、位置居中的图片</h2>
+<pre><code class="language-html">&lt;img src=&quot;img/paragraph.png&quot; class=&quot;ui centered aligned image&quot;&gt;
+</code></pre>
+<h2 id="九-同一尺寸图片组">九、同一尺寸图片组</h2>
+<pre><code class="language-html">&lt;div class=&quot;ui small images&quot;&gt;
+    &lt;img src=&quot;img/image.png&quot; class=&quot;ui image&quot;&gt;
+    &lt;img src=&quot;img/image.png&quot; class=&quot;ui image&quot;&gt;
+    &lt;img src=&quot;img/image.png&quot; class=&quot;ui image&quot;&gt;
+    &lt;img src=&quot;img/image.png&quot; class=&quot;ui image&quot;&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="十-实际效果">十、实际效果</h2>
+<figure data-type="image" tabindex="1"><img src="https://zhiyuandnc.github.io/post-images/1610204333335.png" alt="" loading="lazy"></figure>
+<blockquote>
+<p>原文作者：絷缘<br>
+作者邮箱：zhiyuanworkemail@163.com<br>
+原文地址：<a href="https://zhiyuandnc.github.io/6S9G53Ktp/">https://zhiyuandnc.github.io/6S9G53Ktp/</a><br>
+版权声明：本文为博主原创文章，转载请注明原文链接作者信息</p>
+</blockquote>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://zhiyuandnc.github.io/wVXYh7sFa/" class="post-title gt-a-link">
+                    SemanticUI学习（3）标题
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">事实不以人的意志为转移</div>
+    <div class="social-container">
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-telegram gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-qq gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-bilibili gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Copyright&ensp;&copy;&ensp;絷缘的博客<br/><a href="https://beian.miit.gov.cn/" target="_blank">晋ICP备20001723号-1</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://zhiyuandnc.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,360 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Java原生实现HTTP的GET和POST请求 | 絷缘的博客</title>
+
+<link rel="shortcut icon" href="https://zhiyuandnc.github.io/favicon.ico?v=1740567139208">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zhiyuandnc.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+ <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            絷缘的博客
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/friends" class="menu gt-a-link">
+                            友链
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1740567139208" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Java原生实现HTTP的GET和POST请求
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2021-01-15 ·
+                    </time>
+                    
+                        <a href="https://zhiyuandnc.github.io/8OyQWVfwC/" class="post-tags">
+                            # get
+                        </a>
+                    
+                        <a href="https://zhiyuandnc.github.io/WNsFqIvlCU/" class="post-tags">
+                            # post
+                        </a>
+                    
+                        <a href="https://zhiyuandnc.github.io/http/" class="post-tags">
+                            # HTTP
+                        </a>
+                    
+                        <a href="https://zhiyuandnc.github.io/java/" class="post-tags">
+                            # Java
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="一-原生实现get请求">一、原生实现GET请求</h2>
+<pre><code class="language-java">public static String Get(String url) {
+    HttpURLConnection conn = null;
+    InputStream is = null;
+    BufferedReader br = null;
+    String line = null;
+    StringBuilder sb = new StringBuilder();
+    try {
+        //获取URL连接对象强转为HTTPURL连接对象
+        conn = (HttpURLConnection) new URL(url).openConnection();
+        //设置HTTP请求方式为GET
+        conn.setRequestMethod(&quot;GET&quot;);
+        //设置连接超时时间为3秒
+        conn.setConnectTimeout(3000);
+        //设置读取时间超时为5秒
+        conn.setReadTimeout(5000);
+        // 设置请求头
+        conn.setRequestProperty(&quot;Content-Type&quot;, &quot;text/html;charset=utf-8&quot;);
+        conn.setRequestProperty(&quot;Accept&quot;, &quot;text/html,application/xhtml+xml,application/xml,application/json;&quot;);
+        conn.setRequestProperty(&quot;User-Agent&quot;, &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36&quot;);
+        //发送请求
+        conn.connect();
+        //获取响应码，判断请求是否成功
+        if (conn.getResponseCode() == 200) {
+            is = conn.getInputStream();
+            br = new BufferedReader(new InputStreamReader(is, &quot;UTF-8&quot;));
+            while ((line = br.readLine()) != null) {
+                // 当line不为null时，将line追加到sb中
+                sb.append(line + &quot;\n&quot;);
+            }
+        } else {
+            // 返回错误信息
+            return &quot;ResponseCode is Error:&quot; + conn.getResponseCode();
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+    } finally {
+        // 释放IO流
+        if (br != null) {
+            try {
+                br.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    // 返回sb的String内容
+    return sb.toString();
+}
+</code></pre>
+<blockquote>
+<p>问：怎么没有GET传参的方法？<br>
+答：一般我们会直接通过QueryString将多个键值的参数用&amp;连接再与URL直接拼接，所以实际上我们还是只做了请求定向的链接，所以不需要传参的方法</p>
+</blockquote>
+<h2 id="二-原生实现post请求">二、原生实现POST请求</h2>
+<pre><code class="language-java">public static String Post(String url, String requestContent) {
+    System.out.println(&quot;请求的URL：&quot;+url);
+    System.out.println(&quot;请求的参数：&quot;+requestContent);
+    HttpURLConnection conn = null;
+    OutputStream os = null;
+    BufferedWriter bw = null;
+    InputStream is = null;
+    String line = null;
+    StringBuilder sb = new StringBuilder();
+    BufferedReader br = null;
+    try {
+        // 获取URL连接对象强转为HTTPURL连接对象
+        conn = (HttpURLConnection) new URL(url).openConnection();
+        //设置请求头
+        conn.setRequestProperty(&quot;Connection&quot;,&quot;keep-alive&quot;);
+        conn.setRequestMethod(&quot;POST&quot;);
+        //因为POST请求需要对流进行读写，所以需要设置输入输出均为true
+        conn.setDoInput(true);
+        conn.setDoOutput(true);
+        // 设置超时时间
+        conn.setConnectTimeout(3000);
+        conn.setReadTimeout(15000);
+        // 设置请求头
+        conn.setRequestProperty(&quot;Content-Type&quot;, &quot;application/x-www-form-urlencoded;charset=utf-8&quot;);
+        conn.setRequestProperty(&quot;Accept&quot;, &quot;text/html,application/xhtml+xml,application/xml,application/json,application/x-www-form-urlencoded&quot;);
+        conn.setRequestProperty(&quot;User-Agent&quot;, &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36&quot;);
+        // 将POST参数转为字节数组写到流中并刷新流（这一步相当于提交参数）
+        conn.getOutputStream().write(requestContent.getBytes(&quot;UTF-8&quot;));
+        conn.getOutputStream().flush();
+        // 获取响应码，判断请求是否成功
+        if (conn.getResponseCode()==200){
+            is = conn.getInputStream();
+            br = new BufferedReader(new InputStreamReader(is, &quot;UTF-8&quot;));
+            while((line=br.readLine())!=null){
+                sb.append(line+&quot;\n&quot;);
+            }
+        }else{
+            // 返回错误信息
+            return &quot;ResponseCode is Error:&quot; + conn.getResponseCode();
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+    }finally {
+        // 释放IO流
+        if(br!=null){
+            try {
+                br.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        if(bw!=null){
+            try {
+                bw.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    // 返回sb的String内容
+    return sb.toString();
+}
+</code></pre>
+<blockquote>
+<p>问：为什么我的不成功？<br>
+答：请检查代码是否与我的完全一致，还有POST请求头中的Content-Type有几种固定的格式，并非你想写什么就可以写什么，就比如，如果我设置Content-Type为text/html;charset=utf-8，在GET请求下是正常的，在POST请求中是不行的，无法正确提交你的参数，因为你的参数并非是html格式的</p>
+</blockquote>
+<h2 id="三-post请求中的常见content-type">三、POST请求中的常见Content-Type</h2>
+<h3 id="1-以querystring的形式去提交post参数">1. 以QueryString的形式去提交POST参数</h3>
+<blockquote>
+<p>你需要使用的Content-Type为application/x-www-form-urlencoded</p>
+</blockquote>
+<pre><code class="language-java">conn.setRequestProperty(&quot;Content-Type&quot;, &quot;application/x-www-form-urlencoded;charset=utf-8&quot;);
+</code></pre>
+<h3 id="2-以formdata的形式去提交post参数">2. 以FormData的形式去提交POST参数</h3>
+<blockquote>
+<p>你需要使用的Content-Type为multipart/form-data</p>
+</blockquote>
+<pre><code class="language-java">conn.setRequestProperty(&quot;Content-Type&quot;, &quot;multipart/form-data&quot;);
+</code></pre>
+<h3 id="3-以json格式去提交post参数">3. 以Json格式去提交POST参数</h3>
+<blockquote>
+<p>你需要使用的Content-Type为application/json</p>
+</blockquote>
+<pre><code class="language-java">conn.setRequestProperty(&quot;Content-Type&quot;, &quot;application/json;charset=utf-8&quot;);
+</code></pre>
+<blockquote>
+<p>问：啥叫QueryString,FormData,Json？<br>
+答：请百度</p>
+</blockquote>
+<blockquote>
+<p>原文作者：絷缘<br>
+作者邮箱：zhiyuanworkemail@163.com<br>
+原文地址：<a href="https://zhiyuandnc.github.io/JavaHttp/">https://zhiyuandnc.github.io/JavaHttp/</a><br>
+版权声明：本文为博主原创文章，转载请注明原文链接作者信息</p>
+</blockquote>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://zhiyuandnc.github.io/LwW9qXRhj/" class="post-title gt-a-link">
+                    Win10系统盘空间优化总结
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">事实不以人的意志为转移</div>
+    <div class="social-container">
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-telegram gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-qq gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-bilibili gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Copyright&ensp;&copy;&ensp;絷缘的博客<br/><a href="https://beian.miit.gov.cn/" target="_blank">晋ICP备20001723号-1</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://zhiyuandnc.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

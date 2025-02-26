@@ -1,0 +1,641 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Linux命令学习（十） | 絷缘的博客</title>
+
+<link rel="shortcut icon" href="https://zhiyuandnc.github.io/favicon.ico?v=1740567139208">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zhiyuandnc.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+ <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            絷缘的博客
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/friends" class="menu gt-a-link">
+                            友链
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1740567139208" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Linux命令学习（十）
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2022-03-02 ·
+                    </time>
+                    
+                        <a href="https://zhiyuandnc.github.io/linux/" class="post-tags">
+                            # Linux
+                        </a>
+                    
+                        <a href="https://zhiyuandnc.github.io/Z3qSG8exS/" class="post-tags">
+                            # 命令
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="部署文件服务器">部署文件服务器</h2>
+<h3 id="1-文件服务器">1. 文件服务器</h3>
+<ul>
+<li>
+<p>1.1 一般用于文件传输协议（FTP），用于FTP客户端与服务端的文件共享、上传下载</p>
+</li>
+<li>
+<p>1.2 结构：客户机/服务器（C/S架构）</p>
+</li>
+<li>
+<p>1.3 端口：</p>
+<ul>
+<li>20：用于数据传输</li>
+<li>21：用于传输命令</li>
+</ul>
+</li>
+<li>
+<p>1.4 特点：FTP服务器普遍部署在内网，一般使用下载功能较多，容易搭建，方便管理</p>
+</li>
+<li>
+<p>1.5 结构图：</p>
+</li>
+<li>
+<p>1.6 FTP协议工作模式</p>
+<ul>
+<li>主动模式：FTP的服务器主动向客户机发出连接请求</li>
+<li>被动模式：FTP服务器等待客户机发出连接请求（默认模式）</li>
+</ul>
+</li>
+<li>
+<p>1.7 vsftpd服务程序</p>
+<ul>
+<li>
+<p>1.7.1 vsftpd：非常安全的FTP守护进程</p>
+</li>
+<li>
+<p>1.7.2 vsftpd是一款运行在Linux系统上的FTP服务程序，具有完全开源、免费、高安全性、高可靠性、高传输速度、支持多种服务模式的FTP服务器端软件</p>
+</li>
+<li>
+<p>1.7.3 工作模式：</p>
+<ul>
+<li>匿名开放模式：任何人都可以无需密码验证而直接登录FTP服务器，方便简单但极不安全</li>
+<li>本地用户模式：通过Linux系统本地的普通账户和密码进行认证登录，相对安全，若本地系统账户信息泄露或被破解，则FTP服务器就可顺利登录，从而控制整个服务器</li>
+<li>虚拟用户模式：单独的建立用户数据库文件，虚拟出账户及密码，用于验证登录，实际账户信息不存在，仅供FTP服务器进行认证使用，有效地降低了破坏范围</li>
+</ul>
+</li>
+<li>
+<p>1.7.4 访问方式</p>
+<ul>
+<li>服务器端：vsftp</li>
+<li>客户机端：
+<ul>
+<li>命令行：ftp 或 lftp 命令访问</li>
+<li>Windows：浏览器或目录界面</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>1.7.5 安装vsftpd</p>
+<ul>
+<li>服务端格式：yum   install   -y   vsftpd</li>
+<li>客户端格式：yum   install   -y</li>
+</ul>
+</li>
+<li>
+<p>1.7.6 vsftpd服务软件的配置文件：/etc/vsftpd/vsftpd.conf</p>
+</li>
+<li>
+<p>① <strong>部署匿名开放模式的服务器</strong></p>
+<ul>
+<li>
+<p>准备工作</p>
+<ul>
+<li>
+<p>关闭 SELINUX</p>
+</li>
+<li>
+<p>关闭防火墙：systemctl stop  firewalld</p>
+<p>（或加入防火墙白名单：firewall-cmd  --permanent --zone=public --add-service=ftp）</p>
+</li>
+<li>
+<p>重启防火墙：firewall-cmd --reload</p>
+</li>
+</ul>
+</li>
+<li>
+<p>编辑配置 vsftpd.conf 文件，实现匿名模式服务器</p>
+<ul>
+<li>
+<p>编辑：vim   /etc/vsftpd/vsftpd.conf</p>
+</li>
+<li>
+<p>匿名模式涉及的参数：</p>
+<ul>
+<li>anonymous_enable=YES（允许匿名访问）</li>
+<li>write_enable=YES（设置可写权限）</li>
+<li>anon_umask=022（需添加，设置匿名账户上传文件的umask值）</li>
+<li>anon_upload_enable=YES（需去掉#，允许匿名账户上传文件）</li>
+<li>anon_mkdir_write_enable=YES（需去掉#，允许匿名账户创建目录）</li>
+<li>anon_other_write_enable=YES（需添加，允许匿名账户修改目录名或删除目录）</li>
+</ul>
+</li>
+<li>
+<p>设置vsftpd默认工作目录的权限</p>
+<ul>
+<li>默认目录：/var/ftp/pub</li>
+<li>对该目录增加ftp账户对应的权限：chown  -Rf   ftp   /var/ftp/pub</li>
+</ul>
+</li>
+<li>
+<p>启动服务</p>
+<ul>
+<li>启动：systemctl  start  vsftpd</li>
+<li>设置开机启动：systemctl   enable   vsftpd</li>
+</ul>
+</li>
+<li>
+<p>测试</p>
+<ul>
+<li>
+<p>Windows：在目录界面或浏览器界面的地址栏输入ftp://ip地址</p>
+</li>
+<li>
+<p>Linux：</p>
+<ul>
+<li>
+<p>ftp软件：</p>
+<ul>
+<li>
+<p>命令格式为： ftp 对方IP地址</p>
+</li>
+<li>
+<p>输入用户名anonymous，密码回车，cd  pub后进行ls浏览和尝试mkdir创建目录，输入exit退出</p>
+</li>
+</ul>
+</li>
+<li>
+<p>lftp软件：</p>
+<ul>
+<li>命令格式为：lftp  对方IP地址</li>
+<li>cd pub后进行ls浏览和尝试mkdir创建目录，输入 “ get  文件名 ” 进行上传，输入exit退出</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>umask参数</p>
+<ul>
+<li>umask值是Unix系统的概念，决定目录及文件被创建时的初始权限</li>
+<li>在vsftpd的服务器中的目录初始权限最高为777，文件由于不能设置为可执行，则最高权限为666</li>
+<li>umask值本质是一种补码</li>
+<li>目录实际权限计算方式：777-umask，例如umask=022，目录初始权限为777-022即755</li>
+<li>文件实际权限计算方式：666-umask，例如umask=022，文件初始权限为666-022即644</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>② <strong>部署本地用户模式的ftp服务器</strong></p>
+<ul>
+<li>
+<p>本地模式就是通过Linux的普通账户进行登录</p>
+</li>
+<li>
+<p>准备工作：同匿名的准备工作</p>
+<ul>
+<li>
+<p>关闭 SELINUX：setenforce  0</p>
+</li>
+<li>
+<p>关闭防火墙：systemctl stop  firewalld</p>
+<p>（或加入防火墙白名单：firewall-cmd  --permanent  --zone=public  --add-service=ftp）</p>
+</li>
+<li>
+<p>重启防火墙：firewall-cmd  --reload</p>
+</li>
+</ul>
+</li>
+<li>
+<p>配置vsftpd.conf文件实现本地模式</p>
+<ul>
+<li>打开文件：vim   /etc/vsftpd/vsftpd.conf</li>
+<li>本地模式涉及的参数：
+<ul>
+<li>anonymous_enable=NO（关闭匿名模式）</li>
+<li>local_enable=YES（开启本地模式）</li>
+<li>write_enable=YES（设置可写权限）</li>
+<li>local_umask=022（设置本地模式账户umask值）</li>
+<li>userlist_enable=YES（启用 “ 禁止用户名单 ”）</li>
+<li>userlist_deny=YES（需添加，启用用户作用名单）</li>
+<li>注意：userlist_enable和userlist_deny都为YES时，/etc/vsftpd/user_list文件为 “黑名单”，即文件中的账户都不能登录</li>
+<li>注意：userlist_enable=YES和userlist_deny=NO时，则/etc/vsftpd/user_list文件为 “白名单”，即只有该文件中的用户可以登录</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>启动服务：systemctl start vsftpd</p>
+</li>
+<li>
+<p>设置开机启动：systemctl enable vsftpd</p>
+</li>
+<li>
+<p>上传文件默认目录：/home/普通账户名/</p>
+</li>
+<li>
+<p>测试</p>
+<ul>
+<li>
+<p>Windows：</p>
+<p>在目录界面或浏览器界面的地址栏输入ftp://ip地址，输入普通账户名及密码进行登录操作</p>
+</li>
+<li>
+<p>Linux：</p>
+<ul>
+<li>
+<p>ftp软件：</p>
+<ul>
+<li>
+<p>命令格式为： ftp 对方IP地址</p>
+</li>
+<li>
+<p>输入用户名ZHIYUAN，密码回车登录，cd  pub后进行ls浏览和尝试mkdir创建目录，输入exit退出</p>
+</li>
+</ul>
+</li>
+<li>
+<p>lftp软件：</p>
+<ul>
+<li>命令格式为：lftp  对方IP地址  -u 普通用户名</li>
+<li>输入对应用户的密码，回车登录，cd pub后进行ls浏览和尝试mkdir创建目录，输入exit退出</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>限制本地用户只能在本地家目录中访问</p>
+<ul>
+<li>一般用户登录后访问的默认目录为/home/账户名/，但通过切换目录可以访问提权到其上级目录，这是相当危险的行为，需要做如下限制</li>
+<li>设置：
+<ul>
+<li>chroot_local_user=YES（去掉#，开启限制用户工作的目录）</li>
+<li>allow_writeable_chroot=YES（需添加，设置为不可跳出主目录后允许登录，且主目录可写）</li>
+<li>注意：设置完毕后必须重启vsftpd服务：systemctl   restart   vsftpd</li>
+</ul>
+</li>
+<li>测试：
+<ul>
+<li>ftp 192.168.0.119</li>
+<li>输入账户名及密码</li>
+<li>尝试cd   /etc     cd  ..</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>③ <strong>部署虚拟用户模式的ftp服务器</strong></p>
+<ul>
+<li>
+<p>准备工作</p>
+<ul>
+<li>
+<p>关闭SELINUX ：setenforce  0</p>
+</li>
+<li>
+<p>关闭防火墙：systemctl stop  firewalld</p>
+<p>（或加入防火墙白名单：firewall-cmd  --permanent --zone=public --add-service=ftp）</p>
+</li>
+<li>
+<p>若添加白名单请重启防火墙：firewall-cmd --reload</p>
+</li>
+<li>
+<p>设置工作默认权限：chown  -Rf  ftp   /var/ftp/pub</p>
+</li>
+<li>
+<p>安装必要软件：</p>
+<ul>
+<li>安装vsftpd ：yum   install   -y  vsftpd</li>
+<li>安装yum扩展源：yum  install   -y   epel-release</li>
+<li>安装db4数据库软件：yum   install  -y db4*</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>创建FTP认证的数据库软件</p>
+<ul>
+<li>
+<p>作用：存储允许登录的账户名及密码</p>
+</li>
+<li>
+<p>格式：奇数行为账户名，偶数行为密码</p>
+</li>
+<li>
+<p>创建位置：/etc/vsftpd</p>
+</li>
+<li>
+<blockquote>
+<p>ftpuser1</p>
+<p>123456</p>
+<p>ftpuser2</p>
+<p>654321</p>
+</blockquote>
+</li>
+<li>
+<p>过程</p>
+</li>
+</ul>
+</li>
+<li>
+<p>vim  /etc/vsftpd/vuser.list</p>
+<ul>
+<li>
+<p>输入账户及密码，注意：奇数行为账户名，偶数行为密码</p>
+</li>
+<li>
+<p>由于vuser.list是明文，不安全，且不符合vsftpd程序加载文件的格式，需要使用db_load命令进行hash加密，并转为数据库文件，最后删除原始明文</p>
+<ul>
+<li>加密：db_load  -T  -t  hash  -f   /etc/vsftpd/vuser.list  /etc/vsftpd/vuser.db</li>
+</ul>
+</li>
+<li>
+<p>-T：将文本文件转译载入数据库</p>
+<ul>
+<li>-t  hash：使用hash算法加密</li>
+<li>-f：指定包含用户名和密码的文本文件</li>
+<li>设置权限：chmod  600 vuser.db</li>
+<li>删除原始明文：rm  -f   vuser.list</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>创建虚拟账户映射的账户及家目录</p>
+<ul>
+<li>作用：虚拟账户是没有家目录的，权限也未知，则需要虚拟账户登录后映射到本地实际账户的家目录中，其权限也自动归属于该本地账户</li>
+<li>过程：
+<ul>
+<li>useradd  -d /var/ftpuser  -s /sbin/nologin  vfox</li>
+<li>设置家目录权限：chmod   -Rf  755   /var/ftpuser</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>创建PAM文件进行映射</p>
+<ul>
+<li>PAM：可拔插认证模块，是一种认证机制，系统管理员可以通过调整PAM就轻易修改对应的认证方式，从而不需要修改应用程序</li>
+<li>过程：
+<ul>
+<li>vim  /etc/pam.d/vsftpd.vu</li>
+<li>输入以下两行进行映射
+<ul>
+<li>auth		 required   pam_userdb.so db=/etc/vsftpd/vuser</li>
+<li>account   required   pam_userdb.so db=/etc/vsftpd/vuser</li>
+<li>（注意：vuser不需要加扩展名db）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>配置 vsftpd.conf 文件涉及参数</p>
+<ul>
+<li>anonymous_enable=NO（关闭匿名模式）</li>
+<li>local_enable=YES（开启本地账户）</li>
+<li>guest_enable=YES（需添加，开启虚拟账户模式）</li>
+<li>guest_username=vfox（需添加指定映射的账户名）</li>
+<li>pam_service_name=vsftpd.vu（指定pam文件）</li>
+<li>allow_writeable_chroot=YES（需添加，设置为不可跳出主目录且允许登录可写）</li>
+</ul>
+</li>
+<li>
+<p>重启服务：systemctl restart vsftpd</p>
+</li>
+<li>
+<p>例：设置ftpuser1可以上传、创建、修改、删除，ftpuser2只能查看</p>
+<ul>
+<li>
+<p>原则：通过创建权限文件实现</p>
+</li>
+<li>
+<p>过程：</p>
+<ul>
+<li>
+<p>mkdir   -p   /etc/vsftpd/vsdir</p>
+</li>
+<li>
+<p>cd   /etc/vsftpd/vsdir</p>
+</li>
+<li>
+<p>vim  ftpuser1</p>
+</li>
+<li>
+<p>输入以下自定义功能参数：</p>
+<ul>
+<li>anon_upload_enable=YES</li>
+<li>anon_mkdir_write_enable=YES</li>
+<li>anon_other_write_enable=YES</li>
+</ul>
+</li>
+<li>
+<p>在 vsftpd.conf 配置文件中设置账户访问权限配置文件的存储目录</p>
+<ul>
+<li>
+<p>vim  /etc/vsftpd/vsftpd.conf</p>
+</li>
+<li>
+<p>user_config_dir=/etc/vsftpd/vsdir</p>
+</li>
+</ul>
+</li>
+<li>
+<p>重启服务：systemctl   restart   vsftpd</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>原文作者：絷缘<br>
+作者邮箱：zhiyuanworkemail@163.com<br>
+原文地址：<a href="https://zhiyuandnc.github.io/RptKbpSRd/">https://zhiyuandnc.github.io/RptKbpSRd/</a><br>
+版权声明：本文为博主原创文章，转载请注明原文链接作者信息</p>
+</blockquote>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://zhiyuandnc.github.io/7dxxE7ipp/" class="post-title gt-a-link">
+                    Linux命令学习（九）
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">事实不以人的意志为转移</div>
+    <div class="social-container">
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-telegram gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-qq gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-bilibili gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Copyright&ensp;&copy;&ensp;絷缘的博客<br/><a href="https://beian.miit.gov.cn/" target="_blank">晋ICP备20001723号-1</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://zhiyuandnc.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,512 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Linux命令学习（二） | 絷缘的博客</title>
+
+<link rel="shortcut icon" href="https://zhiyuandnc.github.io/favicon.ico?v=1740567139208">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zhiyuandnc.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+ <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            絷缘的博客
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/friends" class="menu gt-a-link">
+                            友链
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1740567139208" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Linux命令学习（二）
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2022-02-12 ·
+                    </time>
+                    
+                        <a href="https://zhiyuandnc.github.io/linux/" class="post-tags">
+                            # Linux
+                        </a>
+                    
+                        <a href="https://zhiyuandnc.github.io/Z3qSG8exS/" class="post-tags">
+                            # 命令
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="一-常见的linux命令">一、 常见的Linux命令</h2>
+<h3 id="1-shell的简介">1. Shell的简介</h3>
+<ul>
+<li>1.1 shell（壳）是一种强大的命令行工具，位于用户与系统内核之间，起到“翻译官”的作用，即识别解释用户输入的命令，并提供操作界面</li>
+<li>1.2 结构</li>
+<li>1.3 特点
+<ul>
+<li>1.3.1 系统默认提供了六个shell工具（五个命令行，一个GUI界面）</li>
+<li>1.3.2 使用键盘“上下键↑↓”，可以查看输入的历史命令</li>
+<li>1.3.3 GUI界面下的命令行可使用鼠标选定指定命令后按下鼠标中键复制进行粘贴</li>
+<li>1.3.4 使用Tab键进行命令单词的补全</li>
+<li>1.3.5 Linux系统中一切数据皆是文件</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-命令提示符">2. 命令提示符</h3>
+<ul>
+<li>
+<p>[root@localhost ~]#</p>
+<ul>
+<li>
+<p>root：当前已经登录正在使用的账户</p>
+</li>
+<li>
+<p>@：分隔符</p>
+</li>
+<li>
+<p>localhost：主机名</p>
+</li>
+<li>
+<p><sub>：表示当前工作目录，</sub> 表示 帐户家目录</p>
+</li>
+<li>
+<p>#：如果是root用户，结尾标志是#，如果是普通账户，结尾标示是$</p>
+<figure data-type="image" tabindex="1"><img src="https://pic.zyblog.xyz/img/typora/image-20201006094257706.png?origin=typora" alt="image-20201006094257706" loading="lazy"></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-命令格式">3. 命令格式</h3>
+<ul>
+<li>3.1 格式：
+<ul>
+<li>3.1.1 短格式： 命令名称   -参数     目标</li>
+<li>3.1.2 长格式： 命令名称   --参数全称     目标</li>
+</ul>
+</li>
+<li>3.2 命令目标的路径
+<ul>
+<li>3.2.1 相对路径：以当前工作目录起始，进行遍历</li>
+<li>3.2.2 绝对路径：以根目录（/）起始，进行遍历</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-目录切换命令">4. 目录切换命令</h3>
+<ul>
+<li>4.1 格式：cd    目录名</li>
+<li>4.2 例：
+<ul>
+<li>cd ~     ：切换到管理员的家目录</li>
+<li>cd /      ：返回根目录</li>
+<li>cd ..     ：返回上一级目录</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-目录浏览命令">5. 目录浏览命令</h3>
+<ul>
+<li>
+<p>5.1 格式：ls   -参数   目录名</p>
+</li>
+<li>
+<p>5.2 作用：查看目录内的文件数据</p>
+</li>
+<li>
+<p>5.3 命令行终端模式下的目录颜色分类：</p>
+<p>蓝色：目录文件（文件夹）      浅蓝色：链接文件（快捷方式）   黄色：设备文件     白色：普通文件</p>
+<p>红色：压缩文件                         绿色：可执行文件</p>
+</li>
+<li>
+<p>5.4 常用命令</p>
+<ul>
+<li>
+<p>ls  -a：显示所有文件（包括隐藏文件）</p>
+</li>
+<li>
+<p>ls  -l：查看文件目录内文件的详细信息</p>
+<p>（文件权限+连接数+所属用户+所属用户组+大小+创建时间+文件名）</p>
+</li>
+<li>
+<p>ls  -ld：查看当前目录的详细信息</p>
+</li>
+<li>
+<p>ls    |    more：分页查看内容较多目录的信息（空格翻页，回车换行）</p>
+</li>
+<li>
+<p>ll  ：相当于 ls  -l</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-date命令">6. date命令</h3>
+<ul>
+<li>6.1 作用：查看设置日期时间</li>
+<li>6.2 格式： date   -参数    +日期时间格式</li>
+<li>6.3 参数：
+<ul>
+<li>-s：设置日期时间</li>
+<li>-d：显示描述的日期时间</li>
+</ul>
+</li>
+<li>6.4 日期时间格式
+<ul>
+<li>%Y：完整的年份</li>
+<li>%m：月份（01-12）</li>
+<li>%d：日（01-31）</li>
+<li>%j：一年中的第几天（001-366）</li>
+<li>%H：小时（00-23）</li>
+<li>%M：分钟（00-59）</li>
+<li>%S：秒（00-59）</li>
+<li>%X：相当于      %H:%M:%S</li>
+<li>%A：显示星期几（Sunday-Saturday）</li>
+<li>%Z：显示时区</li>
+</ul>
+</li>
+<li>6.5 例：<img src="https://pic.zyblog.xyz/img/typora/image-20201006105140656.png?origin=typora" alt="image-20201006105140656" loading="lazy">
+<ul>
+<li>date +%Y%m%d</li>
+<li>date +%Y-%m-%d</li>
+<li>date +%H:%M:%S</li>
+<li>date &quot;+%Y-%m-%d  %H:%M:%S&quot;</li>
+<li>date +%Y-%m-%d%t%H:%M:%S</li>
+<li>date +%Y-%m-%d%t%H:%M:%S%A%t%Z%t%j</li>
+<li>date &quot;+%Y-%m-%d  %H:%M:%S  %A  %Z  %j&quot;</li>
+<li>参数中有空格必须加双引号，或者将空格替换为%t</li>
+</ul>
+</li>
+<li>6.6 注意：%j参数表示一年中第几天，一般用于文件备份时加入此参数，数字越小文件越旧，数字越大，文件越新</li>
+<li>6.7 设置日期时间：date -s &quot;2020-10-6 10:58:30&quot;</li>
+<li>6.8 显示指定日期时间：date -d &quot;+2 day&quot; +%d         08</li>
+</ul>
+<h3 id="7-显示日历">7. 显示日历</h3>
+<ul>
+<li>
+<p>格式：cal   月份    年份       cal   05   2020</p>
+<figure data-type="image" tabindex="2"><img src="https://pic.zyblog.xyz/img/typora/image-20201006110211957.png?origin=typora" alt="image-20201006110211957" loading="lazy"></figure>
+</li>
+</ul>
+<h3 id="8-系统状态检测命令ps">8. 系统状态检测命令PS</h3>
+<ul>
+<li>
+<p>8.1 作用：查看进程状态，一般用于获取进程ID</p>
+</li>
+<li>
+<p>8.2 格式：ps  -参数</p>
+</li>
+<li>
+<p>8.3 常用命令</p>
+<figure data-type="image" tabindex="3"><img src="https://pic.zyblog.xyz/img/typora/image-20201006112240656.png?origin=typora" alt="image-20201006112240656" loading="lazy"></figure>
+<ul>
+<li>ps</li>
+<li>ps -u：描述所有用户进程的详细信息
+<ul>
+<li>有用的信息：
+<ul>
+<li>%CPU：CPU占用率</li>
+<li>%MEM：内存使用率</li>
+<li>VSZ：虚拟内存使用率</li>
+<li>stat：进程状态
+<ul>
+<li>R：运行状态</li>
+<li>S：休眠状态</li>
+<li>D：中断状态</li>
+<li>Z：僵死状态</li>
+<li>T：停滞状态</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="9-top命令">9. Top命令</h3>
+<ul>
+<li>作用：动态显示进程及进程状态，是一种强化版的任务管理器</li>
+<li><img src="https://pic.zyblog.xyz/img/typora/image-20201006112950769.png?origin=typora" alt="image-20201006112950769" loading="lazy">
+<ul>
+<li>第一行：系统时间、运行时间、登录终端数、系统负载（1分钟平均值、5分钟平均值、15分钟平均值）</li>
+<li>第二行：进程数、运行数、睡眠数、停止数、僵死数</li>
+<li>第三行：CPU用户占用百分比、系统内核占用资源百分比、改变过优先级进程占用资源百分比、空闲资源百分比</li>
+<li>第四行：内存总量（单位：KB）、空闲量、使用量、作为内核缓存的内存量</li>
+<li>第五行：swap总量（单位：KB）、空闲量、使用量、提前加载的使用量</li>
+<li>注意：使用q键退出查看</li>
+</ul>
+</li>
+</ul>
+<h3 id="10-进程终止命令kill">10. 进程终止命令kill</h3>
+<ul>
+<li>kill  进程名/PID进程编号</li>
+<li>killall   进程名/PID进程编号</li>
+</ul>
+<h3 id="11-查看网卡信息命令">11. 查看网卡信息命令</h3>
+<ul>
+<li>格式：ifconfig</li>
+<li><img src="https://pic.zyblog.xyz/img/typora/image-20201006114608025.png?origin=typora" alt="image-20201006114608025" loading="lazy">
+<ul>
+<li>mtu：网络传输最大数据包容量</li>
+<li>inet：IP地址</li>
+<li>netmask：子网掩码</li>
+<li>broadcast：广播地址</li>
+<li>RX：发送数据包容量，单位：KB</li>
+<li>TX：接收数据包容量，单位：KB</li>
+</ul>
+</li>
+</ul>
+<h3 id="12-查看本机信息命令">12. 查看本机信息命令</h3>
+<ul>
+<li>
+<p>格式：uname  -a</p>
+<figure data-type="image" tabindex="6"><img src="https://pic.zyblog.xyz/img/typora/image-20201006140321799.png?origin=typora" alt="image-20201006140321799" loading="lazy"></figure>
+</li>
+</ul>
+<h3 id="13-查看内存信息-free">13. 查看内存信息： free</h3>
+<figure data-type="image" tabindex="7"><img src="https://pic.zyblog.xyz/img/typora/image-20201006140346166.png?origin=typora" alt="image-20201006140346166" loading="lazy"></figure>
+<ul>
+<li>free  -h    以具体单位查看内存信息</li>
+<li>free  -g    以GB单位查看内存信息</li>
+<li>free  -m   以MB单位查看内存信息</li>
+<li>free  -k     以KB单位查看内存信息</li>
+<li>free  -b     以Byte单位查看内存信息</li>
+<li>free  -s  时间（单位：秒） 以一定时间间隔连续查看内存使用信息</li>
+</ul>
+<h3 id="14-who命令与last命令">14. who命令与last命令</h3>
+<ul>
+<li>
+<p>作用：显示当前登录用户及终端信息</p>
+<figure data-type="image" tabindex="8"><img src="https://pic.zyblog.xyz/img/typora/image-20201006140627817.png?origin=typora" alt="image-20201006140627817" loading="lazy"></figure>
+</li>
+</ul>
+<figure data-type="image" tabindex="9"><img src="https://pic.zyblog.xyz/img/typora/image-20201006140651284.png?origin=typora" alt="image-20201006140651284" loading="lazy"></figure>
+<ul>
+<li>终端标志
+<ul>
+<li>：0    表示GUI可视化终端</li>
+<li>pts/0 表示远程登录方式</li>
+<li>tty2：命令行终端</li>
+</ul>
+</li>
+</ul>
+<h3 id="15-uptime">15. uptime</h3>
+<ul>
+<li>
+<p>作用：显示系统平均负载</p>
+<figure data-type="image" tabindex="10"><img src="https://pic.zyblog.xyz/img/typora/image-20201006140945571.png?origin=typora" alt="image-20201006140945571" loading="lazy"></figure>
+</li>
+</ul>
+<h3 id="16-history">16. history</h3>
+<ul>
+<li>作用：查看历史命令记录</li>
+<li>修改命令历史记录条数
+<ul>
+<li>文件路径：/etc/profile</li>
+<li>修改变量：HISTSIZE=1000之后的数字即可</li>
+<li>过程：
+<ul>
+<li>vim /etc/profile</li>
+<li>点击i键后定位在HISTSIZE=1000所在行</li>
+<li>修改数字后点击ESC键</li>
+<li>点击shift+：输入wq保存并退出</li>
+<li>reboot重启</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>注意：HISTSIZE=0，表示不记录历史命令</li>
+<li>常用命令：
+<ul>
+<li>-c：清空当前历史命令</li>
+</ul>
+</li>
+</ul>
+<h3 id="17-echo命令">17. echo命令</h3>
+<ul>
+<li>
+<p>作用：将字符串显示到屏幕上或输出变量的值</p>
+</li>
+<li>
+<p>例：echo  “HelloWorld”          echo    $SHELL</p>
+<ul>
+<li>
+<figure data-type="image" tabindex="11"><img src="https://pic.zyblog.xyz/img/typora/image-20201006143955888.png?origin=typora" alt="image-20201006143955888" loading="lazy"></figure>
+</li>
+<li>
+<figure data-type="image" tabindex="12"><img src="https://pic.zyblog.xyz/img/typora/image-20201006144043323.png?origin=typora" alt="image-20201006144043323" loading="lazy"></figure>
+</li>
+</ul>
+</li>
+<li>
+<p>常用命令</p>
+<ul>
+<li>-e：激活转义字符</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>原文作者：絷缘<br>
+作者邮箱：zhiyuanworkemail@163.com<br>
+原文地址：<a href="https://zhiyuandnc.github.io/hNHvS29UU/">https://zhiyuandnc.github.io/hNHvS29UU/</a><br>
+版权声明：本文为博主原创文章，转载请注明原文链接作者信息</p>
+</blockquote>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://zhiyuandnc.github.io/BdIGGzKkE/" class="post-title gt-a-link">
+                    Linux命令学习（一）
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">事实不以人的意志为转移</div>
+    <div class="social-container">
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-telegram gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-qq gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-bilibili gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Copyright&ensp;&copy;&ensp;絷缘的博客<br/><a href="https://beian.miit.gov.cn/" target="_blank">晋ICP备20001723号-1</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://zhiyuandnc.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

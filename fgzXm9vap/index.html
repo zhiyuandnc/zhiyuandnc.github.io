@@ -1,0 +1,2274 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>SpringSecurity学习 | 絷缘的博客</title>
+
+<link rel="shortcut icon" href="https://zhiyuandnc.github.io/favicon.ico?v=1740567139208">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zhiyuandnc.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+ <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            絷缘的博客
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/friends" class="menu gt-a-link">
+                            友链
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1740567139208" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    SpringSecurity学习
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2023-02-24 ·
+                    </time>
+                    
+                        <a href="https://zhiyuandnc.github.io/springsecurity/" class="post-tags">
+                            # SpringSecurity
+                        </a>
+                    
+                        <a href="https://zhiyuandnc.github.io/6gNoeLTph/" class="post-tags">
+                            # 权限框架
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="springsecurity">SpringSecurity</h2>
+<h3 id="一-初识springsecurity">一、初识SpringSecurity</h3>
+<h3 id="1-基本概念">1. 基本概念</h3>
+<ul>
+<li>Spring Security是一个能够为基于Spring的企业应用系统提供声明式的安全访问控制解决方案的安全框架。它提供了一组可以在Spring应用上下文中配置的Bean，充分利用了Spring IoC，DI（控制反转Inversion of Control ,DI：Dependency Injection 依赖注入）和AOP（面向切面编程）功能，为应用系统提供声明式的安全访问控制功能，减少了为企业系统安全控制编写大量重复代码的工作。</li>
+<li>常用安全框架
+<ul>
+<li>Spring Security</li>
+<li>Apache Shiro</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-过滤器链">2. 过滤器链</h3>
+<figure data-type="image" tabindex="1"><img src="http://pic.zyblog.xyz/img/typora/image-20230514142504331.png?origin=typora" alt="image-20230514142504331" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="http://pic.zyblog.xyz/img/typora/20200430234458488.png?origin=typora" alt="img" loading="lazy"></figure>
+<h3 id="3-认证流程图">3. 认证流程图</h3>
+<figure data-type="image" tabindex="3"><img src="http://pic.zyblog.xyz/img/typora/20200430234726839.png?origin=typora" alt="认证流程图" loading="lazy"></figure>
+<blockquote>
+<ul>
+<li><code>UsernamePasswordAuthenticationFilter</code>
+<ul>
+<li>负责处理我们在登录页面填写了用户名和密码之后的登录请求</li>
+</ul>
+</li>
+<li><code>ExceptionTranslationFilter</code>
+<ul>
+<li>处理过滤器链中跑出的任何 <code>AccessDeniedException</code> 和 <code>AuthenticationException</code></li>
+</ul>
+</li>
+<li><code>FilterSecurityInterceptor</code>
+<ul>
+<li>负责权限校验的过滤器</li>
+</ul>
+</li>
+<li><code>Authentication</code> ：接口
+<ul>
+<li>他的实现类表示当前访问系统的用户，封装与用户相关的所有信息</li>
+</ul>
+</li>
+<li><code>AuthenticationManager</code>：接口
+<ul>
+<li>定义了认证<code>Authentication</code>对象的方法</li>
+</ul>
+</li>
+<li><code>UserDetailsService</code>：接口
+<ul>
+<li>加载用户特定数据的核心接口，里面定义了一个<code>loadUserByUsername()</code>的方法
+<ul>
+<li><code>loadUserByUsername()</code>
+<ul>
+<li>根据用户名获取用户信息</li>
+<li>如果该用户存在，将查询到的用户信息封装到UserDetails对象返回</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>UserDetails</code>：接口
+<ul>
+<li>提供用户的核心信息，通过<code>loadUserByUsername()</code>接口返回的用户对象中的信息，将信息设置到<code>Authentication</code>对象中</li>
+</ul>
+</li>
+<li><code>Authentication</code>：对象
+<ul>
+<li>拥有权限列表信息的登录用户实体信息封装对象</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h3 id="4-快速入门">4. 快速入门</h3>
+<figure data-type="image" tabindex="4"><img src="http://pic.zyblog.xyz/img/typora/a620cd8c1c2c4e1381d72180ff92d577.png?origin=typora" alt="img" loading="lazy"></figure>
+<h4 id="41-引入依赖">4.1 引入依赖</h4>
+<pre><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+    &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;com.baomidou&lt;/groupId&gt;
+    &lt;artifactId&gt;mybatis-plus-boot-starter&lt;/artifactId&gt;
+    &lt;version&gt;${mybatis-plus.version}&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;mysql&lt;/groupId&gt;
+    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-devtools&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-security&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-data-redis&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+    &lt;artifactId&gt;fastjson&lt;/artifactId&gt;
+    &lt;version&gt;1.2.71&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;io.jsonwebtoken&lt;/groupId&gt;
+    &lt;artifactId&gt;jjwt&lt;/artifactId&gt;
+    &lt;version&gt;0.9.0&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h4 id="12-创建启动类">1.2 创建启动类</h4>
+<pre><code class="language-java">@SpringBootApplication
+public class Application {
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class,args);
+    }
+}
+</code></pre>
+<h4 id="13-简单yml配置">1.3 简单yml配置</h4>
+<pre><code class="language-yaml">server:
+  port: 80
+  servlet:
+    context-path: /
+spring:
+  application:
+    name: demo
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql//localhost:3306/security
+    username: root
+    password: 996748
+</code></pre>
+<h4 id="14-书写简单controller">1.4 书写简单Controller</h4>
+<pre><code class="language-java">@RestController
+public class TestController{
+    
+    @GetMapping(&quot;/test&quot;)
+    public String test(){
+        return &quot;test&quot;;
+    }
+}
+</code></pre>
+<h4 id="15-访问项目地址-localhosttest">1.5 访问项目地址 localhost/test</h4>
+<ul>
+<li>
+<p>页面被重定向到SpringSecurity的默认登录页</p>
+</li>
+<li>
+<p>默认账号</p>
+<ul>
+<li>用户名：user</li>
+<li>密码：控制台打印密码</li>
+</ul>
+</li>
+<li>
+<p>登录成功后，可以查看到我们书写的简易controller返回信息test</p>
+</li>
+</ul>
+<h2 id="二-securityconfig配置类">二、SecurityConfig配置类</h2>
+<blockquote>
+<p>实际开发中我们不会把明文密码存入数据库中</p>
+<p>默认使用的PassworEncoder要求数据库中的密码格式为{id}password，他会根据id去判断密码的加密方式，如果不写会出错，但是通常我们是不会采用这种方式的，所以我们需要替换默认的PasswordEncoder</p>
+<p>我们只需要把要使用的<code>BCryptPasswordEncoder</code>注入Spring容器，SpringSecurity就会使用该编码器进行密码校验，我们可以定义一个<code>SecurityConfig</code>的配置类并继承<code>WebSecurityConfigurerAdapter</code></p>
+</blockquote>
+<pre><code class="language-java">@Configuration
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    //编码器BCryptPasswordEncoder注入容器
+    @Bean
+    public PasswordEncoder getPasswordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
+    //认证管理器注入容器
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
+    
+     @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        //表单提交
+        http.formLogin()
+            	//添加表单参数映射，SpringSecurity默认只接受username和password参数，如果我们需要不同名称的参数，需要在此处指定名称映射
+            	.usernameParameter(&quot;username&quot;)
+            	.passwordParameter(&quot;password&quot;)
+            	//指定登录请求服务地址，与表单提交地址一致 
+            	.loginProcessingUrl(&quot;/login&quot;)
+            	//自定义登录页面
+            	.loginPage(&quot;/login.html&quot;)
+            	//自定义成功页面，只支持POST方式，因而在前后端分离项目中无法使用
+            	.successForwardUrl(&quot;/toIndex&quot;)
+            	//自定义失败页面，只支持POST方式，因而在前后端分离项目中无法使用
+            	.failureForwardUrl(&quot;/toError&quot;);
+        //授权认证
+        http.authorizeRequests()
+            	//设置过滤器规则，增加页面与访问权限信息
+            	.antMatchers(&quot;/login.html&quot;,&quot;/error.html&quot;).permitAll()
+            	//混合项目中放行所有静态资源
+            	.antMatchers(&quot;/js/**&quot;,&quot;/css/**&quot;,&quot;/images/**&quot;).permitAll()
+            	.antMatchers(&quot;/admin.html&quot;).hasRole()
+            	.anyRequest().authenticated();
+        //关闭csrf防护
+        http.csrf().disable();
+    }
+}
+</code></pre>
+<h3 id="1-csrf">1. csrf</h3>
+<h3 id="2-formlogin">2. formLogin</h3>
+<ul>
+<li>表单参数映射
+<ul>
+<li><code>usernameParameter()</code>：设置表单提交的username字段名称映射</li>
+<li><code>passwordParameter()</code>：设置表单提交的password字段名称映射</li>
+</ul>
+</li>
+<li>自定义请求与页面
+<ul>
+<li><code>loginProcessingUrl()</code>：指定自定义的登录请求地址</li>
+<li><code>loginPage()</code>：指定自定义的登录页</li>
+<li><code>successForwardUrl()</code>：指定自定义的登录成功后欲跳转的页面</li>
+<li><code>failureForwardUrl()</code>：指定自定义的登录失败后欲跳转的页面</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-authorizerequests">3. authorizeRequests</h3>
+<ul>
+<li>访问权限控制
+<ul>
+<li><code>permitAll()</code>：无论是否登录均开放访问</li>
+<li><code>denyAll()</code>：无论是否登录均不开放访问</li>
+<li><code>anonymous()</code>：在未登录状态下，允许所有人访问</li>
+<li><code>authenticated()</code>：在登录状态下，通过认证的可以访问</li>
+<li><code>fullyAuthenticated()</code>：必须通过用户名密码直接的登录的用户才可以访问，勾选了记住我登录的用户无权访问</li>
+<li><code>rememberMe()</code>：通过勾选了记住我登录的用户才可以访问</li>
+</ul>
+</li>
+<li>访问权限判断
+<ul>
+<li><code>hasAuthority([权限名称])</code></li>
+<li><code>hasAnyAuthority([权限列表，逗号分隔])</code></li>
+</ul>
+</li>
+<li>访问角色判断
+<ul>
+<li><code>hasRole([角色名称])</code></li>
+<li><code>hasAnyRole([角色列表，逗号分隔])</code></li>
+</ul>
+</li>
+<li>访问IP判断
+<ul>
+<li><code>hasIpAddress([IP地址])</code></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>访问权限与访问角色是严格区分大小写的，不同的字母会导致不同角色的产生</p>
+</blockquote>
+<h4 id="31-antmatchers">3.1 antMatchers</h4>
+<ul>
+<li>请求匹配器：可以为指定请求设置指定的访问权限</li>
+</ul>
+<h4 id="32-regexmatchers">3.2 regexMatchers</h4>
+<ul>
+<li>正则匹配器：使用正则表达式对指定格式的请求放行</li>
+</ul>
+<h4 id="33-mvcmatchers">3.3 mvcMatchers</h4>
+<blockquote>
+<p>在<code>application.yml</code>配置文件中配置过如下信息的，可以使用<code>mvcMatchers</code>指定<code>servletPath(&quot;/demo&quot;)</code></p>
+<pre><code class="language-yaml">spring:
+	mvc:
+		servlet:
+			path: /demo
+</code></pre>
+</blockquote>
+<pre><code class="language-java">http.authorizeRequests()
+    	.mvcMatchers(&quot;/login&quot;).servletPath(&quot;/demo&quot;).permitAll();
+</code></pre>
+<h4 id="34-anyrequests">3.4 anyRequests</h4>
+<ul>
+<li>除了其他匹配器匹配的请求之外的所有请求
+<ul>
+<li><code>authenticated()</code>：登录认证后可访问</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>无论是antMatchers还是regexMatchers，他们都有两个参数的方法，可以使用这些方法来限定请求方式</p>
+<ul>
+<li><code>antMatchers(HttpMethod method,String patterns)</code></li>
+<li><code>regexMatchers(HttpMethod method,String regexPatterns)</code></li>
+</ul>
+</blockquote>
+<h3 id="4-exceptionhandling">4. exceptionHandling</h3>
+<ul>
+<li><code>accessDeniedHandler()</code>：设置访问拒绝的处理器</li>
+</ul>
+<h3 id="5-rememberme">5. rememberMe</h3>
+<h2 id="三-认证流程">三、认证流程</h2>
+<blockquote>
+<p>SpringSecurity有对<code>UserDetails</code>默认的实现类<code>User</code>，用来作为请求以及返回的实体信息，我们可以通过自己实现<code>UserDetails</code>来创建我们自定义的请求返回实体信息，并且实现<code>UserDetailsService</code>来实现我们自定义的登录逻辑</p>
+</blockquote>
+<h3 id="1-实现自定义的登录验证对象">1. 实现自定义的登录验证对象</h3>
+<h4 id="11-自定义用户实体类">1.1 自定义用户实体类</h4>
+<pre><code class="language-java">@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class UserInfo {
+    private String username;
+    private String password;
+}
+</code></pre>
+<h4 id="12-实现userdetails接口创建自定义的验证对象">1.2 实现UserDetails接口创建自定义的验证对象</h4>
+<pre><code class="language-java">@Data
+public class LoginUser implements UserDetails {
+
+    private UserInfo userInfo;
+    private List&lt;GrantedAuthority&gt; authorities;
+
+    public LoginUser(UserInfo userInfo, List&lt;GrantedAuthority&gt; authorities) {
+        this.userInfo = userInfo;
+        this.authorities = authorities;
+    }
+
+    @Override
+    public Collection&lt;? extends GrantedAuthority&gt; getAuthorities() {
+        return null;
+    }
+
+    @Override
+    public String getPassword() {
+        return userInfo.getPassword();
+    }
+
+    @Override
+    public String getUsername() {
+        return userInfo.getUsername();
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+}
+
+</code></pre>
+<blockquote>
+<p>接下来我们需要自定义登录接口，然后让SpringSecurity对这个接口放行，用户在未登录前当然是没有权限的，所以我们应该将登录接口开放为所有人都可以访问</p>
+<ol>
+<li>在接口中我们通过AuthenticationManager的authenticate方法来进行用户认证，所以需要在SecurityConfig中配置AuthenticationManager注入Spring容器</li>
+<li>认证成功后要生成一个jwt（json-web-token），放入响应体返回，为了让用户下回请求能通过jwt识别出具体是哪个用户，我们需要把用户信息存入redis，以用户id作为作为key</li>
+</ol>
+</blockquote>
+<h3 id="2-实现自定义的登录逻辑">2. 实现自定义的登录逻辑</h3>
+<pre><code class="language-java">@Service
+public class UserDetailServiceImpl implements UserDetailsService {
+
+    @Resource
+    private UserInfoMapper userInfoMapper;
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        QueryWrapper&lt;UserInfo&gt; userInfoQueryWrapper = new QueryWrapper&lt;&gt;();
+        userInfoQueryWrapper.eq(&quot;username&quot;,username);
+        UserInfo userInfo = userInfoMapper.selectOne(userInfoQueryWrapper);
+        if(userInfo==null){
+            throw new UsernameNotFoundException(&quot;用户名或密码错误&quot;);
+        }
+        return new LoginUser(userInfo);
+    }
+}
+</code></pre>
+<h3 id="3-securityconfig">3. SecurityConfig</h3>
+<pre><code class="language-java">@Configuration
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Resource
+    private MyAccessDeniedHandler myAccessDeniedHandler;
+
+    @Bean
+    public PasswordEncoder getPasswordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        //关闭防护
+        http.csrf().disable()
+            //不通过Session获取SecurityContext
+            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            .and()
+            .authorizeRequests()
+            	//对于登录注册接口允许匿名访问
+                .antMatchers(&quot;/user/login&quot;,&quot;/user/register&quot;).anonymous()
+            	//除去以上所有配置过的请求，其余请求都需要鉴权认证
+                .anyRequest().authenticated()
+            .and()
+            .formLogin()
+                .usernameParameter(&quot;username&quot;)
+                .passwordParameter(&quot;password&quot;)
+                .loginProcessingUrl(&quot;/login&quot;)
+                .loginPage(&quot;/login.html&quot;)
+                .successHandler(new MyAuthenticationSuccessHandler(&quot;/admin&quot;))
+                .failureHandler(new MyAuthenticationFailureHandler(&quot;/error&quot;));
+            .and()
+            .exceptionHandling()
+                .accessDeniedHandler(myAccessDeniedHandler);
+    }
+}
+</code></pre>
+<h3 id="4-实现自定义的登录服务对用户进行认证">4. 实现自定义的登录服务对用户进行认证</h3>
+<pre><code class="language-java">@Service
+public class LoginServiceImpl implements LoginService {
+
+    @Resource
+    private RedisCache redisCache;
+    @Resource
+    private AuthenticationManager authenticationManager;
+    @Override
+    public Response login(UserInfo userInfo){
+        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(userInfo.getUsername(), userInfo.getPassword());
+        Authentication authenticate = authenticationManager.authenticate(usernamePasswordAuthenticationToken);
+        if(authenticate==null){
+            throw new RuntimeException(&quot;登录失败&quot;);
+        }else {
+            Object principal = authenticate.getPrincipal();
+            if ((principal instanceof LoginUser)){
+                LoginUser loginUser = (LoginUser) principal;
+                String id = loginUser.getUserInfo().getId().toString();
+                String username = loginUser.getUserInfo().getUsername();
+                String jwt = JWTUtils.getJWT(id, username);
+                Response response = new Response();
+                response.code(ResponseCode.SUCCESS_CODE.getCode())
+                        .message(ResponseCode.SUCCESS_CODE.getMessage())
+                        .data(null)
+                        .count(1)
+                        .token(jwt);
+                redisCache.setCacheObject(&quot;login:&quot; + id,loginUser);
+                return response;
+            }
+        }
+        return null;
+    }
+}
+</code></pre>
+<h3 id="5-编写controller">5. 编写Controller</h3>
+<pre><code class="language-java">@RestController
+@RequestMapping(&quot;/user&quot;)
+public class LoginController {
+    @Resource
+    private LoginService loginService;
+	@PostMapping(&quot;/login&quot;)
+    public Response login(@RequestBody UserInfo userInfo){
+        return loginService.login(userInfo);
+    }
+    @PostMapping(&quot;/logout&quot;)
+    public Response logout(){
+        return loginService.logout();
+    }
+}
+</code></pre>
+<h3 id="6-实现token认证过滤器">6. 实现Token认证过滤器</h3>
+<pre><code class="language-java">@Component
+public class JWTAuthenticationFilter extends OncePerRequestFilter {
+
+    @Resource
+    private RedisCache redisCache;
+    @Override
+    protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
+        String token = httpServletRequest.getHeader(&quot;token&quot;);
+        if(StringUtils.isEmpty(token)){
+            filterChain.doFilter(httpServletRequest,httpServletResponse);
+            return;
+        }else {
+            if(JWTUtils.isValid(token)){
+                String uid = JWTUtils.getClaimInfoForString(httpServletRequest, &quot;uid&quot;);
+                Object cacheObject = redisCache.getCacheObject(&quot;login:&quot; + uid);
+                if (cacheObject instanceof LoginUser){
+                    LoginUser loginUser  = (LoginUser) cacheObject;
+                    if (loginUser==null){
+                        return;
+                    }else {
+                        //TODO 未构建权限列表
+                        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(loginUser, null, null);
+                        SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
+                        filterChain.doFilter(httpServletRequest,httpServletResponse);
+                    }
+                }
+            }
+        }
+        return;
+    }
+}
+</code></pre>
+<h3 id="7-更新securityconfig配置">7. 更新SecurityConfig配置</h3>
+<pre><code class="language-java">@Configuration
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Resource
+    private MyAccessDeniedHandler myAccessDeniedHandler;
+    @Resource
+    private JWTAuthenticationFilter jwtAuthenticationFilter;
+
+    @Bean
+    public PasswordEncoder getPasswordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        //关闭防护
+        http.csrf().disable()
+            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            .and()
+            .authorizeRequests()
+                .antMatchers(&quot;/user/login&quot;,&quot;/user/register&quot;).anonymous()
+                .anyRequest().authenticated()
+            .and()
+            .formLogin()
+                .usernameParameter(&quot;username&quot;)
+                .passwordParameter(&quot;password&quot;)
+                .loginProcessingUrl(&quot;/login&quot;)
+                .loginPage(&quot;/login.html&quot;)
+                .successHandler(new MyAuthenticationSuccessHandler(&quot;/successUrl&quot;))
+                .failureHandler(new MyAuthenticationFailureHandler(&quot;/failureUrl&quot;))
+            .and()
+            .exceptionHandling()
+                .accessDeniedHandler(myAccessDeniedHandler)
+            .and()
+            .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+    }
+}
+</code></pre>
+<h3 id="8-退出登录">8. 退出登录</h3>
+<pre><code class="language-java">@Override
+public Response logout() {
+    UsernamePasswordAuthenticationToken authentication = (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
+    Object principal = authentication.getPrincipal();
+    if(principal instanceof LoginUser){
+        LoginUser loginUser = (LoginUser) principal;
+        String uid = loginUser.getUserInfo().getId().toString();
+        redisCache.deleteObject(&quot;login:&quot; + uid);
+        Response response = new Response();
+        response.code(ResponseCode.SUCCESS_CODE.getCode())
+            .message(&quot;注销成功&quot;)
+            .count(0)
+            .data(null)
+            .token(&quot;&quot;);
+        return response;
+    }
+    return null;
+}
+</code></pre>
+<h2 id="四-前后端分离场景下登录认证跳转解决方案">四、前后端分离场景下登录认证跳转解决方案</h2>
+<blockquote>
+<p>SpringSecurity默认的认证成功跳转是一种混合项目的post请求，但是目前越来越多的前后端分离项目涌现或者说在前后端分离开发变成一种规范的当下，这种形式已经不再适用我们的开发要求了，所以我们需要自定义SpringSecurity认证成功重定向的处理器，我们通过实现<code>AuthenticationSuccessHandler</code> <code>AuthenticationFailureHandler</code>接口来自定义我们认证成功或失败后的重定向方式</p>
+</blockquote>
+<h3 id="1-重写认证授权成功处理器">1. 重写认证授权成功处理器</h3>
+<pre><code class="language-java">//实现AuthenticationSuccessHandler接口完成请求转发或重定向操作，对应登录成功后的操作
+public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
+    private String successUrl;
+
+    public MyAuthenticationSuccessHandler(String successUrl) {
+        this.successUrl = successUrl;
+    }
+
+    @Override
+    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
+        response.sendRedirect(successUrl);
+    }
+}
+</code></pre>
+<h3 id="2-重写认证授权失败处理器">2. 重写认证授权失败处理器</h3>
+<pre><code class="language-java">//实现AuthenticationFailureHandler接口完成请求转发或重定向操作，对应登录失败后的操作
+public class MyAuthenticationFailureHandler implements AuthenticationFailureHandler {
+    private String failureUrl;
+
+    public MyAuthenticationSuccessHandler(String failureUrl) {
+        this.failureUrl = failureUrl;
+    }
+
+    @Override
+    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
+        response.sendRedirect(failureUrl);
+    }
+}
+</code></pre>
+<h3 id="3-配置自定义处理器">3. 配置自定义处理器</h3>
+<pre><code class="language-java">//使用我们实现的SuccessHandler和FailureHandler设置登录成功和失败后的请求重定向
+@Configuration
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Bean
+    public PasswordEncoder getPasswordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.formLogin()
+                .usernameParameter(&quot;username&quot;)
+                .passwordParameter(&quot;password&quot;)
+                .loginProcessingUrl(&quot;/login&quot;)
+                .loginPage(&quot;/login.html&quot;)
+            	//此处使用我们自己实现的重定向处理器，这样就可以支持前后端分离了
+                .successHandler(new MyAuthenticationSuccessHandler(&quot;/admin&quot;))
+                .failureHandler(new MyAuthenticationFailureHandler(&quot;/error&quot;));
+        http.authorizeRequests()
+                .antMatchers(&quot;/login.html&quot;,&quot;/error.html&quot;).permitAll()
+                .antMatchers(&quot;/admin.html&quot;).hasRole(&quot;ADMIN&quot;)
+                .anyRequest().authenticated();
+
+        http.csrf().disable();
+    }
+}
+</code></pre>
+<h2 id="五-授权流程">五、授权流程</h2>
+<blockquote>
+<p>在SpringSecurity中，会默认使用<code>FilterSecurityInterceptor</code>进行权限校验，FilterSecurityInterceptor会从SecurityContextHolder中获取Authentication，然后获取其中的权限信息，判断当前用户是否拥有访问当起资源的权限</p>
+<p>所以我们需要将当前登录用户的权限信息存入Authentication</p>
+<p>然后将对应的资源设置好访问权限</p>
+<p>如果满足角色条件，程序正常执行，如果不满足，抛出 <code>org.springframework.security.access.AccessDeniedException</code></p>
+</blockquote>
+<h3 id="1-授权实现">1. 授权实现</h3>
+<h4 id="11-限制访问资源所需权限">1.1 限制访问资源所需权限</h4>
+<ul>
+<li>
+<p><code>@Secured</code></p>
+<ul>
+<li>
+<p>专门用于判断是否具有指定角色权限，可用在方法上或类上，与hasRole方法相反，参数要以ROLE_开头</p>
+</li>
+<li>
+<p>使用方式</p>
+<ul>
+<li>
+<pre><code class="language-java">@SpringBootApplication
+//开启注解访问控制
+@EnableGlobalMethodSecurity(SecuredEnabled = true)
+public class SpringSecurityDemoApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(SpringSecurityDemoApplication.class, args);
+    }
+}
+</code></pre>
+</li>
+<li>
+<pre><code class="language-java">@Secured(&quot;ROLE_ADMIN&quot;)
+@GetMapping(&quot;/admin&quot;)
+public String toAdmin(){
+    return &quot;redirect:admin.html&quot;;
+}
+</code></pre>
+</li>
+<li>
+<p>此时当我们访问到/admin时，就会检测用户是否登录成功，如果登录成功判断用户是否存在角色权限，如果存在访问成功，否则500</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><code>@PreAuthorize</code> 和 <code>@PostAuthorize</code></p>
+<ul>
+<li>
+<p><code>@PreAuthorize</code> 表示在访问方法或类之前先判断权限，注解参数和access方法参数格式相同，都为权限表达式</p>
+</li>
+<li>
+<p><code>@PostAuthorize</code> 表示在访问方法或类之后判断权限，很少用</p>
+</li>
+<li>
+<p>使用方式</p>
+<ul>
+<li>
+<pre><code class="language-java">@SpringBootApplication
+//开启注解访问控制
+@EnableGlobalMethodSecurity(prePostEnable = true)
+public class SpringSecurityDemoApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(SpringSecurityDemoApplication.class, args);
+    }
+}
+</code></pre>
+</li>
+<li>
+<pre><code class="language-java">@PreAuthorize(&quot;hasRole(ADMIN)&quot;)//PreAuthorize允许角色ROLE_开头
+@GetMapping(&quot;/admin&quot;)
+public String toAdmin(){
+    return &quot;redirect:admin.html&quot;;
+}
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="12-封装权限信息">1.2 封装权限信息</h4>
+<blockquote>
+<p>事实上我之前在UserDetailsServiceImpl中不仅需要查询出数据库中的用户信息，而且还要查询出对应的权限信息，一并封装到UserDetails中返回，我们自己实现了UserDetails为LoginUser</p>
+</blockquote>
+<ul>
+<li>
+<pre><code class="language-java">@Data
+@NoArgsConstructor
+public class LoginUser implements UserDetails {
+
+    private UserInfo userInfo;
+    private List&lt;String&gt; roleList;
+    @JSONField(serialize = false)
+    private HashSet&lt;GrantedAuthority&gt; authorities;
+
+    public LoginUser(UserInfo userInfo, List&lt;String&gt; roleList) {
+        this.userInfo = userInfo;
+        this.roleList = roleList;
+    }
+
+    public LoginUser(UserInfo userInfo) {
+        this.userInfo = userInfo;
+    }
+
+    @Override
+    public Collection&lt;? extends GrantedAuthority&gt; getAuthorities() {
+        if(authorities!=null &amp;&amp; authorities.size()!=0){
+            return authorities;
+        }
+        for (String role : roleList) {
+            authorities.add(new SimpleGrantedAuthority(role));
+        }
+        //authorities = roleList.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList());
+        return authorities;
+    }
+
+    @Override
+    public String getPassword() {
+        return userInfo.getPassword();
+    }
+
+    @Override
+    public String getUsername() {
+        return userInfo.getUsername();
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+}
+</code></pre>
+</li>
+<li>
+<pre><code class="language-java">@Service
+public class UserDetailServiceImpl implements UserDetailsService {
+
+    @Resource
+    private UserInfoMapper userInfoMapper;
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        QueryWrapper&lt;UserInfo&gt; userInfoQueryWrapper = new QueryWrapper&lt;&gt;();
+        userInfoQueryWrapper.eq(&quot;username&quot;,username);
+        UserInfo userInfo = userInfoMapper.selectOne(userInfoQueryWrapper);
+        if(userInfo==null){
+            throw new UsernameNotFoundException(&quot;用户名或密码错误&quot;);
+        }
+        List&lt;String&gt; roleList = Arrays.asList(&quot;admin&quot;,&quot;user&quot;);
+        return new LoginUser(userInfo,roleList);
+    }
+}
+</code></pre>
+</li>
+<li>
+<pre><code class="language-java">@Component
+public class JWTAuthenticationFilter extends OncePerRequestFilter {
+
+    @Resource
+    private RedisCache redisCache;
+    @Override
+    protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
+        String token = httpServletRequest.getHeader(&quot;token&quot;);
+        if(StringUtils.isEmpty(token)){
+            filterChain.doFilter(httpServletRequest,httpServletResponse);
+            return;
+        }else {
+            if(JWTUtils.isValid(token)){
+                String uid = JWTUtils.getClaimInfoForString(httpServletRequest, &quot;uid&quot;);
+                Object cacheObject = redisCache.getCacheObject(&quot;login:&quot; + uid);
+                if (cacheObject instanceof LoginUser){
+                    LoginUser loginUser  = (LoginUser) cacheObject;
+                    if (loginUser==null){
+                        return;
+                    }else {
+                        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
+                                new UsernamePasswordAuthenticationToken(loginUser, null, loginUser.getAuthorities());
+                        SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
+                        filterChain.doFilter(httpServletRequest,httpServletResponse);
+                    }
+                }
+            }
+        }
+        return;
+    }
+}
+</code></pre>
+</li>
+</ul>
+<h3 id="2-基于角色的权限控制rbac">2. 基于角色的权限控制（RBAC）</h3>
+<h4 id="21-设计数据表">2.1 设计数据表</h4>
+<ul>
+<li>
+<p>设计权限表</p>
+<pre><code class="language-sql">DROP TABLE IF EXISTS `sys_menu`;
+CREATE TABLE `sys_menu`  (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  `menu_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '菜单名称即权限名称',
+  `routing_address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '路由地址即服务地址',
+  `component_path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '组件路径',
+  `visible` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '0' COMMENT '菜单状态（0显示，1隐藏）',
+  `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '0' COMMENT '功能状态（0正常，1停用）',
+  `perms` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '权限标识',
+  `icon` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '#' COMMENT '菜单图标',
+  `create_by` bigint NULL DEFAULT NULL COMMENT '创建自',
+  `create_time` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_by` bigint NULL DEFAULT NULL COMMENT '更新自',
+  `update_time` datetime NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `del_flag` int NULL DEFAULT NULL COMMENT '是否删除（0未删除，1已删除）',
+  `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '菜单（权限）表' ROW_FORMAT = Dynamic;
+
+SET FOREIGN_KEY_CHECKS = 1;
+</code></pre>
+</li>
+<li>
+<p>设计角色表</p>
+<pre><code class="language-sql">DROP TABLE IF EXISTS `sys_role`;
+CREATE TABLE `sys_role`  (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  `role_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '角色名称',
+  `role_key` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '角色权限字符串',
+  `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '0' COMMENT '角色状态（0正常，1停用）',
+  `del_flag` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '0' COMMENT '是否删除（0未删除，1已删除）',
+  `create_by` bigint NULL DEFAULT NULL COMMENT '创建自',
+  `create_time` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_by` bigint NULL DEFAULT NULL COMMENT '更新自',
+  `update_time` datetime NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '角色表' ROW_FORMAT = Dynamic;
+
+SET FOREIGN_KEY_CHECKS = 1;
+</code></pre>
+</li>
+<li>
+<p>设计角色-权限表</p>
+<pre><code class="language-sql">DROP TABLE IF EXISTS `sys_role_menu`;
+CREATE TABLE `sys_role_menu`  (
+  `role_id` bigint NOT NULL COMMENT '角色ID',
+  `menu_id` bigint NOT NULL DEFAULT 0 COMMENT '菜单ID',
+  PRIMARY KEY (`role_id`, `menu_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+SET FOREIGN_KEY_CHECKS = 1;
+</code></pre>
+</li>
+<li>
+<p>设计用户表</p>
+<pre><code class="language-sql">DROP TABLE IF EXISTS `sys_user`;
+CREATE TABLE `sys_user`  (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  `user_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '用户名',
+  `nick_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '昵称',
+  `password` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '密码',
+  `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '0' COMMENT '账号状态（0正常，1停用）',
+  `email` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '邮箱',
+  `phone_number` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '手机号',
+  `gender` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '用户性别（0男，1女，2未知）',
+  `avatar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '头像地址',
+  `user_type` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '用户类型（0管理员，1普通用户）',
+  `create_by` bigint NULL DEFAULT NULL COMMENT '创建自',
+  `create_time` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_by` bigint NULL DEFAULT NULL COMMENT '更新自',
+  `update_time` datetime NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `del_flag` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '0' COMMENT '是否删除（0未删除，1已删除）',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户表' ROW_FORMAT = Dynamic;
+
+SET FOREIGN_KEY_CHECKS = 1;
+</code></pre>
+</li>
+<li>
+<p>设计用户-角色表</p>
+<pre><code class="language-sql">DROP TABLE IF EXISTS `sys_user_role`;
+CREATE TABLE `sys_user_role`  (
+  `user_id` bigint NOT NULL COMMENT '用户ID',
+  `role_id` bigint NOT NULL COMMENT '角色ID',
+  PRIMARY KEY (`user_id`, `role_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+SET FOREIGN_KEY_CHECKS = 1;
+</code></pre>
+</li>
+</ul>
+<h4 id="22-从数据库中查询权限信息">2.2 从数据库中查询权限信息</h4>
+<h2 id="六-access方法">六、access方法</h2>
+<blockquote>
+<p><code>access()</code>方法中填写权限表达式，具体权限表达式如下表，另外支持自定义权限表达式</p>
+</blockquote>
+<h3 id="1-springsecurity规定一些常用表达式">1. SpringSecurity规定一些常用表达式</h3>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hasRole([role])</code></td>
+<td>用户拥有制定的角色时返回true （Spring security默认会带有ROLE_前缀）</td>
+</tr>
+<tr>
+<td><code>hasAnyRole([role1,role2])</code></td>
+<td>用户拥有任意一个制定的角色时返回true</td>
+</tr>
+<tr>
+<td><code>hasAuthority([authority])</code></td>
+<td>等同于hasRole,但不会带有ROLE_前缀</td>
+</tr>
+<tr>
+<td><code>hasAnyAuthority([auth1,auth2])</code></td>
+<td>等同于hasAnyRole</td>
+</tr>
+<tr>
+<td><code>permitAll</code></td>
+<td>永远返回true</td>
+</tr>
+<tr>
+<td><code>denyAll</code></td>
+<td>永远返回false</td>
+</tr>
+<tr>
+<td><code>authentication</code></td>
+<td>当前登录用户的authentication对象</td>
+</tr>
+<tr>
+<td><code>fullAuthenticated</code></td>
+<td>当前用户既不是anonymous也不是rememberMe用户时返回true</td>
+</tr>
+<tr>
+<td><code>hasIpAddress('192.168.1.0/24')</code></td>
+<td>请求发送的IP匹配时返回true</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-自定义表达式">2. 自定义表达式</h3>
+<h4 id="21-创建自定义接口">2.1 创建自定义接口</h4>
+<pre><code class="language-java">public interface MyAccessExpression {
+    boolean hasPermission(HttpServletRequest request, Authentication authentication);
+}
+</code></pre>
+<h4 id="22-实现自定义接口">2.2 实现自定义接口</h4>
+<pre><code class="language-java">@Component(&quot;myEX&quot;)
+public class MyAccessExpressionImpl implements MyAccessExpression {
+    @Override
+    public boolean hasPermission(String roleName) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Object principal = authentication.getPrincipal();
+        if(principal instanceof LoginUser){
+            LoginUser loginUser = (LoginUser) principal;
+            Collection&lt;? extends GrantedAuthority&gt; authorities = loginUser.getAuthorities();
+            return authorities.contains(roleName);
+        }
+        return false;
+    }
+}
+</code></pre>
+<h4 id="23-在securityconfig中配置自定义表达式">2.3 在SecurityConfig中配置自定义表达式</h4>
+<pre><code class="language-java">.anyRequest().access(&quot;@myEx.hasPermission('sys:file:delete')&quot;) 
+</code></pre>
+<h4 id="24-使用注解调用自定义表达式">2.4 使用注解调用自定义表达式</h4>
+<pre><code class="language-java">@PreAuthorize(&quot;@myEX.hasPermission('sys:file:delete')&quot;)
+</code></pre>
+<h2 id="七-自定义403处理方案">七、自定义403处理方案</h2>
+<blockquote>
+<p>当用户请求认证失败或者是授权失败时，SpringSecurity会使用一些默认处理，会在前端展示一些状态信息，但这通常不是我们希望前端开发者以及用户看到的，所以我们应该给前端返回统一的response格式，让前端自行决定展示内容</p>
+<ul>
+<li>认证失败的异常通常会由<code>AuthenticationException</code>调用<code>AuthenticationEntryPoint</code>对象的<code>commence</code>方法来处理</li>
+<li>授权失败的异常通常会由<code>AccessDeniedException</code>调用<code>AccessDeniedHandler</code>对象的<code>handle</code>方法来处理</li>
+</ul>
+<p>所以如果我们需要拦截这些默认的返回信息，就需要自定义<code>AuthenticationEntryPoint</code>和<code>AccessDeniedHandler</code>的实现类，重写它们对应的处理方法，即可返回我们需要的统一response格式</p>
+</blockquote>
+<h3 id="1-自定义认证失败处理">1. 自定义认证失败处理</h3>
+<h4 id="11-实现authenticationentrypoint接口">1.1 实现<code>AuthenticationEntryPoint</code>接口</h4>
+<pre><code class="language-java">@Component
+public class AuthenticationEntryPointHandler implements AuthenticationEntryPoint {
+    @Override
+    public void commence(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
+        httpServletResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+        httpServletResponse.setContentType(&quot;application/json&quot;);
+        httpServletResponse.setCharacterEncoding(&quot;UTF-8&quot;);
+        PrintWriter writer = httpServletResponse.getWriter();
+        writer.println(JSON.toJSONString(
+                new Response&lt;String&gt;().code(ResponseCode.UN_AUTHORIZATION_CODE.getCode())
+                        .message(ResponseCode.UN_AUTHORIZATION_CODE.getMessage())
+                        .count(0)
+                        .data(&quot;对不起，认证失败&quot;)
+        ));
+        writer.flush();
+        writer.close();
+    }
+}
+</code></pre>
+<h4 id="12-配置自定义认证失败处理器">1.2 配置自定义认证失败处理器</h4>
+<pre><code class="language-java">@Configuration
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Resource
+    private MyAccessDeniedHandler myAccessDeniedHandler;
+    @Resource
+    private JWTAuthenticationFilter jwtAuthenticationFilter;
+    @Resource
+    private AuthenticationEntryPointHandler authenticationEntryPointHandler;
+
+    @Bean
+    public PasswordEncoder getPasswordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        //关闭防护
+        http.csrf().disable()
+            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            .and()
+            .authorizeRequests()
+                .antMatchers(&quot;/user/login&quot;,&quot;/user/register&quot;).anonymous()
+                .anyRequest().authenticated()
+                .anyRequest().access(&quot;@myAccessExpressionImpl.hasPermission(request,authentication)&quot;)
+            .and()
+            .formLogin()
+                .usernameParameter(&quot;username&quot;)
+                .passwordParameter(&quot;password&quot;)
+                .loginProcessingUrl(&quot;/login&quot;)
+                .loginPage(&quot;/login.html&quot;)
+                .successHandler(new MyAuthenticationSuccessHandler(&quot;/successUrl&quot;))
+                .failureHandler(new MyAuthenticationFailureHandler(&quot;/failureUrl&quot;))
+            .and()
+            .exceptionHandling()
+                .accessDeniedHandler(myAccessDeniedHandler)
+                .authenticationEntryPoint(authenticationEntryPointHandler)
+            .and()
+            .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+    }
+}
+</code></pre>
+<h3 id="2-自定义授权失败处理">2. 自定义授权失败处理</h3>
+<h4 id="21-实现accessdeniedhandler接口">2.1 实现<code>AccessDeniedHandler</code>接口</h4>
+<pre><code class="language-java">@Component
+public class MyAccessDeniedHandler implements AccessDeniedHandler {
+    @Override
+    public void handle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AccessDeniedException e) throws IOException, ServletException {
+        httpServletResponse.setStatus(HttpServletResponse.SC_FORBIDDEN);
+        httpServletResponse.setContentType(&quot;application/json&quot;);
+        httpServletResponse.setCharacterEncoding(&quot;UTF-8&quot;);
+        PrintWriter writer = httpServletResponse.getWriter();
+        writer.println(JSON.toJSONString(
+                new Response&lt;String&gt;().code(ResponseCode.FORBIDDEN_CODE.getCode())
+                        .message(ResponseCode.FORBIDDEN_CODE.getMessage())
+                        .count(0)
+                        .data(&quot;对不起，您无权访问此页面&quot;)
+        ));
+        writer.flush();
+        writer.close();
+    }
+}
+</code></pre>
+<h4 id="22-配置自定义授权失败处理器">2.2 配置自定义授权失败处理器</h4>
+<pre><code class="language-java">@Configuration
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Resource
+    private MyAccessDeniedHandler myAccessDeniedHandler;
+    @Resource
+    private JWTAuthenticationFilter jwtAuthenticationFilter;
+    @Resource
+    private AuthenticationEntryPointHandler authenticationEntryPointHandler;
+
+    @Bean
+    public PasswordEncoder getPasswordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        //关闭防护
+        http.csrf().disable()
+            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            .and()
+            .authorizeRequests()
+                .antMatchers(&quot;/user/login&quot;,&quot;/user/register&quot;).anonymous()
+                .anyRequest().authenticated()
+                .anyRequest().access(&quot;@myAccessExpressionImpl.hasPermission(request,authentication)&quot;)
+            .and()
+            .formLogin()
+                .usernameParameter(&quot;username&quot;)
+                .passwordParameter(&quot;password&quot;)
+                .loginProcessingUrl(&quot;/login&quot;)
+                .loginPage(&quot;/login.html&quot;)
+                .successHandler(new MyAuthenticationSuccessHandler(&quot;/successUrl&quot;))
+                .failureHandler(new MyAuthenticationFailureHandler(&quot;/failureUrl&quot;))
+            .and()
+            .exceptionHandling()
+                .accessDeniedHandler(myAccessDeniedHandler)
+                .authenticationEntryPoint(authenticationEntryPointHandler)
+            .and()
+            .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+    }
+}
+</code></pre>
+<h2 id="八-rememberme功能实现">八、RememberMe功能实现</h2>
+<blockquote>
+<p>SpringSecurity中想要实现记住我功能，用户只需要在登录时添加value为<code>remember-me</code>的checkbox。取值为true，SpringSecurity会自动把用户信息存储到数据源中，以后就不用再使用用户名密码登录访问</p>
+</blockquote>
+<pre><code class="language-java">@Configuration
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Resource
+    private UserDetailsService userDetailsService;
+    @Resource
+    private DataSource dataSource;
+    @Resource
+    private PersistentTokenRespository persistentTokenRespository;
+    
+    @Bean
+    public PasswordEncoder getPasswordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
+
+	@Bean
+    public PersistentTokenRespository getPersistentTokenRespository(){
+        JdbcTokenRespositoryImpl jsbcTokenRespository = new JdbcTokenRespositoryImpl();
+        jsbcTokenRespository.setDataSource(dataSource);
+        //在数据库中创建表，首次创建后，无需再次创建
+        jsbcTokenRespository.setCreateTableOnStartup(true);
+        return jsbcTokenRespository;
+    }
+    
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+		http.rememberMe()
+            	//token失效时间，单位秒
+            	.tokenValiditySeconds(60*60*24*7)
+            	//绑定参数名称，默认为“remember-me”
+            	.rememberMeParameter(&quot;rememberMe&quot;)
+            	//自定义登录逻辑
+            	.userDetailsService(userDetailsServiceImpl)
+            	//持久层对象
+            	.tokenRespository(persistentTokenRespository);
+    }
+}
+</code></pre>
+<h2 id="九-退出登录处理器">九、退出登录处理器</h2>
+<h3 id="1-书写退出登录代码">1. 书写退出登录代码</h3>
+<pre><code class="language-java">@Override
+public Response logout() {
+    UsernamePasswordAuthenticationToken authentication = (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
+    Object principal = authentication.getPrincipal();
+    if(principal instanceof LoginUser){
+        LoginUser loginUser = (LoginUser) principal;
+        String uid = loginUser.getUserInfo().getId().toString();
+        redisCache.deleteObject(&quot;login:&quot; + uid);
+        Response response = new Response();
+        response.code(ResponseCode.SUCCESS_CODE.getCode())
+            .message(&quot;注销成功&quot;)
+            .count(0)
+            .data(null)
+            .token(&quot;&quot;);
+        return response;
+    }
+    return null;
+}
+</code></pre>
+<h3 id="2-实现退出登录处理器">2. 实现退出登录处理器</h3>
+<pre><code class="language-java">@Component
+public class MyLogoutSuccessHandler implements LogoutSuccessHandler {
+    @Override
+    public void onLogoutSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
+        System.out.println(&quot;退出登录成功&quot;);
+    }
+}
+</code></pre>
+<h3 id="3-配置自定义退出登录处理器">3. 配置自定义退出登录处理器</h3>
+<pre><code class="language-java">@Configuration
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Resource
+    private MyAccessDeniedHandler myAccessDeniedHandler;
+    @Resource
+    private JWTAuthenticationFilter jwtAuthenticationFilter;
+    @Resource
+    private AuthenticationEntryPointHandler authenticationEntryPointHandler;
+    @Resource
+    private MyLogoutSuccessHandler myLogoutSuccessHandler;
+
+    @Bean
+    public PasswordEncoder getPasswordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        //关闭防护
+        http.csrf().disable()
+            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            .and()
+            .authorizeRequests()
+                .antMatchers(&quot;/user/login&quot;,&quot;/user/register&quot;).anonymous()
+                .anyRequest().authenticated()
+                .anyRequest().access(&quot;@myAccessExpressionImpl.hasPermission(request,authentication)&quot;)
+            .and()
+            .formLogin()
+                .usernameParameter(&quot;username&quot;)
+                .passwordParameter(&quot;password&quot;)
+                .loginProcessingUrl(&quot;/login&quot;)
+                .loginPage(&quot;/login.html&quot;)
+                .successHandler(new MyAuthenticationSuccessHandler(&quot;/successUrl&quot;))
+                .failureHandler(new MyAuthenticationFailureHandler(&quot;/failureUrl&quot;))
+            .and()
+            .exceptionHandling()
+                .accessDeniedHandler(myAccessDeniedHandler)
+                .authenticationEntryPoint(authenticationEntryPointHandler)
+            .and()
+            .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+            .cors()
+            .and()
+            .logout()
+                .logoutSuccessHandler(myLogoutSuccessHandler);
+
+    }
+}
+</code></pre>
+<h2 id="十-csrf和cors">十、CSRF和CORS</h2>
+<blockquote>
+<p><code>CSRF</code>：跨站请求伪造，也被称为 <code>OneClick Attack</code>或者<code>Session Rifing</code>，通过伪造用户请求访问受信任站点的非法请求访问。</p>
+<p><code>CORS</code>：跨域资源共享，只要网络协议、IP地址、端口中的任何一个不相同就是跨域请求</p>
+</blockquote>
+<h3 id="1-springboot开启跨域">1. SpringBoot开启跨域</h3>
+<pre><code class="language-java">@Configuration
+public class CorsConfig implements WebMvcConfigurer {
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping(&quot;/**&quot;)
+                .allowedOrigins(&quot;*&quot;)
+                .allowCredentials(true)
+                .allowedMethods(&quot;GET&quot;,&quot;POST&quot;,&quot;DELETE&quot;,&quot;PUT&quot;,&quot;OPTION&quot;)
+                .allowedHeaders(&quot;*&quot;)
+                .maxAge(3600);
+    }
+}
+</code></pre>
+<h3 id="2-springsecurity开启跨域">2. SpringSecurity开启跨域</h3>
+<pre><code class="language-java">@Configuration
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Resource
+    private UserDetailsService userDetailsService;
+    
+    @Bean
+    public PasswordEncoder getPasswordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
+    
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+    	//CSRF防护默认是开启的
+        //关闭CSRF防护
+        http.csrf().disable();
+        //允许跨域
+        http.cors();
+    }
+}
+</code></pre>
+<blockquote>
+<p>当CSRF防护开启时，前端提交登录请求参数必须携带<code>_csrf</code>参数并提交对应token值，后端会验证token是否为后端生成的令牌，确认通过后即可进行登录操作</p>
+<p>混合开发中，应该将token值写入隐藏表单域并跟随表单数据一同提交</p>
+<p>前后端分离开发中，应该将令牌设置到<code>RequestHeader</code>中与JSON请求体一同提交</p>
+</blockquote>
+<h2 id="十一-oauth2协议">十一、Oauth2协议</h2>
+<figure data-type="image" tabindex="5"><img src="https://pic.zyblog.xyz/img/typora/14871146-27195c36b3624de0.png" alt="img" loading="lazy"></figure>
+<blockquote>
+<p>简介：第三方认证技术方案最主要是用来解决认证协议的通用标准问题，因为要实现跨系统认证，各系统之间一定要遵循一定的接口协议</p>
+<p>Oauth协议为用户资源的授权提供了一个安全的、开放而又简易的标准。同时，任何第三方都可以使用Oauth认证服务，人和服务提供商都可以实现自身的Oauth认证服务，业界提供了Oauth的多种语言（PHP、JavaScript、Java、Ruby等）实现的SDK，大大节约我们的开发时间。</p>
+<p>Oauth目前发展到2.0版本，已得到广泛应用</p>
+</blockquote>
+<h3 id="1-基本概念-2">1. 基本概念</h3>
+<ul>
+<li>
+<p>常用术语</p>
+<ul>
+<li>
+<p>客户凭证（client credentials）：客户端的clientId和密码用于认证客户</p>
+</li>
+<li>
+<p>令牌（tokens）：授权服务器在接受到客户请求后，颁发的访问令牌</p>
+</li>
+<li>
+<p>作用域（scopes）：客户请求访问令牌时，由资源拥有者额外指定的细分权限（permission）</p>
+</li>
+</ul>
+</li>
+<li>
+<p>令牌类型</p>
+<ul>
+<li>授权码：仅用于授权码授权类型，用于交换获取访问令牌和刷新令牌</li>
+<li>访问令牌：用于代表一个用户或服务直接去访问受保护的资源</li>
+<li>刷新令牌：用于去授权服务器获取一个刷新访问令牌</li>
+<li>BearerToken：不管谁拿到Token都可以访问资源</li>
+<li>Proof of Possession Token：可以校验client是否对Token由明确的一拥有权</li>
+</ul>
+</li>
+<li>
+<p>优点</p>
+<ul>
+<li>更安全，客户端不接触用户密码，服务器更易集中保护</li>
+<li>广泛传播被持续采用</li>
+<li>短寿命和封装的token</li>
+<li>资源服务器与授权服务器解耦</li>
+<li>集中式授权，简化客户端</li>
+<li>易于请求和传递</li>
+<li>考虑多种客户端架构场景</li>
+<li>客户可以具有不同的信任级别</li>
+</ul>
+</li>
+<li>
+<p>缺点：</p>
+<ul>
+<li>协议框架太宽泛，造成各种实现的兼容性和互操作性差</li>
+<li>不是一个认证协议，本身并不能告诉你任何用户信息</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-授权模式">2. 授权模式</h3>
+<h4 id="1-授权码模式">①. 授权码模式</h4>
+<figure data-type="image" tabindex="6"><img src="https://pic.zyblog.xyz/img/typora/image-20230514185203694.png?origin=typora" alt="image-20230514185203694" loading="lazy"></figure>
+<h4 id="2-简化授权模式">②. 简化授权模式</h4>
+<figure data-type="image" tabindex="7"><img src="https://pic.zyblog.xyz/img/typora/image-20230514185306983.png?origin=typora" alt="image-20230514185306983" loading="lazy"></figure>
+<h4 id="3-密码模式">③. 密码模式</h4>
+<figure data-type="image" tabindex="8"><img src="https://pic.zyblog.xyz/img/typora/image-20230514185427162.png?origin=typora" alt="image-20230514185427162" loading="lazy"></figure>
+<h4 id="4-客户端模式">④. 客户端模式</h4>
+<figure data-type="image" tabindex="9"><img src="https://pic.zyblog.xyz/img/typora/image-20230514185524440.png?origin=typora" alt="image-20230514185524440" loading="lazy"></figure>
+<h4 id="5-刷新令牌">⑤. 刷新令牌</h4>
+<figure data-type="image" tabindex="10"><img src="https://pic.zyblog.xyz/img/typora/image-20230514185619563.png?origin=typora" alt="image-20230514185619563" loading="lazy"></figure>
+<h3 id="3-springsecurity-oauth2架构">3. SpringSecurity Oauth2架构</h3>
+<figure data-type="image" tabindex="11"><img src="https://pic.zyblog.xyz/img/typora/image-20230514185755510.png?origin=typora" alt="image-20230514185755510" loading="lazy"></figure>
+<h4 id="1-授权服务器">①. 授权服务器</h4>
+<ul>
+<li>Authorize Endpoint：授权端点，进行授权</li>
+<li>Token Endpoint：令牌端点，经过授权拿到对应token</li>
+<li>Introspection Endpoint：校验端点，校验token合法性</li>
+<li>Revocation Endpoint：撤销端点，撤销授权<br>
+<img src="https://pic.zyblog.xyz/img/typora/image-20220103133248555.png" alt="SpringSecurityOauth2" loading="lazy"></li>
+</ul>
+<h4 id="2-springsecurityoauth2流程">②. SpringSecurityOauth2流程</h4>
+<ol>
+<li>
+<p>用户访问此时没有Token，Oauth2RestTemplate会报错，这个报错信息会被Oauth2ClientContextFilter捕获</p>
+</li>
+<li>
+<p>认证服务器通过Authorization Endpoint进行授权，并通过AuthorizationServerTokenServices生成授权码并返回给客户端</p>
+</li>
+<li>
+<p>客户端拿到授权码去认证服务器通过Token Endpoint调用AuthorizationServerTokenServices生成Token并返回给客户端</p>
+</li>
+<li>
+<p>客户端拿到Token去资源服务器去访问资源，一般会通过Oauth2AuthenticationManager调用ResourceServerTokenServices进行校验，校验通过可以获取资源</p>
+</li>
+</ol>
+<h4 id="3-快速入门">③. 快速入门</h4>
+<ul>
+<li>
+<p>引入依赖</p>
+<pre><code class="language-xml">&lt;!--管理spring-cloud版本--&gt;
+&lt;dependencyManagement&gt;
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-cloud-dependencies&lt;/artifactId&gt;
+            &lt;version&gt;Hoxton.SR12&lt;/version&gt;
+            &lt;type&gt;pom&lt;/type&gt;
+            &lt;scope&gt;import&lt;/scope&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+&lt;/dependencyManagement&gt;
+&lt;!--引入对应依赖--&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-cloud-starter-security&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-cloud-starter-oauth2&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+<figure data-type="image" tabindex="12"><img src="https://pic.zyblog.xyz/img/typora/image-20230514200005489.png?origin=typora" alt="image-20230514200005489" loading="lazy"></figure>
+<figure data-type="image" tabindex="13"><img src="https://pic.zyblog.xyz/img/typora/image-20230514200029459.png?origin=typora" alt="image-20230514200029459" loading="lazy"></figure>
+<figure data-type="image" tabindex="14"><img src="https://pic.zyblog.xyz/img/typora/image-20230514200146473.png?origin=typora" alt="image-20230514200146473" loading="lazy"></figure>
+</li>
+</ul>
+<figure data-type="image" tabindex="15"><img src="https://pic.zyblog.xyz/img/typora/image-20230514192606549.png?origin=typora" alt="image-20230514192606549" loading="lazy"></figure>
+<figure data-type="image" tabindex="16"><img src="https://pic.zyblog.xyz/img/typora/image-20230514192736465.png?origin=typora" alt="image-20230514192736465" loading="lazy"></figure>
+<h2 id="十二-jwt">十二、JWT</h2>
+<h3 id="1-常见的认证机制">1. 常见的认证机制</h3>
+<ul>
+<li>HTTP Basic Auth</li>
+<li>Cookie Auth</li>
+<li>OAuth</li>
+<li>Token Auth</li>
+</ul>
+<h3 id="2-token-auth">2. Token Auth</h3>
+<ul>
+<li>优点
+<ul>
+<li>支持跨域访问</li>
+<li>无状态，服务端无需存储session信息，只需在客户端cookie中存储token值</li>
+<li>更适用于CDN</li>
+<li>解耦，不需要绑定到一个特定的身份验证方案</li>
+<li>适用于移动端应用，原生的移动应用是不支持cookie的</li>
+<li>CSRF：不再依赖Cookie，所以不需要考虑CSRF的防护</li>
+<li>性能相比于CookieAuth更快，因为只需要对token进行验证和解析</li>
+<li>不需要再为登录页面做特殊处理</li>
+<li>基于标准化</li>
+<li>跨语言</li>
+<li>轻量级JSON风格参数</li>
+</ul>
+</li>
+<li>缺点
+<ul>
+<li>无法更新token有效期</li>
+<li>无法销毁一个token</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-什么是jwt">3. 什么是JWT</h3>
+<blockquote>
+<p>JSON Web Token是一个开放的行业标准（RFC7519），它定义了一种简洁的、自包含的协议格式，用于在统信双方传递json对象，传递信息经过数字签名可以被验证和信任，JWT可以使用HMAC算法或使用RSA的公钥/私钥对来签名，防止被篡改</p>
+</blockquote>
+<ul>
+<li>官网：https://jwt.io</li>
+<li>标准：https://tools.ietf.org/html/rfc7519</li>
+</ul>
+<h4 id="31-jwt的优点">3.1 JWT的优点</h4>
+<ol>
+<li>jwt基于json，非常方便解析</li>
+<li>可以在令牌中自定义丰富的内容，易扩展</li>
+<li>通过非对称加密算法及数字签名技术，可以防篡改，安全性高</li>
+<li>资源服务使用JWT可以不依赖认证服务完成授权</li>
+</ol>
+<h3 id="4-jwt组成">4. JWT组成</h3>
+<p>一个JWT实际上就是一个字符串，它由三部分组成，头部、负载与签名。</p>
+<blockquote>
+<p>header（base64）.payload（base64）.singature（HS256）</p>
+</blockquote>
+<h4 id="41-头部">4.1 头部</h4>
+<blockquote>
+<p>用于描述关于当前JWT的最基本信息，例：签名所使用的算法</p>
+<pre><code class="language-json">{
+    &quot;alg&quot;:&quot;HS256&quot;,
+    &quot;typ&quot;:&quot;JWT&quot;
+}
+</code></pre>
+<ul>
+<li>typ：类型</li>
+<li>alg：签名算法</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>Base64是一种基于64个可打印字符来表示二进制数据的表示方法。由于2的6次方等于64，所以每6bit为一个单元，对应某个可打印字符。3个字节有24bit，对应4个Base64单元，即3个字节需要用4个可打印字符来表示，JDK中提供了非常方便的BASE64Encoder和BASE64Decoder，用他们可以非常方便的完成BASE64的编码和解码。BASE64是一个对称编码，所以JWT头部信息在被BASE64编码后并不安全</p>
+</blockquote>
+<h4 id="42-负载payload">4.2 负载（Payload）</h4>
+<blockquote>
+<p>用于存放有效信息，其实就是内容，内容包含以下3个部分</p>
+<ul>
+<li>
+<p>标准中注册的声明</p>
+<ul>
+<li>
+<p>iss：jwt签发者</p>
+</li>
+<li>
+<p>sub：jwt所面向的用户</p>
+</li>
+<li>
+<p>aud：接收jwt的一方</p>
+</li>
+<li>
+<p>exp：jwt过期时间，必须大于签发时间</p>
+</li>
+<li>
+<p>nbf：定义在何时之前jwt是不可用的</p>
+</li>
+<li>
+<p>iat：jwt签发时间</p>
+</li>
+<li>
+<p>jti：jwt的唯一身份标识，用来作为一次性token，回避重放攻击</p>
+</li>
+</ul>
+</li>
+<li>
+<p>公共的声明</p>
+<ul>
+<li>可以添加任何信息，一般用来添加用户信息或业务信息，不要存放敏感信息，因为客户端可解密</li>
+</ul>
+</li>
+<li>
+<p>私有的声明</p>
+<ul>
+<li>是提供者和消费者共同定义的声明，一般不建议存放敏感信息，因为客户端可解密</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h4 id="43-签证signature">4.3 签证（Signature）</h4>
+<blockquote>
+<p>jwt的第三部分是一个签证信息，签证信息由以下三个部分组成：</p>
+<ul>
+<li>header（BASE64加密）</li>
+<li>payload（BASE64加密）</li>
+<li>secret（秘钥）
+<ul>
+<li>secret是存储在服务器上的，jwt的签发也是在服务器端，secret就是用来进行jwt的签发和jwt的验证的，这个秘钥是保密的，如果泄露，客户端就可以自行签发jwt</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h3 id="5-快速入门">5. 快速入门</h3>
+<h4 id="51-引入依赖">5.1 引入依赖</h4>
+<pre><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;io.jsonwebtoken&lt;/groupId&gt;
+    &lt;artifactId&gt;jjwt&lt;/artifactId&gt;
+    &lt;version&gt;0.9.0&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h4 id="52-书写工具类">5.2 书写工具类</h4>
+<pre><code class="language-java">package com.zhiyuan.security.utils;
+
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jws;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
+import static org.springframework.util.StringUtils.isEmpty;
+
+/**
+ * @author 絷缘
+ * @date 2023-05-14
+ * @Description JWT工具类
+ */
+public class JWTUtils {
+
+    //默认的Token过期时间
+    public static final Long EXPIRE_TIME = 7*24*60*60L;
+    //JWT秘钥
+    public static final String SECRET = &quot;4C5C8A178EE84933B04D21249185EDEB&quot;;
+    public static final String SEPARATOR_EMPTY = &quot;&quot;;
+    public static final String SEPARATOR_SHORT_LINE = &quot;-&quot;;
+
+    /**
+     * 生成UUID
+     * @param upperCase 是否转大写
+     * @return 返回UUID字符串
+     */
+    public static String UUID(boolean upperCase){
+        String UUID_STR = UUID.randomUUID().toString().replace(SEPARATOR_SHORT_LINE, SEPARATOR_EMPTY);
+        if(upperCase){
+            return UUID_STR.toUpperCase();
+        }
+        return UUID_STR.toLowerCase();
+    }
+    /**
+     * 生成JWT
+     * @param uid 负载信息userId
+     * @param username 负载信息username
+     * @return 返回JWT字符串
+     */
+    public static String generateJWT(String uid,String username){
+        HashMap&lt;String, Object&gt; headerMap = new HashMap&lt;&gt;();
+        headerMap.put(&quot;alg&quot;,&quot;HS256&quot;);
+        headerMap.put(&quot;typ&quot;,&quot;JWT&quot;);
+        HashMap&lt;String, Object&gt; claimMap = new HashMap&lt;&gt;();
+        claimMap.put(&quot;uid&quot;,uid);
+        claimMap.put(&quot;username&quot;,username);
+        String jwt = Jwts.builder()
+                //设置头部信息
+                .setHeader(headerMap)
+                //设置负载信息
+                .setIssuer(&quot;zhiyuan&quot;)
+                .setId(UUID(true))
+                .setSubject(&quot;cloud-drive&quot;)
+                .setIssuedAt(new Date())
+                .setClaims(claimMap)
+                .setExpiration(new Date(System.currentTimeMillis() + EXPIRE_TIME))
+                //设置签名信息
+                .signWith(SignatureAlgorithm.HS256, SECRET)
+                .compact();
+        return jwt;
+    }
+
+    /**
+     * 生成JWT
+     * @param id 传入jti
+     * @param subject 传入sub
+     * @param issuedAt 传入iat
+     * @param claimMap  传入自定义声明claim
+     * @param expireTime 传入exp过期时间
+     * @return 返回JWT字符串
+     */
+    public static String generateJWT(String id, String subject, Date issuedAt,Map claimMap,Long expireTime){
+        HashMap&lt;String, Object&gt; headerMap = new HashMap&lt;&gt;();
+        headerMap.put(&quot;alg&quot;,&quot;HS256&quot;);
+        headerMap.put(&quot;typ&quot;,&quot;JWT&quot;);
+        String jwt = Jwts.builder()
+                //设置头部信息
+                .setHeader(headerMap)
+                //设置负载信息
+                .setIssuer(&quot;zhiyuan&quot;)
+                .setId(id)
+                .setSubject(subject)
+                .setIssuedAt(issuedAt)
+                .setClaims(claimMap)
+                .setExpiration(new Date(System.currentTimeMillis() + expireTime))
+                //设置签名信息
+                .signWith(SignatureAlgorithm.HS256, SECRET)
+                .compact();
+        return jwt;
+    }
+
+    /**
+     * 验证Token是否有效
+     * @param jwt 传入jwt字符串
+     * @return 有效返回true，无效返回false
+     */
+    public static boolean isValid(String jwt){
+        if (isEmpty(jwt)){
+            return false;
+        }
+        try{
+            Jwts.parser().setSigningKey(SECRET).parseClaimsJws(jwt);
+        }catch (Exception e){
+            System.err.println(e.getMessage());
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * 验证Token是否有效
+     * @param request 传入HttpServletRequest对象
+     * @return 有效返回true，无效返回false
+     */
+    public static boolean isValid(HttpServletRequest request){
+        String token = request.getHeader(&quot;token&quot;);
+        if(isEmpty(token)){
+            return false;
+        }
+        try{
+            Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token);
+        }catch (Exception e){
+            System.err.println(e.getMessage());
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * 获取Token负载内容字符串
+     * @param request 传入HttpServletRequest对象
+     * @param claimName 传入负载内容key
+     * @return 返回负载内容key对应的负载内容value
+     */
+    public static String getClaimInfoForString(HttpServletRequest request,String claimName){
+        String token = request.getHeader(&quot;token&quot;);
+        if(isEmpty(token)){
+            return &quot;token不存在&quot;;
+        }
+        try{
+            Jws&lt;Claims&gt; claimsJws = Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token);
+            Claims body = claimsJws.getBody();
+            return body.get(claimName,String.class);
+        }catch (Exception e){
+            System.err.println(e.getMessage());
+            return &quot;token已失效&quot;;
+        }
+    }
+
+    /**
+     * 获取Token负载内容对象
+     * @param request 传入HttpServletRequest对象
+     * @param claimName 传入负载内容key
+     * @param tClass 传入负载内容value类型
+     * @return 返回负载内容key对应的负载内容value
+     * @param &lt;T&gt;
+     */
+    public static &lt;T&gt; T getClaimInfoForObject(HttpServletRequest request,String claimName,Class&lt;T&gt; tClass) {
+        String token = request.getHeader(&quot;token&quot;);
+        if(isEmpty(token)){
+            return null;
+        }
+        try{
+            Jws&lt;Claims&gt; claimsJws = Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token);
+            Claims body = claimsJws.getBody();
+            return body.get(claimName,tClass);
+        }catch (Exception e){
+            System.err.println(e.getMessage());
+            return null;
+        }
+    }
+
+}
+</code></pre>
+<h4 id="53-redis工具类">5.3 Redis工具类</h4>
+<pre><code class="language-java">import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.BoundSetOperations;
+import org.springframework.data.redis.core.HashOperations;
+import org.springframework.data.redis.core.ListOperations;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
+import org.springframework.stereotype.Component;
+
+/**
+ * spring redis 工具类
+ **/
+@SuppressWarnings(value = { &quot;unchecked&quot;, &quot;rawtypes&quot; })
+@Component
+public class RedisCache
+{
+    @Autowired
+    public RedisTemplate redisTemplate;
+
+    /**
+     * 缓存基本的对象，Integer、String、实体类等
+     *
+     * @param key 缓存的键值
+     * @param value 缓存的值
+     * @return 缓存的对象
+     */
+    public &lt;T&gt; ValueOperations&lt;String, T&gt; setCacheObject(String key, T value)
+    {
+        ValueOperations&lt;String, T&gt; operation = redisTemplate.opsForValue();
+        operation.set(key, value);
+        return operation;
+    }
+
+    /**
+     * 缓存基本的对象，Integer、String、实体类等
+     *
+     * @param key 缓存的键值
+     * @param value 缓存的值
+     * @param timeout 时间
+     * @param timeUnit 时间颗粒度
+     * @return 缓存的对象
+     */
+    public &lt;T&gt; ValueOperations&lt;String, T&gt; setCacheObject(String key, T value, Integer timeout, TimeUnit timeUnit)
+    {
+        ValueOperations&lt;String, T&gt; operation = redisTemplate.opsForValue();
+        operation.set(key, value, timeout, timeUnit);
+        return operation;
+    }
+
+    /**
+     * 获得缓存的基本对象。
+     *
+     * @param key 缓存键值
+     * @return 缓存键值对应的数据
+     */
+    public &lt;T&gt; T getCacheObject(String key)
+    {
+        ValueOperations&lt;String, T&gt; operation = redisTemplate.opsForValue();
+        return operation.get(key);
+    }
+
+    /**
+     * 删除单个对象
+     *
+     * @param key
+     */
+    public void deleteObject(String key)
+    {
+        redisTemplate.delete(key);
+    }
+
+    /**
+     * 删除集合对象
+     *
+     * @param collection
+     */
+    public void deleteObject(Collection collection)
+    {
+        redisTemplate.delete(collection);
+    }
+
+    /**
+     * 缓存List数据
+     *
+     * @param key 缓存的键值
+     * @param dataList 待缓存的List数据
+     * @return 缓存的对象
+     */
+    public &lt;T&gt; ListOperations&lt;String, T&gt; setCacheList(String key, List&lt;T&gt; dataList)
+    {
+        ListOperations listOperation = redisTemplate.opsForList();
+        if (null != dataList)
+        {
+            int size = dataList.size();
+            for (int i = 0; i &lt; size; i++)
+            {
+                listOperation.leftPush(key, dataList.get(i));
+            }
+        }
+        return listOperation;
+    }
+
+    /**
+     * 获得缓存的list对象
+     *
+     * @param key 缓存的键值
+     * @return 缓存键值对应的数据
+     */
+    public &lt;T&gt; List&lt;T&gt; getCacheList(String key)
+    {
+        List&lt;T&gt; dataList = new ArrayList&lt;T&gt;();
+        ListOperations&lt;String, T&gt; listOperation = redisTemplate.opsForList();
+        Long size = listOperation.size(key);
+
+        for (int i = 0; i &lt; size; i++)
+        {
+            dataList.add(listOperation.index(key, i));
+        }
+        return dataList;
+    }
+
+    /**
+     * 缓存Set
+     *
+     * @param key 缓存键值
+     * @param dataSet 缓存的数据
+     * @return 缓存数据的对象
+     */
+    public &lt;T&gt; BoundSetOperations&lt;String, T&gt; setCacheSet(String key, Set&lt;T&gt; dataSet)
+    {
+        BoundSetOperations&lt;String, T&gt; setOperation = redisTemplate.boundSetOps(key);
+        Iterator&lt;T&gt; it = dataSet.iterator();
+        while (it.hasNext())
+        {
+            setOperation.add(it.next());
+        }
+        return setOperation;
+    }
+
+    /**
+     * 获得缓存的set
+     *
+     * @param key
+     * @return
+     */
+    public &lt;T&gt; Set&lt;T&gt; getCacheSet(String key)
+    {
+        Set&lt;T&gt; dataSet = new HashSet&lt;T&gt;();
+        BoundSetOperations&lt;String, T&gt; operation = redisTemplate.boundSetOps(key);
+        dataSet = operation.members();
+        return dataSet;
+    }
+
+    /**
+     * 缓存Map
+     *
+     * @param key
+     * @param dataMap
+     * @return
+     */
+    public &lt;T&gt; HashOperations&lt;String, String, T&gt; setCacheMap(String key, Map&lt;String, T&gt; dataMap)
+    {
+        HashOperations hashOperations = redisTemplate.opsForHash();
+        if (null != dataMap)
+        {
+            for (Map.Entry&lt;String, T&gt; entry : dataMap.entrySet())
+            {
+                hashOperations.put(key, entry.getKey(), entry.getValue());
+            }
+        }
+        return hashOperations;
+    }
+
+    /**
+     * 获得缓存的Map
+     *
+     * @param key
+     * @return
+     */
+    public &lt;T&gt; Map&lt;String, T&gt; getCacheMap(String key)
+    {
+        Map&lt;String, T&gt; map = redisTemplate.opsForHash().entries(key);
+        return map;
+    }
+
+    /**
+     * 获得缓存的基本对象列表
+     *
+     * @param pattern 字符串前缀
+     * @return 对象列表
+     */
+    public Collection&lt;String&gt; keys(String pattern)
+    {
+        return redisTemplate.keys(pattern);
+    }
+}
+</code></pre>
+<h4 id="54-redis序列化类">5.4 Redis序列化类</h4>
+<pre><code class="language-java">import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.parser.ParserConfig;
+import com.alibaba.fastjson.serializer.SerializerFeature;
+import org.springframework.data.redis.serializer.RedisSerializer;
+import org.springframework.data.redis.serializer.SerializationException;
+
+import java.nio.charset.Charset;
+
+public class FastJsonRedisSerializer&lt;T&gt; implements RedisSerializer&lt;T&gt; {
+
+    public static final Charset DEFAULT_CHARSET = Charset.forName(&quot;UTF-8&quot;);
+    private Class&lt;T&gt; clazz;
+
+    static
+    {
+        ParserConfig.getGlobalInstance().setAutoTypeSupport(true);
+    }
+
+    public FastJsonRedisSerializer(Class&lt;T&gt; clazz){
+        super();
+        this.clazz = clazz;
+    }
+    @Override
+    public byte[] serialize(T t) throws SerializationException {
+        if (t == null) {
+            return new byte[0];
+        }
+        return JSON.toJSONString(t, SerializerFeature.WriteClassName).getBytes(DEFAULT_CHARSET);
+    }
+    @Override
+    public T deserialize(byte[] bytes) throws SerializationException {
+        if (bytes == null || bytes.length &lt;= 0) {
+            return null;
+        }
+        String str = new String(bytes, DEFAULT_CHARSET);
+        return (T) JSON.parseObject(str, clazz);
+    }
+}
+</code></pre>
+<h4 id="55-redis配置类">5.5 Redis配置类</h4>
+<pre><code class="language-java">import com.alibaba.fastjson.support.spring.FastJsonRedisSerializer;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
+
+@Configuration
+public class RedisConfig {
+
+    @Bean
+    @SuppressWarnings(value = {&quot;unchecked&quot;,&quot;rawtypes&quot;})
+    public RedisTemplate&lt;Object, Object&gt; redisTemplate(RedisConnectionFactory redisConnectionFactory) {
+        RedisTemplate&lt;Object, Object&gt; redisTemplate = new RedisTemplate&lt;&gt;();
+        redisTemplate.setConnectionFactory(redisConnectionFactory);
+        // 使用 FastJsonRedisSerializer 替换默认序列化
+        FastJsonRedisSerializer fastJsonRedisSerializer = new FastJsonRedisSerializer(Object.class);
+        // 设置key和value的序列化规则
+        redisTemplate.setKeySerializer(new StringRedisSerializer());
+        redisTemplate.setValueSerializer(fastJsonRedisSerializer);
+        // 设置hashKey和hashValue的序列化规则
+        redisTemplate.setHashKeySerializer(new StringRedisSerializer());
+        redisTemplate.setHashValueSerializer(fastJsonRedisSerializer);
+        // 设置支持事物
+        redisTemplate.setEnableTransactionSupport(true);
+        redisTemplate.afterPropertiesSet();
+        return redisTemplate;
+    }
+}
+</code></pre>
+<blockquote>
+<p>原文作者：絷缘<br>
+作者邮箱：zhiyuanworkemail@163.com<br>
+原文地址：<a href="https://zhiyuandnc.github.io/fgzXm9vap/">https://zhiyuandnc.github.io/fgzXm9vap/</a><br>
+版权声明：本文为博主原创文章，转载请注明原文链接作者信息</p>
+</blockquote>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://zhiyuandnc.github.io/Vr0OXGyK8/" class="post-title gt-a-link">
+                    Vue2复习&amp;Vue3学习
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">事实不以人的意志为转移</div>
+    <div class="social-container">
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-telegram gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-qq gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-bilibili gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Copyright&ensp;&copy;&ensp;絷缘的博客<br/><a href="https://beian.miit.gov.cn/" target="_blank">晋ICP备20001723号-1</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://zhiyuandnc.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

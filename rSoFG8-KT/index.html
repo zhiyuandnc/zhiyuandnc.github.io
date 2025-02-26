@@ -1,0 +1,463 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>使用Jsoup解析XML文档 | 絷缘的博客</title>
+
+<link rel="shortcut icon" href="https://zhiyuandnc.github.io/favicon.ico?v=1740567139208">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zhiyuandnc.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+ <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            絷缘的博客
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/friends" class="menu gt-a-link">
+                            友链
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1740567139208" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    使用Jsoup解析XML文档
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2021-01-04 ·
+                    </time>
+                    
+                        <a href="https://zhiyuandnc.github.io/8lVIXzXJ8/" class="post-tags">
+                            # XPath
+                        </a>
+                    
+                        <a href="https://zhiyuandnc.github.io/mDjn3cvfIJ/" class="post-tags">
+                            # XML
+                        </a>
+                    
+                        <a href="https://zhiyuandnc.github.io/GPniBprRN5/" class="post-tags">
+                            # Jsoup
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <blockquote>
+<p>本教程仅限于 <code>jsoupv1.11.3</code> + <code>jsoupXPathv0.3.2</code> + <code>jdk1.8</code></p>
+</blockquote>
+<h2 id="一-在pomxml中添加jsoup和jsoupxpath依赖">一、在pom.xml中添加jsoup和jsoupXPath依赖</h2>
+<pre><code class="language-xml">&lt;!-- https://mvnrepository.com/artifact/org.jsoup/jsoup --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.jsoup&lt;/groupId&gt;
+    &lt;artifactId&gt;jsoup&lt;/artifactId&gt;
+    &lt;version&gt;1.11.3&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;!-- https://mvnrepository.com/artifact/cn.wanghaomiao/JsoupXpath --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;cn.wanghaomiao&lt;/groupId&gt;
+    &lt;artifactId&gt;JsoupXpath&lt;/artifactId&gt;
+    &lt;version&gt;0.3.2&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h2 id="二-jsoup概述">二、Jsoup概述</h2>
+<ul>
+<li>概述：Jsoup是一个专门用于解析HTML文档的技术，但是它太好用了，所以也被用来解析同为标记语言的xml文档</li>
+<li>常用对象：<code>Jsoup</code> <code>Document</code>  <code>Elements</code> <code>Element</code> <code>Node</code></li>
+</ul>
+<h4 id="1-jsoup对象">1. Jsoup对象</h4>
+<ul>
+<li>parse(File in,String charsetName)：读取文档，创建Document对象</li>
+<li>parse(String html)：解析文档字符串创建Document对象</li>
+<li>parse(URL url,int timeoutMillis)：通过URL读取网页源码创建Document对象</li>
+</ul>
+<h4 id="2-document对象">2. Document对象</h4>
+<ul>
+<li>getElementsByTag(String tagName)：根据标签名称获取标签元素集合Elements对象</li>
+<li>getElementsByAttribute(String key)：根据指定属性获取含有该属性的标签元素集合Elements对象</li>
+<li>getElementsByAttributeValue(String key,String value)：根据指定属性和属性值获取含有该属性对的标签元素集合Elements对象</li>
+<li>getElementsById(String id)：根据指定id值获取含有该id属性值的标签元素集合Elements对象</li>
+</ul>
+<h4 id="3-elements对象">3. Elements对象</h4>
+<ul>
+<li>继承自ArrayList&lt;Element&gt;，用于存放标签元素的集合，同ArrayList使用方式一样</li>
+</ul>
+<h4 id="4-element对象">4. Element对象</h4>
+<p><code>获取子元素的方法同Document</code></p>
+<ul>
+<li>getElementsByTag(String tagName)：根据标签名称获取标签元素集合Elements对象</li>
+<li>getElementsByAttribute(String key)：根据指定属性获取含有该属性的标签元素集合Elements对象</li>
+<li>getElementsByAttributeValue(String key,String value)：根据指定属性和属性值获取含有该属性对的标签元素集合Elements对象</li>
+<li>getElementsById(String id)：根据指定id值获取含有该id属性值的标签元素集合Elements对象</li>
+</ul>
+<p><code>获取属性值的方法</code></p>
+<ul>
+<li>String attr(String key)：根据属性名称获取属性值</li>
+</ul>
+<p><code>获取文本内容</code></p>
+<ul>
+<li>String text()：获取文本内容</li>
+<li>String html()：获取标签内所有内容</li>
+</ul>
+<h2 id="三-书写代码实现解析-c3p0-configxml">三、书写代码，实现解析 <code>c3p0-config.xml</code></h2>
+<blockquote>
+<p>目标：解析xml文件，获得 <code>driverClass</code> ，<code>jdbcUrl</code>， <code>user</code> ，<code>password</code></p>
+</blockquote>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;c3p0-config&gt;
+    &lt;!--使用默认的配置读取连接池对象--&gt;
+    &lt;default-config&gt;
+        &lt;!--   连接参数    --&gt;
+        &lt;property name=&quot;driverClass&quot;&gt;com.mysql.cj.jdbc.Driver&lt;/property&gt;
+        &lt;property name=&quot;jdbcUrl&quot;&gt;jdbc:mysql://localhost:3306/test?useUnicode=ture&amp;amp;characterEncoding=utf8&amp;amp;useSSL=false&amp;amp;serverTimezone=Hongkong&lt;/property&gt;
+        &lt;property name=&quot;user&quot;&gt;root&lt;/property&gt;
+        &lt;property name=&quot;password&quot;&gt;123456&lt;/property&gt;
+        &lt;!--   初始化连接数     --&gt;
+        &lt;property name=&quot;initialPoolSize&quot;&gt;10&lt;/property&gt;
+        &lt;!--    最大空闲时间     --&gt;
+        &lt;property name=&quot;maxIdleTime&quot;&gt;30&lt;/property&gt;
+        &lt;!--   最大连接数     --&gt;
+        &lt;property name=&quot;maxPoolSize&quot;&gt;100&lt;/property&gt;
+        &lt;!--   最小连接数     --&gt;
+        &lt;property name=&quot;minPoolSize&quot;&gt;10&lt;/property&gt;
+        &lt;!--   超时时间     --&gt;
+        &lt;property name=&quot;checkoutTimeout&quot;&gt;3000&lt;/property&gt;
+        &lt;property name=&quot;acquireRetryAttempts&quot;&gt;30&lt;/property&gt;
+        &lt;property name=&quot;maxStatements&quot;&gt;0&lt;/property&gt;
+        &lt;property name=&quot;maxStatementsPerConnection&quot;&gt;0&lt;/property&gt;
+    &lt;/default-config&gt;
+&lt;/c3p0-config&gt;
+</code></pre>
+<h3 id="1-getelementsbytagstring-tagname方法">1. getElementsByTag(String tagName)方法</h3>
+<pre><code class="language-java">public class JsoupDemo {
+    public static void main(String[] args) throws IOException {
+        String path = URLDecoder.decode(JsoupDemo.class.getClassLoader().getResource(&quot;c3p0-config.xml&quot;).getPath());
+        Document document = Jsoup.parse(new File(path), &quot;utf-8&quot;);
+        Elements propertys = document.getElementsByTag(&quot;property&quot;);
+        for (Element property : propertys) {
+            System.out.println(property.text());
+        }
+    }
+}
+</code></pre>
+<pre><code>//控制台打印结果
+com.mysql.cj.jdbc.Driver
+jdbc:mysql://localhost:3306/test?useUnicode=ture&amp;characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=Hongkong
+root
+123456
+10
+30
+100
+10
+3000
+30
+0
+0
+</code></pre>
+<h3 id="2-getelementsbyattributestring-key方法">2. getElementsByAttribute(String key)方法</h3>
+<pre><code class="language-java">public class JsoupDemo {
+    public static void main(String[] args) throws IOException {
+        String path = URLDecoder.decode(JsoupDemo.class.getClassLoader().getResource(&quot;c3p0-config.xml&quot;).getPath());
+        Document document = Jsoup.parse(new File(path), &quot;utf-8&quot;);
+        Elements names = document.getElementsByAttribute(&quot;name&quot;);
+        for (Element name : names) {
+            System.out.println(name.text());
+        }
+    }
+}
+</code></pre>
+<pre><code>//控制台打印结果
+com.mysql.cj.jdbc.Driver
+jdbc:mysql://localhost:3306/test?useUnicode=ture&amp;characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=Hongkong
+root
+123456
+10
+30
+100
+10
+3000
+30
+0
+0
+</code></pre>
+<h3 id="3-getelementsbyattributevaluestring-keystring-value方法">3. getElementsByAttributeValue(String key,String value)方法</h3>
+<pre><code class="language-java">public class JsoupDemo {
+    public static void main(String[] args) throws IOException {
+        String path = URLDecoder.decode(JsoupDemo.class.getClassLoader().getResource(&quot;c3p0-config.xml&quot;).getPath());
+        Document document = Jsoup.parse(new File(path), &quot;utf-8&quot;);
+        Elements driverClass = document.getElementsByAttributeValue(&quot;name&quot;, &quot;driverClass&quot;);
+        for (Element aClass : driverClass) {
+            System.out.println(aClass.text());
+        }
+        Elements jdbcUrl = document.getElementsByAttributeValue(&quot;name&quot;, &quot;jdbcUrl&quot;);
+        for (Element element : jdbcUrl) {
+            System.out.println(element.text());
+        }
+        Elements user = document.getElementsByAttributeValue(&quot;name&quot;, &quot;user&quot;);
+        for (Element element : user) {
+            System.out.println(element.text());
+        }
+        Elements password = document.getElementsByAttributeValue(&quot;name&quot;, &quot;password&quot;);
+        for (Element element : password) {
+            System.out.println(element.text());
+        }
+    }
+}
+</code></pre>
+<pre><code>//控制台打印结果
+com.mysql.cj.jdbc.Driver
+jdbc:mysql://localhost:3306/test?useUnicode=ture&amp;characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=Hongkong
+root
+123456
+</code></pre>
+<h3 id="4-getelementsbyidstring-id方法">4. getElementsById(String id)方法</h3>
+<pre><code class="language-java">public class JsoupDemo {
+    public static void main(String[] args) throws IOException {
+        String path = URLDecoder.decode(JsoupDemo.class.getClassLoader().getResource(&quot;c3p0-config.xml&quot;).getPath(), &quot;UTF-8&quot;);
+        Document document = Jsoup.parse(new File(path), &quot;UTF-8&quot;);
+        Element idname = document.getElementById(&quot;idname&quot;);
+        System.out.println(idname);
+    }
+}
+</code></pre>
+<pre><code>//控制台打印结果
+null
+//因为c3p0-config.xml文件中并没有含有id的标签
+</code></pre>
+<h2 id="四-书写代码使用jsoup的扩展功能解析xml文件">四、书写代码，使用Jsoup的扩展功能解析xml文件</h2>
+<h3 id="1-第一步读取xml文件获取document对象">1. 第一步：读取xml文件获取Document对象</h3>
+<pre><code class="language-java">String url = URLDecoder.decode(JsoupDemo.class.getClassLoader().getResource(&quot;c3p0-config.xml&quot;).getPath(),&quot;UTF-8&quot;);
+Document parse = Jsoup.parse(new File(url), &quot;UTF-8&quot;);
+</code></pre>
+<h3 id="2-第二步使用document对象的select方法">2. 第二步：使用Document对象的select方法</h3>
+<ul>
+<li>概述：select方法支持所有基本的CSS选择器语法，我们可以通过传入指定选择器来获取指定Element对象</li>
+</ul>
+<pre><code class="language-java">//标签选择器
+Elements es = parse.select(&quot;property&quot;);
+//属性选择器
+Elements es = parse.select(&quot;property[name=jdbcUrl]&quot;);
+//组合选择器
+Elements es = parse.select(&quot;default-config &gt; property[name=jdbcUrl]&quot;);
+//ID选择器
+Element e = parse.select(&quot;#id&quot;);
+//Class选择器
+Elements es = parse.select(&quot;.class&quot;);
+</code></pre>
+<p><code>其他选择器就不演示了，大家自己研究</code></p>
+<h3 id="3-第三步完整代码">3. 第三步：完整代码</h3>
+<pre><code class="language-java">public class JsoupDemo {
+    public static void main(String[] args) throws IOException {
+        String url = URLDecoder.decode(JsoupDemo.class.getClassLoader().getResource(&quot;c3p0-config.xml&quot;).getPath(),&quot;UTF-8&quot;);
+        Document parse = Jsoup.parse(new File(url), &quot;UTF-8&quot;);
+        Elements e1 = parse.select(&quot;property[name=driverClass]&quot;);
+        for (Element element : e1) {
+            System.out.println(element.text());
+        }
+        Elements e2 = parse.select(&quot;property[name=jdbcUrl]&quot;);
+        for (Element element : e2) {
+            System.out.println(element.text());
+        }
+        Elements e3 = parse.select(&quot;property[name=user]&quot;);
+        for (Element element : e3) {
+            System.out.println(element.text());
+        }
+        Elements e4 = parse.select(&quot;property[name=password]&quot;);
+        for (Element element : e4) {
+            System.out.println(element.text());
+        }
+        Elements e5 = parse.select(&quot;default-config &gt; property[name=driverClass]&quot;);
+        for (Element element : e5) {
+            System.out.println(element.text());
+        }
+        Elements e6 = parse.select(&quot;default-config &gt; property[name=jdbcUrl]&quot;);
+        for (Element element : e6) {
+            System.out.println(element.text());
+        }
+        Elements e7 = parse.select(&quot;default-config &gt; property[name=user]&quot;);
+        for (Element element : e7) {
+            System.out.println(element.text());
+        }
+        Elements e8 = parse.select(&quot;default-config &gt; property[name=password]&quot;);
+        for (Element element : e8) {
+            System.out.println(element.text());
+        }
+    }
+}
+</code></pre>
+<pre><code>//控制台输出结果
+com.mysql.cj.jdbc.Driver
+jdbc:mysql://localhost:3306/test?useUnicode=ture&amp;characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=Hongkong
+root
+123456
+com.mysql.cj.jdbc.Driver
+jdbc:mysql://localhost:3306/test?useUnicode=ture&amp;characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=Hongkong
+root
+123456
+</code></pre>
+<blockquote>
+<p>原文作者：絷缘<br>
+作者邮箱：zhiyuanworkemail@163.com<br>
+原文地址：<a href="https://zhiyuandnc.github.io/rSoFG8-KT/">https://zhiyuandnc.github.io/rSoFG8-KT/</a><br>
+版权声明：本文为博主原创文章，转载请注明原文链接作者信息</p>
+</blockquote>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://zhiyuandnc.github.io/XXV7UsHKh/" class="post-title gt-a-link">
+                    使用Gson创建/解析json格式文件
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">事实不以人的意志为转移</div>
+    <div class="social-container">
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-telegram gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-qq gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-bilibili gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Copyright&ensp;&copy;&ensp;絷缘的博客<br/><a href="https://beian.miit.gov.cn/" target="_blank">晋ICP备20001723号-1</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://zhiyuandnc.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

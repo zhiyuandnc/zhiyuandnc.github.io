@@ -1,0 +1,794 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Docker学习（一） | 絷缘的博客</title>
+
+<link rel="shortcut icon" href="https://zhiyuandnc.github.io/favicon.ico?v=1740567139208">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zhiyuandnc.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+ <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            絷缘的博客
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/friends" class="menu gt-a-link">
+                            友链
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1740567139208" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Docker学习（一）
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2022-03-25 ·
+                    </time>
+                    
+                        <a href="https://zhiyuandnc.github.io/docker/" class="post-tags">
+                            # Docker
+                        </a>
+                    
+                        <a href="https://zhiyuandnc.github.io/yuW0iYDQo/" class="post-tags">
+                            # 容器
+                        </a>
+                    
+                        <a href="https://zhiyuandnc.github.io/gjGDX1JavI/" class="post-tags">
+                            # 虚拟化
+                        </a>
+                    
+                        <a href="https://zhiyuandnc.github.io/sO50_o3yBm/" class="post-tags">
+                            # 镜像
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="容器化部署docker">容器化部署Docker</h2>
+<blockquote>
+<p>Docker如何解决大型项目依赖关系复杂，不同组件依赖的兼容性问题？</p>
+<ul>
+<li>Docker允许开发汇总将应用、依赖、函数库、配置一起打包，形成可以直接安装的镜像</li>
+<li>Docker应用运行在容器中，使用沙箱机制，相互隔离</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>Docker如何解决开发、测试、生产环境有差异的问题？</p>
+<p>Docker镜像中包含完整的运行环境，包括系统函数库，仅依赖系统的Linux内核，因此可以在任意Linux操作系统上运行</p>
+</blockquote>
+<blockquote>
+<p>Docker与虚拟机的区别：</p>
+<p>虚拟机是使用Hypervisor技术在操作系统中模拟硬件设备，然后运行另一个操作系统，比如在Windows系统里面运行Ubuntu系统。</p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Docker</th>
+<th>虚拟机</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>性能</td>
+<td>接近原生</td>
+<td>性能较差</td>
+</tr>
+<tr>
+<td>硬盘占用</td>
+<td>一般为MB</td>
+<td>一般为GB</td>
+</tr>
+<tr>
+<td>启动</td>
+<td>秒级</td>
+<td>分钟级</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h3 id="1-概念">1. 概念</h3>
+<h4 id="11-镜像image">1.1 镜像（Image）</h4>
+<ul>
+<li>Docker将应用程序及其所需的依赖、函数库、环境、配置等文件打包在一起，称为<strong>镜像</strong></li>
+</ul>
+<h4 id="12-容器container">1.2 容器（Container）</h4>
+<ul>
+<li>镜像中的应用程序运行后形成的进程就是<strong>容器</strong>，只是Docker会给容器做隔离，对外不可见</li>
+</ul>
+<h4 id="13-dockerhub">1.3 DockerHub</h4>
+<ul>
+<li>DockerHub是一个Docker镜像的托管平台，这样的平台称为Docker Registry</li>
+<li>国内也有类似于DockerHub的公开服务，比如网易云镜像服务、阿里云镜像库等</li>
+</ul>
+<h4 id="14-docker">1.4 Docker</h4>
+<ul>
+<li>
+<p>Docker是一个CS架构的程序，由两部分组成</p>
+<ul>
+<li>服务端：Docker守护进程，负责处理Docker指令，管理镜像、容器等</li>
+<li>客户端：通过命令或RestAPI向Docker服务端发送指令，可以在本地或远程向服务端发送指令</li>
+</ul>
+<figure data-type="image" tabindex="1"><img src="https://pic.zyblog.xyz/img/typora/image-20220704170659232.png" alt="image-20220704170659232" loading="lazy"></figure>
+</li>
+</ul>
+<h3 id="2-安装docker">2. 安装Docker</h3>
+<h4 id="21-centos7安装docker">2.1 CentOS7安装Docker</h4>
+<blockquote>
+<p>CentOS7系统下载地址：</p>
+<p>http://mirrors.163.com/centos/7.9.2009/isos/x86_64/CentOS-7-x86_64-DVD-2009.iso</p>
+<p>迅雷下载镜像文件有奇效，IDM平时下载很快，下载镜像开8线程只能跑到1M/s，迅雷直接10M/s</p>
+</blockquote>
+<ul>
+<li>
+<h5 id="若之前安装过其他版本docker通过以下方式完成卸载">若之前安装过其他版本Docker，通过以下方式完成卸载：</h5>
+<pre><code class="language-shell">yum remove docker \
+                docker-client \
+                docker-client-latest \
+                docker-common \
+                docker-lastest-logrotate \
+                docker-logrotate \
+                docker-selinux \
+                docker-engine-selinux \
+                docker-engine \
+                docker-ce
+</code></pre>
+</li>
+<li>
+<h5 id="安装docker">安装Docker</h5>
+<pre><code class="language-shell">yum install -y yum-utils device-mapper-persistent-data lvm2
+</code></pre>
+<ul>
+<li>
+<p>更新yum本地镜像源</p>
+<pre><code class="language-shell"># 删除原有配置源目录
+cd /etc
+rm -rf yum.repos.d
+# 新建配置源目录
+mkdir yum.repos.d
+# 下载阿里镜像源
+cd yum.repos.d
+wget https://mirrors.aliyun.com/repo/Centos-7.repo
+# 更新yum缓存
+yum makecache
+</code></pre>
+</li>
+<li>
+<p>更新软件源信息</p>
+<blockquote>
+<p>参考：https://developer.aliyun.com/mirror/docker-ce?spm=a2c6h.13651102.0.0.40491b11PUGxwo</p>
+</blockquote>
+<pre><code class="language-shell"># step 1: 安装必要的一些系统工具
+yum install -y yum-utils device-mapper-persistent-data lvm2
+# Step 2: 添加软件源信息
+yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+# Step 3
+# Step 4: 更新并安装Docker-CE
+yum makecache fast
+yum -y install docker-ce
+# Step 4: 开启Docker服务
+service docker start
+</code></pre>
+</li>
+<li>
+<p>关闭防火墙（为了学习Docker，开发中应该开启指定端口）</p>
+<pre><code class="language-shell"># 关闭防火墙应用
+systemctl stop firewalld
+# 禁止开机启动防火墙
+systemctl disable firewalld
+# 查看防火墙状态
+systemctl status firewalld
+</code></pre>
+</li>
+<li>
+<p>配置Docker镜像源</p>
+<pre><code class="language-shell">mkdir -p /etc/docker
+tee /etc/docker/daemon.json &lt;&lt;-'EOF'
+{
+  &quot;registry-mirrors&quot;: [&quot;https://xm9ypajm.mirror.aliyuncs.com&quot;]
+}
+EOF
+systemctl daemon-reload
+systemctl restart docker
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="22-docker基本操作">2.2 Docker基本操作</h4>
+<blockquote>
+<p>镜像的命名规范：</p>
+<ul>
+<li>镜像名称一般由两部分组成：<code>[respository]:[tag]</code>
+<ul>
+<li>respository：镜像名称</li>
+<li>tag：版本</li>
+</ul>
+</li>
+<li>如果没有指定tag时，默认是latest，代表最新版本的镜像</li>
+</ul>
+</blockquote>
+<figure data-type="image" tabindex="2"><img src="https://pic.zyblog.xyz/img/typora/image-20220705111817819.png" alt="DOCKER" loading="lazy"></figure>
+<ul>
+<li>
+<h5 id="镜像相关指令">镜像相关指令</h5>
+<ul>
+<li><code>docker images</code>：查看当前所有镜像</li>
+<li><code>docker pull [respository]:[tag]</code>：从镜像仓库中拉取指定镜像</li>
+<li><code>docker save -o [Path/FileName.tar] [respository]:[tag]</code>：将指定镜像打包</li>
+<li><code>docker load -i [Path/FileName.tar]</code>：将打包好的镜像加载到Docker中</li>
+<li><code>docker rmi [respository]:[tag]</code>：移除指定镜像</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>示例：</strong></p>
+<ul>
+<li>
+<p>从DockerHub中拉取一个nginx镜像并查看</p>
+<p><code>docker pull nginx</code></p>
+<p><code>docker images</code></p>
+</li>
+<li>
+<p>将nginx镜像打包到本地</p>
+<p><code>docker save -o ~/nginx.tar nginx:latest</code></p>
+</li>
+<li>
+<p>将镜像文件从本地tar包加载</p>
+<p><code>docker load -i ~/nginx.tar</code></p>
+<p><code>docker images</code></p>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li>
+<h5 id="容器相关命令">容器相关命令</h5>
+<ul>
+<li><code>docker run</code>：创建并运行一个容器</li>
+<li><code>docker pause</code>：暂停运行</li>
+<li><code>docker unpause</code>：继续运行</li>
+<li><code>docker stop</code>：停止运行</li>
+<li><code>docker start</code>：运行</li>
+<li><code>docker ps</code>：查看所有运行容器及状态</li>
+<li><code>docker logs</code>：查看容器运行日志</li>
+<li><code>docker exec</code>：进入容器执行命令</li>
+<li><code>docker rm</code>：删除指定容器</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>示例：</strong></p>
+<ul>
+<li>
+<p>运行一个nginx容器</p>
+<p><code>docker run --name mn -p 80:80 -d nginx</code></p>
+<ul>
+<li><code>--name</code>：指定容器名称</li>
+<li><code>-p</code>：指定端口映射</li>
+<li><code>-d</code>：后台运行</li>
+</ul>
+<p><code>docker ps</code></p>
+</li>
+<li>
+<p>查看指定容器运行日志</p>
+<p><code>docker logs mn</code></p>
+<p>跟踪查看运行日志：<code>docker logs -f mn</code></p>
+</li>
+<li>
+<p>进入容器执行命令</p>
+<p><code>docker exec -it mv bash</code></p>
+<p><code>exit</code>：退出容器</p>
+</li>
+<li>
+<p>停止运行容器</p>
+<p><code>docker stop mn</code></p>
+</li>
+<li>
+<p>查看所有容器包括未运行的</p>
+<p><code>docker ps -a</code></p>
+</li>
+<li>
+<p>运行容器</p>
+<p><code>docker start mn</code></p>
+</li>
+<li>
+<p>删除容器</p>
+<p><code>docker rm</code>：只能删除未运行的容器</p>
+<p><code>docker rm -f mn</code>：强制删除容器，无论是否运行</p>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>示例：运行一个持久化存储的redis容器，并通过redis-cli设置num=666</p>
+<ul>
+<li>
+<p>运行容器</p>
+<p><code>docker run --name my-redis -p 6379:6379 -d redis redis-server --appendonly yes</code></p>
+</li>
+<li>
+<p>进入容器</p>
+<p><code>docker exec -it my-redis bash</code></p>
+</li>
+<li>
+<p>启动redis-cli</p>
+<p><code>redis-cli</code></p>
+</li>
+<li>
+<p>设置num=666</p>
+<p><code>set num 666</code></p>
+</li>
+<li>
+<p>退出redis-cli，退出容器</p>
+<p><code>exit</code></p>
+<blockquote>
+<p><code>docker exec -it my-redis redis-cli</code>：直接进入容器中启动redis-cli</p>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<h4 id="23-数据卷操作">2.3 数据卷操作</h4>
+<blockquote>
+<p>数据卷的作用：将容器与数据分离，解耦合，方便操作容器内数据，保证数据安全</p>
+</blockquote>
+<figure data-type="image" tabindex="3"><img src="https://pic.zyblog.xyz/img/typora/image-20220705192332218.png" alt="image-20220705192332218" loading="lazy"></figure>
+<ul>
+<li>
+<p><strong>基本语法</strong>：<code>docker volume [COMMAND]</code></p>
+<ul>
+<li>COMMAND
+<ul>
+<li>create：创建一个volume</li>
+<li>inspect：显示一个或多个volume的信息</li>
+<li>ls：列出所有的volume</li>
+<li>prune：删除未使用的volume</li>
+<li>rm：删除一个或多个指定的volume</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>挂载数据卷</strong></p>
+<ul>
+<li>
+<p>创建并运行容器时指定数据卷的挂载目录，若数据卷不存在，则自动创建数据卷</p>
+<pre><code class="language-shell">docker run \
+--name mn \
+-p 80:80 \
+-v html:/usr/share/nginx/html \
+-d nginx
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>挂载目录</strong></p>
+<ul>
+<li>
+<pre><code class="language-shell">docker run \
+--name some-mysql \
+-e MYSQL_ROOT_PASSWORD=root \
+-p 3306:3306 \
+-v /tmp/mysql/data:/var/lib/mysql \
+-v /tmp/mysql/conf/hmy.cnf:/etc/mysql/conf.d/hmy.cnf \
+-d mysql:latest
+</code></pre>
+</li>
+</ul>
+<blockquote>
+<p>数据卷挂载与目录挂载</p>
+<ul>
+<li>数据卷挂载耦合度低，有docker来管理目录，但是目录较深，不好找</li>
+<li>目录挂载耦合度高，需要我们自己管理目录，不过目录容易寻找查看</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h3 id="3-镜像结构">3. 镜像结构</h3>
+<blockquote>
+<p>镜像就是将应用程序及其所需要的系统函数库、环境、配置、依赖打包而成的</p>
+<ul>
+<li>基础镜像（BaseImage）：应用依赖的系统函数库、环境变量、配置、文件系统等</li>
+<li>入口（Entrypoint）：镜像运行入口，一般是程序启动的脚本和参数</li>
+<li>层（Layer）：在BaseImage基础上添加安装包、依赖、配置等，每次操作形成新的一层</li>
+</ul>
+<p>镜像是分层结构，每一层称一个Layer</p>
+</blockquote>
+<h4 id="31-自定义镜像">3.1 自定义镜像</h4>
+<blockquote>
+<p>Dockerfile：一个文本文件，指令的合集，用指令来说明要执行什么操作来构建镜像，每一个指令都会形成一层Layer</p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FROM</td>
+<td>指定BaseImage</td>
+<td>FROM centos:6</td>
+</tr>
+<tr>
+<td>ENV</td>
+<td>设置环境变量，可在后面指令使用</td>
+<td>ENV key value</td>
+</tr>
+<tr>
+<td>COPY</td>
+<td>拷贝本地文件到镜像的指定目录</td>
+<td>COPY ./mysql-5.7.rpm /tmp</td>
+</tr>
+<tr>
+<td>RUN</td>
+<td>执行Linux的shell命令，一般是安装过程的命令</td>
+<td>RUN yum install gcc</td>
+</tr>
+<tr>
+<td>EXPOSE</td>
+<td>指定容器运行时监听的端口，是给镜像使用者看的</td>
+<td>EXPOSE 8080</td>
+</tr>
+<tr>
+<td>ENTRYPOINT</td>
+<td>镜像中应用的启动命令，容器运行时调用</td>
+<td>ENTRYPOINT java -jar xx.jar</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<pre><code class="language-shell"># 指定基础镜像
+FROM ubuntu:16.04
+# 配置环境变量，JDK的安装目录
+ENV JAVA_DIR=/usr/local
+
+# 拷贝jdk和java项目的包
+COPY ./jdk8.tar.gz $JAVA_DIR/
+COPY ./docker-demo.jar /tmp/app.jar
+
+# 安装JDK
+RUN cd $JAVA_DIR \
+ &amp;&amp; tar -xf ./jdk8.tar.gz \
+ &amp;&amp; mv ./jdk1.8.0_144 ./java8
+
+# 配置环境变量
+ENV JAVA_HOME=$JAVA_DIR/java8
+ENV PATH=$PATH:$JAVA_HOME/bin
+
+# 暴露端口
+EXPOSE 8090
+# 入口，java项目的启动命令
+ENTRYPOINT java -jar /tmp/app.jar
+</code></pre>
+<ul>
+<li>
+<p><code>mkdir -p /tmp/docker-demo</code></p>
+</li>
+<li>
+<p>将<code>docker-demo.jar</code> <code>jdk8.tar.gz</code> <code>Dockerfile</code>上传至<code>/tmp/docker-demo</code></p>
+</li>
+<li>
+<p><code>docker build -t javaweb:1.0 .</code></p>
+</li>
+<li>
+<p><code>docker images</code></p>
+</li>
+<li>
+<p><code>docker run --name web -p 8090:8090 -d javaweb:1.0</code></p>
+</li>
+<li>
+<p>访问<code>ip:8090/hello/count</code></p>
+</li>
+</ul>
+<blockquote>
+<p>我们发现在Dockerfile中构建jdk环境的操作是可复用的，我们应该把构建jdk环境的部分构建一个镜像，这样以后就可以直接使用了，而java:8-alpine帮我们做了这件事</p>
+</blockquote>
+<h4 id="32-dockercompose">3.2 DockerCompose</h4>
+<blockquote>
+<p>DockerCompose可以基于Compose文件帮我们快速部署分布式应用，而无需手动一个个创建和运行容器</p>
+<p>Compose文件是一个文本文件，通过指令定义集群中的每个容器如何运行</p>
+<pre><code class="language-yaml">version: &quot;3.9&quot;
+services:
+	mysql: #指定服务名称
+		image: mysql:8.0.21 # 指定镜像文件
+		environment: #设置环境变量
+			MYSQL_ROOT_PASSWORD: 123456
+		volumes: #数据卷挂载
+			- /tmp/mysql/data:/var/lib/mysql
+			- /tmp/mysql/conf/hym.cnf:/etc/mysql/conf.d/hym.cnf
+	web: #指定服务名称
+		build: . #从当前目录中构建镜像
+		ports:   #设置端口号
+			- &quot;8090:8090&quot;
+</code></pre>
+<blockquote>
+<p>书写格式参考规范：</p>
+<ul>
+<li>https://docs.docker.com/compose/compose-file/compose-file-v3/</li>
+<li>https://docs.docker.com/compose/compose-file/compose-file-v2/</li>
+</ul>
+</blockquote>
+</blockquote>
+<h5 id="321-安装dockercompose">3.2.1 安装DockerCompose</h5>
+<blockquote>
+<p>参考：https://docs.docker.com/compose/install/compose-plugin/#installing-compose-on-linux-systems</p>
+</blockquote>
+<pre><code class="language-shell"> curl -SL https://github.com/docker/compose/releases/download/v2.6.1/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
+</code></pre>
+<ul>
+<li>
+<p><code>docker-compose</code>所在目录<code>/usr/local/bin/docker-compose</code></p>
+</li>
+<li>
+<p>给<code>docker-compose</code>添加可执行权限<code>chmod +x docker-compose</code></p>
+</li>
+<li>
+<p>Base自动补全命令</p>
+<pre><code class="language-shell">curl \
+    -L https://raw.githubusercontent.com/docker/compose/v2.6.1/contrib/completion/bash/docker-compose \
+    -o /etc/bash_completion.d/docker-compose
+</code></pre>
+<blockquote>
+<p>如果无法访问该地址，则修改本机hosts文件</p>
+<p><code>echo &quot;185.199.108.133 raw.githubusercontent.com&quot; &gt;&gt; /etc/hosts</code></p>
+</blockquote>
+</li>
+</ul>
+<h5 id="322-部署微服务集群">3.2.2 部署微服务集群</h5>
+<pre><code class="language-shell">docker run \
+--name my-mysql8 \
+-e MYSQL_ROOT_PASSWORD=root \
+-p 3306:3306 \
+-d mysql:latest \
+--character-set-server=utf8mb4 \
+--collation-server=utf8mb4_unicode_ci
+
+</code></pre>
+<blockquote>
+<pre><code class="language-dockerfile">FROM java:8-alpine
+COPY ./app.jar /tmp/app.jar
+ENTRYPOINT java -jar /tmp/app.jar
+</code></pre>
+<pre><code class="language-yaml"># docker-comspose配置文件语法版本
+version: 3.8
+services:
+	nacos:
+		images: nacos/nacos-server
+		environment: 
+			MODE: standalone
+		ports:
+			- &quot;8848:8848&quot;
+	mysql:
+		images: mysql:8.0.31
+		environment: 
+			MYSQL_ROOT_PASSWORD: 996748
+		volumes:
+			- &quot;$PWD/mysql/data:/var/lib/mysql&quot;
+			- &quot;$PWD/mysql/conf:/etc/mysql/conf.d&quot;
+	user-service: 
+		build: ./user-service
+	order-service:
+		build: ./order-service
+	gateway:
+		build: ./gateway
+		ports: 
+			- &quot;10010:10010&quot;
+		
+</code></pre>
+<figure data-type="image" tabindex="4"><img src="https://pic.zyblog.xyz/img/typora/image-20230505123711539.png?origin=typora" alt="image-20230505123711539" loading="lazy"></figure>
+</blockquote>
+<h3 id="4-docker镜像仓库">4. Docker镜像仓库</h3>
+<h4 id="41-配置docker信任地址">4.1 配置Docker信任地址</h4>
+<blockquote>
+<p>我们的私服采用的是http协议，默认不被Docker信任</p>
+</blockquote>
+<pre><code class="language-shell"># 编辑Docker服务守护进程配置文件
+vi /etc/docker/daemon.json
+# 添加内容
+&quot;insecure-registries&quot;:[&quot;http://192.168.96.130:8080&quot;]
+# 重新加载Docker服务守护进程
+systemctl daemon-reload
+# 重启Docker
+systemctl restart docker  
+</code></pre>
+<h4 id="42-使用docker部署带有图形界面的dockerregistry">4.2 使用Docker部署带有图形界面的DockerRegistry</h4>
+<pre><code class="language-yaml">version: '3.0'
+services:
+	registry:
+		image: registry
+		volumes:
+			- ./registry-data:/var/lib/registry
+	ui:
+		image: joxit/docker-registry-ui:1.5-static
+		ports:
+			- 8080:80
+		environment:
+			- REGISTRY_TITLE=絷缘私有仓库
+			- REGISTRY_URL=http://registry:5000
+		depends_on:
+			- registry
+</code></pre>
+<pre><code class="language-shell">mkdir /tmp/docker-registry-ui
+cd /tmp/docker-registry-ui
+touch docker-compose.yml
+vim docker-compose.yml
+docker-compose up -d 
+</code></pre>
+<h4 id="43-在私有镜像仓库推送拉取镜像">4.3 在私有镜像仓库推送/拉取镜像</h4>
+<pre><code class="language-shell"># 将现有镜像打包成为私有镜像
+docker tag nginx:latest 192.168.96.130:8080/nginx:latest
+# 将私有镜像推送到私有仓库
+docker push 192.168.96.130:8080/nginx:latest
+# 将私有镜像拉取到当前环境
+docker pull 192.168.96.130:8080/nginx:latest
+</code></pre>
+<figure data-type="image" tabindex="5"><img src="https://pic.zyblog.xyz/img/typora/image-20220706180422059.png" alt="image-20220706180422059" loading="lazy"></figure>
+<blockquote>
+<p>原文作者：絷缘<br>
+作者邮箱：zhiyuanworkemail@163.com<br>
+原文地址：<a href="https://zhiyuandnc.github.io/doBPQq_Z4/">https://zhiyuandnc.github.io/doBPQq_Z4/</a><br>
+版权声明：本文为博主原创文章，转载请注明原文链接作者信息</p>
+</blockquote>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://zhiyuandnc.github.io/HTHKqujWe/" class="post-title gt-a-link">
+                    Linux命令学习（十一）
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">事实不以人的意志为转移</div>
+    <div class="social-container">
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-telegram gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-qq gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-bilibili gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Copyright&ensp;&copy;&ensp;絷缘的博客<br/><a href="https://beian.miit.gov.cn/" target="_blank">晋ICP备20001723号-1</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://zhiyuandnc.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

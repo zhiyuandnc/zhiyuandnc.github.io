@@ -1,0 +1,265 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Linux命令学习（八） | 絷缘的博客</title>
+
+<link rel="shortcut icon" href="https://zhiyuandnc.github.io/favicon.ico?v=1740567139208">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zhiyuandnc.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+ <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            絷缘的博客
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/friends" class="menu gt-a-link">
+                            友链
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1740567139208" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Linux命令学习（八）
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2022-02-26 ·
+                    </time>
+                    
+                        <a href="https://zhiyuandnc.github.io/linux/" class="post-tags">
+                            # Linux
+                        </a>
+                    
+                        <a href="https://zhiyuandnc.github.io/Z3qSG8exS/" class="post-tags">
+                            # 命令
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="arch-linux安装部署知识小结">Arch-Linux安装部署（知识小结）</h2>
+<h3 id="1-arch-linux系统">1. Arch-Linux系统：</h3>
+<blockquote>
+<p>基于X86_64位架构制作的一种特别发行版，系统全部由开源软件组成，帮助文档丰富，全部由社区进行管理和维护，其镜像只提供简单的系统组件，需要全程联网才可安装部署</p>
+</blockquote>
+<h3 id="2-创建arch-linux的虚拟机">2. 创建Arch-Linux的虚拟机</h3>
+<blockquote>
+<p>文件菜单 -&gt; 新建虚拟机 -&gt; 稍后安装系统 -&gt;选择版本为Linux、其他版本、Linux5.x或更高版本内核64位 -&gt; 命名为Arch-Linux  -&gt; 更改存储路径 -&gt; 磁盘容量8G ，单个文件 -&gt;自定义硬件（新CD/DVD中选择之前下载好的镜像文件）</p>
+</blockquote>
+<h3 id="3-启动虚拟机">3. 启动虚拟机</h3>
+<blockquote>
+<p>进入引导界面 -&gt; 选择第一项 -&gt; 自动进入命令行</p>
+</blockquote>
+<h3 id="4-部署系统">4. 部署系统</h3>
+<blockquote>
+<p>（1）检查网络连通性</p>
+<p>​		获取地址：ip  addr</p>
+<p>​		测试：ping www.baidu.com</p>
+<p>（2）创建分区</p>
+<p>​     	方法：fdisk  /dev/sda</p>
+<p>​		 至少两个分区：</p>
+<p>​					swap分区：512M</p>
+<p>​					根分区：剩余所有</p>
+<p>（3）启用swap分区</p>
+<p>​		格式化swap分区：mkswap   /dev/sda1</p>
+<p>​		启用：swapon   /dev/sda1</p>
+<p>​		查看：free   -h</p>
+<p>（4）格式化根分区：mkfs.ext4   /dev/sda2</p>
+<p>（5）挂载根分区：mount   /dev/sda2   /mnt</p>
+<p>（6）修改下载源，防止下载速度过慢</p>
+<p>​		进入下载源配置目录：cd  /etc/pacman.d</p>
+<p>​		将所有行注释掉</p>
+<p>​		定位第一行增加阿里源的地址信息：Server = http://mirrors.aliyun.com/archlinux/<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi><mi>e</mi><mi>p</mi><mi>o</mi><mi mathvariant="normal">/</mi><mi>o</mi><mi>s</mi><mi mathvariant="normal">/</mi></mrow><annotation encoding="application/x-tex">repo/os/</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord">/</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span><span class="mord">/</span></span></span></span>arch</p>
+<p>（7）下载必要软件：</p>
+<p>​		pacstrap   /mnt  base</p>
+<p>​		pacstrap   /mnt   linux</p>
+<p>​		pacstrap   /mnt  linux-firmware</p>
+<p>​		pacstrap   /mnt  dhcpcd</p>
+<p>​		pacstrap   /mnt  vim</p>
+<p>​		pacstrap   /mnt  openssh</p>
+<p>​		pacstrap   /mnt  man</p>
+<p>​		pacstrap   /mnt  net-tools</p>
+<p>​		pacstrap   /mnt  pacman</p>
+<p>（8）生成开机启动文件</p>
+<p>​		写入开机启动内容：genfstab  -U   /mnt   &gt;&gt;  /mnt/etc/fstab</p>
+<p>​		浏览：cat  /mnt/etc/fstab</p>
+<p>（9）切换根目录：arch-chroot  /mnt</p>
+<p>（10）设置root密码：passwd   root</p>
+<p>（11）设置开机启动：systemctl   enable   dhcpcd</p>
+<p>（12）安装并配置grub2引导文件：</p>
+<p>​		安装：pacman   -S   grub</p>
+<p>​		部署到硬盘：grub-install   /dev/sda</p>
+<p>​		写入引导：grub-mkconfig   -o   /boot/grub/grub.cfg</p>
+<p>​		退出当前系统：exit</p>
+<p>​		重启：reboot</p>
+<p>​		<em><strong>历经千辛万苦，终于成功启动</strong></em></p>
+<figure data-type="image" tabindex="1"><img src="https://pic.zyblog.xyz/img/typora/image-20201014145256240.png?origin=typora" alt="image-20201014145256240" loading="lazy"></figure>
+</blockquote>
+<blockquote>
+<p>原文作者：絷缘<br>
+作者邮箱：zhiyuanworkemail@163.com<br>
+原文地址：<a href="https://zhiyuandnc.github.io/m9qF680b6/">https://zhiyuandnc.github.io/m9qF680b6/</a><br>
+版权声明：本文为博主原创文章，转载请注明原文链接作者信息</p>
+</blockquote>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://zhiyuandnc.github.io/vLqK58UZf/" class="post-title gt-a-link">
+                    Linux命令学习（七）
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">事实不以人的意志为转移</div>
+    <div class="social-container">
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-telegram gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-qq gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="#" target="_blank">
+                    <i class="fab fa-bilibili gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Copyright&ensp;&copy;&ensp;絷缘的博客<br/><a href="https://beian.miit.gov.cn/" target="_blank">晋ICP备20001723号-1</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://zhiyuandnc.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>
